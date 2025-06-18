@@ -11,22 +11,34 @@ Thank you for your interest in contributing! Here are some useful guidelines, co
 - We use [Tailwind CSS](https://tailwindcss.com/) with [DaisyUI](https://daisyui.com/) components.
 - Components should adapt to both **light** and **dark** themes.
 - Consistent spacing, button styles, and typography are appreciated.
-
-### 🖼️ Images
-
-- **Icons** for cards go in `public/apps/icons/`
-  - Format: `.png` preferred
-  - Size: Square (512x512 or less), under 40kB
-- **Logos** for modals go in `public/apps/logos/`
-  - Format: `.png` preferred
-  - Can be wider, max 1024px
-- Optimize images using tools like [GIMP](https://www.gimp.org/), TinyPNG, or export with compression.
+- Code formatting is standardized using the Prettier extension in VSCode.
 
 ### 🌐 Languages
 
-- Portuguese is the default
-- We plan to support English and Spanish soon
+- Portuguese is the default, and we also support Spanish and English
+- We plan to add more languages in the future
 - Write your code and comments in English
+
+### 🖼️ Images
+
+- **App Icons** go in `public/apps/icons/`
+  - Format: `.svg` preferred
+  - Dimensions: if only png available, best: 660x660px minimum: 512x512px
+  - Background: transparent
+- **Alternative Icons** go in `public/alternatives/`
+  - Format: `.svg` preferred
+  - Dimensions: if only png available, best: 180x180px minimum: 140x140px
+  - Background: transparent
+- **App Logos** for modals go in `public/apps/logos/`
+  - Format: `.png`
+  - Dimensions: height best: 320px, minimum 256px
+  - Border: white, around logo, following the style
+  - Background: transparent
+- **Protocol Logos** go in `public/protocols/`
+  - Format: `.png` 
+  - Dimensions: height best: 80px, minimum 60px
+  - Background: color, white or logo default
+- Optimize images using tools like [GIMP](https://www.gimp.org/), TinyPNG, or export with compression.
 
 ---
 
@@ -62,6 +74,30 @@ Use these as a reference when browsing issues!
 Open an issue or come chat with us in our [Hackathon Discord channel](https://discordapp.com/channels/1365364448461721611/1376586127443623976). We love creative proposals - new features, UI ideas, improvements to the experience, etc.
 
 ---
+
+## 🚀 Installing and Running the Project Locally
+
+To test or develop locally, follow these steps:
+
+### 📦 Dependencies
+
+- [Node.js](https://nodejs.org/) (version 18 or later)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- Git
+
+### 🖥️ Installing and running the app
+   ```bash
+   git clone https://github.com/Sovereinia/guia.git
+   cd guia
+   npm install
+   npm run dev
+   ```
+
+   This will launch the app at [http://localhost:5173](http://localhost:5173).
+
+---
+
+
 
 ## 🙏 Thank You!
 
