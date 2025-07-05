@@ -71,7 +71,8 @@ Use these as a reference when browsing issues!
 
 ## 💡 Want to Suggest an Idea?
 
-Open an issue or come chat with us in our [Hackathon Discord channel](https://discordapp.com/channels/1365364448461721611/1376586127443623976). We love creative proposals - new features, UI ideas, improvements to the experience, etc.
+Open an issue or come chat with us in our Hackathon Discord channel. Add Viny and he'll invite you to the server: viny.bk
+We love creative proposals - new features, UI ideas, improvements to the experience, etc.
 
 ---
 
