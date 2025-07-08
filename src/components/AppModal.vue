@@ -5,6 +5,7 @@ import { getProtocolInfo } from '@/utils/global.ts';
 import { getFaviconPath } from '@/utils/global.ts';
 import type { App } from '@/types';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 
 
 const { abrir, app } = defineProps<{
@@ -22,6 +23,8 @@ const visible = ref(false);
 
 const localApp = ref<Partial<App>>({});
 
+const route = useRoute();
+const shareToast = ref(false);
 
 const myModal = ref<HTMLDialogElement | null>(null)
 
@@ -55,6 +58,24 @@ function handleDialogClose() {
   expandido.value = false
   visible.value = false
   localApp.value = {}
+}
+
+function getAppSlug(app: Partial<App>) {
+  // Simple slugify: lowercase, remove spaces, remove special chars
+  return (app.name || '')
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[^a-z0-9]/g, '');
+}
+
+async function shareApp() {
+  const slug = getAppSlug(localApp.value);
+  // Build the shareable URL with ?app=slug
+  const basePath = window.location.origin + route.fullPath.split('?')[0];
+  const url = `${basePath}?app=${slug}`;
+  await navigator.clipboard.writeText(url);
+  shareToast.value = true;
+  setTimeout(() => (shareToast.value = false), 2000);
 }
 
 function openModal() {
@@ -267,6 +288,16 @@ const { t } = useI18n();
 
                 {{ link.label }}
               </a>
+              <!-- Share Button -->
+              <button
+                type="button"
+                class="btn btn-outline btn-sm flex items-center gap-2"
+                @click="shareApp"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 8a3 3 0 11-6 0 3 3 0 016 0zm6 8a6 6 0 10-12 0 6 6 0 0012 0zm-6-6v6" />
+                </svg>{{ t('appModal.share') || 'Share' }}
+              </button>
             </div>
 
 
@@ -292,6 +323,16 @@ const { t } = useI18n();
     </div>
   </div>
 </dialog>
+<!-- Toast for "Link copied!" -->
+    <Teleport to="body">
+      <div
+        v-if="shareToast"
+        class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-base-200 text-base-content px-4 py-2 rounded shadow-lg z-[9999]"
+        style="pointer-events: none;"
+      >
+        {{ t('appModal.linkCopied') || 'Link copied!' }}
+      </div>
+    </Teleport>
 
 
   </div>
