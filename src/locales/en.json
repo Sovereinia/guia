@@ -58,6 +58,8 @@
     "close": "Close",
     "protocols": "Protocols and federation:",
     "alternatives": "Alternative to:",
+    "share": "Share",
+    "linkCopied": "Link copied!",
     "br": "BR"
   },
   "apps": {

@@ -12,6 +12,7 @@ import { sortAppsByLinksThenRandom, filterApps } from '@/utils/filter';
 import { useI18n } from 'vue-i18n';
 import { useHeadersStore } from '@/stores/headers';
 import { useSEO } from '@/composables/useSEO';
+import { useRoute, useRouter } from 'vue-router';
 
 const { t } = useI18n();
 const headersStore = useHeadersStore();
@@ -21,6 +22,8 @@ const modalData = ref<Partial<App>>({});
 const searchQuery = ref('');
 const selectedCategory = ref<CategoryId>('all');
 const showFilters = ref(false);
+const route = useRoute();
+const router = useRouter();
 
 // Sugestões para o autocomplete
 const suggestions = apps.flatMap((app) => app.alternatives || []);
@@ -48,6 +51,22 @@ const searchPlaceholder = computed(() =>
   windowWidth.value > 600 ? t('search.placeholder.desktop') : t('search.placeholder.mobile'),
 );
 
+function getAppSlug(app) {
+  return (app.name || '')
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[^a-z0-9]/g, '');
+}
+onMounted(() => {
+  const appSlug = route.query.app;
+  if (appSlug) {
+    const found = apps.find(app => getAppSlug(app) === appSlug);
+    if (found) {
+      handleAbrirModal(found);
+    }
+  }
+});
+
 onMounted(() => {
   window.addEventListener('resize', updateWindowWidth);
 
@@ -70,8 +89,30 @@ function handleAbrirModal(app: App) {
   nextTick(() => {
     modalData.value = { ...app };
     mostrarModal.value = true;
+    router.replace({ query: { ...route.query, app: getAppSlug(app) } });
+
   });
 }
+
+// When closing modal
+function handleFecharModal() {
+  mostrarModal.value = false;
+  // Remove 'app' from query
+  const { app, ...rest } = route.query;
+  router.replace({ query: rest });
+}
+
+watch(
+  () => route.query.app,
+  (appSlug) => {
+    if (appSlug) {
+      const found = apps.find(app => getAppSlug(app) === appSlug);
+      if (found) {
+        handleAbrirModal(found);
+      }
+    }
+  }
+);
 
 //This section watch for modal changes to update SEO dynamically
 watch([mostrarModal, modalData], ([isOpen, app]) => {
