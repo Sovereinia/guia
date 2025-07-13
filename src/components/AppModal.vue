@@ -3,6 +3,7 @@ import { ref, type Ref, defineProps, watch, onMounted, onBeforeUnmount, nextTick
 import { getAlternativeIcon } from '@/utils/global.ts';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { getFaviconPath } from '@/utils/global.ts';
+import { getAppSlug } from '@/utils/global.ts';
 import type { App } from '@/types';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
@@ -29,8 +30,7 @@ const shareToast = ref(false);
 const myModal = ref<HTMLDialogElement | null>(null)
 
 watch(() => app._openCount, async (newValue) => {
-  if (!app) return;
-  if (app) {
+  if (!app || !newValue) return;
     bannerErrored.value = false;
     expandido.value = false;
     visible.value = false;
@@ -40,16 +40,12 @@ watch(() => app._openCount, async (newValue) => {
 
     await nextTick(); // desmonta com segurança
 
-    localApp.value = { ...app };
-    myModal.value?.showModal();
-
-    await nextTick(); // garante render
-    visible.value = true;
-  } else {
-    visible.value = false;
-    myModal.value?.close();
-    emit('atualizarAbrir', false);
-  }
+  // Set the app data and show modal
+  localApp.value = { ...app };
+  visible.value = true; // Set visible before showModal
+  
+  await nextTick(); // ensure DOM is ready
+  myModal.value?.showModal();
 });
 
 function handleDialogClose() {
@@ -60,13 +56,6 @@ function handleDialogClose() {
   localApp.value = {}
 }
 
-function getAppSlug(app: Partial<App>) {
-  // Simple slugify: lowercase, remove spaces, remove special chars
-  return (app.name || '')
-    .toLowerCase()
-    .replace(/\s+/g, '')
-    .replace(/[^a-z0-9]/g, '');
-}
 
 async function shareApp() {
   const slug = getAppSlug(localApp.value);

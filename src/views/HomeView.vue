@@ -9,6 +9,7 @@ import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import type { CategoryId } from '@/types';
 import type { App } from '@/types';
 import { sortAppsByLinksThenRandom, filterApps } from '@/utils/filter';
+import { getAppSlug } from '@/utils/global';
 import { useI18n } from 'vue-i18n';
 import { useHeadersStore } from '@/stores/headers';
 import { useSEO } from '@/composables/useSEO';
@@ -51,12 +52,8 @@ const searchPlaceholder = computed(() =>
   windowWidth.value > 600 ? t('search.placeholder.desktop') : t('search.placeholder.mobile'),
 );
 
-function getAppSlug(app) {
-  return (app.name || '')
-    .toLowerCase()
-    .replace(/\s+/g, '')
-    .replace(/[^a-z0-9]/g, '');
-}
+const isUpdatingFromURL = ref(false);
+
 onMounted(() => {
   const appSlug = route.query.app;
   if (appSlug) {
@@ -85,6 +82,7 @@ onUnmounted(() => {
 });
 
 function handleAbrirModal(app: App) {
+  if (isUpdatingFromURL.value) return;
   modalData.value = {};
   nextTick(() => {
     modalData.value = { ...app };
@@ -97,6 +95,7 @@ function handleAbrirModal(app: App) {
 // When closing modal
 function handleFecharModal() {
   mostrarModal.value = false;
+  modalData.value = {};
   // Remove 'app' from query
   const { app, ...rest } = route.query;
   router.replace({ query: rest });
@@ -105,11 +104,21 @@ function handleFecharModal() {
 watch(
   () => route.query.app,
   (appSlug) => {
-    if (appSlug) {
+    if (appSlug && !mostrarModal.value) {
       const found = apps.find(app => getAppSlug(app) === appSlug);
       if (found) {
-        handleAbrirModal(found);
+        isUpdatingFromURL.value = true;
+        modalData.value = {};
+        nextTick(() => {
+          modalData.value = { ...found };
+          mostrarModal.value = true;
+          isUpdatingFromURL.value = false;
+        });
       }
+    } else if (!appSlug && mostrarModal.value) {
+      // URL was cleared but modal is still open - close it
+      mostrarModal.value = false;
+      modalData.value = {};
     }
   }
 );
@@ -185,6 +194,6 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
   >
     <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
 
-    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="mostrarModal = $event" />
+    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="handleFecharModal" />
   </section>
 </template>
