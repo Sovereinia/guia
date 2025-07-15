@@ -70,7 +70,7 @@ function handleDialogClose() {
 async function shareApp() {
   const slug = getAppSlug(localApp.value);
   // Build the shareable URL with ?app=slug
-  const basePath = window.location.origin + route.fullPath.split('?')[0];
+  const basePath = window.location.origin + window.location.pathname;
   const url = `${basePath}?app=${slug}`;
   await navigator.clipboard.writeText(url);
   shareToast.value = true;
