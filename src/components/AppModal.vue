@@ -29,8 +29,8 @@ const shareToast = ref(false);
 
 const myModal = ref<HTMLDialogElement | null>(null)
 
-watch(() => app._openCount, async (newValue) => {
-  if (!app || !newValue) return;
+watch(() => abrir, async (newValue) => {
+  if (newValue && app) {
     bannerErrored.value = false;
     expandido.value = false;
     visible.value = false;
@@ -38,14 +38,24 @@ watch(() => app._openCount, async (newValue) => {
     visibleAlternatives.value = {}; 
     favicons.value = [];
 
-    await nextTick(); // desmonta com segurança
+    await nextTick();
 
-  // Set the app data and show modal
-  localApp.value = { ...app };
-  visible.value = true; // Set visible before showModal
-  
-  await nextTick(); // ensure DOM is ready
-  myModal.value?.showModal();
+    // Set the app data and show modal
+    localApp.value = { ...app };
+    visible.value = true;
+    
+    await nextTick();
+    myModal.value?.showModal();
+  } else if (!newValue) {
+    // Close modal when abrir becomes false
+    if (myModal.value?.open) {
+      myModal.value.close();
+    }
+  }
+});
+
+watch(() => app._openCount, async (newValue) => {
+  if (!app || !newValue) return;
 });
 
 function handleDialogClose() {
@@ -166,7 +176,14 @@ const { t } = useI18n();
     @close="handleDialogClose"
   >
   <div v-if="visible" class="modal-box w-full max-w-[880px] max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl relative bg-base-100 sm:px-6 sm:py-6 box-border">
-
+    <!-- Move toast inside the dialog -->
+    <div
+      v-if="shareToast"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-base-200 text-base-content px-4 py-2 rounded shadow-lg z-50"
+      style="pointer-events: none;"
+    >
+      {{ t('appModal.linkCopied') || 'Link copied!' }}
+    </div>
 
     <!-- Botão de fechar -->
     <button
@@ -312,17 +329,6 @@ const { t } = useI18n();
     </div>
   </div>
 </dialog>
-<!-- Toast for "Link copied!" -->
-    <Teleport to="body">
-      <div
-        v-if="shareToast"
-        class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-base-200 text-base-content px-4 py-2 rounded shadow-lg z-[9999]"
-        style="pointer-events: none;"
-      >
-        {{ t('appModal.linkCopied') || 'Link copied!' }}
-      </div>
-    </Teleport>
-
 
   </div>
 </template>
