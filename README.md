@@ -74,7 +74,7 @@ We’re excited to collaborate with you!
 ## 💬 Hackathon Discord Channel
 
 We’ve created a **dedicated Discord channel** just for hackathon participants to connect directly with the maintainers:  
-👉 [Join us here](https://discordapp.com/channels/1365364448461721611/1376586127443623976)
+👉 Add Viny and he'll invite you to the server: viny.bk
 
 ## 📄 License
 
