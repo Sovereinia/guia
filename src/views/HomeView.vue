@@ -9,9 +9,11 @@ import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
 import type { CategoryId } from '@/types';
 import type { App } from '@/types';
 import { sortAppsByLinksThenRandom, filterApps } from '@/utils/filter';
+import { getAppSlug } from '@/utils/global';
 import { useI18n } from 'vue-i18n';
 import { useHeadersStore } from '@/stores/headers';
 import { useSEO } from '@/composables/useSEO';
+import { useRoute, useRouter } from 'vue-router';
 
 const { t } = useI18n();
 const headersStore = useHeadersStore();
@@ -21,6 +23,8 @@ const modalData = ref<Partial<App>>({});
 const searchQuery = ref('');
 const selectedCategory = ref<CategoryId>('all');
 const showFilters = ref(false);
+const route = useRoute();
+const router = useRouter();
 
 // Sugestões para o autocomplete
 const suggestions = apps.flatMap((app) => app.alternatives || []);
@@ -48,6 +52,18 @@ const searchPlaceholder = computed(() =>
   windowWidth.value > 600 ? t('search.placeholder.desktop') : t('search.placeholder.mobile'),
 );
 
+const isUpdatingFromURL = ref(false);
+
+onMounted(() => {
+  const appSlug = route.query.app;
+  if (appSlug) {
+    const found = apps.find(app => getAppSlug(app) === appSlug);
+    if (found) {
+      handleAbrirModal(found);
+    }
+  }
+});
+
 onMounted(() => {
   window.addEventListener('resize', updateWindowWidth);
 
@@ -66,12 +82,46 @@ onUnmounted(() => {
 });
 
 function handleAbrirModal(app: App) {
+  if (isUpdatingFromURL.value) return;
   modalData.value = {};
   nextTick(() => {
     modalData.value = { ...app };
     mostrarModal.value = true;
+    router.replace({ query: { ...route.query, app: getAppSlug(app) } });
+
   });
 }
+
+// When closing modal
+function handleFecharModal() {
+  mostrarModal.value = false;
+  modalData.value = {};
+  // Remove 'app' from query
+  const { app, ...rest } = route.query;
+  router.replace({ query: rest });
+}
+
+watch(
+  () => route.query.app,
+  (appSlug) => {
+    if (appSlug && !mostrarModal.value) {
+      const found = apps.find(app => getAppSlug(app) === appSlug);
+      if (found) {
+        isUpdatingFromURL.value = true;
+        modalData.value = {};
+        nextTick(() => {
+          modalData.value = { ...found };
+          mostrarModal.value = true;
+          isUpdatingFromURL.value = false;
+        });
+      }
+    } else if (!appSlug && mostrarModal.value) {
+      // URL was cleared but modal is still open - close it
+      mostrarModal.value = false;
+      modalData.value = {};
+    }
+  }
+);
 
 //This section watch for modal changes to update SEO dynamically
 watch([mostrarModal, modalData], ([isOpen, app]) => {
@@ -144,6 +194,6 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
   >
     <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
 
-    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="mostrarModal = $event" />
+    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="handleFecharModal" />
   </section>
 </template>

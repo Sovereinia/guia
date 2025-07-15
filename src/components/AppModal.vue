@@ -3,8 +3,10 @@ import { ref, type Ref, defineProps, watch, onMounted, onBeforeUnmount, nextTick
 import { getAlternativeIcon } from '@/utils/global.ts';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { getFaviconPath } from '@/utils/global.ts';
+import { getAppSlug } from '@/utils/global.ts';
 import type { App } from '@/types';
 import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
 
 
 const { abrir, app } = defineProps<{
@@ -22,12 +24,13 @@ const visible = ref(false);
 
 const localApp = ref<Partial<App>>({});
 
+const route = useRoute();
+const shareToast = ref(false);
 
 const myModal = ref<HTMLDialogElement | null>(null)
 
-watch(() => app._openCount, async (newValue) => {
-  if (!app) return;
-  if (app) {
+watch(() => abrir, async (newValue) => {
+  if (newValue && app) {
     bannerErrored.value = false;
     expandido.value = false;
     visible.value = false;
@@ -35,18 +38,24 @@ watch(() => app._openCount, async (newValue) => {
     visibleAlternatives.value = {}; 
     favicons.value = [];
 
-    await nextTick(); // desmonta com segurança
+    await nextTick();
 
+    // Set the app data and show modal
     localApp.value = { ...app };
-    myModal.value?.showModal();
-
-    await nextTick(); // garante render
     visible.value = true;
-  } else {
-    visible.value = false;
-    myModal.value?.close();
-    emit('atualizarAbrir', false);
+    
+    await nextTick();
+    myModal.value?.showModal();
+  } else if (!newValue) {
+    // Close modal when abrir becomes false
+    if (myModal.value?.open) {
+      myModal.value.close();
+    }
   }
+});
+
+watch(() => app._openCount, async (newValue) => {
+  if (!app || !newValue) return;
 });
 
 function handleDialogClose() {
@@ -55,6 +64,17 @@ function handleDialogClose() {
   expandido.value = false
   visible.value = false
   localApp.value = {}
+}
+
+
+async function shareApp() {
+  const slug = getAppSlug(localApp.value);
+  // Build the shareable URL with ?app=slug
+  const basePath = window.location.origin + route.fullPath.split('?')[0];
+  const url = `${basePath}?app=${slug}`;
+  await navigator.clipboard.writeText(url);
+  shareToast.value = true;
+  setTimeout(() => (shareToast.value = false), 2000);
 }
 
 function openModal() {
@@ -156,7 +176,14 @@ const { t } = useI18n();
     @close="handleDialogClose"
   >
   <div v-if="visible" class="modal-box w-full max-w-[880px] max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl relative bg-base-100 sm:px-6 sm:py-6 box-border">
-
+    <!-- Move toast inside the dialog -->
+    <div
+      v-if="shareToast"
+      class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-base-200 text-base-content px-4 py-2 rounded shadow-lg z-50"
+      style="pointer-events: none;"
+    >
+      {{ t('appModal.linkCopied') || 'Link copied!' }}
+    </div>
 
     <!-- Botão de fechar -->
     <button
@@ -267,6 +294,16 @@ const { t } = useI18n();
 
                 {{ link.label }}
               </a>
+              <!-- Share Button -->
+              <button
+                type="button"
+                class="btn btn-outline btn-sm flex items-center gap-2"
+                @click="shareApp"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 8a3 3 0 11-6 0 3 3 0 016 0zm6 8a6 6 0 10-12 0 6 6 0 0012 0zm-6-6v6" />
+                </svg>{{ t('appModal.share') || 'Share' }}
+              </button>
             </div>
 
 
@@ -292,7 +329,6 @@ const { t } = useI18n();
     </div>
   </div>
 </dialog>
-
 
   </div>
 </template>

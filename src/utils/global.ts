@@ -1,6 +1,7 @@
 //globals.ts
 import { protocolIcons } from '@/data/protocols.ts';
 import { alternativeIcons } from '@/data/alternatives';
+import type { App } from '@/types';
 
 
 export const sliceText = (text: string, length: number) => {
@@ -51,4 +52,11 @@ export function getFaviconPath(url: string): string {
   } catch {
     return `${import.meta.env.BASE_URL}favicon.png`; // fallback
   }
+}
+
+export function getAppSlug(app: Partial<App>): string {
+  return (app.name || '')
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[^a-z0-9]/g, '');
 }
