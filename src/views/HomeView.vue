@@ -14,6 +14,7 @@ import { useI18n } from 'vue-i18n';
 import { useHeadersStore } from '@/stores/headers';
 import { useSEO } from '@/composables/useSEO';
 import { useRoute, useRouter } from 'vue-router';
+import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
 
 const { t } = useI18n();
 const headersStore = useHeadersStore();
@@ -90,6 +91,11 @@ function handleAbrirModal(app: App) {
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
 
   });
+}
+
+function handleSurpriseMe(app: App) {
+  // Reuse existing modal logic
+  handleAbrirModal(app);
 }
 
 // When closing modal
@@ -180,13 +186,23 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
 
   <section class="w-full space-y-5">
     <CategorySelector v-if="showFilters" v-model="selectedCategory" :categories="categories" />
-    <AppSearch
-      v-model="searchQuery"
-      :suggestions="suggestions"
-      :placeholder="searchPlaceholder"
-      @focus="showFilters = true"
-      @click="showFilters = true"
-    />
+    <div class="flex gap-2 items-start w-full">
+      <div class="flex-1 min-w-0">
+        <AppSearch
+          v-model="searchQuery"
+          :suggestions="suggestions"
+          :placeholder="searchPlaceholder"
+          @focus="showFilters = true"
+          @click="showFilters = true"
+        />
+      </div>
+      <div class="flex-shrink-0">
+        <SurpriseMeButton 
+          :apps="orderedApps" 
+          @surprise="handleSurpriseMe"
+        />
+      </div>
+    </div>
   </section>
 
   <section
