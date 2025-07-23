@@ -41,6 +41,6 @@ function surpriseMe() {
     }"
   >
     <span class="text-base sm:text-lg">🎲</span>
-    <span class="text-sm sm:text-base">{{ t('surpriseMe.button', 'Surprise me!') }}</span>
+    <span class="text-sm sm:text-base hidden md:block">{{ t('surpriseMe.button', 'Surprise me!') }}</span>
   </button>
 </template>
