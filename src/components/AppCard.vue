@@ -5,6 +5,47 @@ import type { App } from '@/types';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 
+const cardRef = ref<HTMLElement | null>(null);
+const isMobile = computed(() => windowWidth.value < 640); // sm breakpoint
+
+let idleTimer: ReturnType<typeof setTimeout>;
+
+const triggerBounce = () => {
+  if (!cardRef.value || !isMobile.value) return;
+
+  cardRef.value.classList.add('bounce');
+  setTimeout(() => {
+    cardRef.value?.classList.remove('bounce');
+  }, 600); // matches the animation duration
+};
+
+const startIdleBounceTimer = () => {
+  if (!isMobile.value) return;
+
+  clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    triggerBounce();
+    startIdleBounceTimer(); // keep repeating every 5s
+  }, 5000);
+};
+
+onMounted(() => {
+  startIdleBounceTimer();
+  window.addEventListener('touchstart', resetTimer);
+  window.addEventListener('scroll', resetTimer);
+});
+onUnmounted(() => {
+  clearTimeout(idleTimer);
+  window.removeEventListener('touchstart', resetTimer);
+  window.removeEventListener('scroll', resetTimer);
+});
+
+function resetTimer() {
+  clearTimeout(idleTimer);
+  startIdleBounceTimer();
+}
+
+
 const props = defineProps<{
   app: App;
 }>();
@@ -70,9 +111,11 @@ const slicedDescription = computed(() => {
   <article
     @click="abrirModal"
 
-    class="card bg-[var(--color-card-primary)] w-full shadow-lg 
-    rounded-xl sm:rounded-3xl overflow-hidden transform transition-transform duration-200 
+    ref="cardRef"
+    class="card bg-[var(--color-card-primary)] w-full shadow-lg
+    rounded-xl sm:rounded-3xl overflow-hidden transform transition-transform duration-200
     hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer"
+
     >
     <figure class="p-2 w-20 sm:w-auto sm:p-10 sm:h-64 flex items-center justify-center">
       <img
@@ -84,8 +127,8 @@ const slicedDescription = computed(() => {
     </figure>
 
     <div class="card-body flex-1 min-w-0 bg-[var(--color-card-secondary)] rounded-none sm:rounded-r-3xl p-2 sm:p-6">
-  
-      <!-- LAYOUT PC --> 
+
+      <!-- LAYOUT PC -->
       <div class="hidden sm:flex sm:flex-col gap-2 flex-grow">
         <div class="flex items-baseline">
           <h2 class="card-title text-2xl text-gray-200">{{ app.name }}</h2>
@@ -120,7 +163,7 @@ const slicedDescription = computed(() => {
               @error="() => hiddenAlternatives.add(alt)"
             />
         </div>
-      </div> 
+      </div>
 
         <!-- LAYOUT MOBILE-->
         <div class="flex sm:hidden flex-row justify-between gap-2">
@@ -128,7 +171,7 @@ const slicedDescription = computed(() => {
           <div class="flex flex-col gap-1">
             <!-- Título -->
             <h2 class="card-title text-gray-200">{{ app.name }}</h2>
-            
+
             <!-- descrição -->
             <div class="flex-1 min-w-0">
               <p class="text-gray-200 text-sm leading-snug break-words">
@@ -159,7 +202,7 @@ const slicedDescription = computed(() => {
               v-show="!hiddenAlternatives.has(alt)"
               :src="getAlternativeIcon(alt)"
               :alt="alt"
-              class="w-6 h-6 min-w-6 min-h-6 max-w-6 max-h-6  
+              class="w-6 h-6 min-w-6 min-h-6 max-w-6 max-h-6
                 object-contain border border-gray-500 rounded-full"
               :title="alt"
               @error="() => hiddenAlternatives.add(alt)"
@@ -171,4 +214,20 @@ const slicedDescription = computed(() => {
   </article>
 </template>
 
-<style scoped></style>
+<style scoped>
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(4px);
+  }
+}
+
+.bounce {
+  animation: bounce 0.6s ease-in-out;
+}
+</style>
