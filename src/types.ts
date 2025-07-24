@@ -11,6 +11,7 @@ export interface App {
   categories: CategoryId[];
   alternatives?: string[];
   protocol?: string[];
+  recommendedForBeginners?: boolean;
   banner: {
   src: string;
   alt: string;

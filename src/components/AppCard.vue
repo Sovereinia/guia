@@ -72,8 +72,18 @@ const slicedDescription = computed(() => {
 
     class="card bg-[var(--color-card-primary)] w-full shadow-lg 
     rounded-xl sm:rounded-3xl overflow-hidden transform transition-transform duration-200 
-    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer"
+    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer relative"
     >
+    
+    <!-- Badge for beginner-friendly apps -->
+    <div
+      v-if="app.recommendedForBeginners"
+      class="absolute top-2 left-2 z-10 badge badge-success badge-sm text-xs font-medium
+             bg-green-600 dark:bg-green-500 text-white border-none shadow-md"
+      title="Great first app for self-hosting"
+    >
+      Great first app
+    </div>
     <figure class="p-2 w-20 sm:w-auto sm:p-10 sm:h-64 flex items-center justify-center">
       <img
         :src="app.banner.src"
