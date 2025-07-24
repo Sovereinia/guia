@@ -223,7 +223,18 @@ const { t } = useI18n();
 
       <!-- Texto e conteúdos -->
       <div class="w-full flex flex-col md:px-4 lg:px-6">
-        <!-- <h3 class="text-xl font-bold mb-2">{{ localApp.name }}</h3> -->
+        <!-- App title with badge -->
+        <div class="flex items-center gap-3 mb-2">
+          <h3 class="text-xl font-bold">{{ localApp.name }}</h3>
+          <div
+            v-if="localApp.recommendedForBeginners"
+            class="badge badge-success badge-sm text-xs font-medium
+                   bg-green-600 dark:bg-green-500 text-white border-none"
+            title="Great first app for self-hosting"
+          >
+            Great first app
+          </div>
+        </div>
         <div
           class="mb-4 rounded-lg px-3 sm:px-4 py-1 sm:mt-3 text-sm sm:text-base leading-relaxed transition-all duration-300 cursor-pointer sm:cursor-default"
           :class="[
