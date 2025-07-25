@@ -92,6 +92,7 @@ export const apps: App[] = [
     categories: ['tools'],
     alternatives: ['Google Drive', 'OneDrive', 'Dropbox'],
     protocol: ['WebDAV'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/nextcloud.svg',
       alt: 'Ícone do Nextcloud',
@@ -122,6 +123,7 @@ export const apps: App[] = [
     ],
     categories: ['tools'],
     alternatives: ['Google Password Manager'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/vaultwarden.png',
       alt: 'Ícone do Vaultwarden',
@@ -394,6 +396,7 @@ export const apps: App[] = [
     categories: ['messaging'],
     alternatives: ['WhatsApp', 'Telegram'],
     protocol: ['Signal Protocol'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/signal.svg',
       alt: 'Ícone do Signal',
@@ -424,6 +427,7 @@ export const apps: App[] = [
     ],
     categories: ['tools'],
     alternatives: ['iLovePDF', 'SmallPDF'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/stirling-pdf.png',
       alt: 'Ícone do Stirling-PDF',
