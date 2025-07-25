@@ -4,6 +4,7 @@ import AppModal from '@/components/AppModal.vue';
 import AppSearch from '@/components/form/AppSearch.vue';
 import CategorySelector from '@/components/form/CategorySelector.vue';
 import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
+import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
 import { useSEO } from '@/composables/useSEO';
 import { apps } from '@/data/apps';
 import { categories } from '@/data/categories';
@@ -96,6 +97,11 @@ function handleAbrirModal(app: App) {
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
 
   });
+}
+
+function handleSurpriseMe(app: App) {
+  // Reuse existing modal logic
+  handleAbrirModal(app);
 }
 
 // When closing modal
@@ -191,16 +197,23 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
 
   <section class="w-full space-y-5">
     <CategorySelector v-if="showFilters" v-model="selectedCategory" :categories="categories" />
-    <div class="mb-8 flex gap-3 items-center">
-      <AppSearch
-        v-model="searchQuery"
-        :suggestions="suggestions"
-        :placeholder="searchPlaceholder"
-        @focus="showFilters = true"
-        @click="showFilters = true"
-        class="flex-1"
-      />
-      <ReshuffleButton />
+    <div class="mb-8 flex gap-2 items-start w-full">
+      <div class="flex-1 min-w-0">
+        <AppSearch
+          v-model="searchQuery"
+          :suggestions="suggestions"
+          :placeholder="searchPlaceholder"
+          @focus="showFilters = true"
+          @click="showFilters = true"
+        />
+      </div>
+      <div class="flex-shrink-0 flex gap-2">
+        <SurpriseMeButton 
+          :apps="orderedApps" 
+          @surprise="handleSurpriseMe"
+        />
+        <ReshuffleButton />
+      </div>
     </div>
   </section>
 
