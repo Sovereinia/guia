@@ -47,6 +47,14 @@
     "suggestApp": "¿Quieres sugerir una app?",
     "suggestionTemplate": "sugerencia.md"
   },
+  "reshuffle": {
+    "shuffle": "Barajar",
+    "reset": "Restablecer",
+    "tooltip": {
+      "shuffle": "Barajar lista aleatoriamente",
+      "reset": "Volver al orden original"
+    }
+  },
   "category": {
     "all": { "name": "Todos", "short": "Todos" },
     "social": { "name": "Redes Sociales", "short": "Sociales" },

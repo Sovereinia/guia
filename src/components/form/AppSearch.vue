@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits, computed, ref, watch } from 'vue';
+import { computed, defineEmits, defineProps, ref, watch } from 'vue';
 
 // Props e emits
 const props = defineProps<{
@@ -92,7 +92,7 @@ watch(() => props.modelValue, (newValue) => {
 </script>
 
 <template>
-  <div class="mb-8 relative">
+  <div class="relative">
     <div class="relative">
       <input
         :value="modelValue"

@@ -47,6 +47,14 @@
     "suggestApp": "Want to suggest an app?",
     "suggestionTemplate": "suggestion.md"
   },
+  "reshuffle": {
+    "shuffle": "Reshuffle",
+    "reset": "Reset",
+    "tooltip": {
+      "shuffle": "Shuffle list randomly",
+      "reset": "Return to original order"
+    }
+  },
   "category": {
     "all": { "name": "All", "short": "All" },
     "social": { "name": "Social Networks", "short": "Social" },
