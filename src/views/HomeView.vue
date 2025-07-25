@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import AppSearch from '@/components/form/AppSearch.vue';
 import AppCard from '@/components/AppCard.vue';
-import CategorySelector from '@/components/form/CategorySelector.vue';
-import { apps } from '@/data/apps';
 import AppModal from '@/components/AppModal.vue';
-import { categories } from '@/data/categories';
-import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue';
-import type { CategoryId } from '@/types';
-import type { App } from '@/types';
-import { sortAppsByLinksThenRandom, filterApps } from '@/utils/filter';
-import { getAppSlug } from '@/utils/global';
-import { useI18n } from 'vue-i18n';
-import { useHeadersStore } from '@/stores/headers';
+import AppSearch from '@/components/form/AppSearch.vue';
+import CategorySelector from '@/components/form/CategorySelector.vue';
+import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
 import { useSEO } from '@/composables/useSEO';
+import { apps } from '@/data/apps';
+import { categories } from '@/data/categories';
+import { useGlobalStore } from '@/stores/global';
+import { useHeadersStore } from '@/stores/headers';
+import type { App, CategoryId } from '@/types';
+import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
+import { getAppSlug } from '@/utils/global';
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
 
 const { t } = useI18n();
 const headersStore = useHeadersStore();
+const globalStore = useGlobalStore();
 const { updateSEO } = useSEO();
 
 const modalData = ref<Partial<App>>({});
@@ -29,7 +31,11 @@ const router = useRouter();
 // Sugestões para o autocomplete
 const suggestions = apps.flatMap((app) => app.alternatives || []);
 
-const orderedApps = computed(() => sortAppsByLinksThenRandom(apps));
+const orderedApps = computed(() => 
+  globalStore.isReshuffled 
+    ? shuffleAppsPurely(apps) 
+    : sortAppsByLinksThenRandom(apps)
+);
 
 const filteredApps = computed(() => {
   return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value);
@@ -153,6 +159,11 @@ watch([mostrarModal, modalData], ([isOpen, app]) => {
 
 // This is section watch for search/filter changes to update SEO
 watch([searchQuery, selectedCategory], ([query, category]) => {
+  // Reset reshuffle when user searches or changes category
+  if ((query && query.length > 0) || category !== 'all') {
+    globalStore.resetReshuffle();
+  }
+
   let title = 'Sovereinia | Guia de Apps Descentralizados';
   let description =
     'Descubra apps descentralizados que funcionam sem um único dono, com redes independentes, mais liberdade, privacidade e controle para quem participa.';
@@ -180,13 +191,17 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
 
   <section class="w-full space-y-5">
     <CategorySelector v-if="showFilters" v-model="selectedCategory" :categories="categories" />
-    <AppSearch
-      v-model="searchQuery"
-      :suggestions="suggestions"
-      :placeholder="searchPlaceholder"
-      @focus="showFilters = true"
-      @click="showFilters = true"
-    />
+    <div class="mb-8 flex gap-3 items-center">
+      <AppSearch
+        v-model="searchQuery"
+        :suggestions="suggestions"
+        :placeholder="searchPlaceholder"
+        @focus="showFilters = true"
+        @click="showFilters = true"
+        class="flex-1"
+      />
+      <ReshuffleButton />
+    </div>
   </section>
 
   <section
