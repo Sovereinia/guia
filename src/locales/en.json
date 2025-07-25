@@ -60,7 +60,8 @@
     "alternatives": "Alternative to:",
     "share": "Share",
     "linkCopied": "Link copied!",
-    "br": "BR"
+    "br": "BR",
+    "goodFirstApp": "Great first app"
   },
   "apps": {
     "peertube": {

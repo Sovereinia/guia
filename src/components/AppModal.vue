@@ -230,9 +230,9 @@ const { t } = useI18n();
             v-if="localApp.recommendedForBeginners"
             class="badge badge-success badge-sm text-xs font-medium
                    bg-green-600 dark:bg-green-500 text-white border-none"
-            title="Great first app for self-hosting"
+            :title="t('appModal.goodFirstApp')"
           >
-            Great first app
+            {{ t('appModal.goodFirstApp') }}
           </div>
         </div>
         <div
