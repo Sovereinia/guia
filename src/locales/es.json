@@ -4,7 +4,8 @@
     "language": "Idioma",
     "portuguese": "PT",
     "english": "EN",
-    "spanish": "ES"
+    "spanish": "ES",
+    "select_language": "Seleccionar idioma"
   },
   "navigation": {
     "home": "Inicio",

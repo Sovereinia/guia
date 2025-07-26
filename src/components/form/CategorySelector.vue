@@ -66,6 +66,8 @@ const getCategoryLabel = (category: Category) => {
         :key="category.id"
         role="tab"
         :aria-selected="modelValue === category.id"
+        :aria-controls="'tab-panel-' + category.id"
+        :id="'tab-' + category.id"
         :tabindex="modelValue === category.id ? 0 : -1"
         class="cursor-pointer px-4 text-sm transition-colors duration-200 border-r border-base-content/20 py-2 font-medium last:border-r-0 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
         :class="[
@@ -90,6 +92,8 @@ const getCategoryLabel = (category: Category) => {
         :key="category.id"
         role="tab"
         :aria-selected="modelValue === category.id"
+        :aria-controls="'tab-panel-' + category.id"
+        :id="'tab-' + category.id"
         :tabindex="modelValue === category.id ? 0 : -1"
         class="px-3 py-1 text-sm rounded-full border transition-colors duration-200 whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         :class="modelValue === category.id
