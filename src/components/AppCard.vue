@@ -69,10 +69,15 @@ const slicedDescription = computed(() => {
 <template>
   <article
     @click="abrirModal"
-
+    @keydown.enter="abrirModal"
+    @keydown.space.prevent="abrirModal"
+    tabindex="0"
+    role="button"
+    :aria-label="$t('accessibility.openAppDetails', { name: app.name })"
     class="card bg-[var(--color-card-primary)] w-full shadow-lg 
     rounded-xl sm:rounded-3xl overflow-hidden transform transition-transform duration-200 
-    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer"
+    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer
+    focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100"
     >
     <figure class="p-2 w-20 sm:w-auto sm:p-10 sm:h-64 flex items-center justify-center">
       <img
@@ -89,7 +94,7 @@ const slicedDescription = computed(() => {
       <div class="hidden sm:flex sm:flex-col gap-2 flex-grow">
         <div class="flex items-baseline">
           <h2 class="card-title text-2xl text-gray-200">{{ app.name }}</h2>
-          <div class="flex flex-col items-end gap-1 max-h-14 overflow-hidden ml-auto">
+          <div class="flex flex-col items-end gap-1 max-h-14 overflow-hidden ml-auto" role="list" aria-label="Protocols">
             <img
               v-for="{ proto, info } in protocolInfos"
               :key="proto"
@@ -98,6 +103,7 @@ const slicedDescription = computed(() => {
               :alt="info.alt"
               class="h-5 object-contain"
               :title="proto"
+              role="listitem"
               @error="() => hiddenProtocols.add(proto)"
             />
           </div>
@@ -108,15 +114,16 @@ const slicedDescription = computed(() => {
           {{ sliceText(app.description, 220) }}
         </p>
 
-        <div v-if="app.alternatives?.length" class="mt-auto justify-end flex gap-2">
+        <div v-if="app.alternatives?.length" class="mt-auto justify-end flex gap-2" role="list" aria-label="Alternative apps">
             <img
               v-for="(alt, index) in app.alternatives"
               :key="alt"
               v-show="!hiddenAlternatives.has(alt)"
               :src="getAlternativeIcon(alt)"
-              :alt="alt"
+              :alt="$t('accessibility.alternativeApp', { name: alt })"
               class="w-12 h-12 rounded-full object-contain border border-gray-500"
               :title="alt"
+              role="listitem"
               @error="() => hiddenAlternatives.add(alt)"
             />
         </div>
