@@ -14,8 +14,8 @@ defineProps<{
 
 <template>
   <Wrapper :title="t('categories.title')">
-    <div class="flex flex-col gap-2">
-      <label v-for="item in items" :for="item.id" class="text-base-content opacity-80">
+    <div class="flex flex-col gap-2" role="radiogroup" :aria-label="t('categories.title')">
+      <label v-for="item in items" :for="item.id" class="text-base-content opacity-80 cursor-pointer">
         <input
           :id="item.id"
           :value="item.id"
@@ -23,6 +23,7 @@ defineProps<{
           type="radio"
           name="category"
           class="radio radio-primary mr-1"
+          :aria-label="t('accessibility.selectCategory', { category: item.label })"
         />
         {{ item.label }}
       </label>
