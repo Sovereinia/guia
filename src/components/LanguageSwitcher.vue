@@ -31,7 +31,7 @@ if (savedLocale) {
 
 <template>
   <div class="language-switcher">
-    <select v-model="currentLocale" @change="changeLanguage" class="bg-transparent appearance-none focus:outline-none text-sm">
+    <select v-model="currentLocale" @change="changeLanguage" class="bg-transparent appearance-none text-sm hover:opacity-80 transition-opacity focus:ring-2 focus:ring-primary focus:outline-none rounded">
       <option value="pt">{{ $t('common.portuguese') }}</option>
       <option value="en">{{ $t('common.english') }}</option>
       <option value="es">{{ $t('common.spanish') }}</option>
