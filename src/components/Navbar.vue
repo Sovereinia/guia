@@ -25,22 +25,19 @@ const navOptions = computed(() => [
         Sovereinia
       </a>
     </div>
-    <ul class="flex gap-4 items-center" role="menubar">
-      <li v-for="option in navOptions" :key="option.link" role="none">
-        <a 
-          :href="option.link" 
-          class="hover:opacity-80 transition-opacity"
-          role="menuitem"
-        >
-          {{ option.name }}
-        </a>
-      </li>
-      <li role="none">
-        <LanguageSwitcher />
-      </li>
-      <li role="none">
-        <ThemeToggler />
-      </li>
-    </ul>
+    <div class="flex gap-4 items-center">
+      <ul class="flex gap-4 items-center">
+        <li v-for="option in navOptions" :key="option.link">
+          <a 
+            :href="option.link" 
+            class="hover:opacity-80 transition-opacity"
+          >
+            {{ option.name }}
+          </a>
+        </li>
+      </ul>
+      <LanguageSwitcher />
+      <ThemeToggler />
+    </div>
   </nav>
 </template>

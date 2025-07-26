@@ -37,7 +37,7 @@ if (savedLocale) {
       v-model="currentLocale" 
       @change="changeLanguage" 
       class="bg-transparent appearance-none text-sm hover:opacity-80 transition-opacity focus:ring-2 focus:ring-primary focus:outline-none rounded"
-      aria-label="{{ $t('common.select_language') }}"
+      :aria-label="$t('common.select_language')"
     >
       <option value="pt">{{ $t('common.portuguese') }}</option>
       <option value="en">{{ $t('common.english') }}</option>
