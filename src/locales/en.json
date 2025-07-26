@@ -848,6 +848,12 @@
         "2": "Sobre o projeto",
         "3": "Código Fonte (parcial)"
       }
+    },
+    "accessibility": {
+      "openAppDetails": "Open details for {name}",
+      "alternativeApp": "Alternative app: {name}",
+      "toggleDescription": "Click to expand or collapse description",
+      "selectCategory": "Select category: {category}"
     }
   }
 }
