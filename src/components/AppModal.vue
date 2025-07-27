@@ -309,7 +309,24 @@ const { t } = useI18n();
 
           </div>
         </div>
-
+        <div v-if="localApp.selfHostingLevel" class="mt-4 flex items-center gap-2">
+          <span class="font-semibold" :title="t('appModal.selfHostingTooltip') || 'Self-hosting difficulty'">
+            {{ t('appModal.selfHostingLabel') || 'Self-hosting difficulty:' }}
+          </span>
+          <span
+            :class="[
+              'inline-flex items-center gap-1 text-lg',
+              localApp.selfHostingLevel === 1 ? 'text-green-500' :
+              localApp.selfHostingLevel === 2 ? 'text-yellow-500' :
+              'text-red-500'
+            ]"
+          >
+            <template v-for="n in 3">
+              <span v-if="n <= localApp.selfHostingLevel">⭐</span>
+              <span v-else>◽️</span>
+            </template>
+          </span>
+        </div>
         <div v-if="localApp.alternatives?.length" class="mt-4">
           <h4 class="sm:text-lg font-semibold mb-2">{{ t('appModal.alternatives') }}</h4>
           <div class="flex flex-wrap gap-2">
