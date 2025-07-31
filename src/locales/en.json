@@ -60,7 +60,9 @@
     "alternatives": "Alternative to:",
     "share": "Share",
     "linkCopied": "Link copied!",
-    "br": "BR"
+    "br": "BR",
+    "selfHostingLabel": "Self-hosting difficulty",
+    "selfHostingTooltip": "How hard it is to self-host this app (1=Easy, 3=Advanced)"
   },
   "surpriseMe": {
     "button": "Surprise me!"

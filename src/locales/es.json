@@ -60,7 +60,9 @@
     "alternatives": "Alternativa a:",
     "share": "Compartir",
     "linkCopied": "¡Enlace copiado!",
-    "br": "BR"
+    "br": "BR",
+    "selfHostingLabel": "Dificultad de auto-hospedaje",
+    "selfHostingTooltip": "Qué tan difícil es auto-hospedar esta app (1=Fácil, 3=Avanzado)"
   },
   "surpriseMe": {
     "button": "¡Sorpréndeme!"
