@@ -4,16 +4,17 @@ export type CategoryId = 'all' | 'social' | 'messaging' | 'tools' | 'protocols';
 
 export interface App {
   name: string;
-  description: string;        // usado no card
-  longDescription?: string;   // usado no modal
-  features?: string[];        // bullet points
-  links?: { label: string; url: string }[];  // botões
+  description: string; // usado no card
+  longDescription?: string; // usado no modal
+  features?: string[]; // bullet points
+  links?: { label: string; url: string }[]; // botões
   categories: CategoryId[];
   alternatives?: string[];
   protocol?: string[];
+  recommendedForBeginners?: boolean;
   banner: {
-  src: string;
-  alt: string;
+    src: string;
+    alt: string;
   };
   modalBanner?: {
     src: string;
