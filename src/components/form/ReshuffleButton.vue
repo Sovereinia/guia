@@ -17,15 +17,9 @@ import { useGlobalStore } from '@/stores/global';
 const { t } = useI18n();
 const globalStore = useGlobalStore();
 
-const buttonText = computed(() => 
-  globalStore.isReshuffled ? t('reshuffle.reset') : t('reshuffle.shuffle')
-);
+const buttonText = computed(() => t('reshuffle.shuffle'));
 
-const tooltip = computed(() => 
-  globalStore.isReshuffled 
-    ? t('reshuffle.tooltip.reset') 
-    : t('reshuffle.tooltip.shuffle')
-);
+const tooltip = computed(() => t('reshuffle.tooltip.shuffle'));
 
 const handleReshuffle = () => {
   globalStore.toggleReshuffle();

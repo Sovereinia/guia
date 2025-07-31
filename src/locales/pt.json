@@ -49,10 +49,8 @@
   },
   "reshuffle": {
     "shuffle": "Embaralhar",
-    "reset": "Resetar",
     "tooltip": {
-      "shuffle": "Embaralhar lista aleatoriamente",
-      "reset": "Voltar à ordem original"
+      "shuffle": "Embaralhar lista aleatoriamente"
     }
   },
   "category": {

@@ -32,11 +32,13 @@ const router = useRouter();
 // Sugestões para o autocomplete
 const suggestions = apps.flatMap((app) => app.alternatives || []);
 
-const orderedApps = computed(() => 
-  globalStore.isReshuffled 
+const orderedApps = computed(() => {
+  // Access shuffleTrigger to ensure re-computation on each shuffle
+  globalStore.shuffleTrigger;
+  return globalStore.isReshuffled 
     ? shuffleAppsPurely(apps) 
-    : sortAppsByLinksThenRandom(apps)
-);
+    : sortAppsByLinksThenRandom(apps);
+});
 
 const filteredApps = computed(() => {
   return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value);

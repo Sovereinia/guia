@@ -8,6 +8,7 @@ export const useGlobalStore = defineStore(
     const theme = ref('light');
     const isDark = computed(() => theme.value === 'dark');
     const isReshuffled = ref(false);
+    const shuffleTrigger = ref(0);
 
     const toggleTheme = () => {
       if (!html) return;
@@ -27,14 +28,15 @@ export const useGlobalStore = defineStore(
     };
 
     const toggleReshuffle = () => {
-      isReshuffled.value = !isReshuffled.value;
+      isReshuffled.value = true;
+      shuffleTrigger.value++;
     };
 
     const resetReshuffle = () => {
       isReshuffled.value = false;
     };
 
-    return { theme, isDark, isReshuffled, toggleTheme, loadTheme, toggleReshuffle, resetReshuffle };
+    return { theme, isDark, isReshuffled, shuffleTrigger, toggleTheme, loadTheme, toggleReshuffle, resetReshuffle };
   },
   {
     persist: {
