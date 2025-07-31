@@ -61,7 +61,7 @@
     "share": "Share",
     "linkCopied": "Link copied!",
     "br": "BR",
-    "goodFirstApp": "Great first app"
+    "goodFirstApp": "Great first app",
     "selfHostingLabel": "Self-hosting difficulty",
     "selfHostingTooltip": "How hard it is to self-host this app (1=Easy, 3=Advanced)"
   },
