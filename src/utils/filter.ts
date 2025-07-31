@@ -28,6 +28,10 @@ export function sortAppsByLinksThenRandom(apps: App[]): App[] {
   return sortedKeys.flatMap(key => shuffleArray(grouped[key]));
 }
 
+export function shuffleAppsPurely(apps: App[]): App[] {
+  return shuffleArray([...apps]);
+}
+
 export function filterApps(apps: App[], category: CategoryId, query: string): App[] {
   const lowerQuery = query.toLowerCase();
   return apps.filter(app => {
