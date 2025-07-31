@@ -20,6 +20,7 @@ export interface App {
     src: string;
     alt: string;
   };
+  selfHostingLevel?: 1 | 2 | 3;
 }
 
 export interface FilterItem {

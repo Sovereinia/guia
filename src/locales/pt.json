@@ -62,6 +62,11 @@
     "linkCopied": "Link copiado!",
     "br": "BR",
     "goodFirstApp": "Ótimo primeiro app"
+    "selfHostingLabel": "Dificuldade de auto-hospedagem",
+    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)"
+  },
+  "surpriseMe": {
+    "button": "Me surpreenda!"
   },
   "apps": {
     "peertube": {
