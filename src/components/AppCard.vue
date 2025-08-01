@@ -69,15 +69,19 @@ const slicedDescription = computed(() => {
 </script>
 
 <template>
-  <article
+  <div
     @click="abrirModal"
-
+    @keydown.enter="abrirModal"
+    @keydown.space.prevent="abrirModal"
+    tabindex="0"
+    role="button"
+    :aria-label="$t('accessibility.openAppDetails', { name: app.name })"
     class="card bg-[var(--color-card-primary)] w-full shadow-lg 
     rounded-xl sm:rounded-3xl overflow-hidden transform transition-transform duration-200 
-    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer relative"
-    >
-    
-    <!-- Badge for beginner-friendly apps -->
+    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer relative
+    focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100"
+  >
+<!-- Badge for beginner-friendly apps -->
     <div
       v-if="app.recommendedForBeginners"
       class="absolute top-2 left-2 z-10 badge badge-success badge-sm text-xs font-medium
@@ -86,101 +90,111 @@ const slicedDescription = computed(() => {
     >
       {{ t('appModal.goodFirstApp') }}
     </div>
-    <figure class="p-2 w-20 sm:w-auto sm:p-10 sm:h-64 flex items-center justify-center">
-      <img
-        :src="app.banner.src"
-        :alt="app.banner.alt"
-        class="h-20 sm:w-60 sm:h-40
-         object-contain"
-      />
-    </figure>
+    <article class="w-full flex flex-row sm:flex-col">
+      <figure class="p-2 w-20 sm:w-auto sm:p-10 sm:h-64 flex items-center justify-center">
+        <img
+          :src="app.banner.src"
+          :alt="app.banner.alt"
+          class="h-20 sm:w-60 sm:h-40
+           object-contain"
+        />
+      </figure>
 
-    <div class="card-body flex-1 min-w-0 bg-[var(--color-card-secondary)] rounded-none sm:rounded-r-3xl p-2 sm:p-6">
-  
-      <!-- LAYOUT PC --> 
-      <div class="hidden sm:flex sm:flex-col gap-2 flex-grow">
-        <div class="flex items-baseline">
-          <h2 class="card-title text-2xl text-gray-200">{{ app.name }}</h2>
-          <div class="flex flex-col items-end gap-1 max-h-14 overflow-hidden ml-auto">
-            <img
-              v-for="{ proto, info } in protocolInfos"
-              :key="proto"
-              v-show="!hiddenProtocols.has(proto)"
-              :src="info.src"
-              :alt="info.alt"
-              class="h-5 object-contain"
-              :title="proto"
-              @error="() => hiddenProtocols.add(proto)"
-            />
-          </div>
-        </div>
-
-        <!-- descrição -->
-        <p class="text-gray-200">
-          {{ sliceText(app.description, 220) }}
-        </p>
-
-        <div v-if="app.alternatives?.length" class="mt-auto justify-end flex gap-2">
-            <img
-              v-for="(alt, index) in app.alternatives"
-              :key="alt"
-              v-show="!hiddenAlternatives.has(alt)"
-              :src="getAlternativeIcon(alt)"
-              :alt="alt"
-              class="w-12 h-12 rounded-full object-contain border border-gray-500"
-              :title="alt"
-              @error="() => hiddenAlternatives.add(alt)"
-            />
-        </div>
-      </div> 
-
-        <!-- LAYOUT MOBILE-->
-        <div class="flex sm:hidden flex-row justify-between gap-2">
-          <!-- Lado esquerdo: título + protocolos -->
-          <div class="flex flex-col gap-1">
-            <!-- Título -->
-            <h2 class="card-title text-gray-200">{{ app.name }}</h2>
-            
-            <!-- descrição -->
-            <div class="flex-1 min-w-0">
-              <p class="text-gray-200 text-sm leading-snug break-words">
-                {{ slicedDescription }}
-              </p>
-            </div>
-
-            <!-- Protocolos -->
-            <div class="flex pt-2 gap-1 justify-end">
-              <img
-                v-for="{ proto, info } in protocolInfos"
+      <div class="card-body flex-1 min-w-0 bg-[var(--color-card-secondary)] rounded-none sm:rounded-r-3xl p-2 sm:p-6">
+    
+        <!-- LAYOUT PC --> 
+        <div class="hidden sm:flex sm:flex-col gap-2 flex-grow">
+          <div class="flex items-baseline">
+            <h2 class="card-title text-2xl text-gray-200">{{ app.name }}</h2>
+            <ul class="flex flex-col items-end gap-1 max-h-14 overflow-hidden ml-auto" aria-label="Protocols">
+              <li v-for="{ proto, info } in protocolInfos"
                 :key="proto"
-                v-show="!hiddenProtocols.has(proto)"
-                :src="info.src"
-                :alt="info.alt"
-                class="h-3 object-contain"
-                :title="proto"
-                @error="() => hiddenProtocols.add(proto)"
-              />
+                v-show="!hiddenProtocols.has(proto)">
+                <img
+                  :src="info.src"
+                  :alt="info.alt"
+                  class="h-5 object-contain"
+                  :title="proto"
+                  @error="() => hiddenProtocols.add(proto)"
+                />
+              </li>
+            </ul>
+          </div>
+
+          <!-- descrição -->
+          <p class="text-gray-200">
+            {{ sliceText(app.description, 220) }}
+          </p>
+
+          <div v-if="app.alternatives?.length" class="mt-auto justify-end flex gap-2">
+            <ul class="flex gap-2" aria-label="Alternative apps">
+              <li v-for="(alt, index) in app.alternatives"
+                  :key="alt"
+                  v-show="!hiddenAlternatives.has(alt)">
+                <img
+                  :src="getAlternativeIcon(alt)"
+                  :alt="$t('accessibility.alternativeApp', { name: alt })"
+                  class="w-12 h-12 rounded-full object-contain border border-gray-500"
+                  :title="alt"
+                  @error="() => hiddenAlternatives.add(alt)"
+                />
+              </li>
+            </ul>
+          </div>
+        </div> 
+
+          <!-- LAYOUT MOBILE-->
+          <div class="flex sm:hidden flex-row justify-between gap-2">
+            <!-- Lado esquerdo: título + protocolos -->
+            <div class="flex flex-col gap-1">
+              <!-- Título -->
+              <h2 class="card-title text-gray-200">{{ app.name }}</h2>
+              
+              <!-- descrição -->
+              <div class="flex-1 min-w-0">
+                <p class="text-gray-200 text-sm leading-snug break-words">
+                  {{ slicedDescription }}
+                </p>
+              </div>
+
+              <!-- Protocolos -->
+              <ul class="flex pt-2 gap-1 justify-end" aria-label="Protocols">
+                <li v-for="{ proto, info } in protocolInfos"
+                    :key="proto"
+                    v-show="!hiddenProtocols.has(proto)">
+                  <img
+                    :src="info.src"
+                    :alt="info.alt"
+                    class="h-3 object-contain"
+                    :title="proto"
+                    @error="() => hiddenProtocols.add(proto)"
+                  />
+                </li>
+              </ul>
+            </div>
+
+            <!-- Lado direito: Alternativas em coluna -->
+            <div v-if="app.alternatives?.length" class="flex flex-col gap-2 items-end">
+              <ul class="flex flex-col gap-2" aria-label="Alternative apps">
+                <li v-for="alt in app.alternatives"
+                    :key="alt"
+                    v-show="!hiddenAlternatives.has(alt)">
+                  <img
+                    :src="getAlternativeIcon(alt)"
+                    :alt="alt"
+                    class="w-6 h-6 min-w-6 min-h-6 max-w-6 max-h-6  
+                      object-contain border border-gray-500 rounded-full"
+                    :title="alt"
+                    @error="() => hiddenAlternatives.add(alt)"
+                  />
+                </li>
+              </ul>
             </div>
           </div>
 
-          <!-- Lado direito: Alternativas em coluna -->
-          <div v-if="app.alternatives?.length" class="flex flex-col gap-2 items-end">
-            <img
-              v-for="alt in app.alternatives"
-              :key="alt"
-              v-show="!hiddenAlternatives.has(alt)"
-              :src="getAlternativeIcon(alt)"
-              :alt="alt"
-              class="w-6 h-6 min-w-6 min-h-6 max-w-6 max-h-6  
-                object-contain border border-gray-500 rounded-full"
-              :title="alt"
-              @error="() => hiddenAlternatives.add(alt)"
-            />
-          </div>
-        </div>
-
-    </div>
-  </article>
+      </div>
+    </article>
+  </div>
 </template>
 
 <style scoped></style>

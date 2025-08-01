@@ -29,8 +29,11 @@ const shareToast = ref(false);
 
 const myModal = ref<HTMLDialogElement | null>(null)
 
+const previousActiveElement = ref<HTMLElement | null>(null);
+
 watch(() => abrir, async (newValue) => {
   if (newValue && app) {
+    previousActiveElement.value = document.activeElement as HTMLElement;
     bannerErrored.value = false;
     expandido.value = false;
     visible.value = false;
@@ -46,6 +49,12 @@ watch(() => abrir, async (newValue) => {
     
     await nextTick();
     myModal.value?.showModal();
+    
+    // Focus first focusable element
+    const firstFocusable = myModal.value?.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
+    if (firstFocusable) {
+      firstFocusable.focus();
+    }
   } else if (!newValue) {
     // Close modal when abrir becomes false
     if (myModal.value?.open) {
@@ -148,6 +157,9 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize);
+  if (previousActiveElement.value) {
+    previousActiveElement.value.focus();
+  }
 });
 
 function handleResize() {
@@ -174,6 +186,9 @@ const { t } = useI18n();
     class="modal fixed inset-0 flex items-center justify-center p-2 sm:p-4 overflow-auto" 
     @click.self="closeModal"
     @close="handleDialogClose"
+    role="dialog"
+    :aria-label="t('appModal.details', { name: localApp.name })"
+    aria-modal="true"
   >
   <div v-if="visible" class="modal-box w-full max-w-[880px] max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl relative bg-base-100 sm:px-6 sm:py-6 box-border">
     <!-- Move toast inside the dialog -->
@@ -181,6 +196,8 @@ const { t } = useI18n();
       v-if="shareToast"
       class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-base-200 text-base-content px-4 py-2 rounded shadow-lg z-50"
       style="pointer-events: none;"
+      role="status"
+      aria-live="polite"
     >
       {{ t('appModal.linkCopied') || 'Link copied!' }}
     </div>
@@ -197,6 +214,7 @@ const { t } = useI18n();
         class="h-5 w-5 stroke-current"
         fill="currentColor"
         viewBox="0 0 24 24"
+        aria-hidden="true"
       >
         <path
           stroke-linecap="round"
@@ -236,13 +254,19 @@ const { t } = useI18n();
           </div>
         </div>
         <div
-          class="mb-4 rounded-lg px-3 sm:px-4 py-1 sm:mt-3 text-sm sm:text-base leading-relaxed transition-all duration-300 cursor-pointer sm:cursor-default"
+          class="mb-4 rounded-lg px-3 sm:px-4 py-1 sm:mt-3 text-sm sm:text-base leading-relaxed transition-all duration-300"
           :class="[
             'text-base',
             expandido ? '' : 'line-clamp-2 overflow-hidden',
             'bg-[var(--color-modal-description)]'
           ]"
-          @click="(expandido = !expandido)"
+          tabindex="0"
+          role="button"
+          :aria-expanded="expandido"
+          :aria-label="t('accessibility.toggleDescription')"
+          @click="expandido = !expandido"
+          @keydown.enter="expandido = !expandido"
+          @keydown.space.prevent="expandido = !expandido"
         >
           {{ localApp.longDescription }}
         </div>
@@ -339,13 +363,13 @@ const { t } = useI18n();
           </span>
         </div>
         <div v-if="localApp.alternatives?.length" class="mt-4">
-          <h4 class="sm:text-lg font-semibold mb-2">{{ t('appModal.alternatives') }}</h4>
-          <div class="flex flex-wrap gap-2">
-            <span v-for="(alt, index) in localApp.alternatives" :key="alt">
+          <h4 class="sm:text-lg font-semibold mb-2" id="alternatives-heading">{{ t('appModal.alternatives') }}</h4>
+          <div class="flex flex-wrap gap-2" role="list" aria-labelledby="alternatives-heading">
+            <span v-for="(alt, index) in localApp.alternatives" :key="alt" role="listitem">
               <img
                 v-if="visibleAlternatives[alt]"
                 :src="getAlternativeIcon(alt)"
-                :alt="alt"
+                :alt="t('accessibility.alternativeApp', { name: alt })"
                 :title="alt"
                 class="w-12 h-12 rounded-full object-contain border border-gray-500"
                 @error="visibleAlternatives[alt] = false"
