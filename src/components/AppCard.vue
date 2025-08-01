@@ -4,11 +4,13 @@ import { getAlternativeIcon } from '@/utils/global.ts';
 import type { App } from '@/types';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   app: App;
 }>();
 
+const { t } = useI18n();
 const base = import.meta.env.BASE_URL;
 
 let openCount = 0;
@@ -76,9 +78,18 @@ const slicedDescription = computed(() => {
     :aria-label="$t('accessibility.openAppDetails', { name: app.name })"
     class="card bg-[var(--color-card-primary)] w-full shadow-lg 
     rounded-xl sm:rounded-3xl overflow-hidden transform transition-transform duration-200 
-    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer
+    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer relative
     focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100"
   >
+<!-- Badge for beginner-friendly apps -->
+    <div
+      v-if="app.recommendedForBeginners"
+      class="absolute top-2 left-2 z-10 badge badge-success badge-sm text-xs font-medium
+             bg-green-600 dark:bg-green-500 text-white border-none shadow-md"
+      :title="t('appModal.goodFirstApp')"
+    >
+      {{ t('appModal.goodFirstApp') }}
+    </div>
     <article class="w-full flex flex-row sm:flex-col">
       <figure class="p-2 w-20 sm:w-auto sm:p-10 sm:h-64 flex items-center justify-center">
         <img

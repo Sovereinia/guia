@@ -48,6 +48,12 @@
     "suggestApp": "Want to suggest an app?",
     "suggestionTemplate": "suggestion.md"
   },
+  "reshuffle": {
+    "shuffle": "Reshuffle",
+    "tooltip": {
+      "shuffle": "Shuffle list randomly"
+    }
+  },
   "category": {
     "all": { "name": "All", "short": "All" },
     "social": { "name": "Social Networks", "short": "Social" },
@@ -61,7 +67,10 @@
     "alternatives": "Alternative to:",
     "share": "Share",
     "linkCopied": "Link copied!",
-    "br": "BR"
+    "br": "BR",
+    "goodFirstApp": "Great first app",
+    "selfHostingLabel": "Self-hosting difficulty",
+    "selfHostingTooltip": "How hard it is to self-host this app (1=Easy, 3=Advanced)"
   },
   "surpriseMe": {
     "button": "Surprise me!"

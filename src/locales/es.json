@@ -48,6 +48,12 @@
     "suggestApp": "¿Quieres sugerir una app?",
     "suggestionTemplate": "sugerencia.md"
   },
+  "reshuffle": {
+    "shuffle": "Barajar",
+    "tooltip": {
+      "shuffle": "Barajar lista aleatoriamente"
+    }
+  },
   "category": {
     "all": { "name": "Todos", "short": "Todos" },
     "social": { "name": "Redes Sociales", "short": "Sociales" },
@@ -61,7 +67,10 @@
     "alternatives": "Alternativa a:",
     "share": "Compartir",
     "linkCopied": "¡Enlace copiado!",
-    "br": "BR"
+    "br": "BR",
+    "goodFirstApp": "Excelente primera app",
+    "selfHostingLabel": "Dificultad de auto-hospedaje",
+    "selfHostingTooltip": "Qué tan difícil es auto-hospedar esta app (1=Fácil, 3=Avanzado)"
   },
   "surpriseMe": {
     "button": "¡Sorpréndeme!"

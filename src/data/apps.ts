@@ -4,6 +4,7 @@ import i18n from '@/i18n';
 export const apps: App[] = [
   {
     name: 'PeerTube',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.peertube.description'),
     longDescription: i18n.global.t('apps.peertube.longDescription'),
     features: [
@@ -36,6 +37,7 @@ export const apps: App[] = [
   },
   {
     name: 'Mastodon',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.mastodon.description'),
     longDescription: i18n.global.t('apps.mastodon.longDescription'),
     features: [
@@ -71,6 +73,7 @@ export const apps: App[] = [
   },
   {
     name: 'Nextcloud',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.nextcloud.description'),
     longDescription: i18n.global.t('apps.nextcloud.longDescription'),
     features: [
@@ -92,6 +95,7 @@ export const apps: App[] = [
     categories: ['tools'],
     alternatives: ['Google Drive', 'OneDrive', 'Dropbox'],
     protocol: ['WebDAV'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/nextcloud.svg',
       alt: 'Ícone do Nextcloud',
@@ -103,6 +107,7 @@ export const apps: App[] = [
   },
   {
     name: 'Vaultwarden',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.vaultwarden.description'),
     longDescription: i18n.global.t('apps.vaultwarden.longDescription'),
     features: [
@@ -122,6 +127,7 @@ export const apps: App[] = [
     ],
     categories: ['tools'],
     alternatives: ['Google Password Manager'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/vaultwarden.png',
       alt: 'Ícone do Vaultwarden',
@@ -133,6 +139,7 @@ export const apps: App[] = [
   },
   {
     name: 'Passbolt',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.passbolt.description'),
     longDescription: i18n.global.t('apps.passbolt.longDescription'),
     features: [
@@ -165,6 +172,7 @@ export const apps: App[] = [
 
   {
     name: 'Element',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.element.description'),
     longDescription: i18n.global.t('apps.element.longDescription'),
     features: [
@@ -194,6 +202,7 @@ export const apps: App[] = [
   },
   {
     name: 'Lemmy',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.lemmy.description'),
     longDescription: i18n.global.t('apps.lemmy.longDescription'),
     features: [
@@ -224,6 +233,7 @@ export const apps: App[] = [
 
   {
     name: 'Jitsi Meet',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.jitsimeet.description'),
     longDescription: i18n.global.t('apps.jitsimeet.longDescription'),
     features: [
@@ -257,6 +267,7 @@ export const apps: App[] = [
 
   {
     name: 'BookStack',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.bookstack.description'),
     longDescription: i18n.global.t('apps.bookstack.longDescription'),
     features: [
@@ -288,6 +299,7 @@ export const apps: App[] = [
   },
   {
     name: 'RSSHub',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.rsshub.description'),
     longDescription: i18n.global.t('apps.rsshub.longDescription'),
     features: [
@@ -314,6 +326,7 @@ export const apps: App[] = [
   },
   {
     name: 'Discourse',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.discourse.description'),
     longDescription: i18n.global.t('apps.discourse.longDescription'),
     features: [
@@ -346,6 +359,7 @@ export const apps: App[] = [
 
   {
     name: 'Pixelfed',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.pixelfed.description'),
     longDescription: i18n.global.t('apps.pixelfed.longDescription'),
     features: [
@@ -376,6 +390,7 @@ export const apps: App[] = [
 
   {
     name: 'Signal',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.signal.description'),
     longDescription: i18n.global.t('apps.signal.longDescription'),
     features: [
@@ -394,6 +409,7 @@ export const apps: App[] = [
     categories: ['messaging'],
     alternatives: ['WhatsApp', 'Telegram'],
     protocol: ['Signal Protocol'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/signal.svg',
       alt: 'Ícone do Signal',
@@ -405,6 +421,7 @@ export const apps: App[] = [
   },
   {
     name: 'Stirling-PDF',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.stirling-pdf.description'),
     longDescription: i18n.global.t('apps.stirling-pdf.longDescription'),
     features: [
@@ -424,6 +441,7 @@ export const apps: App[] = [
     ],
     categories: ['tools'],
     alternatives: ['iLovePDF', 'SmallPDF'],
+    recommendedForBeginners: true,
     banner: {
       src: './apps/icons/stirling-pdf.png',
       alt: 'Ícone do Stirling-PDF',
@@ -435,6 +453,7 @@ export const apps: App[] = [
   },
   {
     name: 'ActivityPub',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.activitypub.description'),
     longDescription: i18n.global.t('apps.activitypub.longDescription'),
     features: [
@@ -470,6 +489,7 @@ export const apps: App[] = [
 
   {
     name: 'Matrix',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.matrix.description'),
     longDescription: i18n.global.t('apps.matrix.longDescription'),
     features: [
@@ -495,6 +515,7 @@ export const apps: App[] = [
   },
   {
     name: 'XMPP',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.xmpp.description'),
     longDescription: i18n.global.t('apps.xmpp.longDescription'),
     features: [
@@ -524,6 +545,7 @@ export const apps: App[] = [
   },
   {
     name: 'Email',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.email.description'),
     longDescription: i18n.global.t('apps.email.longDescription'),
     features: [
@@ -555,6 +577,7 @@ export const apps: App[] = [
   },
   {
     name: 'Ghost',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.ghost.description'),
     longDescription: i18n.global.t('apps.ghost.longDescription'),
     features: [
@@ -582,6 +605,7 @@ export const apps: App[] = [
 
   {
     name: 'Misskey',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.misskey.description'),
     longDescription: i18n.global.t('apps.misskey.longDescription'),
     features: [
@@ -615,6 +639,7 @@ export const apps: App[] = [
   },
   {
     name: 'Rocket.Chat',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.rocketchat.description'),
     longDescription: i18n.global.t('apps.rocketchat.longDescription'),
     features: [
@@ -646,6 +671,7 @@ export const apps: App[] = [
   },
   {
     name: 'Plane',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.plane.description'),
     longDescription: i18n.global.t('apps.plane.longDescription'),
     features: [
@@ -671,6 +697,7 @@ export const apps: App[] = [
   },
   {
     name: 'IPFS',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.ipfs.description'),
     longDescription: i18n.global.t('apps.ipfs.longDescription'),
     features: [
@@ -696,6 +723,7 @@ export const apps: App[] = [
   },
   {
     name: 'Bitwarden',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.bitwarden.description'),
     longDescription: i18n.global.t('apps.bitwarden.longDescription'),
     features: [
@@ -728,6 +756,7 @@ export const apps: App[] = [
 
   {
     name: 'Diaspora*',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.diaspora.description'),
     longDescription: i18n.global.t('apps.diaspora.longDescription'),
     features: [
@@ -760,6 +789,7 @@ export const apps: App[] = [
   },
   {
     name: 'Jellyfin',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.jellyfin.description'),
     longDescription: i18n.global.t('apps.jellyfin.longDescription'),
     features: [
@@ -791,6 +821,7 @@ export const apps: App[] = [
   },
   {
     name: 'Zulip',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.zulip.description'),
     longDescription: i18n.global.t('apps.zulip.longDescription'),
     features: [
@@ -819,6 +850,7 @@ export const apps: App[] = [
   },
   {
     name: 'osTicket',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.osticket.description'),
     longDescription: i18n.global.t('apps.osticket.longDescription'),
     features: [
@@ -850,6 +882,7 @@ export const apps: App[] = [
   },
   {
     name: 'Friendica',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.friendica.description'),
     longDescription: i18n.global.t('apps.friendica.longDescription'),
     features: [
@@ -883,6 +916,7 @@ export const apps: App[] = [
 
   {
     name: 'Pleroma',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.pleroma.description'),
     longDescription: i18n.global.t('apps.pleroma.longDescription'),
     features: [
@@ -915,6 +949,7 @@ export const apps: App[] = [
   },
   {
     name: 'Hubzilla',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.hubzilla.description'),
     longDescription: i18n.global.t('apps.hubzilla.longDescription'),
     features: [
@@ -944,6 +979,7 @@ export const apps: App[] = [
   },
   {
     name: 'Mattermost',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.mattermost.description'),
     longDescription: i18n.global.t('apps.mattermost.longDescription'),
     features: [
@@ -975,6 +1011,7 @@ export const apps: App[] = [
   },
   {
     name: 'BigBlueButton',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.bigbluebutton.description'),
     longDescription: i18n.global.t('apps.bigbluebutton.longDescription'),
     features: [
@@ -1007,6 +1044,7 @@ export const apps: App[] = [
   },
   {
     name: 'GitLab',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.gitlab.description'),
     longDescription: i18n.global.t('apps.gitlab.longDescription'),
     features: [
@@ -1033,6 +1071,7 @@ export const apps: App[] = [
   },
   {
     name: 'Gitea',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.gitea.description'),
     longDescription: i18n.global.t('apps.gitea.longDescription'),
     features: [
@@ -1062,6 +1101,7 @@ export const apps: App[] = [
   },
   {
     name: 'OpenProject',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.openproject.description'),
     longDescription: i18n.global.t('apps.openproject.longDescription'),
     features: [
@@ -1093,6 +1133,7 @@ export const apps: App[] = [
   },
   {
     name: 'Uptime Kuma',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.uptimekuma.description'),
     longDescription: i18n.global.t('apps.uptimekuma.longDescription'),
     features: [
@@ -1123,6 +1164,7 @@ export const apps: App[] = [
   },
   {
     name: 'Plex',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.plex.description'),
     longDescription: i18n.global.t('apps.plex.longDescription'),
     features: [
@@ -1151,6 +1193,7 @@ export const apps: App[] = [
   },
   {
     name: 'LanguageTool',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.languagetool.description'),
     longDescription: i18n.global.t('apps.languagetool.longDescription'),
     features: [
@@ -1182,6 +1225,7 @@ export const apps: App[] = [
   },
   {
     name: 'Owncast',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.owncast.description'),
     longDescription: i18n.global.t('apps.owncast.longDescription'),
     features: [
@@ -1210,6 +1254,7 @@ export const apps: App[] = [
   },
   {
     name: 'AzuraCast',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.azuracast.description'),
     longDescription: i18n.global.t('apps.azuracast.longDescription'),
     features: [
@@ -1238,6 +1283,7 @@ export const apps: App[] = [
   },
   {
     name: 'Keycloak',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.keycloak.description'),
     longDescription: i18n.global.t('apps.keycloak.longDescription'),
     features: [
@@ -1270,6 +1316,7 @@ export const apps: App[] = [
   },
   {
     name: 'WordPress',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.wordpress.description'),
     longDescription: i18n.global.t('apps.wordpress.longDescription'),
     features: [
@@ -1301,6 +1348,7 @@ export const apps: App[] = [
   },
   {
     name: 'AT Protocol',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.atprotocol.description'),
     longDescription: i18n.global.t('apps.atprotocol.longDescription'),
     features: [
@@ -1330,6 +1378,7 @@ export const apps: App[] = [
 
   {
     name: 'Bluesky',
+    selfHostingLevel: 3,
     description: i18n.global.t('apps.bluesky.description'),
     longDescription: i18n.global.t('apps.bluesky.longDescription'),
     features: [
@@ -1356,6 +1405,7 @@ export const apps: App[] = [
   },
   {
     name: 'RSS',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.rss.description'),
     longDescription: i18n.global.t('apps.rss.longDescription'),
     features: [
@@ -1387,6 +1437,7 @@ export const apps: App[] = [
   },
   {
     name: 'Atom',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.atom.description'),
     longDescription: i18n.global.t('apps.atom.longDescription'),
     features: [
@@ -1415,6 +1466,7 @@ export const apps: App[] = [
   },
   {
     name: 'BitTorrent',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.bittorrent.description'),
     longDescription: i18n.global.t('apps.bittorrent.longDescription'),
     features: [
@@ -1446,6 +1498,7 @@ export const apps: App[] = [
   },
   {
     name: 'Nostr',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.nostr.description'),
     longDescription: i18n.global.t('apps.nostr.longDescription'),
     features: [
@@ -1477,6 +1530,7 @@ export const apps: App[] = [
   },
   {
     name: 'Tor',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.tor.description'),
     longDescription: i18n.global.t('apps.tor.longDescription'),
     features: [
@@ -1502,6 +1556,7 @@ export const apps: App[] = [
   },
   {
     name: 'Grafana',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.grafana.description'),
     longDescription: i18n.global.t('apps.grafana.longDescription'),
     features: [
@@ -1530,6 +1585,7 @@ export const apps: App[] = [
   },
   {
     name: 'Prometheus',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.prometheus.description'),
     longDescription: i18n.global.t('apps.prometheus.longDescription'),
     features: [
@@ -1561,6 +1617,7 @@ export const apps: App[] = [
   },
   {
     name: 'Funkwhale',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.funkwhale.description'),
     longDescription: i18n.global.t('apps.funkwhale.longDescription'),
     features: [
@@ -1594,6 +1651,7 @@ export const apps: App[] = [
 
   {
     name: 'IRC',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.irc.description'),
     longDescription: i18n.global.t('apps.irc.longDescription'),
     features: [
@@ -1625,6 +1683,7 @@ export const apps: App[] = [
   },
   {
     name: 'The Lounge',
+    selfHostingLevel: 1,
     description: i18n.global.t('apps.thelounge.description'),
     longDescription: i18n.global.t('apps.thelounge.longDescription'),
     features: [
@@ -1657,6 +1716,7 @@ export const apps: App[] = [
   },
   {
     name: 'La Suite',
+    selfHostingLevel: 2,
     description: i18n.global.t('apps.lasuite.description'),
     longDescription: i18n.global.t('apps.lasuite.longDescription'),
     features: [
