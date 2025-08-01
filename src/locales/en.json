@@ -75,6 +75,11 @@
   "surpriseMe": {
     "button": "Surprise me!"
   },
+  "appCounter": {
+    "noApps": "No apps match your criteria",
+    "oneApp": "Displaying 1 app",
+    "multipleApps": "Displaying {count} apps"
+  },
   "apps": {
     "peertube": {
       "description": "Plataforma de vídeos parecida com o YouTube, mas sem centralização e com streaming entre instâncias.",
