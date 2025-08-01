@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import AppCard from '@/components/AppCard.vue';
+import AppCounter from '@/components/AppCounter.vue';
 import AppModal from '@/components/AppModal.vue';
 import AppSearch from '@/components/form/AppSearch.vue';
 import CategorySelector from '@/components/form/CategorySelector.vue';
@@ -35,8 +36,8 @@ const suggestions = apps.flatMap((app) => app.alternatives || []);
 const orderedApps = computed(() => {
   // Access shuffleTrigger to ensure re-computation on each shuffle
   globalStore.shuffleTrigger;
-  return globalStore.isReshuffled 
-    ? shuffleAppsPurely(apps) 
+  return globalStore.isReshuffled
+    ? shuffleAppsPurely(apps)
     : sortAppsByLinksThenRandom(apps);
 });
 
@@ -97,7 +98,6 @@ function handleAbrirModal(app: App) {
     modalData.value = { ...app };
     mostrarModal.value = true;
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
-
   });
 }
 
@@ -210,14 +210,21 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
         />
       </div>
       <div class="flex-shrink-0 flex gap-2">
-        <SurpriseMeButton 
-          :apps="orderedApps" 
+        <SurpriseMeButton
+          :apps="orderedApps"
           @surprise="handleSurpriseMe"
         />
         <ReshuffleButton />
       </div>
     </div>
   </section>
+
+  <!-- App Counter -->
+  <AppCounter
+    :count="filteredApps.length"
+    :search-query="searchQuery"
+    :selected-category="selectedCategory"
+  />
 
   <section
     class="grid grid-cols-1 w-full max-w-full md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-12 mt-2"
