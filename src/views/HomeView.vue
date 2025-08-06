@@ -250,10 +250,35 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
   </section>
 
   <section
-    class="grid grid-cols-1 w-full max-w-full md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-12 mt-2"
-  >
-    <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
+  class="grid grid-cols-1 w-full max-w-full md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-12 mt-2"
+>
+  <template v-if="filteredApps.length">
+    <AppCard
+      v-for="app in filteredApps"
+      :key="app.name"
+      :app="app"
+      @abrir="handleAbrirModal"
+    />
+  </template>
 
-    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="handleFecharModal" />
-  </section>
+  <template v-else>
+    <p class="col-span-full text-center text-muted text-base mt-4">
+      😕 No apps found for this category.<br />
+      Try a different option or
+      <button
+        @click="() => { selectedCategory = 'all'; searchQuery = ''; selectedHostingLevel = null; }"
+        class="underline text-color hover:text-brand transition"
+      >
+        restart the wizard
+      </button>.
+    </p>
+  </template>
+
+  <AppModal
+    :abrir="mostrarModal"
+    :app="modalData"
+    @atualizarAbrir="handleFecharModal"
+  />
+</section>
+
 </template>
