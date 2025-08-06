@@ -5,6 +5,7 @@ import AppSearch from '@/components/form/AppSearch.vue';
 import CategorySelector from '@/components/form/CategorySelector.vue';
 import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
 import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
+import RecommendationWizard from '@/components/RecommendationWizard.vue';
 import { useSEO } from '@/composables/useSEO';
 import { apps } from '@/data/apps';
 import { categories } from '@/data/categories';
@@ -35,14 +36,23 @@ const suggestions = apps.flatMap((app) => app.alternatives || []);
 const orderedApps = computed(() => {
   // Access shuffleTrigger to ensure re-computation on each shuffle
   globalStore.shuffleTrigger;
-  return globalStore.isReshuffled 
-    ? shuffleAppsPurely(apps) 
+  return globalStore.isReshuffled
+    ? shuffleAppsPurely(apps)
     : sortAppsByLinksThenRandom(apps);
 });
 
+const selectedHostingLevel = ref<1 | 2 | 3 | null>(null);
+
 const filteredApps = computed(() => {
-  return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value);
+  let result = filterApps(orderedApps.value, selectedCategory.value, searchQuery.value);
+
+  if (selectedHostingLevel.value !== null) {
+    result = result.filter(app => app.selfHostingLevel === selectedHostingLevel.value);
+  }
+
+  return result;
 });
+
 
 const title = computed(() => t('app.title'));
 const subtitleBase = computed(() => {
@@ -99,6 +109,22 @@ function handleAbrirModal(app: App) {
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
 
   });
+}
+
+function handleWizardResults(answers: {
+  category: CategoryId | null;
+  beginnerFriendly: boolean | null;
+  selfHostingLevel: 1 | 2 | 3 | null;
+}) {
+  if (answers.category) selectedCategory.value = answers.category;
+  if (answers.beginnerFriendly !== null) {
+    searchQuery.value = answers.beginnerFriendly ? 'beginner' : '';
+  }
+  if (answers.selfHostingLevel !== null) {
+    selectedHostingLevel.value = answers.selfHostingLevel;
+  }
+
+  showFilters.value = true;
 }
 
 function handleSurpriseMe(app: App) {
@@ -199,6 +225,10 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
 
   <section class="w-full space-y-5">
     <CategorySelector v-if="showFilters" v-model="selectedCategory" :categories="categories" />
+    <section class="mb-8">
+  <RecommendationWizard @recommend="handleWizardResults" />
+</section>
+
     <div class="mb-8 flex gap-2 items-start w-full">
       <div class="flex-1 min-w-0">
         <AppSearch
@@ -210,8 +240,8 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
         />
       </div>
       <div class="flex-shrink-0 flex gap-2">
-        <SurpriseMeButton 
-          :apps="orderedApps" 
+        <SurpriseMeButton
+          :apps="orderedApps"
           @surprise="handleSurpriseMe"
         />
         <ReshuffleButton />
