@@ -23,6 +23,7 @@ const globalStore = useGlobalStore();
 const { updateSEO } = useSEO();
 
 const modalData = ref<Partial<App>>({});
+const currentModalIndex = ref(-1);
 const searchQuery = ref('');
 const selectedCategory = ref<CategoryId>('all');
 const showFilters = ref(false);
@@ -92,13 +93,22 @@ onUnmounted(() => {
 
 function handleAbrirModal(app: App) {
   if (isUpdatingFromURL.value) return;
+  const index = filteredApps.value.findIndex(a => a.name === app.name);
   modalData.value = {};
   nextTick(() => {
     modalData.value = { ...app };
+    currentModalIndex.value = index;
     mostrarModal.value = true;
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
-
   });
+}
+
+function handleNavigate(index: number) {
+  const app = filteredApps.value[index];
+  if (!app) return;
+  modalData.value = { ...app };
+  currentModalIndex.value = index;
+  router.replace({ query: { ...route.query, app: getAppSlug(app) } });
 }
 
 function handleSurpriseMe(app: App) {
@@ -224,6 +234,13 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
   >
     <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
 
-    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="handleFecharModal" />
+    <AppModal
+      :abrir="mostrarModal"
+      :app="modalData"
+      :appList="filteredApps"
+      :currentIndex="currentModalIndex"
+      @atualizarAbrir="handleFecharModal"
+      @navigate="handleNavigate"
+    />
   </section>
 </template>

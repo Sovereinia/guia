@@ -9,12 +9,14 @@ import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 
 
-const { abrir, app } = defineProps<{
+const { abrir, app, appList, currentIndex } = defineProps<{
   abrir: boolean;
   app: Partial<App> & { _openCount?: number };
+  appList?: App[];
+  currentIndex?: number;
 }>();
 
-const emit = defineEmits(['atualizarAbrir'])
+const emit = defineEmits(['atualizarAbrir', 'navigate'])
 
 const expandido = ref(false);
 
@@ -172,6 +174,35 @@ const protocolInfos = computed(() =>
     .filter((info): info is { src: string; alt: string; url: string } => !!info)
 );
 
+const hasPrev = computed(() => appList && appList.length > 1 && currentIndex !== undefined && currentIndex > 0);
+const hasNext = computed(() => appList && appList.length > 1 && currentIndex !== undefined && currentIndex < appList.length - 1);
+
+function navigatePrev() {
+  if (hasPrev.value && currentIndex !== undefined) {
+    emit('navigate', currentIndex - 1);
+  }
+}
+
+function navigateNext() {
+  if (hasNext.value && currentIndex !== undefined) {
+    emit('navigate', currentIndex + 1);
+  }
+}
+
+function handleKeydown(e: KeyboardEvent) {
+  if (!abrir) return;
+  if (e.key === 'ArrowLeft') navigatePrev();
+  else if (e.key === 'ArrowRight') navigateNext();
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown);
+});
+
 const { t } = useI18n();
 
 </script>
@@ -191,6 +222,35 @@ const { t } = useI18n();
     aria-modal="true"
   >
   <div v-if="visible" class="modal-box w-full max-w-[880px] max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl relative bg-base-100 sm:px-6 sm:py-6 box-border">
+
+    <!-- Navigation arrows -->
+    <button
+      v-if="appList && appList.length > 1"
+      type="button"
+      class="absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-base-200 hover:bg-base-300 rounded-full p-2 shadow-md transition-opacity"
+      :class="{ 'opacity-30 cursor-not-allowed': !hasPrev }"
+      :disabled="!hasPrev"
+      @click="navigatePrev"
+      :aria-label="t('appModal.prevApp')"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button
+      v-if="appList && appList.length > 1"
+      type="button"
+      class="absolute right-14 top-1/2 -translate-y-1/2 z-20 bg-base-200 hover:bg-base-300 rounded-full p-2 shadow-md transition-opacity"
+      :class="{ 'opacity-30 cursor-not-allowed': !hasNext }"
+      :disabled="!hasNext"
+      @click="navigateNext"
+      :aria-label="t('appModal.nextApp')"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
     <!-- Move toast inside the dialog -->
     <div
       v-if="shareToast"

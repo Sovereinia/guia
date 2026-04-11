@@ -70,7 +70,10 @@
     "br": "BR",
     "goodFirstApp": "Ótimo primeiro app",
     "selfHostingLabel": "Dificuldade de auto-hospedagem",
-    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)"
+    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)",
+    "prevApp": "App anterior",
+    "nextApp": "Próximo app",
+    "details": "Detalhes de {name}"
   },
   "surpriseMe": {
     "button": "Me surpreenda!"
