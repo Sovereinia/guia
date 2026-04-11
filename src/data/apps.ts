@@ -24,6 +24,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social', 'tools'],
+    useCases: ['media', 'social-networking'],
     alternatives: ['YouTube', 'Vimeo'],
     protocol: ['ActivityPub', 'Fediverso'],
     banner: {
@@ -60,6 +61,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social'],
+    useCases: ['social-networking', 'communication'],
     alternatives: ['Twitter', 'X.com'],
     protocol: ['ActivityPub', 'Fediverso'],
     banner: {
@@ -93,6 +95,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['cloud-storage', 'documentation'],
     alternatives: ['Google Drive', 'OneDrive', 'Dropbox'],
     protocol: ['WebDAV'],
     recommendedForBeginners: true,
@@ -126,6 +129,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['security'],
     alternatives: ['Google Password Manager'],
     recommendedForBeginners: true,
     banner: {
@@ -159,6 +163,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['security'],
     alternatives: ['Google Password Manager'],
     banner: {
       src: './apps/icons/passbolt.svg',
@@ -189,6 +194,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.element.links.3'), url: 'https://element.io/help/install' },
     ],
     categories: ['messaging'],
+    useCases: ['communication'],
     alternatives: ['WhatsApp', 'Telegram', 'Slack'],
     protocol: ['Matrix'],
     banner: {
@@ -219,6 +225,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social'],
+    useCases: ['social-networking', 'communication'],
     alternatives: ['Reddit', 'Hacker News'],
     protocol: ['ActivityPub', 'Fediverso'],
     banner: {
@@ -253,6 +260,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['video-conferencing', 'communication'],
     alternatives: ['Zoom', 'Google Meet'],
     protocol: ['WebRTC'],
     banner: {
@@ -287,6 +295,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['documentation'],
     alternatives: ['Confluence', 'Notion', 'MediaWiki'],
     banner: {
       src: './apps/icons/bookstack.svg',
@@ -313,6 +322,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.rsshub.links.3'), url: 'https://docs.rsshub.app/install/' },
     ],
     categories: ['tools'],
+    useCases: ['media'],
     alternatives: ['Newsletters'],
     protocol: ['RSS'],
     banner: {
@@ -346,6 +356,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social', 'tools'],
+    useCases: ['social-networking', 'customer-support'],
     alternatives: ['Reddit', 'Facebook Groups'],
     banner: {
       src: './apps/icons/discourse.svg',
@@ -376,6 +387,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.pixelfed.links.3'), url: 'https://docs.pixelfed.org/install/' },
     ],
     categories: ['social'],
+    useCases: ['social-networking'],
     alternatives: ['Instagram'],
     protocol: ['ActivityPub', 'Fediverso'],
     banner: {
@@ -407,6 +419,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['messaging'],
+    useCases: ['communication'],
     alternatives: ['WhatsApp', 'Telegram'],
     protocol: ['Signal Protocol'],
     recommendedForBeginners: true,
@@ -440,6 +453,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['documentation'],
     alternatives: ['iLovePDF', 'SmallPDF'],
     recommendedForBeginners: true,
     banner: {
@@ -476,6 +490,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['protocols'],
+    useCases: ['communication'],
     alternatives: ['OStatus', 'Zot'],
     banner: {
       src: './apps/icons/activitypub.svg',
@@ -503,6 +518,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.matrix.links.3'), url: 'https://matrix.org/ecosystem/clients/' },
     ],
     categories: ['protocols'],
+    useCases: ['communication'],
     alternatives: ['XMPP', 'Signal Protocol'],
     banner: {
       src: './apps/icons/matrix.svg',
@@ -533,6 +549,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.xmpp.links.3'), url: 'https://xmpp.org/software/' },
     ],
     categories: ['protocols'],
+    useCases: ['communication'],
     alternatives: ['Matrix', 'Signal Protocol'],
     banner: {
       src: './apps/icons/xmpp.svg',
@@ -565,6 +582,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['protocols'],
+    useCases: ['communication'],
     protocol: ['SMTP', 'IMAP', 'POP3'],
     banner: {
       src: './apps/icons/email.svg',
@@ -592,6 +610,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.ghost.links.3'), url: 'https://ghost.org/docs/install/' },
     ],
     categories: ['tools'],
+    useCases: ['documentation'],
     alternatives: ['WordPress', 'Medium'],
     banner: {
       src: './apps/icons/ghost.png',
@@ -626,6 +645,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social'],
+    useCases: ['social-networking'],
     alternatives: ['Twitter', 'X.com'],
     protocol: ['ActivityPub', 'Fediverso'],
     banner: {
@@ -659,6 +679,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['messaging', 'tools'],
+    useCases: ['communication', 'customer-support'],
     alternatives: ['Slack', 'Microsoft Teams', 'Zendesk'],
     banner: {
       src: './apps/icons/rocketchat.svg',
@@ -685,6 +706,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.plane.links.3'), url: 'https://docs.plane.so/' },
     ],
     categories: ['tools'],
+    useCases: ['project-management'],
     alternatives: ['Trello', 'Jira'],
     banner: {
       src: './apps/icons/plane.svg',
@@ -711,6 +733,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.ipfs.links.3'), url: 'https://docs.ipfs.tech/install/' },
     ],
     categories: ['protocols'],
+    useCases: ['cloud-storage'],
     alternatives: ['HTTP', 'BitTorrent'],
     banner: {
       src: './apps/icons/ipfs.svg',
@@ -743,6 +766,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['security'],
     alternatives: ['Google Password Manager'],
     banner: {
       src: './apps/icons/bitwarden.svg',
@@ -776,6 +800,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social'],
+    useCases: ['social-networking'],
     alternatives: ['Facebook'],
     protocol: ['Diaspora protocol'],
     banner: {
@@ -809,6 +834,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['media'],
     alternatives: ['Plex'],
     banner: {
       src: './apps/icons/jellyfin.svg',
@@ -838,6 +864,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['messaging', 'tools'],
+    useCases: ['communication'],
     alternatives: ['Slack', 'Microsoft Teams', 'Discord'],
     banner: {
       src: './apps/icons/zulip.svg',
@@ -870,6 +897,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['customer-support'],
     alternatives: ['Zendesk', 'Freshdesk', 'Help Scout'],
     banner: {
       src: './apps/icons/osticket.png',
@@ -902,6 +930,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social'],
+    useCases: ['social-networking'],
     alternatives: ['Facebook', 'Mastodon', 'Diaspora*'],
     protocol: ['ActivityPub', 'Diaspora protocol', 'OStatus'],
     banner: {
@@ -936,6 +965,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social'],
+    useCases: ['social-networking'],
     alternatives: ['Mastodon', 'Misskey'],
     protocol: ['ActivityPub', 'Fediverso'],
     banner: {
@@ -966,6 +996,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['social', 'tools'],
+    useCases: ['social-networking', 'cloud-storage'],
     alternatives: ['Facebook', 'Diaspora*', 'Mastodon'],
     protocol: ['Zot', 'ActivityPub'],
     banner: {
@@ -999,6 +1030,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['messaging', 'tools'],
+    useCases: ['communication'],
     alternatives: ['Slack', 'Microsoft Teams', 'Rocket.Chat', 'GitLab'],
     banner: {
       src: './apps/icons/mattermost.svg',
@@ -1031,6 +1063,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['video-conferencing'],
     alternatives: ['Zoom', 'Google Meet', 'Microsoft Teams'],
     protocol: ['WebRTC'],
     banner: {
@@ -1058,6 +1091,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.gitlab.links.3'), url: 'https://about.gitlab.com/install/' },
     ],
     categories: ['tools'],
+    useCases: ['developer-tools'],
     alternatives: ['GitHub', 'Bitbucket', 'Gitea'],
     protocol: ['Git'],
     banner: {
@@ -1088,6 +1122,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['developer-tools'],
     alternatives: ['GitHub', 'GitLab'],
     protocol: ['Git'],
     banner: {
@@ -1121,6 +1156,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['project-management'],
     alternatives: ['Jira', 'Trello', 'Asana'],
     banner: {
       src: './apps/icons/openproject.svg',
@@ -1152,6 +1188,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['monitoring'],
     alternatives: [''],
     banner: {
       src: './apps/icons/uptimekuma.svg',
@@ -1181,6 +1218,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['media'],
     alternatives: ['Jellyfin', 'Emby', 'Kodi'],
     banner: {
       src: './apps/icons/plex.svg',
@@ -1213,6 +1251,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['documentation'],
     alternatives: ['Grammarly', 'Microsoft Editor'],
     banner: {
       src: './apps/icons/languagetool.png',
@@ -1242,6 +1281,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['media'],
     alternatives: ['Twitch', 'YouTube Live', 'Facebook Live'],
     banner: {
       src: './apps/icons/owncast.svg',
@@ -1271,6 +1311,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.azuracast.links.3'), url: 'https://www.azuracast.com/install/' },
     ],
     categories: ['tools'],
+    useCases: ['media'],
     alternatives: ['Radio.co', 'Shoutcast'],
     banner: {
       src: './apps/icons/azuracast.svg',
@@ -1303,6 +1344,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['security'],
     alternatives: ['Auth0', 'Okta', 'Firebase Auth'],
     protocol: ['OIDC', 'SAML', 'OAuth2'],
     banner: {
@@ -1336,6 +1378,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['documentation'],
     alternatives: ['Ghost', 'Wix', 'Squarespace'],
     banner: {
       src: './apps/icons/wordpress.svg',
@@ -1365,6 +1408,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.atprotocol.links.3'), url: 'https://blueskyweb.xyz/' },
     ],
     categories: ['protocols'],
+    useCases: ['communication'],
     alternatives: ['ActivityPub', 'Diaspora protocol'],
     banner: {
       src: './apps/icons/atprotocol.svg',
@@ -1392,6 +1436,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.bluesky.links.3'), url: 'https://atproto.com/' },
     ],
     categories: ['social'],
+    useCases: ['social-networking'],
     alternatives: ['Twitter'],
     protocol: ['AT Protocol'],
     banner: {
@@ -1425,6 +1470,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.rss.links.3'), url: 'https://rsshub.app/' },
     ],
     categories: ['protocols'],
+    useCases: ['media'],
     alternatives: ['Newsletters', 'Atom'],
     banner: {
       src: './apps/icons/rss.svg',
@@ -1454,6 +1500,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.atom.links.3'), url: 'https://rsshub.app/' },
     ],
     categories: ['protocols'],
+    useCases: ['media'],
     alternatives: ['RSS', 'Newsletters'],
     banner: {
       src: './apps/icons/atom.svg',
@@ -1486,6 +1533,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['protocols'],
+    useCases: ['media'],
     alternatives: ['IPFS', 'HTTP', 'Resilio Sync'],
     banner: {
       src: './apps/icons/bittorrent.svg',
@@ -1518,6 +1566,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['protocols'],
+    useCases: ['communication', 'social-networking'],
     alternatives: ['ActivityPub', 'AT Protocol'],
     banner: {
       src: './apps/icons/nostr.svg',
@@ -1544,6 +1593,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.tor.links.3'), url: 'https://support.torproject.org/pt-BR/' },
     ],
     categories: ['protocols'],
+    useCases: ['security'],
     alternatives: ['VPN', 'I2P', 'Proxy'],
     banner: {
       src: './apps/icons/tor.svg',
@@ -1573,6 +1623,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['monitoring', 'developer-tools'],
     alternatives: ['Kibana', 'Datadog', 'Tableau'],
     banner: {
       src: './apps/icons/grafana.svg',
@@ -1605,6 +1656,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['monitoring', 'developer-tools'],
     alternatives: ['Zabbix', 'Datadog'],
     banner: {
       src: './apps/icons/prometheus.svg',
@@ -1637,6 +1689,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['media'],
     alternatives: ['Spotify', 'SoundCloud'],
     protocol: ['ActivityPub', 'Fediverso'],
     banner: {
@@ -1671,6 +1724,7 @@ export const apps: App[] = [
       { label: i18n.global.t('apps.irc.links.3'), url: 'https://tools.ietf.org/html/rfc1459' },
     ],
     categories: ['protocols'],
+    useCases: ['communication'],
     alternatives: ['Matrix', 'XMPP'],
     banner: {
       src: './apps/icons/irc.svg',
@@ -1703,6 +1757,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['communication'],
     alternatives: ['Slack', 'Discord', 'Telegram', 'WhatsApp'],
     protocol: ['IRC'],
     banner: {
@@ -1733,6 +1788,7 @@ export const apps: App[] = [
       },
     ],
     categories: ['tools'],
+    useCases: ['documentation', 'cloud-storage'],
     alternatives: ['Google Workspace', 'Microsoft 365', 'Zoho Workplace'],
     banner: {
       src: './apps/icons/lasuite.svg',

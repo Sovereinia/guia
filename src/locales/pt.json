@@ -55,11 +55,26 @@
     }
   },
   "category": {
-    "all": { "name": "Todos", "short": "Todos" },
-    "social": { "name": "Redes Sociais", "short": "Sociais" },
-    "messaging": { "name": "Mensageiros", "short": "Mensageiros" },
-    "tools": { "name": "Ferramentas Profissionais", "short": "Profissionais" },
-    "protocols": { "name": "Protocolos Abertos", "short": "Protocolos" }
+    "all": {
+      "name": "Todos",
+      "short": "Todos"
+    },
+    "social": {
+      "name": "Redes Sociais",
+      "short": "Sociais"
+    },
+    "messaging": {
+      "name": "Mensageiros",
+      "short": "Mensageiros"
+    },
+    "tools": {
+      "name": "Ferramentas Profissionais",
+      "short": "Profissionais"
+    },
+    "protocols": {
+      "name": "Protocolos Abertos",
+      "short": "Protocolos"
+    }
   },
   "appModal": {
     "close": "Fechar",
@@ -859,5 +874,20 @@
         "3": "Código Fonte (parcial)"
       }
     }
+  },
+  "useCase": {
+    "cloud-storage": "Armazenamento em Nuvem",
+    "communication": "Comunicação",
+    "customer-support": "Suporte ao Cliente",
+    "developer-tools": "Ferramentas de Dev",
+    "documentation": "Documentação",
+    "media": "Mídia",
+    "monitoring": "Monitoramento",
+    "project-management": "Gestão de Projetos",
+    "security": "Segurança",
+    "social-networking": "Redes Sociais",
+    "video-conferencing": "Videoconferência",
+    "clearAll": "Limpar filtros",
+    "label": "Filtrar por uso"
   }
 }

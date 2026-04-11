@@ -2,6 +2,23 @@
 
 export type CategoryId = 'all' | 'social' | 'messaging' | 'tools' | 'protocols';
 
+export type UseCaseId =
+  | 'cloud-storage'
+  | 'communication'
+  | 'customer-support'
+  | 'developer-tools'
+  | 'documentation'
+  | 'media'
+  | 'monitoring'
+  | 'project-management'
+  | 'security'
+  | 'social-networking'
+  | 'video-conferencing';
+
+export interface UseCase {
+  id: UseCaseId;
+}
+
 export interface App {
   name: string;
   description: string; // usado no card
@@ -9,6 +26,7 @@ export interface App {
   features?: string[]; // bullet points
   links?: { label: string; url: string }[]; // botões
   categories: CategoryId[];
+  useCases?: UseCaseId[];
   alternatives?: string[];
   protocol?: string[];
   recommendedForBeginners?: boolean;

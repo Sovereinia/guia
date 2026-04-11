@@ -5,12 +5,13 @@ import AppSearch from '@/components/form/AppSearch.vue';
 import CategorySelector from '@/components/form/CategorySelector.vue';
 import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
 import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
+import UseCaseFilter from '@/components/form/UseCaseFilter.vue';
 import { useSEO } from '@/composables/useSEO';
 import { apps } from '@/data/apps';
 import { categories } from '@/data/categories';
 import { useGlobalStore } from '@/stores/global';
 import { useHeadersStore } from '@/stores/headers';
-import type { App, CategoryId } from '@/types';
+import type { App, CategoryId, UseCaseId } from '@/types';
 import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
 import { getAppSlug } from '@/utils/global';
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
@@ -25,6 +26,7 @@ const { updateSEO } = useSEO();
 const modalData = ref<Partial<App>>({});
 const searchQuery = ref('');
 const selectedCategory = ref<CategoryId>('all');
+const selectedUseCases = ref<UseCaseId[]>([]);
 const showFilters = ref(false);
 const route = useRoute();
 const router = useRouter();
@@ -41,7 +43,7 @@ const orderedApps = computed(() => {
 });
 
 const filteredApps = computed(() => {
-  return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value);
+  return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value, selectedUseCases.value);
 });
 
 const title = computed(() => t('app.title'));
@@ -166,9 +168,9 @@ watch([mostrarModal, modalData], ([isOpen, app]) => {
 });
 
 // This is section watch for search/filter changes to update SEO
-watch([searchQuery, selectedCategory], ([query, category]) => {
-  // Reset reshuffle when user searches or changes category
-  if ((query && query.length > 0) || category !== 'all') {
+watch([searchQuery, selectedCategory, selectedUseCases], ([query, category, useCases]) => {
+  // Reset reshuffle when user searches or changes category or use cases
+  if ((query && query.length > 0) || category !== 'all' || (useCases as UseCaseId[]).length > 0) {
     globalStore.resetReshuffle();
   }
 
@@ -199,6 +201,7 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
 
   <section class="w-full space-y-5">
     <CategorySelector v-if="showFilters" v-model="selectedCategory" :categories="categories" />
+    <UseCaseFilter v-if="showFilters" v-model="selectedUseCases" />
     <div class="mb-8 flex gap-2 items-start w-full">
       <div class="flex-1 min-w-0">
         <AppSearch

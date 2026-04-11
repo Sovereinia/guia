@@ -55,11 +55,26 @@
     }
   },
   "category": {
-    "all": { "name": "All", "short": "All" },
-    "social": { "name": "Social Networks", "short": "Social" },
-    "messaging": { "name": "Messengers", "short": "Messages" },
-    "tools": { "name": "Professional Tools", "short": "Tools" },
-    "protocols": { "name": "Open Protocols", "short": "Protocols" }
+    "all": {
+      "name": "All",
+      "short": "All"
+    },
+    "social": {
+      "name": "Social Networks",
+      "short": "Social"
+    },
+    "messaging": {
+      "name": "Messengers",
+      "short": "Messages"
+    },
+    "tools": {
+      "name": "Professional Tools",
+      "short": "Tools"
+    },
+    "protocols": {
+      "name": "Open Protocols",
+      "short": "Protocols"
+    }
   },
   "appModal": {
     "close": "Close",
@@ -865,5 +880,20 @@
       "toggleDescription": "Click to expand or collapse description",
       "selectCategory": "Select category: {category}"
     }
+  },
+  "useCase": {
+    "cloud-storage": "Cloud Storage",
+    "communication": "Communication",
+    "customer-support": "Customer Support",
+    "developer-tools": "Developer Tools",
+    "documentation": "Documentation",
+    "media": "Media",
+    "monitoring": "Monitoring",
+    "project-management": "Project Management",
+    "security": "Security",
+    "social-networking": "Social Networking",
+    "video-conferencing": "Video Conferencing",
+    "clearAll": "Clear filters",
+    "label": "Filter by use case"
   }
 }

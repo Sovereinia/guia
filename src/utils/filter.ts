@@ -1,4 +1,4 @@
-import type { App, CategoryId } from '@/types';
+import type { App, CategoryId, UseCaseId } from '@/types';
 
 export function countInboundLinks(app: App): number {
   return (app.links || []).filter(link =>
@@ -32,7 +32,12 @@ export function shuffleAppsPurely(apps: App[]): App[] {
   return shuffleArray([...apps]);
 }
 
-export function filterApps(apps: App[], category: CategoryId, query: string): App[] {
+export function filterApps(
+  apps: App[],
+  category: CategoryId,
+  query: string,
+  selectedUseCases: UseCaseId[] = [],
+): App[] {
   const lowerQuery = query.toLowerCase();
   return apps.filter(app => {
     const isSameCategory =
@@ -40,6 +45,9 @@ export function filterApps(apps: App[], category: CategoryId, query: string): Ap
     const nameMatchesQuery =
       app.name.toLowerCase().includes(lowerQuery) ||
       (app.alternatives || []).some(alt => alt.toLowerCase().includes(lowerQuery));
-    return isSameCategory && nameMatchesQuery;
+    const matchesUseCases =
+      selectedUseCases.length === 0 ||
+      selectedUseCases.every(uc => (app.useCases || []).includes(uc));
+    return isSameCategory && nameMatchesQuery && matchesUseCases;
   });
 }
