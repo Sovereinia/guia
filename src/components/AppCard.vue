@@ -5,6 +5,7 @@ import type { App } from '@/types';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useFavoritesStore } from '@/stores/favorites';
 
 const props = defineProps<{
   app: App;
@@ -12,6 +13,8 @@ const props = defineProps<{
 
 const { t } = useI18n();
 const base = import.meta.env.BASE_URL;
+const favoritesStore = useFavoritesStore();
+const isStarred = computed(() => favoritesStore.isStarred(props.app.name));
 
 let openCount = 0;
 
@@ -89,6 +92,16 @@ const slicedDescription = computed(() => {
       :title="t('appModal.goodFirstApp')"
     >
       {{ t('appModal.goodFirstApp') }}
+    </div>
+    <!-- Star indicator for favorited apps -->
+    <div
+      v-if="isStarred"
+      class="absolute top-2 right-2 z-10 text-yellow-400 drop-shadow-md"
+      :aria-label="t('appModal.starred')"
+    >
+      <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+      </svg>
     </div>
     <article class="w-full flex flex-row sm:flex-col">
       <figure class="p-2 w-20 sm:w-auto sm:p-10 sm:h-64 flex items-center justify-center">

@@ -55,11 +55,26 @@
     }
   },
   "category": {
-    "all": { "name": "All", "short": "All" },
-    "social": { "name": "Social Networks", "short": "Social" },
-    "messaging": { "name": "Messengers", "short": "Messages" },
-    "tools": { "name": "Professional Tools", "short": "Tools" },
-    "protocols": { "name": "Open Protocols", "short": "Protocols" }
+    "all": {
+      "name": "All",
+      "short": "All"
+    },
+    "social": {
+      "name": "Social Networks",
+      "short": "Social"
+    },
+    "messaging": {
+      "name": "Messengers",
+      "short": "Messages"
+    },
+    "tools": {
+      "name": "Professional Tools",
+      "short": "Tools"
+    },
+    "protocols": {
+      "name": "Open Protocols",
+      "short": "Protocols"
+    }
   },
   "appModal": {
     "close": "Close",
@@ -70,7 +85,10 @@
     "br": "BR",
     "goodFirstApp": "Great first app",
     "selfHostingLabel": "Self-hosting difficulty",
-    "selfHostingTooltip": "How hard it is to self-host this app (1=Easy, 3=Advanced)"
+    "selfHostingTooltip": "How hard it is to self-host this app (1=Easy, 3=Advanced)",
+    "star": "Star",
+    "unstar": "Unstar",
+    "starred": "Starred app"
   },
   "surpriseMe": {
     "button": "Surprise me!"

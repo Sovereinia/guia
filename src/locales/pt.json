@@ -55,11 +55,26 @@
     }
   },
   "category": {
-    "all": { "name": "Todos", "short": "Todos" },
-    "social": { "name": "Redes Sociais", "short": "Sociais" },
-    "messaging": { "name": "Mensageiros", "short": "Mensageiros" },
-    "tools": { "name": "Ferramentas Profissionais", "short": "Profissionais" },
-    "protocols": { "name": "Protocolos Abertos", "short": "Protocolos" }
+    "all": {
+      "name": "Todos",
+      "short": "Todos"
+    },
+    "social": {
+      "name": "Redes Sociais",
+      "short": "Sociais"
+    },
+    "messaging": {
+      "name": "Mensageiros",
+      "short": "Mensageiros"
+    },
+    "tools": {
+      "name": "Ferramentas Profissionais",
+      "short": "Profissionais"
+    },
+    "protocols": {
+      "name": "Protocolos Abertos",
+      "short": "Protocolos"
+    }
   },
   "appModal": {
     "close": "Fechar",
@@ -70,7 +85,10 @@
     "br": "BR",
     "goodFirstApp": "Ótimo primeiro app",
     "selfHostingLabel": "Dificuldade de auto-hospedagem",
-    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)"
+    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)",
+    "star": "Favoritar",
+    "unstar": "Desfavoritar",
+    "starred": "App favoritado"
   },
   "surpriseMe": {
     "button": "Me surpreenda!"
