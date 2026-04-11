@@ -23,6 +23,7 @@ const globalStore = useGlobalStore();
 const { updateSEO } = useSEO();
 
 const modalData = ref<Partial<App>>({});
+const currentModalIndex = ref<number>(-1);
 const searchQuery = ref('');
 const selectedCategory = ref<CategoryId>('all');
 const showFilters = ref(false);
@@ -92,13 +93,38 @@ onUnmounted(() => {
 
 function handleAbrirModal(app: App) {
   if (isUpdatingFromURL.value) return;
+  const index = filteredApps.value.findIndex((a) => a.name === app.name);
+  currentModalIndex.value = index;
   modalData.value = {};
   nextTick(() => {
     modalData.value = { ...app };
     mostrarModal.value = true;
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
-
   });
+}
+
+function handleNavigatePrev() {
+  if (currentModalIndex.value > 0) {
+    const prevApp = filteredApps.value[currentModalIndex.value - 1];
+    currentModalIndex.value -= 1;
+    modalData.value = {};
+    nextTick(() => {
+      modalData.value = { ...prevApp };
+      router.replace({ query: { ...route.query, app: getAppSlug(prevApp) } });
+    });
+  }
+}
+
+function handleNavigateNext() {
+  if (currentModalIndex.value < filteredApps.value.length - 1) {
+    const nextApp = filteredApps.value[currentModalIndex.value + 1];
+    currentModalIndex.value += 1;
+    modalData.value = {};
+    nextTick(() => {
+      modalData.value = { ...nextApp };
+      router.replace({ query: { ...route.query, app: getAppSlug(nextApp) } });
+    });
+  }
 }
 
 function handleSurpriseMe(app: App) {
@@ -224,6 +250,14 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
   >
     <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
 
-    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="handleFecharModal" />
+    <AppModal
+      :abrir="mostrarModal"
+      :app="modalData"
+      :has-prev="currentModalIndex > 0"
+      :has-next="currentModalIndex < filteredApps.length - 1"
+      @atualizarAbrir="handleFecharModal"
+      @navigate-prev="handleNavigatePrev"
+      @navigate-next="handleNavigateNext"
+    />
   </section>
 </template>

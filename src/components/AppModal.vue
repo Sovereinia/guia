@@ -9,12 +9,14 @@ import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 
 
-const { abrir, app } = defineProps<{
+const { abrir, app, hasPrev, hasNext } = defineProps<{
   abrir: boolean;
   app: Partial<App> & { _openCount?: number };
+  hasPrev?: boolean;
+  hasNext?: boolean;
 }>();
 
-const emit = defineEmits(['atualizarAbrir'])
+const emit = defineEmits(['atualizarAbrir', 'navigate-prev', 'navigate-next'])
 
 const expandido = ref(false);
 
@@ -180,12 +182,14 @@ const { t } = useI18n();
 <template>
   <div>
   <!-- ✅ Atualizado aqui: @cancel → @click.self -->
-  <dialog 
-    ref="myModal" 
+  <dialog
+    ref="myModal"
     :key="app._openCount"
-    class="modal fixed inset-0 flex items-center justify-center p-2 sm:p-4 overflow-auto" 
+    class="modal fixed inset-0 flex items-center justify-center p-2 sm:p-4 overflow-auto"
     @click.self="closeModal"
     @close="handleDialogClose"
+    @keydown.left.prevent="hasPrev && emit('navigate-prev')"
+    @keydown.right.prevent="hasNext && emit('navigate-next')"
     role="dialog"
     :aria-label="t('appModal.details', { name: localApp.name })"
     aria-modal="true"
@@ -201,6 +205,32 @@ const { t } = useI18n();
     >
       {{ t('appModal.linkCopied') || 'Link copied!' }}
     </div>
+
+    <!-- Navigation arrows -->
+    <button
+      v-if="hasPrev !== undefined"
+      type="button"
+      class="absolute top-1/2 -translate-y-1/2 left-2 z-20 bg-base-200 hover:bg-base-300 rounded-full p-2 shadow-md disabled:opacity-30 disabled:cursor-not-allowed"
+      :disabled="!hasPrev"
+      :aria-label="t('appModal.prevApp') || 'Previous app'"
+      @click="emit('navigate-prev')"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button
+      v-if="hasNext !== undefined"
+      type="button"
+      class="absolute top-1/2 -translate-y-1/2 right-14 z-20 bg-base-200 hover:bg-base-300 rounded-full p-2 shadow-md disabled:opacity-30 disabled:cursor-not-allowed"
+      :disabled="!hasNext"
+      :aria-label="t('appModal.nextApp') || 'Next app'"
+      @click="emit('navigate-next')"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-current" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
 
     <!-- Botão de fechar -->
     <button
