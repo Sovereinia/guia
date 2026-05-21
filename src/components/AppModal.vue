@@ -276,7 +276,21 @@ const { t } = useI18n();
         <ul v-if="localApp.features?.length" class="list-disc text-sm sm:text-base space-y-2 list-inside mb-4">
           <li v-for="(feature, index) in localApp.features" :key="index">{{ feature }}</li>
         </ul>
+      </div>
+<!-- Motivo para usar -->
+        <div v-if="localApp.reasonToUse" class="mt-3">
+          <h4 class="sm:text-lg font-bold">{{ $t('appModal.reasonToUse') }}</h4>
+          <p class="text-sm mt-1 text-base-content/80">{{ localApp.reasonToUse }}</p>
+        </div>
 
+        <!-- Desafios -->
+        <div v-if="localApp.challenges?.length && localApp.challenges.some(c => c)" class="mt-3">
+          <h4 class="sm:text-lg font-bold">{{ $t('appModal.challenges') }}</h4>
+          <ul class="list-disc text-sm sm:text-base pl-5 mt-1 space-y-1">
+            <li v-for="(challenge, index) in localApp.challenges" :key="index" v-if="challenge">
+              {{ challenge }}
+            </li>
+          </ul>
         <div class="mt-2">
           <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -381,7 +395,6 @@ const { t } = useI18n();
     </div>
   </div>
 </dialog>
-
   </div>
 </template>
 

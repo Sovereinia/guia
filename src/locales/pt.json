@@ -70,7 +70,9 @@
     "br": "BR",
     "goodFirstApp": "Ótimo primeiro app",
     "selfHostingLabel": "Dificuldade de auto-hospedagem",
-    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)"
+    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)", 
+    "reasonToUse": "Motivo para usar",
+"challenges": "Desafios"
   },
   "surpriseMe": {
     "button": "Me surpreenda!"
@@ -629,6 +631,12 @@
         "2": "Compatível com OBS e outras ferramentas de transmissão",
         "3": "Funciona no seu próprio servidor, sem anúncios nem rastreamento"
       },
+      "reasonToUse": "Excelente opção para streamers que desejam total controle sobre sua marca, transmissões e chat, sem intermediários ou divisão de receitas.",
+"challenges": {
+  "1": "Demanda uma largura de banda de upload robusta e constante para garantir que os espectadores assistam sem travamentos.",
+  "2": "A distribuição global de vídeo pode ser cara e complexa se a sua instância crescer muito em audiência.",
+  "3": "Não possui ferramentas embutidas de monetização nativa, exigindo integrações manuais com serviços externos."
+},
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",

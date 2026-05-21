@@ -7,6 +7,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.peertube.description'),
     longDescription: i18n.global.t('apps.peertube.longDescription'),
+    reasonToUse: i18n.global.t('apps.peertube.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.peertube.challenges.1'),
+      i18n.global.t('apps.peertube.challenges.2'),
+      i18n.global.t('apps.peertube.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.peertube.features.1'),
       i18n.global.t('apps.peertube.features.2'),
@@ -40,6 +46,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.mastodon.description'),
     longDescription: i18n.global.t('apps.mastodon.longDescription'),
+    reasonToUse: i18n.global.t('apps.mastodon.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.mastodon.challenges.1'),
+      i18n.global.t('apps.mastodon.challenges.2'),
+      i18n.global.t('apps.mastodon.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.mastodon.features.1'),
       i18n.global.t('apps.mastodon.features.2'),
@@ -76,6 +88,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.nextcloud.description'),
     longDescription: i18n.global.t('apps.nextcloud.longDescription'),
+    reasonToUse: i18n.global.t('apps.nextcloud.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.nextcloud.challenges.1'),
+      i18n.global.t('apps.nextcloud.challenges.2'),
+      i18n.global.t('apps.nextcloud.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.nextcloud.features.1'),
       i18n.global.t('apps.nextcloud.features.2'),
@@ -110,6 +128,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.vaultwarden.description'),
     longDescription: i18n.global.t('apps.vaultwarden.longDescription'),
+    reasonToUse: i18n.global.t('apps.vaultwarden.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.vaultwarden.challenges.1'),
+      i18n.global.t('apps.vaultwarden.challenges.2'),
+      i18n.global.t('apps.vaultwarden.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.vaultwarden.features.1'),
       i18n.global.t('apps.vaultwarden.features.2'),
@@ -142,6 +166,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.passbolt.description'),
     longDescription: i18n.global.t('apps.passbolt.longDescription'),
+    reasonToUse: i18n.global.t('apps.passbolt.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.passbolt.challenges.1'),
+      i18n.global.t('apps.passbolt.challenges.2'),
+      i18n.global.t('apps.passbolt.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.passbolt.features.1'),
       i18n.global.t('apps.passbolt.features.2'),
@@ -175,6 +205,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.element.description'),
     longDescription: i18n.global.t('apps.element.longDescription'),
+    reasonToUse: i18n.global.t('apps.element.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.element.challenges.1'),
+      i18n.global.t('apps.element.challenges.2'),
+      i18n.global.t('apps.element.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.element.features.1'),
       i18n.global.t('apps.element.features.2'),
@@ -205,6 +241,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.lemmy.description'),
     longDescription: i18n.global.t('apps.lemmy.longDescription'),
+    reasonToUse: i18n.global.t('apps.lemmy.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.lemmy.challenges.1'),
+      i18n.global.t('apps.lemmy.challenges.2'),
+      i18n.global.t('apps.lemmy.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.lemmy.features.1'),
       i18n.global.t('apps.lemmy.features.2'),
@@ -236,6 +278,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.jitsimeet.description'),
     longDescription: i18n.global.t('apps.jitsimeet.longDescription'),
+    reasonToUse: i18n.global.t('apps.jitsimeet.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.jitsimeet.challenges.1'),
+      i18n.global.t('apps.jitsimeet.challenges.2'),
+      i18n.global.t('apps.jitsimeet.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.jitsimeet.features.1'),
       i18n.global.t('apps.jitsimeet.features.2'),
@@ -270,6 +318,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.bookstack.description'),
     longDescription: i18n.global.t('apps.bookstack.longDescription'),
+    reasonToUse: i18n.global.t('apps.bookstack.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.bookstack.challenges.1'),
+      i18n.global.t('apps.bookstack.challenges.2'),
+      i18n.global.t('apps.bookstack.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.bookstack.features.1'),
       i18n.global.t('apps.bookstack.features.2'),
@@ -302,6 +356,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.rsshub.description'),
     longDescription: i18n.global.t('apps.rsshub.longDescription'),
+    reasonToUse: i18n.global.t('apps.rsshub.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.rsshub.challenges.1'),
+      i18n.global.t('apps.rsshub.challenges.2'),
+      i18n.global.t('apps.rsshub.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.rsshub.features.1'),
       i18n.global.t('apps.rsshub.features.2'),
@@ -329,6 +389,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.discourse.description'),
     longDescription: i18n.global.t('apps.discourse.longDescription'),
+    reasonToUse: i18n.global.t('apps.discourse.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.discourse.challenges.1'),
+      i18n.global.t('apps.discourse.challenges.2'),
+      i18n.global.t('apps.discourse.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.discourse.features.1'),
       i18n.global.t('apps.discourse.features.2'),
@@ -362,6 +428,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.pixelfed.description'),
     longDescription: i18n.global.t('apps.pixelfed.longDescription'),
+    reasonToUse: i18n.global.t('apps.pixelfed.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.pixelfed.challenges.1'),
+      i18n.global.t('apps.pixelfed.challenges.2'),
+      i18n.global.t('apps.pixelfed.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.pixelfed.features.1'),
       i18n.global.t('apps.pixelfed.features.2'),
@@ -393,6 +465,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.signal.description'),
     longDescription: i18n.global.t('apps.signal.longDescription'),
+    reasonToUse: i18n.global.t('apps.signal.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.signal.challenges.1'),
+      i18n.global.t('apps.signal.challenges.2'),
+      i18n.global.t('apps.signal.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.signal.features.1'),
       i18n.global.t('apps.signal.features.2'),
@@ -424,6 +502,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.stirling-pdf.description'),
     longDescription: i18n.global.t('apps.stirling-pdf.longDescription'),
+    reasonToUse: i18n.global.t('apps.stirling-pdf.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.stirling-pdf.challenges.1'),
+      i18n.global.t('apps.stirling-pdf.challenges.2'),
+      i18n.global.t('apps.stirling-pdf.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.stirling-pdf.features.1'),
       i18n.global.t('apps.stirling-pdf.features.2'),
@@ -456,6 +540,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.activitypub.description'),
     longDescription: i18n.global.t('apps.activitypub.longDescription'),
+    reasonToUse: i18n.global.t('apps.activitypub.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.activitypub.challenges.1'),
+      i18n.global.t('apps.activitypub.challenges.2'),
+      i18n.global.t('apps.activitypub.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.activitypub.features.1'),
       i18n.global.t('apps.activitypub.features.2'),
@@ -492,6 +582,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.matrix.description'),
     longDescription: i18n.global.t('apps.matrix.longDescription'),
+    reasonToUse: i18n.global.t('apps.matrix.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.matrix.challenges.1'),
+      i18n.global.t('apps.matrix.challenges.2'),
+      i18n.global.t('apps.matrix.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.matrix.features.1'),
       i18n.global.t('apps.matrix.features.2'),
@@ -518,6 +614,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.xmpp.description'),
     longDescription: i18n.global.t('apps.xmpp.longDescription'),
+    reasonToUse: i18n.global.t('apps.xmpp.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.xmpp.challenges.1'),
+      i18n.global.t('apps.xmpp.challenges.2'),
+      i18n.global.t('apps.xmpp.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.xmpp.features.1'),
       i18n.global.t('apps.xmpp.features.2'),
@@ -548,6 +650,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.email.description'),
     longDescription: i18n.global.t('apps.email.longDescription'),
+    reasonToUse: i18n.global.t('apps.email.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.email.challenges.1'),
+      i18n.global.t('apps.email.challenges.2'),
+      i18n.global.t('apps.email.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.email.features.1'),
       i18n.global.t('apps.email.features.2'),
@@ -580,6 +688,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.ghost.description'),
     longDescription: i18n.global.t('apps.ghost.longDescription'),
+    reasonToUse: i18n.global.t('apps.ghost.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.ghost.challenges.1'),
+      i18n.global.t('apps.ghost.challenges.2'),
+      i18n.global.t('apps.ghost.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.ghost.features.1'),
       i18n.global.t('apps.ghost.features.2'),
@@ -608,6 +722,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.misskey.description'),
     longDescription: i18n.global.t('apps.misskey.longDescription'),
+    reasonToUse: i18n.global.t('apps.misskey.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.misskey.challenges.1'),
+      i18n.global.t('apps.misskey.challenges.2'),
+      i18n.global.t('apps.misskey.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.misskey.features.1'),
       i18n.global.t('apps.misskey.features.2'),
@@ -642,6 +762,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.rocketchat.description'),
     longDescription: i18n.global.t('apps.rocketchat.longDescription'),
+    reasonToUse: i18n.global.t('apps.rocketchat.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.rocketchat.challenges.1'),
+      i18n.global.t('apps.rocketchat.challenges.2'),
+      i18n.global.t('apps.rocketchat.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.rocketchat.features.1'),
       i18n.global.t('apps.rocketchat.features.2'),
@@ -674,6 +800,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.plane.description'),
     longDescription: i18n.global.t('apps.plane.longDescription'),
+    reasonToUse: i18n.global.t('apps.plane.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.plane.challenges.1'),
+      i18n.global.t('apps.plane.challenges.2'),
+      i18n.global.t('apps.plane.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.plane.features.1'),
       i18n.global.t('apps.plane.features.2'),
@@ -700,6 +832,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.ipfs.description'),
     longDescription: i18n.global.t('apps.ipfs.longDescription'),
+    reasonToUse: i18n.global.t('apps.ipfs.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.ipfs.challenges.1'),
+      i18n.global.t('apps.ipfs.challenges.2'),
+      i18n.global.t('apps.ipfs.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.ipfs.features.1'),
       i18n.global.t('apps.ipfs.features.2'),
@@ -726,6 +864,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.bitwarden.description'),
     longDescription: i18n.global.t('apps.bitwarden.longDescription'),
+    reasonToUse: i18n.global.t('apps.bitwarden.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.bitwarden.challenges.1'),
+      i18n.global.t('apps.bitwarden.challenges.2'),
+      i18n.global.t('apps.bitwarden.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.bitwarden.features.1'),
       i18n.global.t('apps.bitwarden.features.2'),
@@ -759,6 +903,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.diaspora.description'),
     longDescription: i18n.global.t('apps.diaspora.longDescription'),
+    reasonToUse: i18n.global.t('apps.diaspora.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.diaspora.challenges.1'),
+      i18n.global.t('apps.diaspora.challenges.2'),
+      i18n.global.t('apps.diaspora.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.diaspora.features.1'),
       i18n.global.t('apps.diaspora.features.2'),
@@ -792,6 +942,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.jellyfin.description'),
     longDescription: i18n.global.t('apps.jellyfin.longDescription'),
+    reasonToUse: i18n.global.t('apps.jellyfin.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.jellyfin.challenges.1'),
+      i18n.global.t('apps.jellyfin.challenges.2'),
+      i18n.global.t('apps.jellyfin.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.jellyfin.features.1'),
       i18n.global.t('apps.jellyfin.features.2'),
@@ -824,6 +980,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.zulip.description'),
     longDescription: i18n.global.t('apps.zulip.longDescription'),
+    reasonToUse: i18n.global.t('apps.zulip.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.zulip.challenges.1'),
+      i18n.global.t('apps.zulip.challenges.2'),
+      i18n.global.t('apps.zulip.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.zulip.features.1'),
       i18n.global.t('apps.zulip.features.2'),
@@ -853,6 +1015,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.osticket.description'),
     longDescription: i18n.global.t('apps.osticket.longDescription'),
+    reasonToUse: i18n.global.t('apps.osticket.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.osticket.challenges.1'),
+      i18n.global.t('apps.osticket.challenges.2'),
+      i18n.global.t('apps.osticket.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.osticket.features.1'),
       i18n.global.t('apps.osticket.features.2'),
@@ -885,6 +1053,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.friendica.description'),
     longDescription: i18n.global.t('apps.friendica.longDescription'),
+    reasonToUse: i18n.global.t('apps.friendica.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.friendica.challenges.1'),
+      i18n.global.t('apps.friendica.challenges.2'),
+      i18n.global.t('apps.friendica.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.friendica.features.1'),
       i18n.global.t('apps.friendica.features.2'),
@@ -919,6 +1093,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.pleroma.description'),
     longDescription: i18n.global.t('apps.pleroma.longDescription'),
+    reasonToUse: i18n.global.t('apps.pleroma.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.pleroma.challenges.1'),
+      i18n.global.t('apps.pleroma.challenges.2'),
+      i18n.global.t('apps.pleroma.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.pleroma.features.1'),
       i18n.global.t('apps.pleroma.features.2'),
@@ -952,6 +1132,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.hubzilla.description'),
     longDescription: i18n.global.t('apps.hubzilla.longDescription'),
+    reasonToUse: i18n.global.t('apps.hubzilla.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.hubzilla.challenges.1'),
+      i18n.global.t('apps.hubzilla.challenges.2'),
+      i18n.global.t('apps.hubzilla.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.hubzilla.features.1'),
       i18n.global.t('apps.hubzilla.features.2'),
@@ -982,6 +1168,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.mattermost.description'),
     longDescription: i18n.global.t('apps.mattermost.longDescription'),
+    reasonToUse: i18n.global.t('apps.mattermost.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.mattermost.challenges.1'),
+      i18n.global.t('apps.mattermost.challenges.2'),
+      i18n.global.t('apps.mattermost.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.mattermost.features.1'),
       i18n.global.t('apps.mattermost.features.2'),
@@ -1014,6 +1206,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.bigbluebutton.description'),
     longDescription: i18n.global.t('apps.bigbluebutton.longDescription'),
+    reasonToUse: i18n.global.t('apps.bigbluebutton.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.bigbluebutton.challenges.1'),
+      i18n.global.t('apps.bigbluebutton.challenges.2'),
+      i18n.global.t('apps.bigbluebutton.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.bigbluebutton.features.1'),
       i18n.global.t('apps.bigbluebutton.features.2'),
@@ -1047,6 +1245,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.gitlab.description'),
     longDescription: i18n.global.t('apps.gitlab.longDescription'),
+    reasonToUse: i18n.global.t('apps.gitlab.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.gitlab.challenges.1'),
+      i18n.global.t('apps.gitlab.challenges.2'),
+      i18n.global.t('apps.gitlab.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.gitlab.features.1'),
       i18n.global.t('apps.gitlab.features.2'),
@@ -1074,6 +1278,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.gitea.description'),
     longDescription: i18n.global.t('apps.gitea.longDescription'),
+    reasonToUse: i18n.global.t('apps.gitea.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.gitea.challenges.1'),
+      i18n.global.t('apps.gitea.challenges.2'),
+      i18n.global.t('apps.gitea.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.gitea.features.1'),
       i18n.global.t('apps.gitea.features.2'),
@@ -1104,6 +1314,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.openproject.description'),
     longDescription: i18n.global.t('apps.openproject.longDescription'),
+    reasonToUse: i18n.global.t('apps.openproject.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.openproject.challenges.1'),
+      i18n.global.t('apps.openproject.challenges.2'),
+      i18n.global.t('apps.openproject.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.openproject.features.1'),
       i18n.global.t('apps.openproject.features.2'),
@@ -1136,6 +1352,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.uptimekuma.description'),
     longDescription: i18n.global.t('apps.uptimekuma.longDescription'),
+    reasonToUse: i18n.global.t('apps.uptimekuma.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.uptimekuma.challenges.1'),
+      i18n.global.t('apps.uptimekuma.challenges.2'),
+      i18n.global.t('apps.uptimekuma.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.uptimekuma.features.1'),
       i18n.global.t('apps.uptimekuma.features.2'),
@@ -1167,6 +1389,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.plex.description'),
     longDescription: i18n.global.t('apps.plex.longDescription'),
+    reasonToUse: i18n.global.t('apps.plex.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.plex.challenges.1'),
+      i18n.global.t('apps.plex.challenges.2'),
+      i18n.global.t('apps.plex.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.plex.features.1'),
       i18n.global.t('apps.plex.features.2'),
@@ -1196,6 +1424,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.languagetool.description'),
     longDescription: i18n.global.t('apps.languagetool.longDescription'),
+    reasonToUse: i18n.global.t('apps.languagetool.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.languagetool.challenges.1'),
+      i18n.global.t('apps.languagetool.challenges.2'),
+      i18n.global.t('apps.languagetool.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.languagetool.features.1'),
       i18n.global.t('apps.languagetool.features.2'),
@@ -1228,6 +1462,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.owncast.description'),
     longDescription: i18n.global.t('apps.owncast.longDescription'),
+    reasonToUse: i18n.global.t('apps.owncast.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.owncast.challenges.1'),
+      i18n.global.t('apps.owncast.challenges.2'),
+      i18n.global.t('apps.owncast.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.owncast.features.1'),
       i18n.global.t('apps.owncast.features.2'),
@@ -1257,6 +1497,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.azuracast.description'),
     longDescription: i18n.global.t('apps.azuracast.longDescription'),
+    reasonToUse: i18n.global.t('apps.azuracast.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.azuracast.challenges.1'),
+      i18n.global.t('apps.azuracast.challenges.2'),
+      i18n.global.t('apps.azuracast.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.azuracast.features.1'),
       i18n.global.t('apps.azuracast.features.2'),
@@ -1286,6 +1532,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.keycloak.description'),
     longDescription: i18n.global.t('apps.keycloak.longDescription'),
+    reasonToUse: i18n.global.t('apps.keycloak.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.keycloak.challenges.1'),
+      i18n.global.t('apps.keycloak.challenges.2'),
+      i18n.global.t('apps.keycloak.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.keycloak.features.1'),
       i18n.global.t('apps.keycloak.features.2'),
@@ -1319,6 +1571,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.wordpress.description'),
     longDescription: i18n.global.t('apps.wordpress.longDescription'),
+    reasonToUse: i18n.global.t('apps.wordpress.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.wordpress.challenges.1'),
+      i18n.global.t('apps.wordpress.challenges.2'),
+      i18n.global.t('apps.wordpress.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.wordpress.features.1'),
       i18n.global.t('apps.wordpress.features.2'),
@@ -1351,6 +1609,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.atprotocol.description'),
     longDescription: i18n.global.t('apps.atprotocol.longDescription'),
+    reasonToUse: i18n.global.t('apps.atprotocol.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.atprotocol.challenges.1'),
+      i18n.global.t('apps.atprotocol.challenges.2'),
+      i18n.global.t('apps.atprotocol.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.atprotocol.features.1'),
       i18n.global.t('apps.atprotocol.features.2'),
@@ -1381,6 +1645,12 @@ export const apps: App[] = [
     selfHostingLevel: 3,
     description: i18n.global.t('apps.bluesky.description'),
     longDescription: i18n.global.t('apps.bluesky.longDescription'),
+    reasonToUse: i18n.global.t('apps.bluesky.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.bluesky.challenges.1'),
+      i18n.global.t('apps.bluesky.challenges.2'),
+      i18n.global.t('apps.bluesky.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.bluesky.features.1'),
       i18n.global.t('apps.bluesky.features.2'),
@@ -1408,6 +1678,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.rss.description'),
     longDescription: i18n.global.t('apps.rss.longDescription'),
+    reasonToUse: i18n.global.t('apps.rss.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.rss.challenges.1'),
+      i18n.global.t('apps.rss.challenges.2'),
+      i18n.global.t('apps.rss.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.rss.features.1'),
       i18n.global.t('apps.rss.features.2'),
@@ -1440,6 +1716,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.atom.description'),
     longDescription: i18n.global.t('apps.atom.longDescription'),
+    reasonToUse: i18n.global.t('apps.atom.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.atom.challenges.1'),
+      i18n.global.t('apps.atom.challenges.2'),
+      i18n.global.t('apps.atom.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.atom.features.1'),
       i18n.global.t('apps.atom.features.2'),
@@ -1469,6 +1751,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.bittorrent.description'),
     longDescription: i18n.global.t('apps.bittorrent.longDescription'),
+    reasonToUse: i18n.global.t('apps.bittorrent.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.bittorrent.challenges.1'),
+      i18n.global.t('apps.bittorrent.challenges.2'),
+      i18n.global.t('apps.bittorrent.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.bittorrent.features.1'),
       i18n.global.t('apps.bittorrent.features.2'),
@@ -1501,6 +1789,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.nostr.description'),
     longDescription: i18n.global.t('apps.nostr.longDescription'),
+    reasonToUse: i18n.global.t('apps.nostr.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.nostr.challenges.1'),
+      i18n.global.t('apps.nostr.challenges.2'),
+      i18n.global.t('apps.nostr.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.nostr.features.1'),
       i18n.global.t('apps.nostr.features.2'),
@@ -1533,6 +1827,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.tor.description'),
     longDescription: i18n.global.t('apps.tor.longDescription'),
+    reasonToUse: i18n.global.t('apps.tor.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.tor.challenges.1'),
+      i18n.global.t('apps.tor.challenges.2'),
+      i18n.global.t('apps.tor.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.tor.features.1'),
       i18n.global.t('apps.tor.features.2'),
@@ -1559,6 +1859,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.grafana.description'),
     longDescription: i18n.global.t('apps.grafana.longDescription'),
+    reasonToUse: i18n.global.t('apps.grafana.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.grafana.challenges.1'),
+      i18n.global.t('apps.grafana.challenges.2'),
+      i18n.global.t('apps.grafana.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.grafana.features.1'),
       i18n.global.t('apps.grafana.features.2'),
@@ -1588,6 +1894,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.prometheus.description'),
     longDescription: i18n.global.t('apps.prometheus.longDescription'),
+    reasonToUse: i18n.global.t('apps.prometheus.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.prometheus.challenges.1'),
+      i18n.global.t('apps.prometheus.challenges.2'),
+      i18n.global.t('apps.prometheus.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.prometheus.features.1'),
       i18n.global.t('apps.prometheus.features.2'),
@@ -1620,6 +1932,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.funkwhale.description'),
     longDescription: i18n.global.t('apps.funkwhale.longDescription'),
+    reasonToUse: i18n.global.t('apps.funkwhale.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.funkwhale.challenges.1'),
+      i18n.global.t('apps.funkwhale.challenges.2'),
+      i18n.global.t('apps.funkwhale.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.funkwhale.features.1'),
       i18n.global.t('apps.funkwhale.features.2'),
@@ -1654,6 +1972,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.irc.description'),
     longDescription: i18n.global.t('apps.irc.longDescription'),
+    reasonToUse: i18n.global.t('apps.irc.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.irc.challenges.1'),
+      i18n.global.t('apps.irc.challenges.2'),
+      i18n.global.t('apps.irc.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.irc.features.1'),
       i18n.global.t('apps.irc.features.2'),
@@ -1686,6 +2010,12 @@ export const apps: App[] = [
     selfHostingLevel: 1,
     description: i18n.global.t('apps.thelounge.description'),
     longDescription: i18n.global.t('apps.thelounge.longDescription'),
+    reasonToUse: i18n.global.t('apps.thelounge.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.thelounge.challenges.1'),
+      i18n.global.t('apps.thelounge.challenges.2'),
+      i18n.global.t('apps.thelounge.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.thelounge.features.1'),
       i18n.global.t('apps.thelounge.features.2'),
@@ -1719,6 +2049,12 @@ export const apps: App[] = [
     selfHostingLevel: 2,
     description: i18n.global.t('apps.lasuite.description'),
     longDescription: i18n.global.t('apps.lasuite.longDescription'),
+    reasonToUse: i18n.global.t('apps.lasuite.reasonToUse'),
+    challenges: [
+      i18n.global.t('apps.lasuite.challenges.1'),
+      i18n.global.t('apps.lasuite.challenges.2'),
+      i18n.global.t('apps.lasuite.challenges.3')
+    ],
     features: [
       i18n.global.t('apps.lasuite.features.1'),
       i18n.global.t('apps.lasuite.features.2'),
