@@ -43,20 +43,17 @@ watch(() => abrir, async (newValue) => {
 
     await nextTick();
 
-    // Set the app data and show modal
     localApp.value = { ...app };
     visible.value = true;
     
     await nextTick();
     myModal.value?.showModal();
     
-    // Focus first focusable element
     const firstFocusable = myModal.value?.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
     if (firstFocusable) {
       firstFocusable.focus();
     }
   } else if (!newValue) {
-    // Close modal when abrir becomes false
     if (myModal.value?.open) {
       myModal.value.close();
     }
@@ -68,7 +65,7 @@ watch(() => app._openCount, async (newValue) => {
 });
 
 function handleDialogClose() {
-  emit('atualizarAbrir', false); // fecha o modal de verdade
+  emit('atualizarAbrir', false);
   bannerErrored.value = false
   expandido.value = false
   visible.value = false
@@ -78,7 +75,6 @@ function handleDialogClose() {
 
 async function shareApp() {
   const slug = getAppSlug(localApp.value);
-  // Build the shareable URL with ?app=slug
   const basePath = window.location.origin + window.location.pathname;
   const url = `${basePath}?app=${slug}`;
   await navigator.clipboard.writeText(url);
@@ -88,7 +84,6 @@ async function shareApp() {
 
 function openModal() {
   myModal.value?.showModal()
-  //console.log('Modal aberto aqui no appModal')
 }
 
 function closeModal() {
@@ -145,7 +140,7 @@ watch(
       });
     }
   },
-  { immediate: true } // roda logo de cara
+  { immediate: true }
 );
 
 const isMobile = ref(false);
@@ -179,7 +174,6 @@ const { t } = useI18n();
 
 <template>
   <div>
-  <!-- ✅ Atualizado aqui: @cancel → @click.self -->
   <dialog 
     ref="myModal" 
     :key="app._openCount"
@@ -191,7 +185,7 @@ const { t } = useI18n();
     aria-modal="true"
   >
   <div v-if="visible" class="modal-box w-full max-w-[880px] max-h-[calc(100vh-2rem)] overflow-y-auto rounded-xl relative bg-base-100 sm:px-6 sm:py-6 box-border">
-    <!-- Move toast inside the dialog -->
+    <!-- Toast -->
     <div
       v-if="shareToast"
       class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-base-200 text-base-content px-4 py-2 rounded shadow-lg z-50"
@@ -271,26 +265,25 @@ const { t } = useI18n();
           {{ localApp.longDescription }}
         </div>
 
-
-      <!-- Caracteristicas -->
+        <!-- Features -->
         <ul v-if="localApp.features?.length" class="list-disc text-sm sm:text-base space-y-2 list-inside mb-4">
           <li v-for="(feature, index) in localApp.features" :key="index">{{ feature }}</li>
         </ul>
-      </div>
-<!-- Motivo para usar -->
-        <div v-if="localApp.reasonToUse" class="mt-3">
-          <h4 class="sm:text-lg font-bold">{{ $t('appModal.reasonToUse') }}</h4>
-          <p class="text-sm mt-1 text-base-content/80">{{ localApp.reasonToUse }}</p>
+
+        <!-- Reason to Use -->
+        <div v-if="localApp.reasonToUse" class="mb-4">
+          <h4 class="sm:text-lg font-semibold mb-2">{{ t('appModal.reasonToUse') }}</h4>
+          <p class="text-sm sm:text-base leading-relaxed">{{ localApp.reasonToUse }}</p>
         </div>
 
-        <!-- Desafios -->
-        <div v-if="localApp.challenges?.length && localApp.challenges.some(c => c)" class="mt-3">
-          <h4 class="sm:text-lg font-bold">{{ $t('appModal.challenges') }}</h4>
-          <ul class="list-disc text-sm sm:text-base pl-5 mt-1 space-y-1">
-            <li v-for="(challenge, index) in localApp.challenges" :key="index" v-if="challenge">
-              {{ challenge }}
-            </li>
+        <!-- Challenges -->
+        <div v-if="localApp.challenges?.length" class="mb-4">
+          <h4 class="sm:text-lg font-semibold mb-2">{{ t('appModal.challenges') }}</h4>
+          <ul class="list-disc text-sm sm:text-base space-y-2 list-inside">
+            <li v-for="(challenge, index) in localApp.challenges" :key="index">{{ challenge }}</li>
           </ul>
+        </div>
+
         <div class="mt-2">
           <div class="flex flex-wrap items-start justify-between gap-4">
             <div>
@@ -314,8 +307,7 @@ const { t } = useI18n();
               </div>
             </div>
 
-
-            <!-- Botoes -->
+            <!-- Botões -->
             <div v-if="favicons.length" class="flex gap-2 py-2 flex-wrap justify-start">
               <a
                 v-for="(link, index) in favicons"
@@ -324,7 +316,6 @@ const { t } = useI18n();
                 class="btn btn-outline btn-sm flex items-center gap-2 xs:text-sm sm:text-sm"
                 target="_blank" rel="noopener noreferrer"
               >
-                <!-- Favicon visível só se não deu erro -->
                 <img
                   v-if="link.faviconVisible"
                   :src="link.faviconSrc"
@@ -332,15 +323,12 @@ const { t } = useI18n();
                   @error="link.faviconError"
                   alt=""
                 />
-
-                <!-- Bandeira BR -->
                 <img
                   v-if="link.url.includes('sovereinia.org')"
                   src="/br-flag.svg"
                   :alt="t('appModal.br')"
                   class="w-4 h-4"
                 />
-
                 {{ link.label }}
               </a>
               <!-- Share Button -->
@@ -354,10 +342,9 @@ const { t } = useI18n();
                 </svg>{{ t('appModal.share') || 'Share' }}
               </button>
             </div>
-
-
           </div>
         </div>
+
         <div v-if="localApp.selfHostingLevel" class="mt-4 flex items-center gap-2">
           <span class="font-semibold" :title="t('appModal.selfHostingTooltip') || 'Self-hosting difficulty'">
             {{ t('appModal.selfHostingLabel') || 'Self-hosting difficulty:' }}
@@ -389,12 +376,11 @@ const { t } = useI18n();
                 @error="visibleAlternatives[alt] = false"
               />
             </span>
-
           </div>
         </div>
     </div>
   </div>
 </dialog>
+
   </div>
 </template>
-

@@ -70,795 +70,1131 @@
     "br": "BR",
     "goodFirstApp": "Excelente primera app",
     "selfHostingLabel": "Dificultad de auto-hospedaje",
-    "selfHostingTooltip": "Qué tan difícil es auto-hospedar esta app (1=Fácil, 3=Avanzado)", 
-    "reasonToUse": "Motivo para usar",
-"challenges": "Desafios"
+    "selfHostingTooltip": "Qué tan difícil es auto-hospedar esta app (1=Fácil, 3=Avanzado)",
+    "reasonToUse": "Por qué usarlo",
+    "challenges": "Desafíos"
   },
   "surpriseMe": {
     "button": "¡Sorpréndeme!"
   },
   "apps": {
     "peertube": {
-      "description": "Plataforma de vídeos parecida com o YouTube, mas sem centralização e com streaming entre instâncias.",
-      "longDescription": "PeerTube é uma plataforma de vídeos que funciona de forma descentralizada. Em vez de um único site como o YouTube, existem várias instâncias independentes que hospedam vídeos e se conectam entre si. Você pode assistir, comentar e até se inscrever em canais de outras instâncias. Um diferencial do PeerTube é o uso de tecnologia P2P (ponto a ponto) para ajudar no carregamento dos vídeos, especialmente em momentos com muitos acessos. Ele é ideal para quem quer compartilhar vídeos com mais liberdade e menos rastreamento.",
+      "description": "Plataforma de vídeos similar a YouTube, pero descentralizada y con streaming entre instancias.",
+      "longDescription": "PeerTube es una plataforma de vídeos que funciona de forma descentralizada. En lugar de un único sitio como YouTube, existen múltiples instancias independientes que alojan vídeos y se conectan entre sí. Puedes ver, comentar e incluso suscribirte a canales de otras instancias. PeerTube usa tecnología P2P para ayudar con la carga de vídeos, especialmente en momentos de alto tráfico. Es ideal para quienes quieren compartir vídeos con más libertad y menos rastreo.",
       "features": {
-        "1": "Cada instância faz a customização e moderação como preferir",
-        "2": "Você pode seguir canais de outras instâncias",
-        "3": "Sem anúncios, rastreadores ou algoritmos de recomendação"
+        "1": "Cada instancia personaliza y modera el contenido como prefiere",
+        "2": "Puedes seguir canales de otras instancias",
+        "3": "Sin anuncios, rastreadores ni algoritmos de recomendación"
+      },
+      "reasonToUse": "Elige PeerTube si quieres publicar vídeos sin ceder tu audiencia a algoritmos publicitarios ni depender de reglas de monetización impuestas por terceros.",
+      "challenges": {
+        "1": "Alojar vídeos consume bastante almacenamiento y ancho de banda; un servidor modesto puede no aguantar picos de tráfico aunque use P2P.",
+        "2": "La moderación de contenido es responsabilidad del administrador de la instancia, lo que requiere tiempo y criterio para evitar abusos.",
+        "3": "El descubrimiento de contenido entre instancias sigue siendo limitado — los nuevos usuarios tienen dificultades para encontrar creadores fuera de su instancia."
       },
       "links": {
-        "1": "Veja um exemplo",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o PeerTube"
+        "1": "Ver un ejemplo",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda PeerTube"
       }
     },
     "mastodon": {
-      "description": "Uma rede social parecida com o Twitter, mas sem anúncios, sem algoritmo e com mais controle para quem usa.",
-      "longDescription": "Mastodon é uma rede social de microblog onde você pode publicar textos, imagens, vídeos e enquetes. Ele funciona por meio de várias instâncias independentes que se conectam entre si. Você escolhe em qual instância quer entrar, ou pode criar a sua. O feed é sempre cronológico, sem algoritmos nem anúncios, e cada comunidade tem suas próprias regras. Tudo isso faz do Mastodon uma rede mais aberta, tranquila e com foco na experiência do usuário.",
+      "description": "Una red social similar a Twitter, pero sin anuncios, sin algoritmo y con más control para los usuarios.",
+      "longDescription": "Mastodon es una red social de microblog donde puedes publicar textos, imágenes, vídeos y encuestas. Funciona a través de múltiples instancias independientes que se conectan entre sí. Eliges a qué instancia unirte, o puedes crear la tuya. El feed siempre es cronológico, sin algoritmos ni anuncios, y cada comunidad tiene sus propias reglas. Todo esto hace de Mastodon una red más abierta, tranquila y centrada en la experiencia del usuario.",
       "features": {
-        "1": "Sem algoritmo: o feed é sempre cronológico",
-        "2": "Postagens com texto, imagens, vídeos e enquetes",
-        "3": "Você escolhe sua instância (ou pode criar a sua)"
+        "1": "Sin algoritmo: el feed siempre es cronológico",
+        "2": "Publicaciones con texto, imágenes, vídeos y encuestas",
+        "3": "Eliges tu instancia (o puedes crear la tuya)"
+      },
+      "reasonToUse": "Usa Mastodon si quieres una red social sin algoritmos de engagement y con comunidades moderadas por personas reales en lugar de corporaciones.",
+      "challenges": {
+        "1": "Administrar una instancia propia requiere atención constante a la moderación para evitar spam, discurso de odio y federación con instancias problemáticas.",
+        "2": "El servidor Mastodon consume bastante RAM en producción; las instancias con más de unos pocos cientos de usuarios generalmente necesitan al menos 2–4 GB de RAM y una base de datos PostgreSQL dedicada.",
+        "3": "La curva de aprendizaje para nuevos usuarios es real: elegir una instancia, entender la federación y encontrar personas de otras instancias no es intuitivo."
       },
       "links": {
-        "1": "Crie sua conta",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Mastodon"
+        "1": "Crea tu cuenta",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Mastodon"
       }
     },
     "nextcloud": {
-      "description": "Alternativa ao Google Drive que permite salvar, compartilhar e sincronizar arquivos em um servidor próprio.",
-      "longDescription": "Nextcloud é uma plataforma completa para guardar e acessar seus arquivos pela internet, como se fosse um Google Drive privado. Com ele, você pode enviar documentos, fotos e vídeos, organizar pastas, compartilhar links e sincronizar tudo entre seus dispositivos. Também é possível ativar recursos extras como calendário, contatos, chat, vídeo chamadas e edição colaborativa de documentos. Tudo isso no seu próprio servidor, com total controle e sem depender de empresas terceiras.",
+      "description": "Alternativa a Google Drive que permite guardar, compartir y sincronizar archivos en tu propio servidor.",
+      "longDescription": "Nextcloud es una plataforma completa para guardar y acceder a tus archivos por internet, como un Google Drive privado. Con ella, puedes subir documentos, fotos y vídeos, organizar carpetas, compartir enlaces y sincronizar todo entre tus dispositivos. También puedes activar funciones adicionales como calendario, contactos, chat, videollamadas y edición colaborativa de documentos. Todo en tu propio servidor, con control total y sin depender de empresas terceras.",
       "features": {
-        "1": "Armazenamento e sincronização de arquivos entre dispositivos",
-        "2": "Compartilhamento com links públicos ou protegidos por senha",
-        "3": "Recursos extras como calendário, contatos, chat e edição de documentos"
+        "1": "Almacenamiento y sincronización de archivos entre dispositivos",
+        "2": "Compartir con enlaces públicos o protegidos por contraseña",
+        "3": "Funciones extra como calendario, contactos, chat y edición de documentos"
+      },
+      "reasonToUse": "Elige Nextcloud si quieres un reemplazo completo de Google Drive con tus datos bajo tu control, especialmente útil para equipos o familias que comparten archivos con frecuencia.",
+      "challenges": {
+        "1": "El rendimiento se degrada significativamente sin una configuración adecuada de caché (Redis/Memcached) y base de datos — la instalación predeterminada con SQLite no es recomendada para uso real.",
+        "2": "Las actualizaciones de versión mayor frecuentemente rompen apps instaladas; mantener el ecosistema de plugins actualizado requiere atención periódica.",
+        "3": "Sincronizar archivos grandes o bibliotecas de fotos voluminosas puede ser lento y consumir muchos recursos del servidor."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Nextcloud"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Nextcloud"
       }
     },
     "vaultwarden": {
-      "description": "Gerenciador de senhas compatível com o Bitwarden, leve e fácil de auto-hospedar.",
-      "longDescription": "Vaultwarden é uma alternativa leve ao Bitwarden, um dos gerenciadores de senhas mais populares. Com ele, você pode guardar senhas, logins, notas seguras e outras informações de forma criptografada, acessando tudo pelo navegador ou pelo app oficial do Bitwarden. A grande vantagem do Vaultwarden é que ele consome poucos recursos e é muito simples de instalar, ideal para quem quer controlar suas senhas em um servidor próprio.",
+      "description": "Gestor de contraseñas compatible con Bitwarden, ligero y fácil de auto-hospedar.",
+      "longDescription": "Vaultwarden es una alternativa ligera a Bitwarden, uno de los gestores de contraseñas más populares. Con él, puedes guardar contraseñas, logins, notas seguras y otra información de forma cifrada, accediendo a todo desde el navegador o la app oficial de Bitwarden. La gran ventaja de Vaultwarden es que consume pocos recursos y es muy sencillo de instalar, ideal para quienes quieren controlar sus contraseñas en un servidor propio.",
       "features": {
-        "1": "Compatível com os apps oficiais do Bitwarden",
-        "2": "Criptografia de ponta a ponta para senhas e dados sensíveis",
-        "3": "Consome poucos recursos e roda bem até em servidores simples"
+        "1": "Compatible con las apps oficiales de Bitwarden",
+        "2": "Cifrado de extremo a extremo para contraseñas y datos sensibles",
+        "3": "Consume pocos recursos y funciona bien en servidores simples"
+      },
+      "reasonToUse": "Usa Vaultwarden si quieres la experiencia completa de Bitwarden (incluyendo TOTP y organizaciones) sin pagar una suscripción premium, alojando todo en tu propio servidor con consumo mínimo de recursos.",
+      "challenges": {
+        "1": "Al ser un proyecto no oficial, no recibe soporte directo de Bitwarden; las actualizaciones de compatibilidad con los clientes oficiales dependen de la velocidad de la comunidad.",
+        "2": "Eres responsable de los respaldos de la base de datos SQLite — un fallo sin respaldo significa pérdida total de contraseñas.",
+        "3": "Exponer el servidor en internet requiere HTTPS obligatorio y atención a la seguridad del host; no se recomienda sin un proxy inverso correctamente configurado."
       },
       "links": {
-        "1": "Código Fonte",
-        "2": "Auto-hospede o Vaultwarden"
+        "1": "Código Fuente",
+        "2": "Auto-hospeda Vaultwarden"
       }
     },
     "passbolt": {
-      "description": "Gerenciador de senhas focado em uso colaborativo por equipes e empresas.",
-      "longDescription": "Passbolt é um gerenciador de senhas feito especialmente para times. Ele permite compartilhar senhas com segurança entre colegas de equipe, com controle de permissões e registro de atividades. Todas as senhas são criptografadas de ponta a ponta, e o acesso é feito pelo navegador usando uma extensão. É uma boa escolha para empresas ou grupos que precisam gerenciar credenciais em conjunto, mas ainda assim com total controle por estar rodando no seu próprio servidor.",
+      "description": "Gestor de contraseñas enfocado en uso colaborativo por equipos y empresas.",
+      "longDescription": "Passbolt es un gestor de contraseñas hecho especialmente para equipos. Permite compartir contraseñas de forma segura entre compañeros, con control de permisos y registro de actividades. Todas las contraseñas están cifradas de extremo a extremo, y el acceso se hace desde el navegador usando una extensión. Es una buena opción para empresas o grupos que necesitan gestionar credenciales conjuntamente, pero con control total al ejecutarse en su propio servidor.",
       "features": {
-        "1": "Compartilhamento seguro de senhas entre membros da equipe",
-        "2": "Controle de permissões e registros de acesso",
-        "3": "Interface web com autenticação por chave privada"
+        "1": "Compartir contraseñas de forma segura entre miembros del equipo",
+        "2": "Control de permisos y registros de acceso",
+        "3": "Interfaz web con autenticación por clave privada"
+      },
+      "reasonToUse": "Elige Passbolt si tu equipo necesita compartir credenciales de forma auditable y cifrada, con control granular sobre quién accede a qué — algo que los gestores individuales no ofrecen.",
+      "challenges": {
+        "1": "La instalación requiere PHP, MySQL/MariaDB y configuración de SMTP; el proceso es más laborioso que las herramientas basadas en Docker puro.",
+        "2": "Cada usuario necesita instalar la extensión del navegador y configurar su clave GPG, lo que añade fricción en la adopción del equipo.",
+        "3": "Las funcionalidades avanzadas como LDAP/AD y auditoría detallada solo están disponibles en el nivel Business (de pago)."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Passbolt"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Passbolt"
       }
     },
     "element": {
-      "description": "Aplicativo de mensagens seguro e descentralizado, baseado no protocolo Matrix.",
-      "longDescription": "Element é um app de mensagens parecido com o WhatsApp ou o Telegram, mas com uma grande diferença: ele usa o protocolo aberto Matrix, que permite comunicação entre servidores diferentes. Você pode criar salas públicas ou privadas, enviar arquivos, fazer chamadas de voz e vídeo, e até conversar com pessoas em outros serviços (como Slack, Discord ou Telegram via ponte). O Element pode ser usado em servidores públicos ou no seu próprio, oferecendo privacidade e controle total sobre os dados.",
+      "description": "Aplicación de mensajería segura y descentralizada, basada en el protocolo Matrix.",
+      "longDescription": "Element es una app de mensajería similar a WhatsApp o Telegram, pero con una diferencia clave: usa el protocolo abierto Matrix, que permite comunicación entre diferentes servidores. Puedes crear salas públicas o privadas, enviar archivos, hacer llamadas de voz y vídeo, e incluso chatear con personas en otros servicios (como Slack, Discord o Telegram mediante puentes). Element puede usarse en servidores públicos o en el tuyo propio, ofreciendo privacidad y control total sobre los datos.",
       "features": {
-        "1": "Mensagens, arquivos, chamadas de voz e vídeo",
-        "2": "Criação de salas públicas ou privadas",
-        "3": "Compatível com Telegram, Discord, Slack, etc via ponte (bridges)"
+        "1": "Mensajes, archivos, llamadas de voz y vídeo",
+        "2": "Crear salas públicas o privadas",
+        "3": "Compatible con Telegram, Discord, Slack, etc. mediante puentes"
+      },
+      "reasonToUse": "Usa Element si necesitas un mensajero corporativo o comunitario con cifrado real, sin depender de servidores de Meta o Microsoft, con posibilidad de integrar otros servicios mediante puentes.",
+      "challenges": {
+        "1": "El servidor Matrix (Synapse) consume muchos recursos: las instancias con federación activa consumen fácilmente 1–2 GB de RAM y crecen rápidamente en la base de datos.",
+        "2": "La experiencia de usuario en Element sigue siendo menos pulida que WhatsApp o Telegram, especialmente en llamadas grupales y notificaciones.",
+        "3": "Los puentes con servicios de terceros (WhatsApp, Telegram) requieren configuración separada y pueden romperse cuando esos servicios actualizan sus APIs."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Element"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Element"
       }
     },
     "lemmy": {
-      "description": "Plataforma de fóruns e comunidades, parecida com o Reddit, mas descentralizada e sem rastreamento.",
-      "longDescription": "Lemmy é uma rede de fóruns em formato de comunidades temáticas, onde qualquer pessoa pode postar links, textos e iniciar discussões. Ele funciona de forma federada, com várias instâncias que se conectam entre si, como no Mastodon. Cada instância pode ter suas próprias regras, mas você pode participar de comunidades de outras instâncias sem precisar criar várias contas. É uma ótima alternativa ao Reddit para quem busca mais privacidade e liberdade.",
+      "description": "Plataforma de foros y comunidades similar a Reddit, pero descentralizada y sin rastreo.",
+      "longDescription": "Lemmy es una red de foros de comunidades temáticas donde cualquiera puede publicar enlaces, textos e iniciar discusiones. Funciona de forma federada, con múltiples instancias que se conectan entre sí, como Mastodon. Cada instancia puede tener sus propias reglas, pero puedes participar en comunidades de otras instancias sin crear varias cuentas. Es una excelente alternativa a Reddit para quienes buscan más privacidad y libertad.",
       "features": {
-        "1": "Comunidades temáticas com votação por votos positivos ou negativos",
-        "2": "Federação entre instâncias via ActivityPub",
-        "3": "Interface simples, leve e sem rastreadores"
+        "1": "Comunidades temáticas con votación positiva o negativa",
+        "2": "Federación entre instancias mediante ActivityPub",
+        "3": "Interfaz simple, ligera y sin rastreadores"
+      },
+      "reasonToUse": "Elige Lemmy si quieres crear o participar en foros temáticos sin algoritmos de recomendación pagados, sin datos vendidos a anunciantes y con moderación transparente por la propia comunidad.",
+      "challenges": {
+        "1": "La federación entre instancias aún tiene fallos ocasionales — las publicaciones y comentarios de otras instancias pueden tardar o no sincronizarse correctamente.",
+        "2": "La base de usuarios sigue siendo pequeña comparada con Reddit, lo que significa comunidades menos activas en muchos temas.",
+        "3": "Administrar una instancia requiere moderación activa para evitar que spam y contenido ilegal federado de otras instancias aparezca en los feeds locales."
       },
       "links": {
-        "1": "Veja uma instância",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Lemmy"
+        "1": "Ver una instancia",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Lemmy"
       }
     },
     "jitsimeet": {
-      "description": "Ferramenta de videoconferência segura e sem necessidade de cadastro, ideal para reuniões rápidas.",
-      "longDescription": "Jitsi Meet é uma plataforma de chamadas de vídeo que funciona direto do navegador, sem precisar instalar nada ou criar conta. É uma alternativa ao Zoom e ao Google Meet, com foco em privacidade e facilidade de uso. Você pode hospedar sua própria instância para ter total controle das reuniões. Ele permite compartilhar a tela, conversar por chat, gravar reuniões e proteger salas com senha. É ideal para equipes, aulas e reuniões online.",
+      "description": "Herramienta de videoconferencia segura sin necesidad de registro, ideal para reuniones rápidas.",
+      "longDescription": "Jitsi Meet es una plataforma de videollamadas que funciona directamente en el navegador, sin necesidad de instalar nada ni crear una cuenta. Es una alternativa a Zoom y Google Meet, centrada en la privacidad y facilidad de uso. Puedes alojar tu propia instancia para tener control total sobre las reuniones. Permite compartir pantalla, chatear, grabar reuniones y proteger salas con contraseña. Ideal para equipos, clases y reuniones en línea.",
       "features": {
-        "1": "Chamadas de vídeo e áudio direto no navegador",
-        "2": "Compartilhamento de tela e chat integrado",
-        "3": "Salas protegidas por senha, sem cadastro obrigatório"
+        "1": "Videollamadas y audio directamente en el navegador",
+        "2": "Compartir pantalla y chat integrado",
+        "3": "Salas protegidas por contraseña, sin registro obligatorio"
+      },
+      "reasonToUse": "Usa Jitsi Meet si necesitas videoconferencias rápidas sin registro obligatorio, o si quieres alojar tu propia infraestructura de reuniones para garantizar que ningún dato pase por servidores de terceros.",
+      "challenges": {
+        "1": "La calidad de las llamadas en grupos grandes (más de 10–15 participantes) se degrada notablemente sin un servidor dedicado con buen ancho de banda y CPU.",
+        "2": "Instalar Jitsi con el videobridge (JVB) es complejo y requiere puertos UDP abiertos, lo que puede ser problemático en entornos con firewall restrictivo.",
+        "3": "Funciones como grabación en la nube y transcripción automática requieren configuración adicional de componentes como Jibri, que tiene sus propios requisitos de hardware."
       },
       "links": {
-        "1": "Use no site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Jitsi Meet"
+        "1": "Usar en el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Jitsi Meet"
       }
     },
     "bookstack": {
-      "description": "Plataforma de documentação e anotações em formato de livros e páginas, ideal para equipes ou uso pessoal.",
-      "longDescription": "BookStack é uma ferramenta para organizar conhecimento em formato de livros, capítulos e páginas. Pode ser usada para criar manuais, wikis, documentações técnicas ou anotações pessoais. A interface é simples e funciona direto no navegador, com suporte a permissões por usuário, histórico de edições e editor visual. Por ser auto-hospedado, você tem controle total sobre o conteúdo e pode adaptar para uso individual ou em equipe.",
+      "description": "Plataforma de documentación y notas en formato de libros y páginas, ideal para equipos o uso personal.",
+      "longDescription": "BookStack es una herramienta para organizar el conocimiento en formato de libros, capítulos y páginas. Puede usarse para crear manuales, wikis, documentación técnica o notas personales. La interfaz es simple y funciona directamente en el navegador, con soporte para permisos de usuario, historial de ediciones y un editor visual. Al ser auto-hospedado, tienes control total sobre el contenido y puedes adaptarlo para uso individual o en equipo.",
       "features": {
-        "1": "Organização por livros, capítulos e páginas",
-        "2": "Editor visual com histórico de alterações",
-        "3": "Controle de acesso por usuários e permissões"
+        "1": "Organización por libros, capítulos y páginas",
+        "2": "Editor visual con historial de cambios",
+        "3": "Control de acceso por usuarios y permisos"
+      },
+      "reasonToUse": "Elige BookStack si quieres una wiki o base de conocimiento con una estructura clara (libro → capítulo → página) sin la complejidad de Confluence o MediaWiki.",
+      "challenges": {
+        "1": "La estructura rígida de libro/capítulo/página puede ser limitante para contenidos que no encajan bien en esa jerarquía.",
+        "2": "No tiene soporte nativo para bases de datos que no sean MySQL/MariaDB, lo que puede complicar instalaciones en entornos que usan PostgreSQL.",
+        "3": "La búsqueda interna es funcional pero menos potente que herramientas especializadas — documentaciones muy grandes pueden volverse difíciles de navegar."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o BookStack"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda BookStack"
       }
     },
     "rsshub": {
-      "description": "Gerador de feeds RSS para sites que não oferecem suporte nativo, ideal para acompanhar tudo em um só lugar.",
-      "longDescription": "RSSHub permite criar feeds RSS de praticamente qualquer site, mesmo aqueles que não oferecem essa função. Com ele, você pode acompanhar atualizações de redes sociais, blogs, fóruns, lojas online e muito mais, tudo em um leitor de RSS. É uma ótima ferramenta para centralizar notícias e evitar o uso de redes sociais para se manter informado. Por ser auto-hospedado, você tem controle sobre quais fontes seguir e pode evitar rastreadores.",
+      "description": "Generador de feeds RSS para sitios que no ofrecen soporte nativo, ideal para seguir todo en un solo lugar.",
+      "longDescription": "RSSHub permite crear feeds RSS para prácticamente cualquier sitio web, incluso los que no ofrecen esta función. Con él, puedes seguir actualizaciones de redes sociales, blogs, foros, tiendas en línea y más, todo en un lector de RSS. Es una gran herramienta para centralizar noticias y evitar el uso de redes sociales para mantenerse informado. Al ser auto-hospedado, tienes control sobre qué fuentes seguir y puedes evitar rastreadores.",
       "features": {
-        "1": "Cria feeds RSS para sites que não têm suporte nativo",
-        "2": "Funciona com redes sociais, e-commerces, blogs e fóruns",
-        "3": "Permite personalizar e filtrar os conteúdos recebidos"
+        "1": "Crea feeds RSS para sitios sin soporte nativo",
+        "2": "Funciona con redes sociales, e-commerce, blogs y foros",
+        "3": "Permite personalizar y filtrar el contenido recibido"
+      },
+      "reasonToUse": "Usa RSSHub si quieres seguir contenido de plataformas que no ofrecen RSS (como Twitter/X, Reddit o YouTube) sin tener que abrir cada sitio o app individualmente.",
+      "challenges": {
+        "1": "Muchas rutas dependen de APIs no oficiales que se rompen sin previo aviso cuando los sitios cambian su estructura o bloquean scrapers.",
+        "2": "Alojar una instancia pública puede atraer uso abusivo y bloqueos de IP por parte de los sitios monitoreados.",
+        "3": "La documentación es extensa pero inconsistente — configurar rutas menos populares puede requerir leer el código fuente."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o RSSHub"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda RSSHub"
       }
     },
     "discourse": {
-      "description": "Plataforma moderna de fóruns, com suporte a login social, notificações e interface parecida com apps de chat.",
-      "longDescription": "Discourse é uma ferramenta de fórum com visual moderno e recursos atuais. Pode ser usada para criar comunidades, grupos de suporte, áreas de discussão interna e muito mais. Ele suporta login com redes sociais, envio de notificações por e-mail, sistema de menções e organização por categorias. Além disso, é responsivo, funcionando bem em celulares. Como é auto-hospedado, você pode configurar do seu jeito, com regras próprias e controle total da base de usuários.",
+      "description": "Plataforma moderna de foros con soporte de inicio de sesión social, notificaciones e interfaz similar a apps de chat.",
+      "longDescription": "Discourse es una herramienta de foros con aspecto moderno y características actuales. Puede usarse para crear comunidades, grupos de soporte, áreas de discusión interna y más. Soporta inicio de sesión social, notificaciones por correo, sistema de menciones y organización por categorías. Además es responsivo, funcionando bien en móviles. Al ser auto-hospedado, puedes configurarlo a tu manera, con tus propias reglas y control total sobre la base de usuarios.",
       "features": {
-        "1": "Fóruns organizados por categorias e com sistema de reputação",
-        "2": "Interface moderna com suporte a menções, markdown e notificações",
-        "3": "Funciona bem em celulares e permite login social (opcional)"
+        "1": "Foros organizados por categorías con sistema de reputación",
+        "2": "Interfaz moderna con soporte a menciones, markdown y notificaciones",
+        "3": "Funciona bien en móviles y permite inicio de sesión social (opcional)"
+      },
+      "reasonToUse": "Elige Discourse si necesitas una comunidad en línea con moderación robusta, sistema de reputación y notificaciones por correo — es el estándar de oro para foros de soporte y comunidades de proyectos.",
+      "challenges": {
+        "1": "La instalación oficial exige Docker obligatoriamente y un servidor con al menos 2 GB de RAM; las instalaciones en VPS baratas frecuentemente sufren de lentitud.",
+        "2": "El consumo de memoria RAM crece con el número de usuarios y plugins activos, haciendo el costo de operación mayor que otras alternativas.",
+        "3": "Las actualizaciones son frecuentes y a veces rompen plugins o personalizaciones de tema, requiriendo mantenimiento regular."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Discourse"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Discourse"
       }
     },
     "pixelfed": {
-      "description": "Rede social para compartilhar fotos, parecida com o Instagram.",
-      "longDescription": "Pixelfed é uma rede social para fotos e vídeos curtos, pensada para quem quer compartilhar imagens com privacidade e controle. Ele tem um visual parecido com o Instagram, com feed, curtidas e comentários com foco em privacidade: não utiliza algoritmos de recomendação nem exibe anúncios. Assim como o Mastodon, o Pixelfed funciona em várias instâncias que se comunicam entre si. Você pode seguir e ser seguido por pessoas de outras instâncias do Fediverso, tudo com código aberto e sem depender de empresas centralizadas.",
+      "description": "Red social para compartir fotos, similar a Instagram.",
+      "longDescription": "Pixelfed es una red social para fotos y vídeos cortos, diseñada para quienes quieren compartir imágenes con privacidad y control. Tiene un aspecto similar a Instagram, con feed, me gusta y comentarios, pero centrada en la privacidad: sin algoritmos de recomendación ni anuncios. Como Mastodon, Pixelfed funciona en múltiples instancias que se comunican entre sí. Puedes seguir y ser seguido por personas de otras instancias del Fediverso, todo de código abierto y sin depender de empresas centralizadas.",
       "features": {
-        "1": "Feed de fotos com curtidas, comentários e stories",
-        "2": "Sem anúncios, rastreadores ou algoritmo de recomendação",
-        "3": "Funciona em várias instâncias que se conectam entre si"
+        "1": "Feed de fotos con me gusta, comentarios e historias",
+        "2": "Sin anuncios, rastreadores ni algoritmo de recomendación",
+        "3": "Funciona en múltiples instancias que se conectan entre sí"
+      },
+      "reasonToUse": "Usa Pixelfed si quieres compartir fotos sin que tus imágenes sean usadas para entrenar algoritmos publicitarios o vendidas a anunciantes, manteniendo control sobre tu galería y audiencia.",
+      "challenges": {
+        "1": "El proyecto es menos maduro que Mastodon — las actualizaciones pueden introducir errores y la interoperabilidad ActivityPub con otras plataformas tiene inconsistencias.",
+        "2": "La instalación requiere PHP, Redis, MySQL y un servidor de colas; es más compleja que otras plataformas del Fediverso.",
+        "3": "La comunidad sigue siendo pequeña, lo que significa menos interacción y descubrimiento de contenido comparado con Instagram."
       },
       "links": {
-        "1": "Veja uma instância",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Pixelfed"
+        "1": "Ver una instancia",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Pixelfed"
       }
     },
     "signal": {
-      "description": "Mensageiro com foco em privacidade, com criptografia de ponta a ponta e sem rastreamento.",
-      "longDescription": "Signal é um aplicativo de mensagens que prioriza a segurança e a privacidade. Todas as conversas são protegidas por criptografia de ponta a ponta, e nenhum dado é armazenado além do necessário. Você pode trocar mensagens, fazer chamadas de voz e vídeo, criar grupos e enviar arquivos. O app oficial usa servidores da própria organização, mas também é possível hospedar seu próprio servidor Signal para ter controle total sobre os dados. É usado por pessoas e organizações que valorizam a confidencialidade.",
+      "description": "Mensajero centrado en la privacidad con cifrado de extremo a extremo y sin rastreo.",
+      "longDescription": "Signal es una aplicación de mensajería que prioriza la seguridad y la privacidad. Todas las conversaciones están protegidas por cifrado de extremo a extremo, y no se almacena ningún dato más allá de lo necesario. Puedes intercambiar mensajes, hacer llamadas de voz y vídeo, crear grupos y enviar archivos. La app oficial usa servidores de la propia organización, pero también es posible alojar tu propio servidor Signal para tener control total sobre los datos.",
       "features": {
-        "1": "Criptografia de ponta a ponta por padrão",
-        "2": "Chamadas de voz e vídeo seguras",
-        "3": "Sem anúncios, rastreamento ou coleta de dados pessoais"
+        "1": "Cifrado de extremo a extremo por defecto",
+        "2": "Llamadas de voz y vídeo seguras",
+        "3": "Sin anuncios, rastreo ni recopilación de datos personales"
+      },
+      "reasonToUse": "Usa Signal si necesitas un mensajero con cifrado auditado y probado para conversaciones sensibles — es la elección de periodistas, activistas y profesionales de seguridad.",
+      "challenges": {
+        "1": "Auto-hospedar el servidor Signal es extremadamente complejo y no cuenta con soporte oficial — la mayoría de los usuarios depende de los servidores de Signal Foundation.",
+        "2": "Requiere número de teléfono para el registro, lo que reduce el anonimato y excluye a personas sin acceso a un número verificable.",
+        "3": "No está federado — todos los usuarios deben estar en el mismo servidor (signal.org), creando un punto centralizado incluso con cifrado fuerte."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Signal"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Signal"
       }
     },
     "stirling-pdf": {
-      "description": "Ferramenta completa para editar e converter arquivos PDF no navegador, direto do seu servidor.",
-      "longDescription": "Stirling-PDF é um aplicativo web que permite fazer várias operações com arquivos PDF, como juntar, dividir, girar, converter, proteger com senha, extrair texto e muito mais. Tudo funciona direto no navegador, sem precisar enviar seus arquivos para serviços externos. Ele é ideal para quem quer uma solução prática, local e segura para lidar com PDFs no dia a dia, seja no trabalho ou uso pessoal.",
+      "description": "Herramienta completa para editar y convertir archivos PDF en el navegador, directamente desde tu servidor.",
+      "longDescription": "Stirling-PDF es una aplicación web que permite realizar diversas operaciones con archivos PDF, como unir, dividir, rotar, convertir, proteger con contraseña, extraer texto y mucho más. Todo funciona directamente en el navegador, sin necesidad de enviar tus archivos a servicios externos. Es ideal para quienes quieren una solución práctica, local y segura para manejar PDFs en el día a día.",
       "features": {
-        "1": "Juntar, dividir, girar e converter arquivos PDF",
-        "2": "Proteger com senha, extrair texto e imagens",
-        "3": "Tudo funciona no navegador, sem envio para a nuvem"
+        "1": "Unir, dividir, rotar y convertir archivos PDF",
+        "2": "Proteger con contraseña, extraer texto e imágenes",
+        "3": "Todo funciona en el navegador, sin envío a la nube"
+      },
+      "reasonToUse": "Usa Stirling-PDF si manejas PDFs sensibles y no quieres subirlos a servicios en línea como iLovePDF o SmallPDF — procesar todo localmente garantiza que tus documentos nunca salgan de tu servidor.",
+      "challenges": {
+        "1": "Algunas operaciones avanzadas (OCR, conversión de Office a PDF) requieren dependencias adicionales como LibreOffice y Tesseract instaladas en el servidor.",
+        "2": "La interfaz solo en inglés puede ser una barrera para usuarios menos técnicos no familiarizados con herramientas en otros idiomas.",
+        "3": "No soporta edición de contenido dentro del PDF — es una herramienta de manipulación de archivos, no un editor de texto."
       },
       "links": {
-        "1": "Código Fonte",
-        "2": "Auto-hospede o Stirling-PDF"
+        "1": "Código Fuente",
+        "2": "Auto-hospeda Stirling-PDF"
       }
     },
     "activitypub": {
-      "description": "Protocolo aberto que permite que diferentes plataformas se comuniquem entre si no Fediverso.",
-      "longDescription": "ActivityPub é um protocolo de comunicação usado para conectar diferentes plataformas federadas. Ele permite que uma pessoa em um site (como o Mastodon) interaja com outra em um serviço diferente (como o PeerTube ou o Pixelfed), como se estivessem na mesma rede. Com isso, cada servidor pode ter suas próprias regras e foco, mas ainda assim conversar com os outros. É a base do que chamamos de Fediverso - um conjunto de serviços livres que funcionam juntos.",
+      "description": "Protocolo abierto que permite que diferentes plataformas se comuniquen entre sí en el Fediverso.",
+      "longDescription": "ActivityPub es un protocolo de comunicación usado para conectar diferentes plataformas federadas. Permite que una persona en un sitio (como Mastodon) interactúe con otra en un servicio diferente (como PeerTube o Pixelfed), como si estuvieran en la misma red. Cada servidor puede tener sus propias reglas y enfoque, pero aún así comunicarse con los demás. Es la base de lo que llamamos el Fediverso — un conjunto de servicios libres que funcionan juntos.",
       "features": {
-        "1": "Permite a federação entre diferentes serviços",
-        "2": "Base de redes como Mastodon, PeerTube, Pixelfed e Lemmy",
-        "3": "Desenvolvido como padrão aberto pelo W3C"
+        "1": "Permite la federación entre diferentes servicios",
+        "2": "Base de redes como Mastodon, PeerTube, Pixelfed y Lemmy",
+        "3": "Desarrollado como estándar abierto por el W3C"
+      },
+      "reasonToUse": "Entender ActivityPub es esencial para quienes quieren crear su propia plataforma federada o contribuir al ecosistema del Fediverso — es el protocolo que hace posible la interoperabilidad entre docenas de servicios distintos.",
+      "challenges": {
+        "1": "La especificación tiene partes ambiguas, lo que lleva a implementaciones incompatibles entre plataformas — una publicación de Mastodon no siempre aparece igual en Pixelfed o PeerTube.",
+        "2": "Implementar ActivityPub correctamente requiere manejar firmas HTTP, colas de entrega y resolución de WebFinger, con una curva de aprendizaje pronunciada.",
+        "3": "No existe un mecanismo de control de abuso entre instancias — una instancia maliciosa puede federar contenido no deseado hasta ser bloqueada manualmente."
       },
       "links": {
-        "1": "Conheça o Fediverso",
-        "2": "Especificação oficial (W3C)",
-        "3": "Lista de apps que usam ActivityPub"
+        "1": "Conoce el Fediverso",
+        "2": "Especificación oficial (W3C)",
+        "3": "Lista de apps que usan ActivityPub"
       }
     },
     "matrix": {
-      "description": "Protocolo aberto de comunicação em tempo real, usado por apps como o Element.",
-      "longDescription": "Matrix é um protocolo que permite a troca de mensagens, chamadas e arquivos entre diferentes servidores. Ele foi criado para ser seguro, descentralizado e interoperável. Com ele, você pode usar um app como o Element para se comunicar com pessoas de outros servidores Matrix, ou até mesmo integrar com serviços como Slack e Telegram por meio de pontes (bridges). É uma base sólida para quem quer ter controle total sobre sua comunicação online.",
+      "description": "Protocolo abierto de comunicación en tiempo real, usado por apps como Element.",
+      "longDescription": "Matrix es un protocolo que permite el intercambio de mensajes, llamadas y archivos entre diferentes servidores. Fue diseñado para ser seguro, descentralizado e interoperable. Con él, puedes usar una app como Element para comunicarte con personas en otros servidores Matrix, o incluso integrar con servicios como Slack y Telegram mediante puentes. Es una base sólida para quienes quieren control total sobre su comunicación en línea.",
       "features": {
-        "1": "Mensagens, chamadas e compartilhamento de arquivos",
-        "2": "Funciona entre servidores diferentes (federação)",
-        "3": "Suporte a integrações com outros serviços por ponte"
+        "1": "Mensajes, llamadas y compartición de archivos",
+        "2": "Funciona entre diferentes servidores (federación)",
+        "3": "Integración con otros servicios mediante puentes"
+      },
+      "reasonToUse": "Usa Matrix si necesitas un protocolo de comunicación descentralizado con cifrado de extremo a extremo y la capacidad de integrar múltiples servicios en un solo lugar mediante puentes.",
+      "challenges": {
+        "1": "El servidor de referencia (Synapse) es conocido por consumir mucha RAM y CPU, especialmente con federación activa — una instancia pequeña puede necesitar 2–4 GB de RAM.",
+        "2": "La base de datos de Synapse crece rápidamente con el historial de mensajes y puede necesitar mantenimiento periódico para evitar problemas de rendimiento.",
+        "3": "La experiencia de usuario varía mucho entre clientes — Element ha mejorado, pero sigue por detrás de mensajeros maduros en usabilidad."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Especificação técnica",
-        "3": "Lista de apps compatíveis"
+        "1": "Visita el sitio oficial",
+        "2": "Especificación técnica",
+        "3": "Lista de apps compatibles"
       }
     },
     "xmpp": {
-      "description": "Protocolo aberto de mensagens instantâneas, usado há décadas em serviços livres e federados.",
-      "longDescription": "XMPP (Extensible Messaging and Presence Protocol) é um protocolo de mensagens criado em 1999, muito antes dos mensageiros modernos. Ele permite trocar mensagens, arquivos e até fazer chamadas, tudo de forma descentralizada. Existem muitos servidores e clientes XMPP, e você pode escolher livremente com quem se conectar. Mesmo sendo antigo, ele continua sendo mantido, com foco em simplicidade, privacidade e liberdade.",
+      "description": "Protocolo abierto de mensajería instantánea, usado durante décadas en servicios libres y federados.",
+      "longDescription": "XMPP (Extensible Messaging and Presence Protocol) es un protocolo de mensajería creado en 1999, mucho antes que los mensajeros modernos. Permite intercambiar mensajes, archivos e incluso hacer llamadas, todo de forma descentralizada. Existen muchos servidores y clientes XMPP, y puedes elegir libremente con quién conectarte. A pesar de su antigüedad, sigue siendo mantenido, con foco en simplicidad, privacidad y libertad.",
       "features": {
-        "1": "Mensagens instantâneas e presença (online/offline)",
-        "2": "Totalmente federado, com vários clientes e servidores disponíveis",
-        "3": "Simples, leve e ideal para uso em dispositivos diversos",
-        "4": "É o protocolo usado pelo WhatsApp"
+        "1": "Mensajes instantáneos y presencia (en línea/desconectado)",
+        "2": "Totalmente federado, con varios clientes y servidores disponibles",
+        "3": "Simple, ligero e ideal para uso en dispositivos diversos",
+        "4": "Es el protocolo usado por WhatsApp"
+      },
+      "reasonToUse": "Usa XMPP si quieres un protocolo de mensajería ligero, federado y con décadas de estabilidad, especialmente útil en entornos corporativos con infraestructura existente o necesidades de integración con sistemas heredados.",
+      "challenges": {
+        "1": "La fragmentación de extensiones (XEPs) significa que diferentes clientes soportan diferentes características — los mensajes cifrados OMEMO, por ejemplo, no funcionan igual en todas las apps.",
+        "2": "La experiencia de usuario en clientes modernos sigue por debajo de WhatsApp o Telegram, lo que dificulta la adopción en grupos menos técnicos.",
+        "3": "Configurar un servidor XMPP con todas las características modernas (videollamadas, sincronización multi-dispositivo) requiere instalar y configurar múltiples módulos."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Especificação técnica",
-        "3": "Lista de apps e servidores"
+        "1": "Visita el sitio oficial",
+        "2": "Especificación técnica",
+        "3": "Lista de apps y servidores"
       }
     },
     "email": {
-      "description": "Protocolo clássico de comunicação digital, descentralizado por natureza e amplamente compatível.",
-      "longDescription": "E-mail é uma das formas mais antigas e universais de comunicação na internet. Ele funciona com base em protocolos abertos como SMTP, IMAP e POP3, o que permite que diferentes provedores e servidores troquem mensagens entre si. Ao contrário de redes sociais e mensageiros modernos, o e-mail já nasceu descentralizado: qualquer pessoa pode hospedar seu próprio servidor e ter controle completo sobre suas mensagens. É compatível com praticamente todos os sistemas e dispositivos.",
+      "description": "El protocolo clásico de comunicación digital, descentralizado por naturaleza y ampliamente compatible.",
+      "longDescription": "El correo electrónico es una de las formas más antiguas y universales de comunicación en internet. Funciona basándose en protocolos abiertos como SMTP, IMAP y POP3, lo que permite que diferentes proveedores y servidores intercambien mensajes entre sí. A diferencia de las redes sociales y mensajeros modernos, el correo electrónico nació descentralizado: cualquiera puede alojar su propio servidor y tener control completo sobre sus mensajes.",
       "features": {
-        "1": "Baseado em protocolos abertos",
-        "2": "Totalmente descentralizado: qualquer um pode rodar seu servidor",
-        "3": "Funciona em qualquer lugar, com milhares de apps e clientes compatíveis"
+        "1": "Basado en protocolos abiertos",
+        "2": "Totalmente descentralizado: cualquiera puede ejecutar su propio servidor",
+        "3": "Funciona en cualquier lugar, con miles de apps y clientes compatibles"
+      },
+      "reasonToUse": "Considera auto-hospedar el correo si quieres soberanía total sobre tus comunicaciones y no quieres depender de proveedores como Google o Microsoft — especialmente relevante para organizaciones con datos sensibles.",
+      "challenges": {
+        "1": "Mantener una buena reputación de entrega es difícil: los nuevos servidores frecuentemente tienen correos marcados como spam por grandes proveedores hasta construir historial.",
+        "2": "Configurar correctamente SPF, DKIM y DMARC requiere conocimiento técnico — los errores dejan el servidor vulnerable a spoofing o correos rechazados.",
+        "3": "El mantenimiento continuo es exigente: actualizaciones de seguridad, monitoreo de listas negras y gestión de certificados TLS requieren atención constante."
       },
       "links": {
-        "1": "Especificação SMTP (IETF)",
-        "2": "Lista de softwares de e-mail"
+        "1": "Especificación SMTP (IETF)",
+        "2": "Lista de software de correo"
       }
     },
     "ghost": {
-      "description": "Plataforma leve para blogs e sites, com editor moderno e foco em desempenho.",
-      "longDescription": "Ghost é uma plataforma de publicação pensada para quem quer criar blogs, sites pessoais ou páginas de projeto com foco em simplicidade e velocidade. Ele tem um editor moderno, suporte a temas, SEO nativo e até integração com newsletters. Por ser auto-hospedado, você tem controle total sobre o conteúdo e o visual do site.",
+      "description": "Plataforma ligera para blogs y sitios web, con editor moderno y enfoque en el rendimiento.",
+      "longDescription": "Ghost es una plataforma de publicación pensada para quienes quieren crear blogs, sitios personales o páginas de proyectos con foco en simplicidad y velocidad. Tiene un editor moderno, soporte de temas, SEO nativo e incluso integración con newsletters. Al ser auto-hospedado, tienes control total sobre el contenido y la apariencia del sitio.",
       "features": {
-        "1": "Editor moderno com suporte a Markdown e blocos",
-        "2": "Visual limpo, com temas personalizáveis",
-        "3": "Ótimo desempenho, SEO nativo e integração com newsletter",
-        "4": "É usado no Blog da Sovereinia"
+        "1": "Editor moderno con soporte para Markdown y bloques",
+        "2": "Aspecto limpio con temas personalizables",
+        "3": "Gran rendimiento, SEO nativo e integración con newsletter",
+        "4": "Es usado en el Blog de Sovereinia"
+      },
+      "reasonToUse": "Elige Ghost si quieres una plataforma de publicación rápida y enfocada sin la complejidad de WordPress — ideal para blogs, newsletters y portales de contenido que priorizan una lectura limpia.",
+      "challenges": {
+        "1": "Requiere Node.js para funcionar, lo que puede complicar la instalación en alojamientos compartidos tradicionales — la mayoría de los usuarios usa VPS o Docker.",
+        "2": "El ecosistema de temas e integraciones es mucho más pequeño que el de WordPress, limitando personalizaciones más elaboradas.",
+        "3": "Las actualizaciones de versión mayor a veces requieren migración manual de base de datos y pueden romper temas personalizados."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Ghost"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Ghost"
       }
     },
     "misskey": {
-      "description": "Rede social divertida e personalizável, com posts, reações e timeline federada.",
-      "longDescription": "Misskey é uma rede social descentralizada parecida com o Mastodon, mas com mais foco em personalização e interações. Ele permite postar textos, imagens, vídeos e até “notas” com estilos variados. Tem suporte a reações (como emojis personalizados), widgets, temas e outras funções que deixam a experiência mais leve e divertida. Assim como outras plataformas do Fediverso, o Misskey funciona por meio de instâncias federadas usando o protocolo ActivityPub.",
+      "description": "Red social divertida y personalizable con publicaciones, reacciones y línea de tiempo federada.",
+      "longDescription": "Misskey es una red social descentralizada similar a Mastodon, pero con más foco en personalización e interacciones. Permite publicar textos, imágenes, vídeos e incluso 'notas' con estilos variados. Soporta reacciones (como emojis personalizados), widgets, temas y otras funciones que hacen la experiencia más ligera y divertida. Como otras plataformas del Fediverso, Misskey funciona a través de instancias federadas usando el protocolo ActivityPub.",
       "features": {
-        "1": "Postagens com reações, emojis e widgets interativos",
-        "2": "Altamente personalizável, com suporte a temas e extensões",
-        "3": "Comunicação federada com outras redes do Fediverso",
-        "4": "Desenvolvido e muito utilizada no Japão"
+        "1": "Publicaciones con reacciones, emojis y widgets interactivos",
+        "2": "Altamente personalizable con soporte de temas y extensiones",
+        "3": "Comunicación federada con otras redes del Fediverso",
+        "4": "Desarrollado y ampliamente usado en Japón"
+      },
+      "reasonToUse": "Usa Misskey si quieres una experiencia social más lúdica y personalizable que Mastodon, con emojis personalizados, reacciones variadas y una interfaz más expresiva.",
+      "challenges": {
+        "1": "El consumo de recursos es mayor que Pleroma o Mastodon — las instancias necesitan al menos 1 GB de RAM y una base de datos PostgreSQL bien configurada.",
+        "2": "La documentación en inglés es limitada; gran parte del material de soporte está en japonés, lo que puede dificultar la resolución de problemas.",
+        "3": "El proyecto tiene varios forks activos (Calckey, Firefish, Catodon) con diferentes estados de mantenimiento, haciendo confusa la elección de la versión correcta."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Misskey"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Misskey"
       }
     },
     "rocketchat": {
-      "description": "Plataforma de mensagens para equipes, parecida com o Slack, mas com controle total dos dados.",
-      "longDescription": "Rocket.Chat é um app de mensagens voltado para comunicação em equipe, ideal para empresas, grupos de trabalho e comunidades. Ele permite trocar mensagens em tempo real, criar canais públicos ou privados, fazer chamadas de voz e vídeo, enviar arquivos e integrar com outras ferramentas. A grande vantagem é que você pode rodar tudo no seu próprio servidor, garantindo privacidade e segurança sem depender de serviços externos.",
+      "description": "Plataforma de mensajería para equipos similar a Slack, pero con control total de los datos.",
+      "longDescription": "Rocket.Chat es una app de mensajería orientada a la comunicación en equipo, ideal para empresas, grupos de trabajo y comunidades. Permite intercambiar mensajes en tiempo real, crear canales públicos o privados, hacer llamadas de voz y vídeo, enviar archivos e integrar con otras herramientas. La gran ventaja es que puedes ejecutar todo en tu propio servidor, garantizando privacidad y seguridad sin depender de servicios externos.",
       "features": {
-        "1": "Canais, mensagens diretas, chamadas de voz e vídeo",
-        "2": "Controle de usuários, permissões e integrações",
-        "3": "Interface moderna e app para desktop e celular"
+        "1": "Canales, mensajes directos, llamadas de voz y vídeo",
+        "2": "Control de usuarios, permisos e integraciones",
+        "3": "Interfaz moderna con app para escritorio y móvil"
+      },
+      "reasonToUse": "Elige Rocket.Chat si tu organización necesita un Slack auto-hospedado con soporte omnicanal (atención al cliente por chat, correo y redes sociales en un solo lugar).",
+      "challenges": {
+        "1": "El consumo de RAM es elevado — una instancia con pocos usuarios ya puede requerir 2 GB, y las instancias más grandes necesitan infraestructura dedicada.",
+        "2": "Las actualizaciones frecuentes pueden romper integraciones o apps instaladas, requiriendo pruebas antes de aplicar en producción.",
+        "3": "Las funciones avanzadas como omnicanal y marketplace de apps requieren suscripción Enterprise, lo que puede sorprender a quienes esperaban todo gratuito."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Rocket.Chat"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Rocket.Chat"
       }
     },
     "plane": {
-      "description": "Ferramenta de gestão de tarefas e projetos, com visual moderno e focada em equipes auto-organizadas.",
-      "longDescription": "Plane é um app de código aberto para organizar tarefas, bugs, ideias e projetos em equipe. Ele tem um visual parecido com o Linear ou o Jira, com suporte a quadros Kanban, status personalizados, prioridades e etiquetas. É ideal para times de desenvolvimento, mas também funciona bem para qualquer grupo que queira acompanhar o andamento de tarefas com mais clareza. Pode ser auto-hospedado para garantir controle total dos dados da equipe.",
+      "description": "Herramienta de gestión de tareas y proyectos con aspecto moderno, centrada en equipos auto-organizados.",
+      "longDescription": "Plane es una app de código abierto para organizar tareas, bugs, ideas y proyectos en equipo. Tiene un aspecto similar a Linear o Jira, con tableros Kanban, estados personalizados, prioridades y etiquetas. Es ideal para equipos de desarrollo, pero también funciona bien para cualquier grupo que quiera seguir el progreso de las tareas con más claridad. Puede auto-hospedarse para garantizar control total sobre los datos del equipo.",
       "features": {
-        "1": "Quadros Kanban, status e prioridades personalizadas",
-        "2": "Organização por projetos, sprints, ciclos ou equipes",
-        "3": "Interface rápida, moderna e fácil de usar"
+        "1": "Tableros Kanban, estados y prioridades personalizadas",
+        "2": "Organización por proyectos, sprints, ciclos o equipos",
+        "3": "Interfaz rápida, moderna y fácil de usar"
+      },
+      "reasonToUse": "Usa Plane si quieres una alternativa a Jira con una interfaz más limpia y sin altos costos de licencia — es especialmente adecuado para equipos de desarrollo que ya usan metodologías ágiles.",
+      "challenges": {
+        "1": "El proyecto sigue en desarrollo activo y algunas funcionalidades avanzadas (automatizaciones, informes detallados) están incompletas o inestables.",
+        "2": "La instalación con Docker requiere configurar varios servicios juntos (backend, frontend, worker, Redis, PostgreSQL), lo que puede ser laborioso para quienes no tienen experiencia con Docker Compose.",
+        "3": "Las integraciones con herramientas externas (GitHub, Slack, GitLab) son aún limitadas comparadas con Jira o Linear."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Plane"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Plane"
       }
     },
     "ipfs": {
-      "description": "Protocolo para armazenar e compartilhar arquivos de forma distribuída, sem depender de servidores centrais.",
-      "longDescription": "IPFS (InterPlanetary File System) é um protocolo que permite armazenar e acessar arquivos de forma descentralizada, parecida com o funcionamento de torrents. Em vez de depender de um servidor fixo, os arquivos são distribuídos entre os computadores da rede. Isso torna o acesso mais resistente a falhas, censura e apagamentos. Ele é usado para sites, imagens, vídeos e outros conteúdos que precisam ficar disponíveis de forma mais segura e permanente. Vale lembrar que o IPFS não substitui sozinho um sistema de indexação ou nomeação. Para isso, utiliza-se o IPNS ou outras camadas adicionais.",
+      "description": "Protocolo para almacenar y compartir archivos de forma distribuida, sin depender de servidores centrales.",
+      "longDescription": "IPFS (InterPlanetary File System) es un protocolo que permite almacenar y acceder a archivos de forma descentralizada, similar al funcionamiento de los torrents. En lugar de depender de un servidor fijo, los archivos se distribuyen entre los ordenadores de la red. Esto hace el acceso más resistente a fallos, censura y eliminaciones. Se usa para sitios web, imágenes, vídeos y otros contenidos que necesitan permanecer disponibles de forma más segura y permanente.",
       "features": {
-        "1": "Armazenamento e acesso a arquivos sem servidores centrais",
-        "2": "Conteúdo é identificado por seu código (hash), não por endereço fixo",
-        "3": "Resistente a censura e falhas de servidores"
+        "1": "Almacenamiento y acceso a archivos sin servidores centrales",
+        "2": "El contenido se identifica por su hash, no por una dirección fija",
+        "3": "Resistente a la censura y fallos de servidores"
+      },
+      "reasonToUse": "Usa IPFS si necesitas publicar contenido de forma resistente a la censura y eliminaciones, o si quieres explorar el almacenamiento distribuido para aplicaciones descentralizadas (dApps) y archivos inmutables.",
+      "challenges": {
+        "1": "Los archivos no son permanentes por defecto — si ningún nodo está haciendo pinning del contenido, puede desaparecer de la red.",
+        "2": "La velocidad de acceso es impredecible y generalmente más lenta que HTTP tradicional, especialmente para contenido raro con pocos seeders.",
+        "3": "Sin un servicio de pinning dedicado (como Pinata o Infura), mantener el contenido accesible de forma confiable requiere infraestructura propia siempre en línea."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Como usar o IPFS"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Cómo usar IPFS"
       }
     },
     "bitwarden": {
-      "description": "Gerenciador de senhas seguro e completo, com apps oficiais e opção de auto-hospedagem.",
-      "longDescription": "Bitwarden é um gerenciador de senhas que permite salvar logins, notas seguras, cartões e outros dados de forma criptografada. Ele pode ser acessado pelo navegador, celular ou aplicativo de desktop, e também oferece preenchimento automático e geração de senhas fortes. É uma alternativa confiável aos gerenciadores de senhas pagos e, diferente da maioria, pode ser auto-hospedado para quem quer controle total sobre seus dados.",
+      "description": "Gestor de contraseñas seguro y completo, con apps oficiales y opción de auto-hospedaje.",
+      "longDescription": "Bitwarden es un gestor de contraseñas que permite guardar logins, notas seguras, tarjetas y otros datos de forma cifrada. Puede accederse desde el navegador, móvil o aplicación de escritorio, y también ofrece autocompletado y generación de contraseñas fuertes. Es una alternativa confiable a los gestores de contraseñas de pago y, a diferencia de la mayoría, puede auto-hospedarse para quienes quieren control total sobre sus datos.",
       "features": {
-        "1": "Criptografia de ponta a ponta para senhas e dados sensíveis",
-        "2": "Apps para navegador, celular e desktop",
-        "3": "Pode ser usado na nuvem oficial ou em servidor próprio"
+        "1": "Cifrado de extremo a extremo para contraseñas y datos sensibles",
+        "2": "Apps para navegador, móvil y escritorio",
+        "3": "Puede usarse en la nube oficial o en servidor propio"
+      },
+      "reasonToUse": "Elige Bitwarden oficial (no Vaultwarden) si quieres soporte profesional, actualizaciones de seguridad garantizadas por el equipo de la empresa y cumplimiento con estándares corporativos como SOC 2.",
+      "challenges": {
+        "1": "Auto-hospedar el servidor oficial Bitwarden es más pesado que Vaultwarden — requiere Docker con múltiples contenedores y al menos 2 GB de RAM.",
+        "2": "El plan gratuito en la nube tiene limitaciones (sin TOTP integrado, sin informes avanzados), llevando a muchos usuarios a Vaultwarden como alternativa.",
+        "3": "Mantener el servidor auto-hospedado actualizado es crítico para la seguridad — los parches de vulnerabilidades deben aplicarse rápidamente."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Bitwarden"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Bitwarden"
       }
     },
     "diaspora": {
-      "description": "Rede social descentralizada com foco em privacidade, sem anúncios nem rastreamento.",
-      "longDescription": "Diaspora* é uma rede social que funciona por meio de \"pods\", servidores independentes que se conectam entre si. Você pode escolher um pod para criar sua conta ou hospedar o seu próprio. O sistema permite seguir pessoas, publicar textos, imagens, curtir e comentar, tudo com foco em controle do usuário e privacidade. Ele foi um dos primeiros projetos a propor uma alternativa livre às redes sociais centralizadas como o Facebook. Diferente do Mastodon ou do Friendica, o protocolo usado pelo Diaspora* não é compatível com o ActivityPub.",
+      "description": "Red social descentralizada centrada en la privacidad, sin anuncios ni rastreo.",
+      "longDescription": "Diaspora* es una red social que funciona a través de 'pods', servidores independientes que se conectan entre sí. Puedes elegir un pod para crear tu cuenta o alojar el tuyo propio. El sistema permite seguir personas, publicar textos, imágenes, dar me gusta y comentar, todo centrado en el control del usuario y la privacidad. Fue uno de los primeros proyectos en proponer una alternativa libre a las redes sociales centralizadas como Facebook. A diferencia de Mastodon o Friendica, el protocolo usado por Diaspora* no es compatible con ActivityPub.",
       "features": {
-        "1": "Rede descentralizada com foco em privacidade",
-        "2": "Publicações com texto, links e imagens",
-        "3": "Controle sobre quem pode ver cada post (aspectos)"
+        "1": "Red descentralizada centrada en la privacidad",
+        "2": "Publicaciones con texto, enlaces e imágenes",
+        "3": "Control sobre quién puede ver cada publicación (aspectos)"
+      },
+      "reasonToUse": "Usa Diaspora* si quieres una red social descentralizada con un sistema de privacidad basado en 'aspectos' — grupos de contactos que determinan quién ve cada publicación.",
+      "challenges": {
+        "1": "El desarrollo del proyecto ha perdido ritmo significativamente en los últimos años — las actualizaciones son lentas y la comunidad de mantenedores es pequeña.",
+        "2": "No es compatible con ActivityPub, lo que aísla a los usuarios del ecosistema más amplio del Fediverso (Mastodon, Pixelfed, etc.).",
+        "3": "La instalación requiere Ruby on Rails, PostgreSQL y varias dependencias — es una de las plataformas más laboriosas de auto-hospedar en el Fediverso."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Diaspora*"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Diaspora*"
       }
     },
     "jellyfin": {
-      "description": "Servidor de mídia para organizar e assistir seus filmes, séries e músicas em qualquer lugar.",
-      "longDescription": "Jellyfin é uma plataforma de streaming pessoal que permite organizar e acessar sua coleção de filmes, séries, músicas e fotos a partir de qualquer dispositivo. Ele funciona como um “Netflix caseiro”, com interface bonita, apps para TV, celular e navegador. Tudo é hospedado por você, sem rastreamento, sem assinatura e com total controle sobre seus arquivos. É uma ótima opção para quem quer montar seu próprio servidor de mídia.",
+      "description": "Servidor multimedia para organizar y ver tus películas, series y música en cualquier lugar.",
+      "longDescription": "Jellyfin es una plataforma de streaming personal que te permite organizar y acceder a tu colección de películas, series, música y fotos desde cualquier dispositivo. Funciona como un 'Netflix casero', con una interfaz bonita y apps para TV, móvil y navegador. Todo está alojado por ti, sin rastreo, sin suscripción y con control total sobre tus archivos. Es una excelente opción para quienes quieren montar su propio servidor multimedia.",
       "features": {
-        "1": "Streaming de filmes, séries, músicas e fotos",
-        "2": "Interface moderna com apps para web, celular e TV",
-        "3": "Totalmente gratuito, sem rastreadores nem limites artificiais"
+        "1": "Streaming de películas, series, música y fotos",
+        "2": "Interfaz moderna con apps para web, móvil y TV",
+        "3": "Completamente gratuito, sin rastreadores ni límites artificiales"
+      },
+      "reasonToUse": "Elige Jellyfin si quieres un servidor multimedia completamente gratuito sin componentes propietarios ni dependencia de cuenta en la nube — a diferencia de Plex, funciona 100% sin conexión.",
+      "challenges": {
+        "1": "La transcodificación de vídeo en tiempo real (para dispositivos que no soportan el códec original) requiere CPU o GPU adecuada — los servidores modestos pueden tener retraso en archivos 4K.",
+        "2": "La aceleración de hardware para transcodificación (Intel QuickSync, NVIDIA NVENC) requiere configuración manual y puede ser inestable en algunos entornos.",
+        "3": "Las apps para smart TVs y consolas son menos pulidas que las de Plex y pueden tener errores en ciertos modelos de TV."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Jellyfin"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Jellyfin"
       }
     },
     "zulip": {
-      "description": "App de mensagens em equipe que combina o estilo de chat com a organização de um fórum.",
-      "longDescription": "Zulip é um app de mensagens para equipes que organiza as conversas por tópicos dentro de canais, o que facilita acompanhar várias discussões ao mesmo tempo sem se perder. Ele é ideal para times que trabalham de forma assíncrona, onde nem todo mundo responde na hora. Oferece mensagens em tempo real, suporte a arquivos, emojis, integrações com outras ferramentas e pode ser auto-hospedado para quem busca controle total sobre a comunicação.",
+      "description": "App de mensajería en equipo que combina el estilo de chat con la organización de un foro.",
+      "longDescription": "Zulip es una app de mensajería para equipos que organiza las conversaciones por temas dentro de canales, lo que facilita seguir múltiples discusiones al mismo tiempo sin perderse. Es ideal para equipos que trabajan de forma asíncrona, donde no todos responden de inmediato. Ofrece mensajes en tiempo real, soporte de archivos, emojis, integraciones con otras herramientas y puede auto-hospedarse para quienes buscan control total sobre la comunicación.",
       "features": {
-        "1": "Conversas organizadas por tópicos dentro dos canais",
-        "2": "Ideal para equipes que trabalham de forma assíncrona",
-        "3": "Apps para desktop, celular e navegador"
+        "1": "Conversaciones organizadas por temas dentro de los canales",
+        "2": "Ideal para equipos que trabajan de forma asíncrona",
+        "3": "Apps para escritorio, móvil y navegador"
+      },
+      "reasonToUse": "Usa Zulip si tu equipo sufre con el caos de los chats en tiempo real — el modelo de temas dentro de streams permite seguir múltiples discusiones paralelas sin perder el contexto.",
+      "challenges": {
+        "1": "La instalación en servidor propio requiere Ubuntu 20.04 o 22.04 (sin soporte oficial para otros sistemas) y el proceso usa un script que hace muchos cambios en el sistema.",
+        "2": "El modelo de temas requiere disciplina del equipo para funcionar bien — sin el compromiso de todos en nombrar los temas correctamente, la organización se pierde.",
+        "3": "La interfaz, aunque funcional, tiene una curva de aprendizaje mayor que Slack o Mattermost para nuevos usuarios."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Zulip"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Zulip"
       }
     },
     "osticket": {
-      "description": "Sistema de suporte por tickets, ideal para organizar atendimentos técnicos ou de clientes.",
-      "longDescription": "osTicket é uma plataforma de helpdesk que permite receber, organizar e responder chamados (tickets) de forma eficiente. Ele é usado por equipes de suporte técnico, atendimento ao cliente ou setores internos de empresas. Com ele, é possível centralizar e acompanhar todos os pedidos de ajuda, com histórico, prioridades e atribuição por agente. É totalmente auto-hospedado e pode ser personalizado de acordo com as necessidades da equipe.",
+      "description": "Sistema de soporte por tickets, ideal para organizar atenciones técnicas o de clientes.",
+      "longDescription": "osTicket es una plataforma de helpdesk que permite recibir, organizar y responder tickets de forma eficiente. Es usado por equipos de soporte técnico, atención al cliente o departamentos internos de empresas. Con él, puedes centralizar y seguir todas las solicitudes de ayuda, con historial, prioridades y asignación por agente. Es totalmente auto-hospedado y puede personalizarse según las necesidades del equipo.",
       "features": {
-        "1": "Recebimento e organização de chamados por e-mail ou formulário",
-        "2": "Acompanhamento por status, prioridade e agente responsável",
-        "3": "Histórico completo das conversas e personalização de campos"
+        "1": "Recepción y organización de tickets por correo o formulario",
+        "2": "Seguimiento por estado, prioridad y agente responsable",
+        "3": "Historial completo de conversaciones y personalización de campos"
+      },
+      "reasonToUse": "Elige osTicket si necesitas un sistema de tickets de soporte simple y estable sin pagar las licencias de Zendesk o Freshdesk — funciona bien para equipos de hasta algunas decenas de agentes.",
+      "challenges": {
+        "1": "La interfaz de administración está desactualizada y es menos intuitiva que soluciones modernas como Freshdesk, lo que puede aumentar el tiempo de formación de nuevos agentes.",
+        "2": "Falta de funciones de automatización avanzada nativas — las reglas de enrutamiento y SLA son básicas comparadas con plataformas comerciales.",
+        "3": "Las integraciones con herramientas modernas (Slack, Teams, CRMs) no existen nativamente y requieren desarrollo personalizado o plugins de terceros."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o osTicket"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda osTicket"
       }
     },
     "friendica": {
-      "description": "Rede social federada com foco em compatibilidade e integração com outras redes.",
-      "longDescription": "Friendica é uma rede social descentralizada que permite postar textos, imagens, curtir, comentar e interagir com pessoas de outras redes como Mastodon, Diaspora* e até contas de e-mail. Um dos seus maiores diferenciais é a compatibilidade com vários protocolos, facilitando a conexão entre plataformas diferentes. Ele tem um visual mais simples e lembra as redes sociais clássicas, com foco em acessibilidade e integração.",
+      "description": "Red social federada centrada en la compatibilidad e integración con otras redes.",
+      "longDescription": "Friendica es una red social descentralizada que permite publicar textos, imágenes, dar me gusta, comentar e interactuar con personas de otras redes como Mastodon, Diaspora* e incluso cuentas de correo. Uno de sus mayores diferenciadores es la compatibilidad con varios protocolos, facilitando la conexión entre diferentes plataformas. Tiene un aspecto más simple que recuerda a las redes sociales clásicas, con foco en accesibilidad e integración.",
       "features": {
-        "1": "Compatível com diversas redes do Fediverso e até com e-mail",
-        "2": "Postagens com texto, links, imagens e vídeos",
-        "3": "Permite criar grupos, fóruns e listas de contatos"
+        "1": "Compatible con diversas redes del Fediverso e incluso con correo electrónico",
+        "2": "Publicaciones con texto, enlaces, imágenes y vídeos",
+        "3": "Permite crear grupos, foros y listas de contactos"
+      },
+      "reasonToUse": "Usa Friendica si quieres participar en el Fediverso y el ecosistema Diaspora* al mismo tiempo, o si necesitas publicaciones más largas y estructuradas de lo que Mastodon permite por defecto.",
+      "challenges": {
+        "1": "La interfaz está visualmente desactualizada y puede resultar confusa para nuevos usuarios provenientes de redes sociales modernas.",
+        "2": "La instalación requiere PHP, MySQL y configuración de un worker en segundo plano — no es tan simple como otras plataformas basadas en Docker.",
+        "3": "El desarrollo está hecho por un equipo pequeño, lo que significa actualizaciones menos frecuentes y demora en la corrección de errores."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Friendica"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Friendica"
       }
     },
     "pleroma": {
-      "description": "Rede social federada leve e personalizável, ideal para servidores pequenos.",
-      "longDescription": "Pleroma é uma plataforma de microblog como o Mastodon, mas com foco em leveza e desempenho. Ele é ideal para quem quer rodar sua própria instância em servidores com poucos recursos. Tem suporte ao protocolo ActivityPub, permitindo interagir com usuários de outras redes como Mastodon, Misskey e Pixelfed. Sua interface pode ser personalizada, e também é possível usar outras interfaces feitas pela comunidade.",
+      "description": "Red social federada ligera y personalizable, ideal para servidores pequeños.",
+      "longDescription": "Pleroma es una plataforma de microblog como Mastodon, pero con foco en ligereza y rendimiento. Es ideal para quienes quieren ejecutar su propia instancia en servidores con pocos recursos. Soporta el protocolo ActivityPub, permitiendo interactuar con usuarios de otras redes como Mastodon, Misskey y Pixelfed. Su interfaz puede personalizarse, y también es posible usar otras interfaces creadas por la comunidad.",
       "features": {
-        "1": "Leve e ideal para rodar em servidores com poucos recursos",
-        "2": "Compatível com outras redes do Fediverso via ActivityPub",
-        "3": "Interface personalizável e suporte a temas"
+        "1": "Ligero e ideal para ejecutar en servidores con pocos recursos",
+        "2": "Compatible con otras redes del Fediverso mediante ActivityPub",
+        "3": "Interfaz personalizable con soporte de temas"
+      },
+      "reasonToUse": "Usa Pleroma si quieres ejecutar una instancia personal del Fediverso en hardware limitado — funciona bien en un VPS de 512 MB de RAM, algo imposible con Mastodon.",
+      "challenges": {
+        "1": "El proyecto principal tiene desarrollo lento; muchos usuarios han migrado al fork Akkoma, que está más activo pero con documentación fragmentada.",
+        "2": "La comunidad alrededor de Pleroma tiene historial de controversias de moderación, lo que ha alejado algunas instancias del Fediverso de federar con servidores Pleroma.",
+        "3": "La configuración inicial en Elixir/Erlang puede ser desafiante para administradores sin experiencia en esos lenguajes."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Pleroma"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Pleroma"
       }
     },
     "hubzilla": {
-      "description": "Rede social federada com foco em identidade portátil e múltiplos recursos em um só lugar.",
-      "longDescription": "Hubzilla é uma plataforma federada que vai além de uma rede social comum. Além de posts e interações sociais, ele permite criar blogs, wikis, fóruns e até páginas pessoais. Seu maior diferencial é o recurso de identidade portátil: você pode se mover entre servidores (hubs) sem perder seu perfil ou seus dados. Isso oferece um nível de autonomia muito maior dentro do Fediverso.",
+      "description": "Red social federada centrada en la identidad portátil y múltiples funciones en un solo lugar.",
+      "longDescription": "Hubzilla es una plataforma federada que va más allá de una red social común. Además de publicaciones e interacciones sociales, permite crear blogs, wikis, foros e incluso páginas personales. Su mayor diferenciador es la función de identidad portátil: puedes moverte entre servidores (hubs) sin perder tu perfil ni tus datos. Esto ofrece un nivel de autonomía mucho mayor dentro del Fediverso.",
       "features": {
-        "1": "Identidade portátil entre servidores (Zot protocol)",
-        "2": "Postagens, fóruns, blogs e wikis no mesmo lugar",
-        "3": "Controle avançado de permissões e privacidade"
+        "1": "Identidad portátil entre servidores (protocolo Zot)",
+        "2": "Publicaciones, foros, blogs y wikis en el mismo lugar",
+        "3": "Control avanzado de permisos y privacidad"
+      },
+      "reasonToUse": "Usa Hubzilla si necesitas identidad portátil entre servidores — el protocolo Zot permite clonar tu perfil en múltiples hubs, garantizando disponibilidad incluso si un servidor se desconecta.",
+      "challenges": {
+        "1": "Es uno de los sistemas más complejos del Fediverso — la interfaz y la configuración tienen una curva de aprendizaje pronunciada incluso para usuarios técnicos.",
+        "2": "La instalación requiere PHP, Apache/Nginx, MySQL y varias dependencias, sin una ruta oficial bien documentada mediante Docker.",
+        "3": "La base de usuarios es pequeña, lo que significa soporte limitado y comunidades menos activas para la mayoría de los temas."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Hubzilla"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Hubzilla"
       }
     },
     "mattermost": {
-      "description": "Plataforma de mensagens para equipes, parecida com o Slack, com foco em privacidade e integração.",
-      "longDescription": "Mattermost é um app de mensagens para times que permite comunicação em tempo real por canais, mensagens diretas e integrações com outras ferramentas. Ele é ideal para empresas, equipes técnicas e organizações que querem ter controle total sobre sua comunicação. Pode ser auto-hospedado e tem recursos como compartilhamento de arquivos, chamadas por plugin, suporte a webhooks e integração com Git, CI/CD e mais.",
+      "description": "Plataforma de mensajería para equipos similar a Slack, centrada en privacidad e integración.",
+      "longDescription": "Mattermost es una app de mensajería para equipos que permite comunicación en tiempo real por canales, mensajes directos e integraciones con otras herramientas. Es ideal para empresas, equipos técnicos y organizaciones que quieren control total sobre su comunicación. Puede auto-hospedarse y tiene funciones como compartición de archivos, llamadas mediante plugin, soporte de webhooks e integración con Git, CI/CD y más.",
       "features": {
-        "1": "Mensagens por canais, grupos e conversas privadas",
-        "2": "Integrações com ferramentas como GitLab, Jira e CI/CD",
-        "3": "Foco em segurança, controle e uso corporativo"
+        "1": "Mensajes por canales, grupos y conversaciones privadas",
+        "2": "Integraciones con herramientas como GitLab, Jira y CI/CD",
+        "3": "Foco en seguridad, control y uso corporativo"
+      },
+      "reasonToUse": "Elige Mattermost si tu equipo de desarrollo necesita un Slack auto-hospedado con integración nativa a GitLab, GitHub y pipelines de CI/CD — es el más completo para flujos de trabajo DevOps.",
+      "challenges": {
+        "1": "El plan gratuito tiene limitaciones significativas — retención de mensajes, integraciones avanzadas y cumplimiento requieren el plan Enterprise, que tiene costo por usuario.",
+        "2": "Las llamadas de voz y vídeo dependen de plugins externos, a diferencia de Slack donde está integrado nativamente.",
+        "3": "En instancias con muchos canales y usuarios, el rendimiento puede degradarse sin una configuración cuidadosa de base de datos y caché."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Mattermost"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Mattermost"
       }
     },
     "bigbluebutton": {
-      "description": "Plataforma de videoconferência voltada para ensino online, com recursos como quadro branco e salas de aula.",
-      "longDescription": "BigBlueButton é uma ferramenta de videoconferência pensada para educação a distância. Ele permite criar salas de aula virtuais com vídeo, áudio, chat, apresentações, quadro branco colaborativo e até enquetes. Professores podem gravar aulas, dividir os participantes em grupos menores e acompanhar a interação em tempo real. Tudo pode ser hospedado em seu próprio servidor, garantindo controle e privacidade.",
+      "description": "Plataforma de videoconferencia orientada a la enseñanza en línea, con recursos como pizarra y aulas virtuales.",
+      "longDescription": "BigBlueButton es una herramienta de videoconferencia pensada para la educación a distancia. Permite crear aulas virtuales con vídeo, audio, chat, presentaciones, pizarra colaborativa e incluso encuestas. Los profesores pueden grabar clases, dividir a los participantes en grupos más pequeños y seguir la interacción en tiempo real. Todo puede alojarse en tu propio servidor, garantizando control y privacidad.",
       "features": {
-        "1": "Videoconferência com quadro branco e compartilhamento de tela",
-        "2": "Salas de aula com chat, enquetes e grupos de trabalho",
-        "3": "Recursos de gravação e moderação para ensino online"
+        "1": "Videoconferencia con pizarra y compartición de pantalla",
+        "2": "Aulas con chat, encuestas y grupos de trabajo",
+        "3": "Funciones de grabación y moderación para enseñanza en línea"
+      },
+      "reasonToUse": "Elige BigBlueButton si gestionas una plataforma de enseñanza a distancia y necesitas funciones pedagógicas (pizarra, salas de breakout, encuestas) integradas nativamente, sin pagar por Zoom o Google Meet.",
+      "challenges": {
+        "1": "Los requisitos del servidor son elevados: la instalación oficial requiere Ubuntu de 64 bits con al menos 8 núcleos de CPU y 16 GB de RAM para clases de 50+ estudiantes.",
+        "2": "La instalación es compleja y solo compatible con Ubuntu — no hay imagen Docker oficial estable para producción.",
+        "3": "El rendimiento de grabación y procesamiento de vídeo post-clase puede ser lento y consumir mucho espacio en disco."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o BigBlueButton"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda BigBlueButton"
       }
     },
     "gitlab": {
-      "description": "Plataforma completa de desenvolvimento colaborativo, com controle de código, CI/CD e gestão de projetos.",
-      "longDescription": "GitLab é uma ferramenta tudo-em-um para equipes de desenvolvimento. Além do controle de versão com Git, ele oferece recursos como repositórios privados, gestão de issues, merge requests, CI/CD, wiki e controle de acesso por permissões. Pode ser usado na nuvem oficial ou hospedado por você, garantindo total controle sobre seus projetos e dados. É uma alternativa robusta ao GitHub, com foco em privacidade e colaboração.",
+      "description": "Plataforma completa de desarrollo colaborativo con gestión de código, CI/CD y gestión de proyectos.",
+      "longDescription": "GitLab es una herramienta todo-en-uno para equipos de desarrollo. Además del control de versiones con Git, ofrece repositorios privados, gestión de issues, merge requests, CI/CD, wiki y control de acceso por permisos. Puede usarse en la nube oficial o alojarlo tú mismo, garantizando control total sobre tus proyectos y datos. Es una alternativa robusta a GitHub con foco en privacidad y colaboración.",
       "features": {
-        "1": "Repositórios Git com controle de acesso e histórico",
-        "2": "Integração nativa com CI/CD e pipelines automatizados",
-        "3": "Gestão de issues, merge requests, wikis e mais"
+        "1": "Repositorios Git con control de acceso e historial",
+        "2": "Integración nativa con CI/CD y pipelines automatizados",
+        "3": "Gestión de issues, merge requests, wikis y más"
+      },
+      "reasonToUse": "Elige GitLab auto-hospedado si tu equipo necesita CI/CD integrado, gestión de proyectos y repositorios privados en una sola plataforma sin depender de GitHub ni pagar planes corporativos.",
+      "challenges": {
+        "1": "GitLab es el software más pesado de esta lista — requiere al menos 4 GB de RAM (recomendado 8 GB) y puede ser lento en servidores modestos.",
+        "2": "Las actualizaciones deben seguir el orden secuencial de versiones; saltarse versiones puede corromper la base de datos y requiere procedimientos manuales de recuperación.",
+        "3": "El consumo de almacenamiento crece rápidamente con repositorios, artefactos de CI e imágenes Docker — la planificación del disco es esencial."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o GitLab"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda GitLab"
       }
     },
     "gitea": {
-      "description": "Plataforma leve de hospedagem de código, com interface simples e ideal para servidores próprios.",
-      "longDescription": "Gitea é uma alternativa leve e rápida ao GitHub e ao GitLab, perfeita para quem quer hospedar seus próprios repositórios Git. Ele oferece os recursos essenciais como issues, wiki, pull requests, CI via integração, controle de acesso e uma interface amigável. Por ser muito leve, funciona bem até em servidores modestos, sendo ideal para times pequenos, projetos pessoais ou organizações que querem mais controle com menos complexidade.",
+      "description": "Plataforma ligera de alojamiento de código con interfaz simple, ideal para servidores propios.",
+      "longDescription": "Gitea es una alternativa ligera y rápida a GitHub y GitLab, perfecta para quienes quieren alojar sus propios repositorios Git. Ofrece las funciones esenciales como issues, wiki, pull requests, CI mediante integración, control de acceso y una interfaz amigable. Por ser muy ligero, funciona bien incluso en servidores modestos, siendo ideal para equipos pequeños, proyectos personales u organizaciones que quieren más control con menos complejidad.",
       "features": {
-        "1": "Hospedagem de repositórios Git com web interface",
-        "2": "Suporte a issues, wikis, pull requests e permissões",
-        "3": "Leve e fácil de instalar, ideal para servidores pequenos"
+        "1": "Alojamiento de repositorios Git con interfaz web",
+        "2": "Soporte para issues, wikis, pull requests y permisos",
+        "3": "Ligero y fácil de instalar, ideal para servidores pequeños"
+      },
+      "reasonToUse": "Usa Gitea si quieres alojar repositorios Git en un servidor con recursos limitados — funciona bien con menos de 512 MB de RAM y es mucho más simple de instalar y mantener que GitLab.",
+      "challenges": {
+        "1": "El CI/CD nativo (Gitea Actions) sigue en desarrollo y es menos maduro que GitLab CI o GitHub Actions — los equipos con pipelines complejos necesitarán herramientas externas.",
+        "2": "El proyecto pasó por una bifurcación controvertida que generó Forgejo; parte de la comunidad migró, y elegir entre los dos puede ser confuso.",
+        "3": "Las funciones corporativas como LDAP avanzado, auditoría y cumplimiento son menos robustas que en GitLab o Bitbucket."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Gitea"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Gitea"
       }
     },
     "openproject": {
-      "description": "Ferramenta completa para gestão de projetos e tarefas, ideal para equipes organizadas.",
-      "longDescription": "OpenProject é uma plataforma de gerenciamento de projetos que permite planejar, acompanhar e colaborar em tarefas de forma eficiente. Ele oferece suporte a cronogramas (Gantt), quadros ágeis, acompanhamento de tempo, wikis e muito mais. Pode ser usado em equipes de qualquer tamanho, com controle de permissões e personalização. É uma ótima alternativa ao Jira e Trello, especialmente para quem prefere uma solução auto-hospedada.",
+      "description": "Herramienta completa para la gestión de proyectos y tareas, ideal para equipos organizados.",
+      "longDescription": "OpenProject es una plataforma de gestión de proyectos que permite planificar, seguir y colaborar en tareas de forma eficiente. Ofrece soporte para cronogramas (Gantt), tableros ágiles, seguimiento del tiempo, wikis y mucho más. Puede usarse en equipos de cualquier tamaño, con control de permisos y personalización. Es una excelente alternativa a Jira y Trello, especialmente para quienes prefieren una solución auto-hospedada.",
       "features": {
-        "1": "Gestão de tarefas com cronogramas, listas e quadros ágeis",
-        "2": "Controle de tempo, wikis e colaboração em equipe",
-        "3": "Interface web moderna e controle de permissões por projeto"
+        "1": "Gestión de tareas con cronogramas, listas y tableros ágiles",
+        "2": "Control de tiempo, wikis y colaboración en equipo",
+        "3": "Interfaz web moderna y control de permisos por proyecto"
+      },
+      "reasonToUse": "Elige OpenProject si necesitas gestión de proyectos con diagramas de Gantt reales, seguimiento del tiempo y roadmaps — funcionalidades que Trello y Plane no ofrecen nativamente.",
+      "challenges": {
+        "1": "La instalación requiere Ruby on Rails y PostgreSQL, con soporte oficial solo para paquetes DEB/RPM o Docker — las configuraciones alternativas no están soportadas.",
+        "2": "Las funciones como integración con GitLab/GitHub y gestión de presupuesto solo están disponibles en los planes de pago (Basic y superiores).",
+        "3": "La interfaz tiene muchas opciones y puede parecer excesivamente compleja para equipos pequeños que solo necesitan un tablero Kanban simple."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o OpenProject"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda OpenProject"
       }
     },
     "uptimekuma": {
-      "description": "Monitor de sites e serviços que avisa quando algo sai do ar, com painel bonito e fácil de usar.",
-      "longDescription": "Uptime Kuma é uma ferramenta para monitorar se seus sites, servidores ou serviços estão online. Ele verifica periodicamente os endereços que você configurar e envia alertas se algum deles ficar fora do ar. Você pode receber notificações por e-mail, Telegram, Discord e outros. O painel é simples, bonito e mostra o tempo de atividade (uptime) com gráficos e históricos. Tudo isso pode ser hospedado no seu próprio servidor, sem depender de serviços externos.",
+      "description": "Monitor de sitios y servicios que avisa cuando algo cae, con un panel bonito y fácil de usar.",
+      "longDescription": "Uptime Kuma es una herramienta para monitorear si tus sitios web, servidores o servicios están en línea. Comprueba periódicamente las direcciones que configures y envía alertas si alguna cae. Puedes recibir notificaciones por correo, Telegram, Discord y más. El panel es simple, bonito y muestra el tiempo de actividad con gráficos e historial. Todo esto puede alojarse en tu propio servidor, sin depender de servicios externos.",
       "features": {
-        "1": "Monitoramento de sites, servidores e serviços com alertas",
-        "2": "Notificações por e-mail, Telegram, Discord, Webhook e mais",
-        "3": "Painel com histórico, gráficos e status em tempo real"
+        "1": "Monitoreo de sitios, servidores y servicios con alertas",
+        "2": "Notificaciones por correo, Telegram, Discord, Webhook y más",
+        "3": "Panel con historial, gráficos y estado en tiempo real"
+      },
+      "reasonToUse": "Usa Uptime Kuma si necesitas monitorear tus servicios auto-hospedados y recibir alertas inmediatas cuando algo caiga — es la herramienta más simple y bonita para este fin, sin necesidad de configurar Zabbix o Nagios.",
+      "challenges": {
+        "1": "No tiene soporte para monitoreo completo de infraestructura (CPU, RAM, disco) — está centrado en la disponibilidad de endpoints, no en métricas del sistema.",
+        "2": "La base de datos SQLite predeterminada puede tener problemas de rendimiento con muchos monitores e historial largo — las instancias grandes necesitan migrar a MySQL.",
+        "3": "No tiene funcionalidades de programación de guardia ni escalado de alertas — para operaciones más grandes, herramientas como PagerDuty u OpsGenie son necesarias."
       },
       "links": {
-        "1": "Código Fonte",
-        "2": "Auto-hospede o Uptime Kuma"
+        "1": "Código Fuente",
+        "2": "Auto-hospeda Uptime Kuma"
       }
     },
     "plex": {
-      "description": "Servidor de mídia para organizar e assistir seus filmes, séries e músicas com visual profissional.",
-      "longDescription": "Plex é uma plataforma de streaming pessoal que permite organizar sua coleção de filmes, séries, músicas e fotos, e acessá-los de qualquer lugar. Ele tem uma interface polida, apps para celular, smart TVs e navegador. Embora tenha recursos pagos e funcione com uma conta na nuvem, também pode ser auto-hospedado para uso local. É ideal para quem busca uma experiência parecida com a Netflix, mas com sua própria biblioteca.",
+      "description": "Servidor multimedia para organizar y ver tus películas, series y música con aspecto profesional.",
+      "longDescription": "Plex es una plataforma de streaming personal que te permite organizar tu colección de películas, series, música y fotos, y acceder a ellas desde cualquier lugar. Tiene una interfaz pulida, apps para móvil, smart TVs y navegador. Aunque tiene funciones de pago y funciona con una cuenta en la nube, también puede auto-hospedarse para uso local. Es ideal para quienes buscan una experiencia similar a Netflix con su propia biblioteca.",
       "features": {
-        "1": "Streaming de mídia pessoal com interface moderna",
-        "2": "Apps para celular, navegador, smart TVs e consoles",
-        "3": "Funciona localmente ou com acesso remoto via conta Plex"
+        "1": "Streaming de medios personales con interfaz moderna",
+        "2": "Apps para móvil, navegador, smart TVs y consolas",
+        "3": "Funciona localmente o con acceso remoto mediante cuenta Plex"
+      },
+      "reasonToUse": "Elige Plex si quieres la mejor compatibilidad con smart TVs y consolas — las apps oficiales de Plex están disponibles en más plataformas que Jellyfin, con una experiencia más pulida.",
+      "challenges": {
+        "1": "Requiere una cuenta obligatoria en los servidores de Plex, incluso para uso exclusivamente local — esto significa que tus metadatos de uso pasan por la empresa.",
+        "2": "Las funciones importantes como acceso remoto y sincronización sin conexión requieren suscripción Plex Pass de pago.",
+        "3": "El código no es completamente abierto — dependes de la empresa para mantener las apps y servidores funcionando, sin garantía de continuidad."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte (parcial)",
-        "3": "Como auto-hospedar o Plex"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente (parcial)",
+        "3": "Cómo auto-hospedar Plex"
       }
     },
     "languagetool": {
-      "description": "Ferramenta de correção gramatical e ortográfica com suporte a vários idiomas, inclusive português.",
-      "longDescription": "LanguageTool é um corretor de texto inteligente que ajuda a revisar ortografia, gramática e estilo de escrita. Ele funciona em português e diversos outros idiomas, e pode ser usado como extensão no navegador, editor online ou integrado em apps como LibreOffice. Para quem prefere não depender da nuvem, é possível hospedar sua própria instância e manter a correção local e privada.",
+      "description": "Herramienta de corrección gramatical y ortográfica con soporte para varios idiomas, incluyendo español.",
+      "longDescription": "LanguageTool es un corrector de texto inteligente que ayuda a revisar ortografía, gramática y estilo de escritura. Funciona en español y muchos otros idiomas, y puede usarse como extensión del navegador, editor en línea o integrado en apps como LibreOffice. Para quienes prefieren no depender de la nube, es posible alojar tu propia instancia y mantener la corrección local y privada.",
       "features": {
-        "1": "Correção de ortografia, gramática e estilo de texto",
-        "2": "Suporte a vários idiomas, incluindo português do Brasil",
-        "3": "Extensões para navegador, integração com LibreOffice e API"
+        "1": "Corrección de ortografía, gramática y estilo de texto",
+        "2": "Soporte para varios idiomas, incluyendo español",
+        "3": "Extensiones para navegador, integración con LibreOffice y API"
+      },
+      "reasonToUse": "Usa LanguageTool auto-hospedado si trabajas con documentos sensibles y no quieres enviar texto a los servidores de Grammarly o similares — procesar localmente garantiza privacidad total.",
+      "challenges": {
+        "1": "El servidor Java consume bastante memoria — para soporte de múltiples idiomas simultáneamente, se recomiendan al menos 4–8 GB de RAM.",
+        "2": "La calidad de las sugerencias en español sigue siendo inferior al inglés — los errores de concordancia complejos y regionalismos son menos bien tratados.",
+        "3": "Las verificaciones más avanzadas de estilo y claridad (como las de Grammarly Premium) solo están disponibles en la versión de pago del servicio en línea."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o LanguageTool"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda LanguageTool"
       }
     },
     "owncast": {
-      "description": "Plataforma de streaming ao vivo auto-hospedada, ideal para criadores que querem independência.",
-      "longDescription": "Owncast permite fazer transmissões ao vivo diretamente do seu servidor, sem depender de plataformas centralizadas como Twitch ou YouTube. Você pode usar softwares comuns de streaming (como OBS) e transmitir para seu próprio site, com chat ao vivo e personalização visual. É uma ótima opção para quem quer mais controle, privacidade e liberdade no conteúdo transmitido.",
+      "description": "Plataforma de streaming en vivo auto-hospedada, ideal para creadores que quieren independencia.",
+      "longDescription": "Owncast permite hacer transmisiones en vivo directamente desde tu servidor, sin depender de plataformas centralizadas como Twitch o YouTube. Puedes usar software común de streaming (como OBS) y transmitir a tu propio sitio, con chat en vivo y personalización visual. Es una excelente opción para quienes quieren más control, privacidad y libertad sobre el contenido transmitido.",
       "features": {
-        "1": "Streaming ao vivo com chat integrado e personalização visual",
-        "2": "Compatível com OBS e outras ferramentas de transmissão",
-        "3": "Funciona no seu próprio servidor, sem anúncios nem rastreamento"
+        "1": "Streaming en vivo con chat integrado y personalización visual",
+        "2": "Compatible con OBS y otras herramientas de transmisión",
+        "3": "Funciona en tu propio servidor, sin anuncios ni rastreo"
+      },
+      "reasonToUse": "Usa Owncast si quieres hacer streaming en vivo sin depender de los algoritmos y políticas de Twitch o YouTube, manteniendo control total sobre tu audiencia y contenido.",
+      "challenges": {
+        "1": "Las transmisiones en vivo requieren un generoso ancho de banda de subida en el servidor — los streams en 1080p60 pueden consumir 6–10 Mbps de subida constante.",
+        "2": "La transcodificación de múltiples calidades (para espectadores con conexiones lentas) requiere CPU considerable — sin transcodificación, los espectadores con internet limitado pueden tener problemas.",
+        "3": "No tiene sistema de descubrimiento — tu audiencia necesita saber la dirección de tu servidor; no hay plataforma centralizada para que nuevos espectadores te encuentren."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Owncast"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Owncast"
       }
     },
     "azuracast": {
-      "description": "Sistema completo para criar e gerenciar uma rádio online, com streaming, agendamento e estatísticas.",
-      "longDescription": "AzuraCast é uma plataforma auto-hospedada que permite transmitir áudio ao vivo ou programado como uma rádio online. Ele inclui tudo o que você precisa: painel de controle, gerenciamento de músicas, playlists, agendamento de transmissões, estatísticas de ouvintes e suporte a streaming ao vivo. É ideal para rádios comunitárias, projetos independentes ou quem quer explorar o mundo da transmissão de áudio pela internet com total controle.",
+      "description": "Sistema completo para crear y gestionar una radio en línea, con streaming, programación y estadísticas.",
+      "longDescription": "AzuraCast es una plataforma auto-hospedada que permite transmitir audio en vivo o programado como una radio en línea. Incluye todo lo que necesitas: panel de control, gestión de música, playlists, programación de transmisiones, estadísticas de oyentes y soporte para streaming en vivo. Es ideal para radios comunitarias, proyectos independientes o quienes quieren explorar el mundo de la transmisión de audio por internet con control total.",
       "features": {
-        "1": "Gerenciamento de estações, playlists e transmissões ao vivo",
-        "2": "Agendamento de programação automática com base em horários",
-        "3": "Dashboard completo com estatísticas de audiência e logs"
+        "1": "Gestión de estaciones, playlists y transmisiones en vivo",
+        "2": "Programación automática basada en franjas horarias",
+        "3": "Panel completo con estadísticas de audiencia y registros"
+      },
+      "reasonToUse": "Elige AzuraCast si quieres crear una radio en línea comunitaria o independiente con automatización de programación, sin pagar planes mensuales de servicios como Radio.co.",
+      "challenges": {
+        "1": "La instalación usa Docker y un script propio que toma control total del servidor — no se recomienda instalar en un servidor que ya aloja otros servicios sin aislamiento adecuado.",
+        "2": "Las transmisiones con muchos oyentes simultáneos requieren ancho de banda significativo — cada oyente a 128 kbps consume cerca de 16 KB/s de subida.",
+        "3": "Las actualizaciones de AzuraCast pueden ser inestables en instalaciones de larga data; la migración entre versiones mayores a veces requiere reconfiguración manual."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o AzuraCast"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda AzuraCast"
       }
     },
     "keycloak": {
-      "description": "Sistema de login centralizado, com autenticação única (SSO), permissões e integração com outros serviços.",
-      "longDescription": "Keycloak é uma ferramenta de gerenciamento de identidade e acesso (IAM) que permite centralizar logins de vários sistemas em um só lugar. Com ele, é possível oferecer login único (SSO), autenticação com redes sociais, dois fatores (2FA) e controle de permissões por grupo ou função. Ele é ideal para equipes, empresas ou projetos que usam vários serviços e querem facilitar o acesso de forma segura. Tudo pode ser auto-hospedado, sem depender de soluções externas.",
+      "description": "Sistema de inicio de sesión centralizado con autenticación única (SSO), permisos e integración con otros servicios.",
+      "longDescription": "Keycloak es una herramienta de gestión de identidad y acceso (IAM) que permite centralizar los inicios de sesión de múltiples sistemas en un solo lugar. Con ella, puedes ofrecer inicio de sesión único (SSO), autenticación con redes sociales, doble factor (2FA) y control de permisos por grupo o rol. Es ideal para equipos, empresas o proyectos que usan varios servicios y quieren facilitar el acceso de forma segura. Todo puede auto-hospedarse sin depender de soluciones externas.",
       "features": {
-        "1": "Login único (SSO) para múltiplos sistemas",
-        "2": "Autenticação com redes sociais, LDAP, 2FA e mais",
-        "3": "Painel completo de gestão de usuários, grupos e permissões"
+        "1": "Inicio de sesión único (SSO) para múltiples sistemas",
+        "2": "Autenticación con redes sociales, LDAP, 2FA y más",
+        "3": "Panel completo de gestión de usuarios, grupos y permisos"
+      },
+      "reasonToUse": "Usa Keycloak si gestionas múltiples servicios auto-hospedados y quieres que los usuarios inicien sesión una sola vez para acceder a todo — es el estándar de la industria para SSO corporativo de código abierto.",
+      "challenges": {
+        "1": "Keycloak consume mucha memoria — la recomendación oficial es al menos 512 MB de heap Java, y en producción con muchos usuarios puede requerir 2–4 GB.",
+        "2": "La interfaz de administración es compleja; configurar flujos de autenticación, alcances de token e integraciones SAML requiere conocimiento especializado.",
+        "3": "Las actualizaciones de versión mayor frecuentemente traen cambios de configuración incompatibles, requiriendo migración manual de realm y revisión de integraciones."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Keycloak"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Keycloak"
       }
     },
     "wordpress": {
-      "description": "Plataforma popular para criação de sites e blogs, com milhares de plugins e temas disponíveis.",
-      "longDescription": "WordPress é uma das ferramentas mais usadas no mundo para criar sites, blogs e lojas online. Com ele, você pode montar desde uma página simples até um portal completo, usando temas prontos e plugins para adicionar funções. Apesar de ser oferecido como serviço por empresas como WordPress.com, ele também pode ser auto-hospedado, dando a você total controle sobre o conteúdo e a personalização.",
+      "description": "Plataforma popular para crear sitios web y blogs, con miles de plugins y temas disponibles.",
+      "longDescription": "WordPress es una de las herramientas más usadas en el mundo para crear sitios web, blogs y tiendas en línea. Con ella, puedes montar desde una página simple hasta un portal completo, usando temas listos y plugins para añadir funciones. A pesar de ser ofrecido como servicio por empresas como WordPress.com, también puede auto-hospedarse, dándote control total sobre el contenido y la personalización.",
       "features": {
-        "1": "Criação de sites e blogs com temas e plugins",
-        "2": "Painel de administração intuitivo e traduzido para o português",
-        "3": "Grande comunidade e documentação acessível"
+        "1": "Creación de sitios y blogs con temas y plugins",
+        "2": "Panel de administración intuitivo traducido a múltiples idiomas",
+        "3": "Gran comunidad y documentación accesible"
+      },
+      "reasonToUse": "Elige WordPress si necesitas el mayor ecosistema de plugins y temas disponible — ninguna otra plataforma tiene más opciones para e-commerce, SEO, formularios e integraciones.",
+      "challenges": {
+        "1": "Los sitios WordPress son objetivos frecuentes de ataques automatizados — mantener plugins y temas actualizados es obligatorio y los plugins abandonados son vectores de compromiso.",
+        "2": "El rendimiento puede degradarse con muchos plugins activos; sin caché configurada (Redis, Varnish), los sitios de mediano tamaño pueden volverse lentos.",
+        "3": "La proliferación de plugins puede crear dependencias conflictivas y dificultar las actualizaciones — el 'infierno de plugins' es un problema real en instalaciones complejas."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o WordPress"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda WordPress"
       }
     },
     "atprotocol": {
-      "description": "Protocolo criado para redes sociais descentralizadas, mas por enquanto limitado ao uso no Bluesky.",
-      "longDescription": "AT Protocol foi desenvolvido para ser a base técnica do Bluesky, uma rede social descentralizada que surgiu como alternativa ao Twitter. Ele promete oferecer controle de identidade, portabilidade de dados e interoperabilidade. É um protocolo aberto, mas atualmente seu uso está restrito à infraestrutura do Bluesky, sem suporte a federação nem uso por terceiros.",
+      "description": "Protocolo creado para redes sociales descentralizadas, pero actualmente limitado al uso en Bluesky.",
+      "longDescription": "AT Protocol fue desarrollado para ser la base técnica de Bluesky, una red social descentralizada que surgió como alternativa a Twitter. Promete ofrecer control de identidad, portabilidad de datos e interoperabilidad. Es un protocolo abierto, pero actualmente su uso está restringido a la infraestructura de Bluesky, sin soporte a federación ni uso por terceros.",
       "features": {
-        "1": "Foco em redes sociais descentralizadas com identidade portátil",
-        "2": "Desenvolvido junto com a plataforma Bluesky",
-        "3": "Ainda não amplamente adotado nem implementado fora do Bluesky"
+        "1": "Foco en redes sociales descentralizadas con identidad portátil",
+        "2": "Desarrollado junto con la plataforma Bluesky",
+        "3": "Aún no ampliamente adoptado ni implementado fuera de Bluesky"
+      },
+      "reasonToUse": "Estudia AT Protocol si tienes interés en construir aplicaciones sociales descentralizadas con identidad portátil basada en dominios DNS — es un enfoque diferente e interesante comparado con ActivityPub.",
+      "challenges": {
+        "1": "Ejecutar tu propio PDS (Personal Data Server) es posible pero la experiencia sigue siendo experimental, y la integración con la red de Bluesky depende de la infraestructura centralizada de la empresa.",
+        "2": "No hay federación real todavía — todas las búsquedas y feeds pasan por los servidores centrales de Bluesky, contradiciendo la promesa de descentralización.",
+        "3": "El protocolo sigue en evolución activa; las implementaciones de terceros enfrentan cambios de API sin previo aviso y documentación incompleta."
       },
       "links": {
-        "1": "Site oficial do AT Protocol",
-        "2": "Código Fonte",
-        "3": "Sobre o Bluesky"
+        "1": "Sitio oficial de AT Protocol",
+        "2": "Código Fuente",
+        "3": "Sobre Bluesky"
       }
     },
     "bluesky": {
-      "description": "Rede social baseada no AT Protocol, com proposta descentralizada em desenvolvimento.",
-      "longDescription": "Bluesky é uma rede social que se apresenta como uma alternativa descentralizada ao Twitter. Ele funciona sobre o AT Protocol, que oferece portabilidade de identidade e interoperabilidade entre servidores. No momento, porém, ainda depende de uma instância central (bsky.social) e não oferece suporte a federação ou auto-hospedagem.",
+      "description": "Red social basada en AT Protocol, con propuesta descentralizada en desarrollo.",
+      "longDescription": "Bluesky es una red social que se presenta como una alternativa descentralizada a Twitter. Funciona sobre AT Protocol, que ofrece portabilidad de identidad e interoperabilidad entre servidores. Por el momento, sin embargo, aún depende de una instancia central (bsky.social) y no ofrece soporte a federación ni auto-hospedaje.",
       "features": {
-        "1": "Interface parecida com o Twitter, com postagens, curtidas e reposts",
-        "2": "Protocolo próprio (AT Protocol), mas com uso limitado",
-        "3": "Promessa de descentralização ainda não concretizada"
+        "1": "Interfaz similar a Twitter con publicaciones, me gusta y reposts",
+        "2": "Protocolo propio (AT Protocol), pero con uso limitado",
+        "3": "Promesa de descentralización aún no concretada"
+      },
+      "reasonToUse": "Usa Bluesky si quieres una alternativa a Twitter/X con interfaz familiar y un sistema de feeds personalizados — los algoritmos de timeline son públicos y personalizables, a diferencia de Twitter.",
+      "challenges": {
+        "1": "La descentralización sigue siendo incompleta — la mayoría de los usuarios depende de bsky.social y la infraestructura central de la empresa es un punto único de fallo.",
+        "2": "Auto-hospedar un PDS y participar en la red con independencia real requiere conocimiento técnico avanzado y la experiencia sigue siendo inestable.",
+        "3": "La moderación de contenido es menos madura que en Mastodon — las herramientas de bloqueo y filtrado están evolucionando pero siguen siendo básicas."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte (cliente e protocolo)",
-        "3": "Saiba mais sobre o AT Protocol"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente (cliente y protocolo)",
+        "3": "Conoce más sobre AT Protocol"
       }
     },
     "rss": {
-      "description": "Protocolo aberto para seguir atualizações de sites e blogs, sem depender de algoritmos ou redes sociais.",
-      "longDescription": "RSS é um protocolo simples que permite acompanhar as novidades de sites, blogs, podcasts e canais de vídeo em um só lugar. Você usa um leitor de RSS para reunir os conteúdos em formato de feed, de forma limpa, sem anúncios, algoritmos ou rastreadores. É uma das formas mais antigas e confiáveis de seguir conteúdos na web, e continua sendo usado por quem busca mais autonomia e menos distrações.",
+      "description": "Protocolo abierto para seguir actualizaciones de sitios web y blogs, sin depender de algoritmos o redes sociales.",
+      "longDescription": "RSS es un protocolo simple que permite seguir las novedades de sitios web, blogs, podcasts y canales de vídeo en un solo lugar. Usas un lector de RSS para reunir los contenidos en formato de feed, de forma limpia, sin anuncios, algoritmos ni rastreadores. Es una de las formas más antiguas y confiables de seguir contenido en la web, y sigue siendo usado por quienes buscan más autonomía y menos distracciones.",
       "features": {
-        "1": "Atualizações automáticas de sites, blogs, podcasts e mais",
-        "2": "Funciona com qualquer leitor de RSS, online ou auto-hospedado",
-        "3": "Sem algoritmos, sem rastreio, só o conteúdo que você escolhe"
+        "1": "Actualizaciones automáticas de sitios, blogs, podcasts y más",
+        "2": "Funciona con cualquier lector de RSS, en línea o auto-hospedado",
+        "3": "Sin algoritmos, sin rastreo, solo el contenido que eliges"
+      },
+      "reasonToUse": "Usa RSS si quieres seguir decenas de fuentes de contenido en un solo lugar, sin abrir cada sitio individualmente y sin ser manipulado por algoritmos que deciden qué ves.",
+      "challenges": {
+        "1": "Muchos sitios modernos han abandonado el soporte a RSS — plataformas como Instagram, TikTok y LinkedIn no ofrecen feeds, requiriendo herramientas como RSSHub para sortear esto.",
+        "2": "La curva de aprendizaje para configurar un lector de RSS y organizar múltiples feeds puede ser una barrera para usuarios menos técnicos.",
+        "3": "Auto-hospedar un lector de RSS (como FreshRSS o Miniflux) requiere mantenimiento del servidor, a diferencia de usar una app gratuita como Feedly."
       },
       "links": {
-        "1": "que é RSS?",
-        "2": "Leitores de RSS recomendados",
-        "3": "Gere feeds com o RSSHub"
+        "1": "¿Qué es RSS?",
+        "2": "Lectores de RSS recomendados",
+        "3": "Genera feeds con RSSHub"
       }
     },
     "atom": {
-      "description": "Formato aberto de feed, similar ao RSS, criado para ser mais flexível e moderno.",
-      "longDescription": "Atom é um formato de feed criado como alternativa ao RSS, oferecendo mais padronização e extensibilidade. Assim como o RSS, ele permite acompanhar atualizações de sites, blogs e outros conteúdos diretamente em um leitor de feeds. Embora seja menos comum, muitos sites ainda oferecem suporte ao Atom, e a maioria dos leitores modernos é compatível com os dois formatos. É mais uma opção para quem quer acompanhar a web sem depender de redes sociais.",
+      "description": "Formato abierto de feed, similar a RSS, creado para ser más flexible y moderno.",
+      "longDescription": "Atom es un formato de feed creado como alternativa a RSS, ofreciendo más estandarización y extensibilidad. Como RSS, permite seguir actualizaciones de sitios web, blogs y otros contenidos directamente en un lector de feeds. Aunque es menos común, muchos sitios aún ofrecen soporte a Atom, y la mayoría de los lectores modernos son compatibles con ambos formatos. Es otra opción para quienes quieren seguir la web sin depender de redes sociales.",
       "features": {
-        "1": "Permite seguir atualizações de sites e blogs em tempo real",
-        "2": "Compatível com a maioria dos leitores de RSS",
-        "3": "Mais estruturado e extensível que o RSS, com padrão oficial (IETF)"
+        "1": "Permite seguir actualizaciones de sitios y blogs en tiempo real",
+        "2": "Compatible con la mayoría de los lectores de RSS",
+        "3": "Más estructurado y extensible que RSS, con estándar oficial (IETF)"
+      },
+      "reasonToUse": "Usa Atom si estás desarrollando una plataforma de publicación y necesitas un formato de feed más estandarizado y extensible que RSS — la especificación IETF es más rigurosa y menos ambigua.",
+      "challenges": {
+        "1": "Atom tiene menor adopción que RSS entre sitios y blogs modernos, lo que significa que no todos los sitios ofrecen feeds Atom.",
+        "2": "Para los usuarios finales, la diferencia práctica entre RSS y Atom es irrelevante — la elección del formato es más relevante para los desarrolladores.",
+        "3": "Como RSS, depende de que los sitios publiquen y mantengan los feeds actualizados — los sitios que abandonan el soporte a feeds dejan de poder seguirse."
       },
       "links": {
-        "1": "que é Atom?",
-        "2": "Leitores de feed compatíveis",
-        "3": "Gere feeds com o RSSHub"
+        "1": "¿Qué es Atom?",
+        "2": "Lectores de feed compatibles",
+        "3": "Genera feeds con RSSHub"
       }
     },
     "bittorrent": {
-      "description": "Protocolo descentralizado para compartilhar arquivos entre usuários, sem depender de servidores centrais.",
-      "longDescription": "BitTorrent é um protocolo usado para distribuir arquivos grandes pela internet de forma eficiente e descentralizada. Em vez de baixar de um servidor único, os arquivos são divididos em partes e compartilhados entre todos que estão baixando ou já baixaram. Isso reduz o custo para quem distribui e torna o sistema mais resistente a censura e falhas. É usado em diversos contextos, de distribuição de software livre a arquivos pessoais.",
+      "description": "Protocolo descentralizado para compartir archivos entre usuarios, sin depender de servidores centrales.",
+      "longDescription": "BitTorrent es un protocolo usado para distribuir archivos grandes por internet de forma eficiente y descentralizada. En lugar de descargar de un único servidor, los archivos se dividen en partes y se comparten entre todos los que están descargando o ya han descargado. Esto reduce el costo para quien distribuye y hace el sistema más resistente a la censura y fallos. Se usa en diversos contextos, desde distribución de software libre a archivos personales.",
       "features": {
-        "1": "Compartilhamento direto entre usuários (peer-to-peer)",
-        "2": "Descentralizado e resistente a falhas e censura",
-        "3": "Usado para distribuir software, vídeos, músicas e outros arquivos"
+        "1": "Compartición directa entre usuarios (peer-to-peer)",
+        "2": "Descentralizado y resistente a fallos y censura",
+        "3": "Usado para distribuir software, vídeos, música y otros archivos"
+      },
+      "reasonToUse": "Usa BitTorrent si distribuyes archivos grandes (como ISOs de software o datasets) y quieres reducir el costo de ancho de banda del servidor — cuanto más gente descarga, más rápido se vuelve para todos.",
+      "challenges": {
+        "1": "Las direcciones IP de los participantes quedan expuestas a todos los demás peers del swarm por defecto, lo que puede ser un problema de privacidad.",
+        "2": "Los trackers centralizados siguen siendo comunes y pueden ser eliminados — aunque DHT y PEX permiten operación sin tracker, no todos los clientes los soportan bien.",
+        "3": "En redes corporativas e ISPs, el tráfico BitTorrent frecuentemente está bloqueado o limitado (throttling), lo que puede hacer inviable su uso."
       },
       "links": {
-        "1": "que é BitTorrent?",
+        "1": "¿Qué es BitTorrent?",
         "2": "Clientes recomendados",
-        "3": "Código do protocolo (BEPs)"
+        "3": "Código del protocolo (BEPs)"
       }
     },
     "nostr": {
-      "description": "Protocolo experimental para redes sociais descentralizadas, baseado em chaves públicas e relays.",
-      "longDescription": "Nostr (Notes and Other Stuff Transmitted by Relays) é um protocolo criado para redes sociais descentralizadas, simples e resistente à censura. Ele usa chaves criptográficas para identificar usuários e servidores chamados relays para transmitir mensagens. Qualquer pessoa pode rodar um relay ou cliente, mas o ecossistema ainda está em fase experimental, com poucas aplicações maduras e limitações de usabilidade. É popular entre entusiastas da descentralização e do Bitcoin, mas ainda longe de adoção ampla.",
+      "description": "Protocolo experimental para redes sociales descentralizadas, basado en claves públicas y relays.",
+      "longDescription": "Nostr (Notes and Other Stuff Transmitted by Relays) es un protocolo creado para redes sociales descentralizadas, simple y resistente a la censura. Usa claves criptográficas para identificar usuarios y servidores llamados relays para transmitir mensajes. Cualquiera puede ejecutar un relay o cliente, pero el ecosistema aún está en fase experimental, con pocas aplicaciones maduras y limitaciones de usabilidad. Es popular entre los entusiastas de la descentralización y Bitcoin, pero aún lejos de una adopción amplia.",
       "features": {
-        "1": "Baseado em criptografia de chave pública (sem e-mail ou senha)",
-        "2": "Mensagens são transmitidas por relays públicos ou privados",
-        "3": "Foco em resistência à censura e simplicidade técnica"
+        "1": "Basado en criptografía de clave pública (sin correo ni contraseña)",
+        "2": "Los mensajes se transmiten mediante relays públicos o privados",
+        "3": "Foco en resistencia a la censura y simplicidad técnica"
+      },
+      "reasonToUse": "Usa Nostr si quieres una red social sin ningún servidor central obligatorio y con identidad basada en claves criptográficas — es la opción más resistente a la censura entre los protocolos de esta lista.",
+      "challenges": {
+        "1": "La experiencia de usuario sigue siendo inmadura — perder la clave privada significa pérdida permanente de la identidad, sin recuperación posible.",
+        "2": "El spam y el contenido abusivo son difíciles de moderar sin comprometer la resistencia a la censura — los relays públicos frecuentemente son inundados.",
+        "3": "El descubrimiento de contenido y personas es limitado — no hay algoritmo de recomendación y encontrar usuarios fuera de tu círculo es difícil."
       },
       "links": {
-        "1": "Site oficial do Nostr",
-        "2": "Lista de clientes e relays",
-        "3": "Código do protocolo"
+        "1": "Sitio oficial de Nostr",
+        "2": "Lista de clientes y relays",
+        "3": "Código del protocolo"
       }
     },
     "tor": {
-      "description": "Rede anônima que protege sua identidade e permite acessar sites .onion fora da internet tradicional.",
-      "longDescription": "Tor (The Onion Router) é um protocolo que permite navegar na internet de forma anônima, escondendo seu endereço IP e localização. Ele funciona roteando o tráfego por uma rede distribuída de servidores voluntários, dificultando rastreamento e vigilância. Além disso, permite acessar serviços ocultos com endereços .onion, que não estão disponíveis pela web convencional. O Tor é usado por jornalistas, ativistas, pesquisadores e qualquer pessoa que queira mais privacidade online.",
+      "description": "Red anónima que protege tu identidad y permite acceder a sitios .onion fuera de internet tradicional.",
+      "longDescription": "Tor (The Onion Router) es un protocolo que permite navegar por internet de forma anónima, ocultando tu dirección IP y ubicación. Funciona enrutando el tráfico a través de una red distribuida de servidores voluntarios, dificultando el rastreo y la vigilancia. Además, permite acceder a servicios ocultos con direcciones .onion, que no están disponibles en la web convencional. Tor es usado por periodistas, activistas, investigadores y cualquiera que quiera más privacidad en línea.",
       "features": {
-        "1": "Navegação anônima e proteção contra rastreamento",
-        "2": "Acesso a serviços e sites .onion fora da web comum",
-        "3": "Funciona com o Navegador Tor e pode ser integrado a apps e servidores"
+        "1": "Navegación anónima y protección contra el rastreo",
+        "2": "Acceso a servicios y sitios .onion fuera de la web común",
+        "3": "Funciona con el Navegador Tor y puede integrarse en apps y servidores"
+      },
+      "reasonToUse": "Usa Tor si necesitas anonimato real en internet — es la herramienta estándar para periodistas, activistas e investigadores que necesitan proteger su identidad frente a la vigilancia.",
+      "challenges": {
+        "1": "La velocidad de navegación es significativamente menor que una conexión directa — el enrutamiento a través de múltiples nodos añade latencia considerable.",
+        "2": "Algunos sitios bloquean activamente las conexiones provenientes de nodos de salida de Tor, requiriendo puentes (bridges) para sortear esto.",
+        "3": "Ejecutar un nodo de salida Tor puede atraer atención legal, ya que el tráfico de terceros pasa por tu IP — ejecutar solo nodos intermedios es más seguro."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Como usar o Tor"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Cómo usar Tor"
       }
     },
     "grafana": {
-      "description": "Ferramenta para criar dashboards e visualizar métricas de sistemas, servidores e aplicações.",
-      "longDescription": "Grafana é uma plataforma de visualização de dados usada para monitorar servidores, aplicações, bancos de dados e qualquer outra fonte de métricas. Ele permite criar painéis interativos com gráficos, alertas e consultas personalizadas. Pode ser integrado com Prometheus, InfluxDB, Loki, PostgreSQL e muitos outros. É muito usado por equipes de infraestrutura e desenvolvimento, e pode ser auto-hospedado para manter o controle total das informações.",
+      "description": "Herramienta para crear paneles de control y visualizar métricas de sistemas, servidores y aplicaciones.",
+      "longDescription": "Grafana es una plataforma de visualización de datos usada para monitorear servidores, aplicaciones, bases de datos y cualquier otra fuente de métricas. Permite crear paneles interactivos con gráficos, alertas y consultas personalizadas. Puede integrarse con Prometheus, InfluxDB, Loki, PostgreSQL y muchos más. Es ampliamente usado por equipos de infraestructura y desarrollo, y puede auto-hospedarse para mantener control total de la información.",
       "features": {
-        "1": "Dashboards interativos com gráficos e métricas em tempo real",
-        "2": "Alertas personalizáveis e suporte a várias fontes de dados",
-        "3": "Integração com Prometheus, Loki, InfluxDB, PostgreSQL e mais"
+        "1": "Paneles interactivos con gráficos y métricas en tiempo real",
+        "2": "Alertas personalizables y soporte para varias fuentes de datos",
+        "3": "Integración con Prometheus, Loki, InfluxDB, PostgreSQL y más"
+      },
+      "reasonToUse": "Usa Grafana si ya recopilas métricas con Prometheus u otro sistema y necesitas paneles visuales potentes — es la herramienta de visualización estándar en el ecosistema de observabilidad de código abierto.",
+      "challenges": {
+        "1": "Grafana por sí mismo no recopila métricas — necesitas una fuente de datos separada como Prometheus o InfluxDB, lo que aumenta la complejidad de la infraestructura.",
+        "2": "Las alertas avanzadas, autenticación SAML/OAuth y permisos granulares por carpeta solo están disponibles en Grafana Enterprise (de pago).",
+        "3": "Los paneles complejos con muchas consultas simultáneas pueden sobrecargar la base de datos de métricas — optimizar las consultas PromQL requiere conocimiento especializado."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Grafana"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Grafana"
       }
     },
     "prometheus": {
-      "description": "Sistema de monitoramento e coleta de métricas, usado para acompanhar a saúde de servidores e aplicações.",
-      "longDescription": "Prometheus é uma ferramenta de monitoramento que coleta, armazena e consulta métricas de sistemas, aplicações, containers e serviços. Ele usa um modelo de dados baseado em séries temporais e uma linguagem própria (PromQL) para criar alertas e análises. É muito usado em ambientes com Docker e Kubernetes, e pode ser integrado ao Grafana para visualização. Por ser auto-hospedado, você tem total controle sobre as métricas e alertas do seu ambiente.",
+      "description": "Sistema de monitoreo y recopilación de métricas, usado para seguir la salud de servidores y aplicaciones.",
+      "longDescription": "Prometheus es una herramienta de monitoreo que recopila, almacena y consulta métricas de sistemas, aplicaciones, contenedores y servicios. Usa un modelo de datos basado en series temporales y un lenguaje propio (PromQL) para crear alertas y análisis. Es muy usado en entornos con Docker y Kubernetes, y puede integrarse con Grafana para visualización. Al ser auto-hospedado, tienes control total sobre las métricas y alertas de tu entorno.",
       "features": {
-        "1": "Coleta automática de métricas em formato de séries temporais",
-        "2": "Sistema de alertas com regras personalizadas",
-        "3": "Integração com Grafana para visualização de dashboards"
+        "1": "Recopilación automática de métricas en formato de series temporales",
+        "2": "Sistema de alertas con reglas personalizadas",
+        "3": "Integración con Grafana para visualización de paneles"
+      },
+      "reasonToUse": "Usa Prometheus si operas infraestructura con Docker o Kubernetes y necesitas monitoreo de métricas en series temporales — es el estándar de la industria en ese ecosistema.",
+      "challenges": {
+        "1": "El almacenamiento local de Prometheus no es adecuado para retención a largo plazo — los entornos que necesitan meses de historial deben usar soluciones como Thanos o VictoriaMetrics.",
+        "2": "PromQL tiene una curva de aprendizaje real — escribir consultas eficientes para alertas complejas requiere práctica y familiaridad con el modelo de datos.",
+        "3": "Prometheus no tiene autenticación nativa — exponer la interfaz sin un proxy inverso con autenticación significa exponer todas las métricas públicamente."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Prometheus"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Prometheus"
       }
     },
     "funkwhale": {
-      "description": "Plataforma descentralizada para ouvir e compartilhar músicas, parecida com um Spotify federado.",
-      "longDescription": "Funkwhale é uma plataforma de streaming de áudio que permite hospedar, organizar e compartilhar músicas de forma descentralizada. Ele funciona com instâncias federadas usando ActivityPub, o que permite seguir e ouvir conteúdo de outras instâncias, como no Mastodon. Pode ser usado para coleções pessoais, rádios comunitárias ou catálogos colaborativos. É uma ótima alternativa ao Spotify, mas com foco em liberdade e controle dos dados.",
+      "description": "Plataforma descentralizada para escuchar y compartir música, similar a un Spotify federado.",
+      "longDescription": "Funkwhale es una plataforma de streaming de audio que permite alojar, organizar y compartir música de forma descentralizada. Funciona con instancias federadas usando ActivityPub, lo que permite seguir y escuchar contenido de otras instancias, como en Mastodon. Puede usarse para colecciones personales, radios comunitarias o catálogos colaborativos. Es una excelente alternativa a Spotify, pero centrada en la libertad y el control de los datos.",
       "features": {
-        "1": "Streaming de áudio com interface web e suporte a coleções pessoais",
-        "2": "Integração com o Fediverso via ActivityPub",
-        "3": "Ideal para rádios comunitárias, artistas independentes ou uso pessoal"
+        "1": "Streaming de audio con interfaz web y soporte para colecciones personales",
+        "2": "Integración con el Fediverso mediante ActivityPub",
+        "3": "Ideal para radios comunitarias, artistas independientes o uso personal"
+      },
+      "reasonToUse": "Usa Funkwhale si eres artista independiente o gestionas un archivo musical y quieres distribuir tu música sin depender de plataformas que toman porcentajes de las reproducciones.",
+      "challenges": {
+        "1": "La instalación requiere Python, PostgreSQL, Redis y un servidor de archivos — es más compleja que otras plataformas del Fediverso.",
+        "2": "El proyecto tiene un ritmo de desarrollo lento y el equipo de mantenedores es pequeño — las actualizaciones y correcciones de errores pueden tardar.",
+        "3": "El descubrimiento de música entre instancias es limitado — la federación con otras plataformas del Fediverso es parcial y puede ser inconsistente."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o Funkwhale"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda Funkwhale"
       }
     },
     "irc": {
-      "description": "Protocolo clássico de chat em tempo real, usado desde os primórdios da internet para conversas em grupo.",
-      "longDescription": "IRC (Internet Relay Chat) é um dos protocolos de comunicação mais antigos da internet, criado para bate-papo em tempo real. Ele permite que pessoas entrem em canais (salas de conversa) ou troquem mensagens diretas em servidores públicos ou privados. Apesar da idade, o IRC ainda é usado por muitas comunidades técnicas e projetos de software livre. É leve, simples, funciona em qualquer lugar e pode ser hospedado por você para manter controle total.",
+      "description": "Protocolo clásico de chat en tiempo real, usado desde los inicios de internet para conversaciones en grupo.",
+      "longDescription": "IRC (Internet Relay Chat) es uno de los protocolos de comunicación más antiguos de internet, creado para el chat en tiempo real. Permite que las personas entren en canales (salas de chat) o intercambien mensajes directos en servidores públicos o privados. A pesar de su antigüedad, IRC sigue siendo usado por muchas comunidades técnicas y proyectos de software libre. Es ligero, simple, funciona en cualquier lugar y puede alojarse tú mismo para mantener el control total.",
       "features": {
-        "1": "Salas de bate-papo em tempo real (canais) e mensagens diretas",
-        "2": "Leve, rápido e funciona até em conexões lentas",
-        "3": "Pode ser auto-hospedado e integrado a bots e scripts"
+        "1": "Salas de chat en tiempo real (canales) y mensajes directos",
+        "2": "Ligero, rápido y funciona incluso en conexiones lentas",
+        "3": "Puede auto-hospedarse e integrarse con bots y scripts"
+      },
+      "reasonToUse": "Usa IRC si gestionas o participas en comunidades técnicas que ya usan este protocolo — es extremadamente ligero, estandarizado y funciona en cualquier cliente, desde la terminal hasta el navegador.",
+      "challenges": {
+        "1": "No tiene persistencia de mensajes por defecto — si te desconectas, pierdes todo lo enviado mientras estabas desconectado (requiere bouncer o cliente persistente como The Lounge).",
+        "2": "Sin cifrado nativo entre cliente y servidor en muchas implementaciones — requiere configuración explícita de TLS y el contenido de los mensajes puede ser visto por el administrador del servidor.",
+        "3": "La experiencia es considerada anticuada por usuarios acostumbrados a WhatsApp o Telegram — sin vista previa de enlaces, reacciones ni historial sincronizado entre dispositivos."
       },
       "links": {
-        "1": "que é IRC?",
-        "2": "Clientes e servidores recomendados",
-        "3": "Documentação do protocolo"
+        "1": "¿Qué es IRC?",
+        "2": "Clientes y servidores recomendados",
+        "3": "Documentación del protocolo"
       }
     },
     "thelounge": {
-      "description": "Cliente web moderno para IRC, com interface amigável e acesso contínuo às conversas.",
-      "longDescription": "The Lounge é um cliente de IRC que roda no navegador e mantém você sempre conectado aos canais, mesmo quando fecha a aba. Ele é ideal para quem quer usar IRC com uma interface moderna e prática, parecida com Slack ou Discord, mas mantendo a leveza e descentralização do protocolo IRC. É auto-hospedável e pode ser acessado de qualquer dispositivo, com histórico persistente e suporte a múltiplas redes.",
+      "description": "Cliente web moderno para IRC, con interfaz amigable y acceso continuo a las conversaciones.",
+      "longDescription": "The Lounge es un cliente de IRC que funciona en el navegador y te mantiene siempre conectado a los canales, incluso cuando cierras la pestaña. Es ideal para quienes quieren usar IRC con una interfaz moderna y práctica, similar a Slack o Discord, manteniendo la ligereza y descentralización del protocolo IRC. Es auto-hospedable y puede accederse desde cualquier dispositivo, con historial persistente y soporte para múltiples redes.",
       "features": {
-        "1": "Interface web bonita e responsiva, inspirada em apps modernos",
-        "2": "Conexão contínua: você não perde mensagens quando está offline",
-        "3": "Suporte a múltiplos servidores e histórico completo de conversas"
+        "1": "Interfaz web bonita y responsiva, inspirada en apps modernas",
+        "2": "Conexión continua: no pierdes mensajes cuando estás desconectado",
+        "3": "Soporte para múltiples servidores e historial completo de conversaciones"
+      },
+      "reasonToUse": "Usa The Lounge si usas IRC regularmente y quieres persistencia de mensajes y una interfaz moderna sin renunciar al protocolo clásico — es el bouncer y cliente en uno.",
+      "challenges": {
+        "1": "Requiere un servidor siempre en línea para funcionar — a diferencia de los clientes IRC tradicionales, no funciona como app de escritorio autónoma.",
+        "2": "El almacenamiento del historial crece continuamente y puede ocupar espacio considerable en conversaciones activas a lo largo del tiempo.",
+        "3": "Configurar acceso seguro mediante HTTPS y autenticación requiere un proxy inverso (Nginx, Caddy) correctamente configurado frente a The Lounge."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Código Fonte",
-        "3": "Auto-hospede o The Lounge"
+        "1": "Visita el sitio oficial",
+        "2": "Código Fuente",
+        "3": "Auto-hospeda The Lounge"
       }
     },
     "lasuite": {
-      "description": "Conjunto de ferramentas online de escritório mantido pelo governo francês, com foco em soberania digital.",
-      "longDescription": "La Suite é uma suíte de aplicativos online voltada para comunicação e produtividade, criada e mantida por instituições públicas da França. Ela inclui e-mail, agenda, editor de documentos, videoconferência e outros serviços colaborativos. O objetivo do projeto é oferecer uma alternativa segura, soberana e de código aberto a plataformas como Google Workspace e Microsoft 365, promovendo independência tecnológica nas instituições públicas.",
+      "description": "Conjunto de herramientas de oficina en línea mantenido por el gobierno francés, centrado en la soberanía digital.",
+      "longDescription": "La Suite es una suite de aplicaciones en línea orientada a la comunicación y productividad, creada y mantenida por instituciones públicas de Francia. Incluye correo electrónico, agenda, editor de documentos, videoconferencia y otros servicios colaborativos. El objetivo del proyecto es ofrecer una alternativa segura, soberana y de código abierto a plataformas como Google Workspace y Microsoft 365, promoviendo la independencia tecnológica en las instituciones públicas.",
       "features": {
-        "1": "Editor de documentos, planilhas e apresentações online",
-        "2": "E-mail, agenda, chat e videoconferência integrados",
-        "3": "Baseada em software livre, com foco em privacidade e controle institucional"
+        "1": "Editor de documentos, hojas de cálculo y presentaciones en línea",
+        "2": "Correo electrónico, agenda, chat y videoconferencia integrados",
+        "3": "Basada en software libre, con foco en privacidad y control institucional"
+      },
+      "reasonToUse": "Usa La Suite si eres una institución pública o empresa que quiere reemplazar Google Workspace por una solución soberana mantenida por un gobierno democrático y auditable.",
+      "challenges": {
+        "1": "El proyecto está orientado principalmente a instituciones francesas — la documentación, soporte y hoja de ruta se centran en el contexto europeo, con menos recursos para usuarios de otros países.",
+        "2": "El auto-hospedaje completo de todos los componentes requiere integrar múltiples servicios (Nextcloud, Jitsi, Mattermost, etc.) con alto costo de configuración y mantenimiento.",
+        "3": "La madurez de los componentes varía — algunos servicios integrados son más estables que otros, y la experiencia unificada aún no es tan fluida como Google Workspace."
       },
       "links": {
-        "1": "Acesse o site oficial",
-        "2": "Sobre o projeto",
-        "3": "Código Fonte (parcial)"
+        "1": "Visita el sitio oficial",
+        "2": "Sobre el proyecto",
+        "3": "Código Fuente (parcial)"
       }
     }
   }

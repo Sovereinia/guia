@@ -7,8 +7,8 @@ export interface App {
   description: string; // usado no card
   longDescription?: string; // usado no modal
   features?: string[]; // bullet points
-  reasonToUse: string;
-  challenges: string[];
+  reasonToUse?: string; // por que escolher este app
+  challenges?: string[]; // pontos reais de atrito
   links?: { label: string; url: string }[]; // botões
   categories: CategoryId[];
   alternatives?: string[];

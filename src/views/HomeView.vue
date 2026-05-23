@@ -6,7 +6,7 @@ import CategorySelector from '@/components/form/CategorySelector.vue';
 import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
 import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
 import { useSEO } from '@/composables/useSEO';
-import { apps } from '@/data/apps';
+import { useApps } from '@/data/apps';
 import { categories } from '@/data/categories';
 import { useGlobalStore } from '@/stores/global';
 import { useHeadersStore } from '@/stores/headers';
@@ -21,6 +21,7 @@ const { t } = useI18n();
 const headersStore = useHeadersStore();
 const globalStore = useGlobalStore();
 const { updateSEO } = useSEO();
+const { apps } = useApps();
 
 const modalData = ref<Partial<App>>({});
 const searchQuery = ref('');
@@ -30,14 +31,13 @@ const route = useRoute();
 const router = useRouter();
 
 // Sugestões para o autocomplete
-const suggestions = apps.flatMap((app) => app.alternatives || []);
+const suggestions = computed(() => apps.value.flatMap((app) => app.alternatives || []));
 
 const orderedApps = computed(() => {
-  // Access shuffleTrigger to ensure re-computation on each shuffle
   globalStore.shuffleTrigger;
   return globalStore.isReshuffled 
-    ? shuffleAppsPurely(apps) 
-    : sortAppsByLinksThenRandom(apps);
+    ? shuffleAppsPurely(apps.value) 
+    : sortAppsByLinksThenRandom(apps.value);
 });
 
 const filteredApps = computed(() => {
@@ -66,7 +66,7 @@ const isUpdatingFromURL = ref(false);
 onMounted(() => {
   const appSlug = route.query.app;
   if (appSlug) {
-    const found = apps.find(app => getAppSlug(app) === appSlug);
+    const found = apps.value.find(app => getAppSlug(app) === appSlug);
     if (found) {
       handleAbrirModal(found);
     }
@@ -76,7 +76,6 @@ onMounted(() => {
 onMounted(() => {
   window.addEventListener('resize', updateWindowWidth);
 
-  // This section sets initial SEO for home page
   updateSEO({
     title: 'Sovereinia | Guia de Apps Descentralizados',
     description:
@@ -97,20 +96,16 @@ function handleAbrirModal(app: App) {
     modalData.value = { ...app };
     mostrarModal.value = true;
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
-
   });
 }
 
 function handleSurpriseMe(app: App) {
-  // Reuse existing modal logic
   handleAbrirModal(app);
 }
 
-// When closing modal
 function handleFecharModal() {
   mostrarModal.value = false;
   modalData.value = {};
-  // Remove 'app' from query
   const { app, ...rest } = route.query;
   router.replace({ query: rest });
 }
@@ -119,7 +114,7 @@ watch(
   () => route.query.app,
   (appSlug) => {
     if (appSlug && !mostrarModal.value) {
-      const found = apps.find(app => getAppSlug(app) === appSlug);
+      const found = apps.value.find(app => getAppSlug(app) === appSlug);
       if (found) {
         isUpdatingFromURL.value = true;
         modalData.value = {};
@@ -130,17 +125,14 @@ watch(
         });
       }
     } else if (!appSlug && mostrarModal.value) {
-      // URL was cleared but modal is still open - close it
       mostrarModal.value = false;
       modalData.value = {};
     }
   }
 );
 
-//This section watch for modal changes to update SEO dynamically
 watch([mostrarModal, modalData], ([isOpen, app]) => {
   if (isOpen && app?.name) {
-    // this unit updates SEO when modal opens
     updateSEO({
       title: `${app.name} - Sovereinia | Guia de Apps`,
       description: `${app.name}: ${app.description || 'App descentralizado para mais liberdade e privacidade'}. Descubra alternativas descentralizadas.`,
@@ -150,7 +142,6 @@ watch([mostrarModal, modalData], ([isOpen, app]) => {
       twitterDescription: `${app.name}: ${app.description || 'App descentralizado para mais liberdade e privacidade'}`,
     });
   } else if (!isOpen) {
-    // this section resets the SEO when modal closes
     updateSEO({
       title: 'Sovereinia | Guia de Apps Descentralizados',
       description:
@@ -165,9 +156,7 @@ watch([mostrarModal, modalData], ([isOpen, app]) => {
   }
 });
 
-// This is section watch for search/filter changes to update SEO
 watch([searchQuery, selectedCategory], ([query, category]) => {
-  // Reset reshuffle when user searches or changes category
   if ((query && query.length > 0) || category !== 'all') {
     globalStore.resetReshuffle();
   }
@@ -223,7 +212,6 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
     class="grid grid-cols-1 w-full max-w-full md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-12 mt-2"
   >
     <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
-
     <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="handleFecharModal" />
   </section>
 </template>
