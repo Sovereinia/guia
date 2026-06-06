@@ -70,7 +70,9 @@
     "br": "BR",
     "goodFirstApp": "Ótimo primeiro app",
     "selfHostingLabel": "Dificuldade de auto-hospedagem",
-    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)"
+    "selfHostingTooltip": "Quão difícil é auto-hospedar este app (1=Fácil, 3=Avançado)",
+    "reasonToUse": "Por que usar",
+    "challenges": "Desafios"
   },
   "surpriseMe": {
     "button": "Me surpreenda!"
@@ -83,6 +85,12 @@
         "1": "Cada instância faz a customização e moderação como preferir",
         "2": "Você pode seguir canais de outras instâncias",
         "3": "Sem anúncios, rastreadores ou algoritmos de recomendação"
+      },
+      "reasonToUse": "Escolha o PeerTube se você quer publicar vídeos sem ceder sua audiência a algoritmos publicitários ou depender de regras de monetização impostas por terceiros.",
+      "challenges": {
+        "1": "Hospedar vídeos consome bastante armazenamento e largura de banda; um servidor modesto pode não aguentar picos de acesso mesmo com P2P.",
+        "2": "A moderação de conteúdo é responsabilidade do administrador da instância, exigindo tempo e critério para evitar abuso.",
+        "3": "A descoberta de conteúdo entre instâncias ainda é limitada — usuários novos têm dificuldade de encontrar criadores fora da instância onde estão."
       },
       "links": {
         "1": "Veja um exemplo",
@@ -98,6 +106,12 @@
         "2": "Postagens com texto, imagens, vídeos e enquetes",
         "3": "Você escolhe sua instância (ou pode criar a sua)"
       },
+      "reasonToUse": "Use o Mastodon se você quer uma rede social sem anúncios, sem algoritmo de engajamento e com comunidades moderadas por pessoas reais em vez de corporações.",
+      "challenges": {
+        "1": "Administrar uma instância própria exige atenção constante à moderação para evitar spam, discurso de ódio e federação com instâncias problemáticas.",
+        "2": "O servidor Mastodon consome memória RAM considerável em produção; instâncias com mais de algumas centenas de usuários geralmente precisam de pelo menos 2–4 GB de RAM e banco PostgreSQL dedicado.",
+        "3": "A curva de aprendizado para novos usuários é real: escolher uma instância, entender a federação e encontrar pessoas de outras instâncias não é intuitivo."
+      },
       "links": {
         "1": "Crie sua conta",
         "2": "Código Fonte",
@@ -111,6 +125,12 @@
         "1": "Armazenamento e sincronização de arquivos entre dispositivos",
         "2": "Compartilhamento com links públicos ou protegidos por senha",
         "3": "Recursos extras como calendário, contatos, chat e edição de documentos"
+      },
+      "reasonToUse": "Escolha o Nextcloud se você quer um substituto completo ao Google Drive com seus dados sob seu controle, especialmente útil para equipes ou famílias que compartilham arquivos com frequência.",
+      "challenges": {
+        "1": "O desempenho degrada bastante sem configuração adequada de cache (Redis/Memcached) e banco de dados — a instalação padrão com SQLite não é recomendada para uso real.",
+        "2": "Atualizações de versão maior frequentemente quebram apps instalados; manter o ecossistema de plugins atualizado exige atenção periódica.",
+        "3": "A sincronização de arquivos grandes ou bibliotecas de fotos volumosas pode ser lenta e consumir muitos recursos do servidor."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -126,6 +146,12 @@
         "2": "Criptografia de ponta a ponta para senhas e dados sensíveis",
         "3": "Consome poucos recursos e roda bem até em servidores simples"
       },
+      "reasonToUse": "Use o Vaultwarden se você quer a experiência completa do Bitwarden (incluindo TOTP e organizações) sem pagar pela assinatura premium, hospedando tudo em um servidor próprio com consumo mínimo de recursos.",
+      "challenges": {
+        "1": "Por ser um projeto não oficial, não recebe suporte direto da Bitwarden; atualizações de compatibilidade com os clientes oficiais dependem da velocidade da comunidade.",
+        "2": "Você é responsável pelos backups do banco de dados SQLite — uma falha sem backup significa perda total de senhas.",
+        "3": "Expor o servidor na internet exige HTTPS obrigatório e atenção à segurança do host; não é recomendado sem um proxy reverso configurado corretamente."
+      },
       "links": {
         "1": "Código Fonte",
         "2": "Auto-hospede o Vaultwarden"
@@ -138,6 +164,12 @@
         "1": "Compartilhamento seguro de senhas entre membros da equipe",
         "2": "Controle de permissões e registros de acesso",
         "3": "Interface web com autenticação por chave privada"
+      },
+      "reasonToUse": "Escolha o Passbolt se sua equipe precisa compartilhar credenciais de forma auditável e criptografada, com controle granular de quem acessa o quê — algo que gerenciadores individuais não oferecem.",
+      "challenges": {
+        "1": "A instalação requer PHP, MySQL/MariaDB e configuração de e-mail SMTP; o processo é mais trabalhoso que ferramentas baseadas em Docker puro.",
+        "2": "Cada usuário precisa instalar a extensão do navegador e configurar sua chave GPG, o que adiciona fricção na adoção pela equipe.",
+        "3": "Funcionalidades avançadas como LDAP/AD e auditoria detalhada só estão disponíveis na versão Business (paga)."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -153,6 +185,12 @@
         "2": "Criação de salas públicas ou privadas",
         "3": "Compatível com Telegram, Discord, Slack, etc via ponte (bridges)"
       },
+      "reasonToUse": "Use o Element se você precisa de um mensageiro corporativo ou comunitário com criptografia real, sem depender de servidores de empresas como Meta ou Microsoft, e com possibilidade de integrar outros serviços via bridges.",
+      "challenges": {
+        "1": "O servidor Matrix (Synapse) é pesado em recursos: instâncias com federação ativa consomem facilmente 1–2 GB de RAM e crescem no banco de dados rapidamente.",
+        "2": "A experiência do usuário no Element ainda é menos polida que WhatsApp ou Telegram, especialmente em chamadas de grupo e notificações.",
+        "3": "Bridges com serviços de terceiros (WhatsApp, Telegram) exigem configuração separada e podem quebrar quando esses serviços atualizam suas APIs."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -166,6 +204,12 @@
         "1": "Comunidades temáticas com votação por votos positivos ou negativos",
         "2": "Federação entre instâncias via ActivityPub",
         "3": "Interface simples, leve e sem rastreadores"
+      },
+      "reasonToUse": "Escolha o Lemmy se você quer criar ou participar de fóruns temáticos sem algoritmos de recomendação pagos, sem dados vendidos a anunciantes e com moderação transparente pela própria comunidade.",
+      "challenges": {
+        "1": "A federação entre instâncias ainda tem falhas ocasionais — posts e comentários de outras instâncias podem demorar para aparecer ou não sincronizar corretamente.",
+        "2": "A base de usuários ainda é pequena comparada ao Reddit, o que significa comunidades menos ativas em muitos tópicos.",
+        "3": "Administrar uma instância exige moderação ativa para evitar que spam e conteúdo ilegal federado de outras instâncias apareça nos feeds locais."
       },
       "links": {
         "1": "Veja uma instância",
@@ -181,6 +225,12 @@
         "2": "Compartilhamento de tela e chat integrado",
         "3": "Salas protegidas por senha, sem cadastro obrigatório"
       },
+      "reasonToUse": "Use o Jitsi Meet se você precisa de videoconferências rápidas e sem cadastro obrigatório, ou se quer hospedar sua própria infraestrutura de reuniões para garantir que nenhum dado trafegue por servidores de terceiros.",
+      "challenges": {
+        "1": "A qualidade de chamadas em grupos grandes (acima de 10–15 participantes) degrada notavelmente sem um servidor dedicado com boa largura de banda e CPU.",
+        "2": "A instalação do Jitsi com videobridge (JVB) é complexa e requer portas UDP abertas, o que pode ser problemático em ambientes com firewall restritivo.",
+        "3": "Recursos como gravação na nuvem e transcrição automática exigem configuração adicional de componentes como Jibri, que tem requisitos próprios de hardware."
+      },
       "links": {
         "1": "Use no site oficial",
         "2": "Código Fonte",
@@ -194,6 +244,12 @@
         "1": "Organização por livros, capítulos e páginas",
         "2": "Editor visual com histórico de alterações",
         "3": "Controle de acesso por usuários e permissões"
+      },
+      "reasonToUse": "Escolha o BookStack se você quer uma wiki ou base de conhecimento com estrutura clara (livro → capítulo → página) sem a complexidade de ferramentas como Confluence ou MediaWiki.",
+      "challenges": {
+        "1": "A estrutura rígida de livro/capítulo/página pode ser limitante para conteúdos que não se encaixam bem nessa hierarquia.",
+        "2": "Não tem suporte nativo a bancos de dados além do MySQL/MariaDB, o que pode complicar instalações em ambientes que usam PostgreSQL.",
+        "3": "A busca interna é funcional mas menos poderosa que ferramentas dedicadas — documentações muito grandes podem ficar difíceis de navegar."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -209,6 +265,12 @@
         "2": "Funciona com redes sociais, e-commerces, blogs e fóruns",
         "3": "Permite personalizar e filtrar os conteúdos recebidos"
       },
+      "reasonToUse": "Use o RSSHub se você quer acompanhar conteúdo de plataformas que não oferecem RSS (como Twitter/X, Reddit ou YouTube) sem precisar abrir cada site ou app individualmente.",
+      "challenges": {
+        "1": "Muitas rotas dependem de APIs não oficiais que quebram sem aviso quando os sites mudam sua estrutura ou bloqueiam scrapers.",
+        "2": "Hospedar uma instância pública pode atrair uso abusivo e bloqueios de IP por parte dos sites monitorados.",
+        "3": "A documentação é extensa mas inconsistente — configurar rotas menos populares pode exigir leitura de código-fonte."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -222,6 +284,12 @@
         "1": "Fóruns organizados por categorias e com sistema de reputação",
         "2": "Interface moderna com suporte a menções, markdown e notificações",
         "3": "Funciona bem em celulares e permite login social (opcional)"
+      },
+      "reasonToUse": "Escolha o Discourse se você precisa de uma comunidade online com moderação robusta, sistema de reputação e notificações por e-mail — é o padrão ouro para fóruns de suporte e comunidades de projetos.",
+      "challenges": {
+        "1": "A instalação oficial exige Docker obrigatoriamente e um servidor com pelo menos 2 GB de RAM; instalações em VPS baratas frequentemente sofrem com lentidão.",
+        "2": "O consumo de memória RAM cresce com o número de usuários e plugins ativos, tornando o custo de operação maior que outras alternativas.",
+        "3": "Atualizações são frequentes e às vezes quebram plugins ou customizações de tema, exigindo manutenção regular."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -237,6 +305,12 @@
         "2": "Sem anúncios, rastreadores ou algoritmo de recomendação",
         "3": "Funciona em várias instâncias que se conectam entre si"
       },
+      "reasonToUse": "Use o Pixelfed se você quer compartilhar fotos sem ter suas imagens usadas para treinar algoritmos publicitários ou vendidas a anunciantes, mantendo controle sobre sua galeria e audiência.",
+      "challenges": {
+        "1": "O projeto ainda é menos maduro que o Mastodon — atualizações podem introduzir bugs e a interoperabilidade ActivityPub com outras plataformas tem inconsistências.",
+        "2": "A instalação requer PHP, Redis, MySQL e um servidor de filas; é mais complexa que outras plataformas do Fediverso.",
+        "3": "A comunidade ainda é pequena, o que significa menos interação e descoberta de conteúdo comparado ao Instagram."
+      },
       "links": {
         "1": "Veja uma instância",
         "2": "Código Fonte",
@@ -250,6 +324,12 @@
         "1": "Criptografia de ponta a ponta por padrão",
         "2": "Chamadas de voz e vídeo seguras",
         "3": "Sem anúncios, rastreamento ou coleta de dados pessoais"
+      },
+      "reasonToUse": "Use o Signal se você precisa de um mensageiro com criptografia auditada e comprovada para conversas sensíveis — é a escolha de jornalistas, ativistas e profissionais de segurança.",
+      "challenges": {
+        "1": "Auto-hospedar o servidor Signal é extremamente complexo e não conta com suporte oficial — a maioria dos usuários depende dos servidores da Signal Foundation.",
+        "2": "Requer número de telefone para cadastro, o que reduz o anonimato e exclui pessoas sem acesso a um número verificável.",
+        "3": "Não é federado — todos os usuários precisam estar no mesmo servidor (signal.org), o que cria um ponto centralizado mesmo com criptografia forte."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -265,6 +345,12 @@
         "2": "Proteger com senha, extrair texto e imagens",
         "3": "Tudo funciona no navegador, sem envio para a nuvem"
       },
+      "reasonToUse": "Use o Stirling-PDF se você lida com PDFs sensíveis e não quer enviá-los para serviços online como iLovePDF ou SmallPDF — processar tudo localmente garante que seus documentos nunca saiam do seu servidor.",
+      "challenges": {
+        "1": "Algumas operações avançadas (OCR, conversão de Office para PDF) requerem dependências extras como LibreOffice e Tesseract instaladas no servidor.",
+        "2": "A interface em inglês pode ser uma barreira para usuários menos técnicos que não estão acostumados com ferramentas em outros idiomas.",
+        "3": "Não tem suporte a edição de conteúdo dentro do PDF — é uma ferramenta de manipulação de arquivos, não um editor de texto."
+      },
       "links": {
         "1": "Código Fonte",
         "2": "Auto-hospede o Stirling-PDF"
@@ -277,6 +363,12 @@
         "1": "Permite a federação entre diferentes serviços",
         "2": "Base de redes como Mastodon, PeerTube, Pixelfed e Lemmy",
         "3": "Desenvolvido como padrão aberto pelo W3C"
+      },
+      "reasonToUse": "Entender o ActivityPub é essencial para quem quer criar sua própria plataforma federada ou contribuir com o ecossistema do Fediverso — é o protocolo que torna possível a interoperabilidade entre dezenas de serviços distintos.",
+      "challenges": {
+        "1": "A especificação tem partes ambíguas, o que leva a implementações incompatíveis entre plataformas — um post do Mastodon nem sempre aparece igual no Pixelfed ou no PeerTube.",
+        "2": "Implementar ActivityPub corretamente requer lidar com assinaturas HTTP, filas de entrega e resolução de WebFinger, o que tem curva de aprendizado íngreme.",
+        "3": "Não há mecanismo de controle de abuso entre instâncias — uma instância maliciosa pode federar conteúdo indesejado até ser bloqueada manualmente."
       },
       "links": {
         "1": "Conheça o Fediverso",
@@ -291,6 +383,12 @@
         "1": "Mensagens, chamadas e compartilhamento de arquivos",
         "2": "Funciona entre servidores diferentes (federação)",
         "3": "Suporte a integrações com outros serviços por ponte"
+      },
+      "reasonToUse": "Use o Matrix se você precisa de um protocolo de comunicação descentralizado com criptografia de ponta a ponta e capacidade de integrar múltiplos serviços em um só lugar via bridges.",
+      "challenges": {
+        "1": "O servidor de referência (Synapse) é conhecido por consumir muita RAM e CPU, especialmente com federação ativa — uma instância pequena pode precisar de 2–4 GB de RAM.",
+        "2": "O banco de dados do Synapse cresce rapidamente com o histórico de mensagens e pode precisar de manutenção periódica para não comprometer o desempenho.",
+        "3": "A experiência do usuário varia bastante entre clientes — o Element tem melhorado, mas ainda perde para mensageiros maduros em usabilidade."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -307,6 +405,12 @@
         "3": "Simples, leve e ideal para uso em dispositivos diversos",
         "4": "É o protocolo usado pelo WhatsApp"
       },
+      "reasonToUse": "Use o XMPP se você quer um protocolo de mensagens leve, federado e com décadas de estabilidade, especialmente útil em ambientes corporativos que já têm infraestrutura ou precisam de integração com sistemas legados.",
+      "challenges": {
+        "1": "A fragmentação de extensões (XEPs) significa que clientes diferentes suportam recursos diferentes — mensagens criptografadas OMEMO, por exemplo, não funcionam igualmente em todos os apps.",
+        "2": "A experiência do usuário em clientes modernos ainda fica abaixo do WhatsApp ou Telegram, o que dificulta a adoção em grupos menos técnicos.",
+        "3": "Configurar um servidor XMPP com todos os recursos modernos (chamadas de vídeo, sincronização multi-dispositivo) requer instalação e configuração de múltiplos módulos."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Especificação técnica",
@@ -320,6 +424,12 @@
         "1": "Baseado em protocolos abertos",
         "2": "Totalmente descentralizado: qualquer um pode rodar seu servidor",
         "3": "Funciona em qualquer lugar, com milhares de apps e clientes compatíveis"
+      },
+      "reasonToUse": "Considere auto-hospedar e-mail se você quer soberania total sobre suas comunicações e não quer depender de provedores como Google ou Microsoft — especialmente relevante para organizações com dados sensíveis.",
+      "challenges": {
+        "1": "Manter uma boa reputação de entrega é difícil: novos servidores frequentemente têm e-mails marcados como spam por grandes provedores até construir histórico.",
+        "2": "Configurar SPF, DKIM e DMARC corretamente exige conhecimento técnico — erros deixam o servidor vulnerável a spoofing ou com e-mails rejeitados.",
+        "3": "A manutenção contínua é exigente: atualizações de segurança, monitoramento de blacklists e gerenciamento de certificados TLS requerem atenção constante."
       },
       "links": {
         "1": "Especificação SMTP (IETF)",
@@ -335,6 +445,12 @@
         "3": "Ótimo desempenho, SEO nativo e integração com newsletter",
         "4": "É usado no Blog da Sovereinia"
       },
+      "reasonToUse": "Escolha o Ghost se você quer uma plataforma de publicação rápida e focada, sem a complexidade do WordPress — ideal para blogs, newsletters e portais de conteúdo que priorizam leitura limpa.",
+      "challenges": {
+        "1": "Requer Node.js para rodar, o que pode complicar a instalação em hospedagens compartilhadas tradicionais — a maioria dos usuários usa VPS ou Docker.",
+        "2": "O ecossistema de temas e integrações é bem menor que o do WordPress, limitando customizações mais elaboradas.",
+        "3": "Atualizações de versão maior às vezes exigem migração manual de banco de dados e podem quebrar temas personalizados."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -343,12 +459,18 @@
     },
     "misskey": {
       "description": "Rede social divertida e personalizável, com posts, reações e timeline federada.",
-      "longDescription": "Misskey é uma rede social descentralizada parecida com o Mastodon, mas com mais foco em personalização e interações. Ele permite postar textos, imagens, vídeos e até “notas” com estilos variados. Tem suporte a reações (como emojis personalizados), widgets, temas e outras funções que deixam a experiência mais leve e divertida. Assim como outras plataformas do Fediverso, o Misskey funciona por meio de instâncias federadas usando o protocolo ActivityPub.",
+      "longDescription": "Misskey é uma rede social descentralizada parecida com o Mastodon, mas com mais foco em personalização e interações. Ele permite postar textos, imagens, vídeos e até 'notas' com estilos variados. Tem suporte a reações (como emojis personalizados), widgets, temas e outras funções que deixam a experiência mais leve e divertida. Assim como outras plataformas do Fediverso, o Misskey funciona por meio de instâncias federadas usando o protocolo ActivityPub.",
       "features": {
         "1": "Postagens com reações, emojis e widgets interativos",
         "2": "Altamente personalizável, com suporte a temas e extensões",
         "3": "Comunicação federada com outras redes do Fediverso",
         "4": "Desenvolvido e muito utilizada no Japão"
+      },
+      "reasonToUse": "Use o Misskey se você quer uma experiência social mais lúdica e personalizável que o Mastodon, com suporte a emojis customizados, reações variadas e uma interface mais expressiva.",
+      "challenges": {
+        "1": "O consumo de recursos é maior que o do Pleroma ou Mastodon — instâncias precisam de pelo menos 1 GB de RAM e um banco PostgreSQL bem configurado.",
+        "2": "A documentação em inglês é limitada; grande parte do material de suporte está em japonês, o que pode dificultar a solução de problemas.",
+        "3": "O projeto tem vários forks ativos (Calckey, Firefish, Catodon) com diferentes estados de manutenção, tornando a escolha da versão certa confusa."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -364,6 +486,12 @@
         "2": "Controle de usuários, permissões e integrações",
         "3": "Interface moderna e app para desktop e celular"
       },
+      "reasonToUse": "Escolha o Rocket.Chat se sua organização precisa de um Slack auto-hospedado com suporte a omnichannel (atendimento ao cliente via chat, e-mail e redes sociais em um só lugar).",
+      "challenges": {
+        "1": "O consumo de memória RAM é elevado — uma instância com poucos usuários já pode exigir 2 GB, e instâncias maiores precisam de infraestrutura dedicada.",
+        "2": "Atualizações frequentes podem quebrar integrações ou apps instalados, exigindo testes antes de aplicar em produção.",
+        "3": "Recursos avançados como omnichannel e marketplace de apps requerem assinatura Enterprise, o que pode surpreender quem esperava tudo gratuito."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -377,6 +505,12 @@
         "1": "Quadros Kanban, status e prioridades personalizadas",
         "2": "Organização por projetos, sprints, ciclos ou equipes",
         "3": "Interface rápida, moderna e fácil de usar"
+      },
+      "reasonToUse": "Use o Plane se você quer uma alternativa ao Jira com interface mais limpa e sem os custos de licença elevados — é especialmente adequado para times de desenvolvimento que já usam metodologias ágeis.",
+      "challenges": {
+        "1": "O projeto ainda está em desenvolvimento ativo e algumas funcionalidades avançadas (automações, relatórios detalhados) ainda estão incompletas ou instáveis.",
+        "2": "A instalação via Docker requer configuração de vários serviços em conjunto (backend, frontend, worker, Redis, PostgreSQL), o que pode ser trabalhoso para quem não tem experiência com Docker Compose.",
+        "3": "Integrações com ferramentas externas (GitHub, Slack, GitLab) ainda são limitadas comparado ao Jira ou Linear."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -392,6 +526,12 @@
         "2": "Conteúdo é identificado por seu código (hash), não por endereço fixo",
         "3": "Resistente a censura e falhas de servidores"
       },
+      "reasonToUse": "Use o IPFS se você precisa publicar conteúdo de forma resistente a censura e apagamentos, ou se quer explorar armazenamento distribuído para aplicações descentralizadas (dApps) e arquivos imutáveis.",
+      "challenges": {
+        "1": "Arquivos não são permanentes por padrão — se nenhum nó está fazendo pinning do conteúdo, ele pode desaparecer da rede.",
+        "2": "A velocidade de acesso é imprevisível e geralmente mais lenta que HTTP tradicional, especialmente para conteúdo raro com poucos seeders.",
+        "3": "Sem um serviço de pinning dedicado (como Pinata ou Infura), manter conteúdo acessível de forma confiável exige infraestrutura própria sempre online."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -405,6 +545,12 @@
         "1": "Criptografia de ponta a ponta para senhas e dados sensíveis",
         "2": "Apps para navegador, celular e desktop",
         "3": "Pode ser usado na nuvem oficial ou em servidor próprio"
+      },
+      "reasonToUse": "Escolha o Bitwarden oficial (não Vaultwarden) se você quer suporte profissional, atualizações de segurança garantidas pelo time da empresa e compliance com padrões corporativos como SOC 2.",
+      "challenges": {
+        "1": "A auto-hospedagem do servidor oficial Bitwarden é mais pesada que o Vaultwarden — requer Docker com múltiplos containers e pelo menos 2 GB de RAM.",
+        "2": "O plano gratuito na nuvem tem limitações (sem TOTP integrado, sem relatórios avançados), levando muitos usuários ao Vaultwarden como alternativa.",
+        "3": "Manter o servidor auto-hospedado atualizado é crítico para a segurança — patches de vulnerabilidades precisam ser aplicados rapidamente."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -420,6 +566,12 @@
         "2": "Publicações com texto, links e imagens",
         "3": "Controle sobre quem pode ver cada post (aspectos)"
       },
+      "reasonToUse": "Use o Diaspora* se você quer uma rede social descentralizada com um sistema de privacidade baseado em \"aspectos\" — grupos de contatos que determinam quem vê cada postagem.",
+      "challenges": {
+        "1": "O desenvolvimento do projeto perdeu ritmo significativo nos últimos anos — atualizações são lentas e a comunidade de mantenedores é pequena.",
+        "2": "Não é compatível com ActivityPub, o que isola os usuários do ecossistema mais amplo do Fediverso (Mastodon, Pixelfed, etc.).",
+        "3": "A instalação requer Ruby on Rails, PostgreSQL e várias dependências — é uma das plataformas mais trabalhosas de auto-hospedar no Fediverso."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -428,11 +580,17 @@
     },
     "jellyfin": {
       "description": "Servidor de mídia para organizar e assistir seus filmes, séries e músicas em qualquer lugar.",
-      "longDescription": "Jellyfin é uma plataforma de streaming pessoal que permite organizar e acessar sua coleção de filmes, séries, músicas e fotos a partir de qualquer dispositivo. Ele funciona como um “Netflix caseiro”, com interface bonita, apps para TV, celular e navegador. Tudo é hospedado por você, sem rastreamento, sem assinatura e com total controle sobre seus arquivos. É uma ótima opção para quem quer montar seu próprio servidor de mídia.",
+      "longDescription": "Jellyfin é uma plataforma de streaming pessoal que permite organizar e acessar sua coleção de filmes, séries, músicas e fotos a partir de qualquer dispositivo. Ele funciona como um Netflix caseiro, com interface bonita, apps para TV, celular e navegador. Tudo é hospedado por você, sem rastreamento, sem assinatura e com total controle sobre seus arquivos. É uma ótima opção para quem quer montar seu próprio servidor de mídia.",
       "features": {
         "1": "Streaming de filmes, séries, músicas e fotos",
         "2": "Interface moderna com apps para web, celular e TV",
         "3": "Totalmente gratuito, sem rastreadores nem limites artificiais"
+      },
+      "reasonToUse": "Escolha o Jellyfin se você quer um servidor de mídia completamente gratuito e sem nenhum componente proprietário ou dependência de conta na nuvem — ao contrário do Plex, ele funciona 100% offline.",
+      "challenges": {
+        "1": "A transcodificação de vídeo em tempo real (para dispositivos que não suportam o codec original) exige CPU ou GPU adequada — servidores modestos podem ter lag em arquivos 4K.",
+        "2": "A aceleração de hardware para transcodificação (Intel QuickSync, NVIDIA NVENC) requer configuração manual e pode ser instável em alguns ambientes.",
+        "3": "Apps para smart TVs e consoles são menos polidos que os do Plex e podem ter bugs em determinados modelos de TV."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -448,6 +606,12 @@
         "2": "Ideal para equipes que trabalham de forma assíncrona",
         "3": "Apps para desktop, celular e navegador"
       },
+      "reasonToUse": "Use o Zulip se sua equipe sofre com a bagunça de chats em tempo real — o modelo de tópicos dentro de streams permite acompanhar múltiplas discussões paralelas sem perder contexto.",
+      "challenges": {
+        "1": "A instalação em servidor próprio exige Ubuntu 20.04 ou 22.04 (sem suporte oficial a outros sistemas) e o processo usa um script de instalação que faz muitas modificações no sistema.",
+        "2": "O modelo de tópicos exige disciplina da equipe para funcionar bem — sem comprometimento de todos em nomear tópicos corretamente, a organização se perde.",
+        "3": "A interface, apesar de funcional, tem uma curva de aprendizado maior que Slack ou Mattermost para novos usuários."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -461,6 +625,12 @@
         "1": "Recebimento e organização de chamados por e-mail ou formulário",
         "2": "Acompanhamento por status, prioridade e agente responsável",
         "3": "Histórico completo das conversas e personalização de campos"
+      },
+      "reasonToUse": "Escolha o osTicket se você precisa de um sistema de tickets de suporte simples e estável, sem pagar pelas licenças do Zendesk ou Freshdesk — funciona bem para equipes de até algumas dezenas de agentes.",
+      "challenges": {
+        "1": "A interface administrativa é datada e menos intuitiva que soluções modernas como Freshdesk, o que pode aumentar o tempo de treinamento de novos agentes.",
+        "2": "Falta de recursos nativos de automação avançada — regras de roteamento e SLA são básicas comparadas a plataformas comerciais.",
+        "3": "Integrações com ferramentas modernas (Slack, Teams, CRMs) não existem nativamente e exigem desenvolvimento personalizado ou plugins de terceiros."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -476,6 +646,12 @@
         "2": "Postagens com texto, links, imagens e vídeos",
         "3": "Permite criar grupos, fóruns e listas de contatos"
       },
+      "reasonToUse": "Use o Friendica se você quer participar do Fediverso e do ecossistema Diaspora* ao mesmo tempo, ou se precisa de posts mais longos e organizados do que o Mastodon permite por padrão.",
+      "challenges": {
+        "1": "A interface está desatualizada visualmente e pode parecer confusa para novos usuários vindos de redes sociais modernas.",
+        "2": "A instalação requer PHP, MySQL e configuração de um worker em background — não é tão simples quanto outras plataformas baseadas em Docker.",
+        "3": "O desenvolvimento é feito por um time pequeno, o que significa atualizações menos frequentes e demora na correção de bugs."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -489,6 +665,12 @@
         "1": "Leve e ideal para rodar em servidores com poucos recursos",
         "2": "Compatível com outras redes do Fediverso via ActivityPub",
         "3": "Interface personalizável e suporte a temas"
+      },
+      "reasonToUse": "Use o Pleroma se você quer rodar uma instância pessoal do Fediverso em hardware limitado — ele funciona bem em um VPS de 512 MB de RAM, algo impossível com o Mastodon.",
+      "challenges": {
+        "1": "O projeto principal está com desenvolvimento lento; muitos usuários migraram para o fork Akkoma, que está mais ativo mas com documentação fragmentada.",
+        "2": "A comunidade em torno do Pleroma tem histórico de controvérsias de moderação, o que afastou algumas instâncias do Fediverso de federar com servidores Pleroma.",
+        "3": "A configuração inicial em Elixir/Erlang pode ser desafiadora para administradores sem experiência nessas linguagens."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -504,6 +686,12 @@
         "2": "Postagens, fóruns, blogs e wikis no mesmo lugar",
         "3": "Controle avançado de permissões e privacidade"
       },
+      "reasonToUse": "Use o Hubzilla se você precisa de identidade portátil entre servidores — o protocolo Zot permite clonar seu perfil em múltiplos hubs, garantindo disponibilidade mesmo se um servidor sair do ar.",
+      "challenges": {
+        "1": "É um dos sistemas mais complexos do Fediverso — a interface e a configuração têm curva de aprendizado íngreme mesmo para usuários técnicos.",
+        "2": "A instalação exige PHP, Apache/Nginx, MySQL e várias dependências, sem uma rota oficial via Docker bem documentada.",
+        "3": "A base de usuários é pequena, o que significa suporte limitado e comunidades menos ativas para a maioria dos tópicos."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -517,6 +705,12 @@
         "1": "Mensagens por canais, grupos e conversas privadas",
         "2": "Integrações com ferramentas como GitLab, Jira e CI/CD",
         "3": "Foco em segurança, controle e uso corporativo"
+      },
+      "reasonToUse": "Escolha o Mattermost se sua equipe de desenvolvimento precisa de um Slack auto-hospedado com integração nativa a GitLab, GitHub e pipelines de CI/CD — é o mais completo para fluxos DevOps.",
+      "challenges": {
+        "1": "O plano gratuito tem limitações significativas — retenção de mensagens, integrações avançadas e conformidade exigem o plano Enterprise, que tem custo por usuário.",
+        "2": "Chamadas de voz e vídeo dependem de plugins externos, diferente do Slack onde está integrado nativamente.",
+        "3": "Em instâncias com muitos canais e usuários, o desempenho pode degradar sem uma configuração cuidadosa de banco de dados e cache."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -532,6 +726,12 @@
         "2": "Salas de aula com chat, enquetes e grupos de trabalho",
         "3": "Recursos de gravação e moderação para ensino online"
       },
+      "reasonToUse": "Escolha o BigBlueButton se você gerencia uma plataforma de ensino a distância e precisa de recursos pedagógicos (quadro branco, salas de breakout, enquetes) integrados nativamente, sem pagar por Zoom ou Google Meet.",
+      "challenges": {
+        "1": "Os requisitos de servidor são elevados: a instalação oficial requer Ubuntu 20.04 de 64 bits com pelo menos 8 núcleos de CPU e 16 GB de RAM para suportar turmas de 50+ alunos.",
+        "2": "A instalação é complexa e só suportada em Ubuntu — não há imagem Docker oficial estável para produção.",
+        "3": "O desempenho de gravação e processamento de vídeo pós-aula pode ser lento e consumir muito espaço em disco."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -545,6 +745,12 @@
         "1": "Repositórios Git com controle de acesso e histórico",
         "2": "Integração nativa com CI/CD e pipelines automatizados",
         "3": "Gestão de issues, merge requests, wikis e mais"
+      },
+      "reasonToUse": "Escolha o GitLab auto-hospedado se sua equipe precisa de CI/CD integrado, gestão de projetos e repositórios privados em uma única plataforma sem depender do GitHub ou pagar por planos corporativos.",
+      "challenges": {
+        "1": "O GitLab é o software mais pesado desta lista — requer pelo menos 4 GB de RAM (recomendado 8 GB) e pode ser lento em servidores modestos.",
+        "2": "As atualizações devem seguir a ordem sequencial de versões; pular versões pode corromper o banco de dados e exige procedimentos manuais de recuperação.",
+        "3": "O consumo de armazenamento cresce rapidamente com repositórios, artifacts de CI e imagens Docker — planejamento de disco é essencial."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -560,6 +766,12 @@
         "2": "Suporte a issues, wikis, pull requests e permissões",
         "3": "Leve e fácil de instalar, ideal para servidores pequenos"
       },
+      "reasonToUse": "Use o Gitea se você quer hospedar repositórios Git em um servidor com recursos limitados — ele funciona bem com menos de 512 MB de RAM e é muito mais simples de instalar e manter que o GitLab.",
+      "challenges": {
+        "1": "O CI/CD nativo (Gitea Actions) ainda está em desenvolvimento e menos maduro que o GitLab CI ou GitHub Actions — equipes com pipelines complexos precisarão de ferramentas externas.",
+        "2": "O projeto passou por uma bifurcação controversa que gerou o Forgejo; parte da comunidade migrou, e a escolha entre os dois pode ser confusa.",
+        "3": "Recursos corporativos como LDAP avançado, auditoria e conformidade são menos robustos que no GitLab ou Bitbucket."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -573,6 +785,12 @@
         "1": "Gestão de tarefas com cronogramas, listas e quadros ágeis",
         "2": "Controle de tempo, wikis e colaboração em equipe",
         "3": "Interface web moderna e controle de permissões por projeto"
+      },
+      "reasonToUse": "Escolha o OpenProject se você precisa de gestão de projetos com gráficos de Gantt reais, rastreamento de tempo e roadmaps — funcionalidades que o Trello e Plane não oferecem nativamente.",
+      "challenges": {
+        "1": "A instalação requer Ruby on Rails e PostgreSQL, com suporte oficial apenas para instalações em pacotes DEB/RPM ou Docker — configurações alternativas não são suportadas.",
+        "2": "Recursos como integração com GitLab/GitHub e gestão de orçamentos só estão disponíveis nos planos pagos (Basic e acima).",
+        "3": "A interface tem muitas opções e pode parecer complexa demais para equipes pequenas que precisam apenas de um quadro Kanban simples."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -588,6 +806,12 @@
         "2": "Notificações por e-mail, Telegram, Discord, Webhook e mais",
         "3": "Painel com histórico, gráficos e status em tempo real"
       },
+      "reasonToUse": "Use o Uptime Kuma se você precisa monitorar seus serviços auto-hospedados e receber alertas imediatos quando algo cair — é a ferramenta mais simples e bonita para esse fim, sem precisar configurar Zabbix ou Nagios.",
+      "challenges": {
+        "1": "Não tem suporte a monitoramento de infraestrutura completa (CPU, RAM, disco) — é focado em disponibilidade de endpoints, não em métricas de sistema.",
+        "2": "O banco de dados SQLite padrão pode ter problemas de desempenho com muitos monitores e histórico longo — instâncias grandes precisam migrar para MySQL.",
+        "3": "Não tem funcionalidades de on-call scheduling ou escalonamento de alertas — para operações maiores, ferramentas como PagerDuty ou OpsGenie são necessárias."
+      },
       "links": {
         "1": "Código Fonte",
         "2": "Auto-hospede o Uptime Kuma"
@@ -600,6 +824,12 @@
         "1": "Streaming de mídia pessoal com interface moderna",
         "2": "Apps para celular, navegador, smart TVs e consoles",
         "3": "Funciona localmente ou com acesso remoto via conta Plex"
+      },
+      "reasonToUse": "Escolha o Plex se você quer a melhor compatibilidade com smart TVs e consoles — os apps oficiais do Plex estão disponíveis em mais plataformas que o Jellyfin, com uma experiência mais polida.",
+      "challenges": {
+        "1": "Requer uma conta obrigatória nos servidores da Plex, mesmo para uso exclusivamente local — isso significa que seus metadados de uso passam pela empresa.",
+        "2": "Funcionalidades importantes como acesso remoto e sincronização offline exigem assinatura Plex Pass paga.",
+        "3": "O código não é totalmente aberto — você depende da empresa para manter os apps e servidores funcionando, sem garantia de continuidade."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -615,6 +845,12 @@
         "2": "Suporte a vários idiomas, incluindo português do Brasil",
         "3": "Extensões para navegador, integração com LibreOffice e API"
       },
+      "reasonToUse": "Use o LanguageTool auto-hospedado se você trabalha com documentos sensíveis e não quer enviar texto para os servidores do Grammarly ou similares — processar localmente garante privacidade total.",
+      "challenges": {
+        "1": "O servidor Java consome bastante memória — para suporte a múltiplos idiomas simultaneamente, recomenda-se pelo menos 4–8 GB de RAM.",
+        "2": "A qualidade das sugestões em português ainda é inferior ao inglês — erros de concordância complexos e regionalismos brasileiros são menos bem tratados.",
+        "3": "As verificações mais avançadas de estilo e clareza (como as do Grammarly Premium) só estão disponíveis na versão paga do serviço online."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -628,6 +864,12 @@
         "1": "Streaming ao vivo com chat integrado e personalização visual",
         "2": "Compatível com OBS e outras ferramentas de transmissão",
         "3": "Funciona no seu próprio servidor, sem anúncios nem rastreamento"
+      },
+      "reasonToUse": "Use o Owncast se você quer transmitir ao vivo sem depender de algoritmos e políticas do Twitch ou YouTube, mantendo controle total sobre sua audiência e conteúdo.",
+      "challenges": {
+        "1": "Transmissões ao vivo exigem largura de banda de upload generosa no servidor — streams em 1080p60 podem consumir 6–10 Mbps de upload constante.",
+        "2": "A transcodificação de múltiplas qualidades (para espectadores com conexões lentas) exige CPU considerável — sem transcodificação, espectadores com internet limitada podem ter problemas.",
+        "3": "Não tem sistema de discovery — sua audiência precisa saber o endereço do seu servidor; não há plataforma centralizada para novos espectadores te encontrarem."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -643,6 +885,12 @@
         "2": "Agendamento de programação automática com base em horários",
         "3": "Dashboard completo com estatísticas de audiência e logs"
       },
+      "reasonToUse": "Escolha o AzuraCast se você quer criar uma rádio online comunitária ou independente com automação de programação, sem pagar pelos planos mensais de serviços como Radio.co.",
+      "challenges": {
+        "1": "A instalação usa Docker e um script próprio que assume controle total do servidor — não é recomendado instalar em um servidor que já hospeda outros serviços sem isolamento adequado.",
+        "2": "Transmissões com muitos ouvintes simultâneos exigem largura de banda significativa — cada ouvinte em 128 kbps consome cerca de 16 KB/s de upload.",
+        "3": "Atualizações do AzuraCast podem ser instáveis em instalações de longa data; a migração entre versões maiores às vezes requer reconfiguração manual."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -656,6 +904,12 @@
         "1": "Login único (SSO) para múltiplos sistemas",
         "2": "Autenticação com redes sociais, LDAP, 2FA e mais",
         "3": "Painel completo de gestão de usuários, grupos e permissões"
+      },
+      "reasonToUse": "Use o Keycloak se você gerencia múltiplos serviços auto-hospedados e quer que os usuários façam login uma única vez para acessar tudo — é o padrão da indústria para SSO corporativo de código aberto.",
+      "challenges": {
+        "1": "O Keycloak é pesado em memória — a recomendação oficial é de pelo menos 512 MB de heap Java, e em produção com muitos usuários pode exigir 2–4 GB.",
+        "2": "A interface de administração é complexa; configurar fluxos de autenticação, escopos de token e integrações SAML requer conhecimento especializado.",
+        "3": "Atualizações de versão maior frequentemente trazem mudanças de configuração incompatíveis, exigindo migração manual de realm e revisão de integrações."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -671,6 +925,12 @@
         "2": "Painel de administração intuitivo e traduzido para o português",
         "3": "Grande comunidade e documentação acessível"
       },
+      "reasonToUse": "Escolha o WordPress se você precisa do maior ecossistema de plugins e temas disponível — nenhuma outra plataforma tem mais opções para e-commerce, SEO, formulários e integrações.",
+      "challenges": {
+        "1": "Sites WordPress são alvos frequentes de ataques automatizados — manter plugins e temas atualizados é obrigatório e plugins abandonados são vetores de comprometimento.",
+        "2": "O desempenho pode degradar com muitos plugins ativos; sem cache configurado (Redis, Varnish), sites de médio porte podem ficar lentos.",
+        "3": "A proliferação de plugins pode criar dependências conflitantes e dificultar atualizações — \"plugin hell\" é um problema real em instalações complexas."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -684,6 +944,12 @@
         "1": "Foco em redes sociais descentralizadas com identidade portátil",
         "2": "Desenvolvido junto com a plataforma Bluesky",
         "3": "Ainda não amplamente adotado nem implementado fora do Bluesky"
+      },
+      "reasonToUse": "Estude o AT Protocol se você tem interesse em construir aplicações sociais descentralizadas com identidade portátil baseada em domínios DNS — é uma abordagem diferente e interessante em relação ao ActivityPub.",
+      "challenges": {
+        "1": "Rodar sua própria PDS (Personal Data Server) é possível, mas a experiência ainda é experimental e a integração com a rede do Bluesky depende de infraestrutura centralizada da empresa.",
+        "2": "Não há federação real ainda — todas as buscas e feeds passam pelos servidores centrais do Bluesky, contrariando a promessa de descentralização.",
+        "3": "O protocolo ainda está em evolução ativa; implementações de terceiros enfrentam mudanças de API sem aviso e documentação incompleta."
       },
       "links": {
         "1": "Site oficial do AT Protocol",
@@ -699,6 +965,12 @@
         "2": "Protocolo próprio (AT Protocol), mas com uso limitado",
         "3": "Promessa de descentralização ainda não concretizada"
       },
+      "reasonToUse": "Use o Bluesky se você quer uma alternativa ao Twitter/X com interface familiar e sistema de custom feeds — os algoritmos de timeline são públicos e personalizáveis, ao contrário do Twitter.",
+      "challenges": {
+        "1": "A descentralização ainda é incompleta — a maioria dos usuários depende de bsky.social e a infraestrutura central da empresa é um ponto único de falha.",
+        "2": "Auto-hospedar uma PDS e participar da rede com independência real exige conhecimento técnico avançado e a experiência ainda é instável.",
+        "3": "A moderação de conteúdo é menos madura que no Mastodon — ferramentas de bloqueio e filtragem estão evoluindo mas ainda são básicas."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte (cliente e protocolo)",
@@ -712,6 +984,12 @@
         "1": "Atualizações automáticas de sites, blogs, podcasts e mais",
         "2": "Funciona com qualquer leitor de RSS, online ou auto-hospedado",
         "3": "Sem algoritmos, sem rastreio, só o conteúdo que você escolhe"
+      },
+      "reasonToUse": "Use RSS se você quer acompanhar dezenas de fontes de conteúdo em um só lugar, sem abrir cada site individualmente e sem ser manipulado por algoritmos que decidem o que você vê.",
+      "challenges": {
+        "1": "Muitos sites modernos abandonaram o suporte a RSS — plataformas como Instagram, TikTok e LinkedIn não oferecem feeds, exigindo ferramentas como RSSHub para contornar isso.",
+        "2": "A curva de aprendizado para configurar um leitor de RSS e organizar múltiplos feeds pode ser um obstáculo para usuários menos técnicos.",
+        "3": "Auto-hospedar um leitor de RSS (como FreshRSS ou Miniflux) requer manutenção de servidor, ao contrário de usar um app gratuito como o Feedly."
       },
       "links": {
         "1": "que é RSS?",
@@ -727,6 +1005,12 @@
         "2": "Compatível com a maioria dos leitores de RSS",
         "3": "Mais estruturado e extensível que o RSS, com padrão oficial (IETF)"
       },
+      "reasonToUse": "Use o Atom se você está desenvolvendo uma plataforma de publicação e precisa de um formato de feed mais padronizado e extensível que o RSS — a especificação IETF é mais rigorosa e menos ambígua.",
+      "challenges": {
+        "1": "O Atom tem adoção menor que o RSS entre sites e blogs modernos, o que significa que nem todos os sites oferecem feeds Atom.",
+        "2": "Para usuários finais, a diferença prática entre RSS e Atom é irrelevante — a escolha do formato é mais relevante para desenvolvedores.",
+        "3": "Assim como o RSS, depende de que os sites publiquem e mantenham os feeds atualizados — sites que abandonam o suporte a feeds deixam de ser acompanhados."
+      },
       "links": {
         "1": "que é Atom?",
         "2": "Leitores de feed compatíveis",
@@ -735,11 +1019,17 @@
     },
     "bittorrent": {
       "description": "Protocolo descentralizado para compartilhar arquivos entre usuários, sem depender de servidores centrais.",
-      "longDescription": "BitTorrent é um protocolo usado para distribuir arquivos grandes pela internet de forma eficiente e descentralizada. Em vez de baixar de um servidor único, os arquivos são divididos em partes e compartilhados entre todos que estão baixando ou já baixaram. Isso reduz o custo para quem distribui e torna o sistema mais resistente a censura e falhas. É usado em diversos contextos, de distribuição de software livre a arquivos pessoais.",
+      "longDescription": "BitTorrent é um protocolo usado para distribuir arquivos grandes pela internet de forma eficiente e descentralizada. Em vez de baixar de um servidor único, os arquivos são divididos em partes e compartilhadas entre todos que estão baixando ou já baixaram. Isso reduz o custo para quem distribui e torna o sistema mais resistente a censura e falhas. É usado em diversos contextos, de distribuição de software livre a arquivos pessoais.",
       "features": {
         "1": "Compartilhamento direto entre usuários (peer-to-peer)",
         "2": "Descentralizado e resistente a falhas e censura",
         "3": "Usado para distribuir software, vídeos, músicas e outros arquivos"
+      },
+      "reasonToUse": "Use o BitTorrent se você distribui arquivos grandes (como ISOs de software ou datasets) e quer reduzir o custo de banda do servidor — quanto mais pessoas baixam, mais rápido fica para todos.",
+      "challenges": {
+        "1": "O endereço IP dos participantes fica exposto a todos os outros peers no swarm por padrão, o que pode ser um problema de privacidade.",
+        "2": "Trackers centralizados ainda são comuns e podem ser derrubados — embora DHT e PEX permitam operação sem tracker, nem todos os clientes suportam bem esses mecanismos.",
+        "3": "Em redes corporativas e ISPs, o tráfego BitTorrent frequentemente é bloqueado ou limitado (throttling), o que pode inviabilizar o uso."
       },
       "links": {
         "1": "que é BitTorrent?",
@@ -755,6 +1045,12 @@
         "2": "Mensagens são transmitidas por relays públicos ou privados",
         "3": "Foco em resistência à censura e simplicidade técnica"
       },
+      "reasonToUse": "Use o Nostr se você quer uma rede social sem nenhum servidor central obrigatório e com identidade baseada em chaves criptográficas — é a opção mais resistente à censura entre os protocolos desta lista.",
+      "challenges": {
+        "1": "A experiência do usuário ainda é imatura — perda da chave privada significa perda permanente da identidade, sem recuperação possível.",
+        "2": "Spam e conteúdo abusivo são difíceis de moderar sem comprometer a resistência à censura — relays públicos frequentemente são inundados.",
+        "3": "A descoberta de conteúdo e pessoas é limitada — não há algoritmo de recomendação e encontrar usuários fora do seu círculo é difícil."
+      },
       "links": {
         "1": "Site oficial do Nostr",
         "2": "Lista de clientes e relays",
@@ -768,6 +1064,12 @@
         "1": "Navegação anônima e proteção contra rastreamento",
         "2": "Acesso a serviços e sites .onion fora da web comum",
         "3": "Funciona com o Navegador Tor e pode ser integrado a apps e servidores"
+      },
+      "reasonToUse": "Use o Tor se você precisa de anonimato real na internet — é a ferramenta padrão para jornalistas, ativistas e pesquisadores que precisam proteger sua identidade contra vigilância.",
+      "challenges": {
+        "1": "A velocidade de navegação é significativamente menor que uma conexão direta — o roteamento por múltiplos nós adiciona latência considerável.",
+        "2": "Alguns sites bloqueiam ativamente conexões vindas de nós de saída do Tor, exigindo o uso de bridges para contornar.",
+        "3": "Rodar um nó de saída Tor pode atrair atenção legal, pois o tráfego de terceiros passa pelo seu IP — rodar apenas nós intermediários é mais seguro."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -783,6 +1085,12 @@
         "2": "Alertas personalizáveis e suporte a várias fontes de dados",
         "3": "Integração com Prometheus, Loki, InfluxDB, PostgreSQL e mais"
       },
+      "reasonToUse": "Use o Grafana se você já coleta métricas com Prometheus ou outro sistema e precisa de dashboards visuais poderosos — é a ferramenta de visualização padrão no ecossistema de observabilidade de código aberto.",
+      "challenges": {
+        "1": "O Grafana por si só não coleta métricas — você precisa de uma fonte de dados separada como Prometheus ou InfluxDB, o que aumenta a complexidade da infraestrutura.",
+        "2": "Alertas avançados, autenticação com SAML/OAuth e permissões granulares por pasta só estão disponíveis no Grafana Enterprise (pago).",
+        "3": "Dashboards complexos com muitas queries simultâneas podem sobrecarregar o banco de dados de métricas — otimizar queries PromQL exige conhecimento especializado."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -796,6 +1104,12 @@
         "1": "Coleta automática de métricas em formato de séries temporais",
         "2": "Sistema de alertas com regras personalizadas",
         "3": "Integração com Grafana para visualização de dashboards"
+      },
+      "reasonToUse": "Use o Prometheus se você opera infraestrutura com Docker ou Kubernetes e precisa de monitoramento de métricas em série temporal — é o padrão da indústria nesse ecossistema.",
+      "challenges": {
+        "1": "O armazenamento local do Prometheus não é adequado para retenção de longo prazo — ambientes que precisam de meses de histórico devem usar soluções como Thanos ou VictoriaMetrics.",
+        "2": "PromQL tem uma curva de aprendizado real — escrever queries eficientes para alertas complexos exige prática e familiaridade com o modelo de dados.",
+        "3": "O Prometheus não tem autenticação nativa — expor a interface sem um proxy reverso com autenticação significa expor todas as métricas publicamente."
       },
       "links": {
         "1": "Acesse o site oficial",
@@ -811,6 +1125,12 @@
         "2": "Integração com o Fediverso via ActivityPub",
         "3": "Ideal para rádios comunitárias, artistas independentes ou uso pessoal"
       },
+      "reasonToUse": "Use o Funkwhale se você é artista independente ou gerencia um acervo musical e quer distribuir sua música sem depender de plataformas que tomam percentuais das reproduções.",
+      "challenges": {
+        "1": "A instalação requer Python, PostgreSQL, Redis e um servidor de arquivos — é mais complexa que outras plataformas do Fediverso.",
+        "2": "O projeto tem ritmo de desenvolvimento lento e a equipe de mantenedores é pequena — atualizações e correções de bugs podem demorar.",
+        "3": "A descoberta de música entre instâncias é limitada — a federação com outras plataformas do Fediverso é parcial e pode ser inconsistente."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -824,6 +1144,12 @@
         "1": "Salas de bate-papo em tempo real (canais) e mensagens diretas",
         "2": "Leve, rápido e funciona até em conexões lentas",
         "3": "Pode ser auto-hospedado e integrado a bots e scripts"
+      },
+      "reasonToUse": "Use o IRC se você gerencia ou participa de comunidades técnicas que já usam esse protocolo — é extremamente leve, padronizado e funciona em qualquer cliente, do terminal ao navegador.",
+      "challenges": {
+        "1": "Não tem persistência de mensagens por padrão — se você desconectar, perde tudo que foi enviado enquanto estava offline (exige bouncer ou cliente persistente como The Lounge).",
+        "2": "Sem criptografia nativa entre cliente e servidor em muitas implementações — requer configuração explícita de TLS e o conteúdo das mensagens pode ser visto pelo administrador do servidor.",
+        "3": "A experiência é considerada antiquada por usuários acostumados com WhatsApp ou Telegram — sem preview de links, reações ou histórico sincronizado entre dispositivos."
       },
       "links": {
         "1": "que é IRC?",
@@ -839,6 +1165,12 @@
         "2": "Conexão contínua: você não perde mensagens quando está offline",
         "3": "Suporte a múltiplos servidores e histórico completo de conversas"
       },
+      "reasonToUse": "Use o The Lounge se você usa IRC regularmente e quer persistência de mensagens e uma interface moderna sem abrir mão do protocolo clássico — é o bouncer e cliente em um só.",
+      "challenges": {
+        "1": "Requer um servidor sempre online para funcionar — ao contrário de clientes IRC tradicionais, não funciona como app desktop autônomo.",
+        "2": "O armazenamento de histórico cresce continuamente e pode ocupar espaço considerável em conversas ativas ao longo do tempo.",
+        "3": "Configurar acesso seguro via HTTPS e autenticação requer um proxy reverso (Nginx, Caddy) corretamente configurado na frente do The Lounge."
+      },
       "links": {
         "1": "Acesse o site oficial",
         "2": "Código Fonte",
@@ -852,6 +1184,12 @@
         "1": "Editor de documentos, planilhas e apresentações online",
         "2": "E-mail, agenda, chat e videoconferência integrados",
         "3": "Baseada em software livre, com foco em privacidade e controle institucional"
+      },
+      "reasonToUse": "Use a La Suite se você é uma instituição pública ou empresa que quer substituir o Google Workspace por uma solução soberana mantida por um governo democrático e auditável.",
+      "challenges": {
+        "1": "O projeto é voltado principalmente para instituições francesas — a documentação, suporte e roadmap têm foco no contexto europeu, com menos recursos para usuários de outros países.",
+        "2": "A auto-hospedagem completa de todos os componentes requer integração de vários serviços (Nextcloud, Jitsi, Mattermost, etc.) com alto custo de configuração e manutenção.",
+        "3": "A maturidade dos componentes varia — alguns serviços integrados são mais estáveis que outros, e a experiência unificada ainda não é tão fluida quanto o Google Workspace."
       },
       "links": {
         "1": "Acesse o site oficial",
