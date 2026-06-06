@@ -7,61 +7,59 @@ on:
   workflow_dispatch:
 
 env:
-  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
   DEPLOY_HOST: "sovereinia.org"
-  DEPLOY_USER: "guia"
-  REPO_PATH: "/var/www/sovereinia/guia"
-  
+  DEPLOY_USER: "deploy"
+  # Serving directory on the VM. nginx serves this at https://sovereinia.org/guia/
+  # (Vite is configured with base '/guia/'). Must match nginx root + /guia subdir.
+  DEPLOY_PATH: "/srv/apps/sovereinia/guia/"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
-    steps:          
-      - name: Setup SSH with Passphrase
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Setup SSH
         env:
-          SSH_PASSPHRASE: ${{ secrets.SSH_PASSPHRASE }}
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          echo "Setting up SSH directory and permissions..."
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
-      
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-      
-          echo "Adding deploy host to known_hosts..."
-          ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-      
-          echo "Verifying private key file exists and is not empty..."
-          if [ ! -s ~/.ssh/id_rsa ]; then
-            echo "Private key file is missing or empty"; exit 1;
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          if [ ! -s ~/.ssh/deploy_key ]; then
+            echo "Private key is missing or empty"; exit 1
           fi
-          echo "Key file OK ✅"
-      
-          echo "Spawning ssh-agent and setting up SSH_ASKPASS..."
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          echo "echo \$SSH_PASSPHRASE" > ~/.ssh_askpass
-          chmod +x ~/.ssh_askpass
-          DISPLAY=none SSH_ASKPASS=~/.ssh_askpass setsid ssh-add ~/.ssh/id_rsa < /dev/null
 
-      - name: Test SSH Connection
+      - name: Deploy build to VM
         run: |
-          echo "Testing SSH connection to ensure configuration is correct..."
-          ssh -v -i ~/.ssh/id_rsa $DEPLOY_USER@$DEPLOY_HOST "echo 'SSH connection successful'"
-          
-      - name: Pull changes from git
-        run: |
-          echo "Pulling changes from git" 
-          ssh -i ~/.ssh/id_rsa $DEPLOY_USER@$DEPLOY_HOST  << EOF 
-            cd $REPO_PATH
-            git pull origin main
-            npm install
-            npm run build
-            sudo /bin/systemctl stop nginx && sudo /bin/systemctl start nginx
-          EOF
+          # Push the freshly built static site to the serving directory.
+          # --delete keeps the remote a clean mirror of dist/ (no stale assets).
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            dist/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
 
-      - name: Clean Up Local SSH Keys
+      - name: Smoke test
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 20 https://sovereinia.org/guia/)
+          echo "GET /guia/ -> $code"
+          test "$code" = "200"
+
+      - name: Clean up SSH key
         if: always()
-        run: |
-          rm -f ~/.ssh/id_rsa ~/.ssh_askpass ~/.ssh/known_hosts
+        run: rm -f ~/.ssh/deploy_key
