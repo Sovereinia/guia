@@ -2,6 +2,19 @@
 
 export type CategoryId = 'all' | 'social' | 'messaging' | 'tools' | 'protocols';
 
+export type UseCaseId =
+  | 'storage'
+  | 'video'
+  | 'social'
+  | 'chat'
+  | 'identity'
+  | 'docs'
+  | 'media'
+  | 'devops'
+  | 'support'
+  | 'streaming'
+  | 'protocol';
+
 export interface App {
   name: string;
   description: string; // usado no card
@@ -11,6 +24,7 @@ export interface App {
   challenges?: string[]; // pontos reais de atrito
   links?: { label: string; url: string }[]; // botões
   categories: CategoryId[];
+  useCases?: UseCaseId[];
   alternatives?: string[];
   protocol?: string[];
   recommendedForBeginners?: boolean;

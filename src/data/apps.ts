@@ -1,6 +1,7 @@
 import type { App } from '../types';
 import { useI18n } from 'vue-i18n';
 import { computed } from 'vue';
+import { withUseCases } from './useCases';
 
 function makeApp(t: (key: string) => string, slug: string, base: Omit<App, 'description' | 'longDescription' | 'features' | 'reasonToUse' | 'challenges' | 'links'> & { links?: { label: string; url: string }[], featuresCount?: number, challengesCount?: number, linksData?: { url: string }[] }): App {
   return base as App;
@@ -9,7 +10,7 @@ function makeApp(t: (key: string) => string, slug: string, base: Omit<App, 'desc
 export function useApps() {
   const { t } = useI18n();
 
-  const apps = computed<App[]>(() => [
+  const apps = computed<App[]>(() => withUseCases([
   {
     name: 'PeerTube',
     selfHostingLevel: 2,
@@ -1490,7 +1491,7 @@ export function useApps() {
     banner: { src: './apps/icons/lasuite.svg', alt: 'Ícone da La Suite' },
     modalBanner: { src: './apps/logos/lasuite.png', alt: 'Logo da La Suite' },
   },
-]);
+  ]));
 
   return { apps };
 }

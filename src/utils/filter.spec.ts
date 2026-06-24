@@ -50,3 +50,14 @@ describe('filterApps search', () => {
     expect(hits.length).toBeGreaterThanOrEqual(0);
   });
 });
+
+describe('filterApps use cases', () => {
+  it('filters by useCase tag', () => {
+    const apps = [
+      app('A', { useCases: ['storage'], categories: ['tools'] } as any),
+      app('B', { useCases: ['chat'], categories: ['messaging'] } as any),
+    ];
+    const hits = filterApps(apps as any, 'all', '', 'storage' as any);
+    expect(hits.map((x) => x.name)).toEqual(['A']);
+  });
+});
