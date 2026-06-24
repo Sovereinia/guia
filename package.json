@@ -14,6 +14,11 @@
     "format": "prettier --write src/",
     "favicons": "bash scripts/fetch-favicons.sh"
   },
+  "overrides": {
+    "micromatch": {
+      "picomatch": "^2.3.2"
+    }
+  },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
     "pinia": "^3.0.1",

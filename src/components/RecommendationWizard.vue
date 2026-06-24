@@ -3,7 +3,7 @@ import type { App, UseCaseId } from '@/types';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-const props = defineProps<{ apps: App[] }>();
+defineProps<{ apps: App[] }>();
 const emit = defineEmits<{
   apply: [payload: { useCase: UseCaseId | 'all'; beginnersOnly: boolean; federatedOnly: boolean }];
   close: [];

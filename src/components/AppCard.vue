@@ -14,7 +14,6 @@ const props = defineProps<{
 }>();
 
 const { t } = useI18n();
-const base = import.meta.env.BASE_URL;
 
 let openCount = 0;
 
@@ -172,7 +171,7 @@ const slicedDescription = computed(() => {
 
           <div v-if="app.alternatives?.length" class="mt-auto justify-end flex gap-2">
             <ul class="flex gap-2" aria-label="Alternative apps">
-              <li v-for="(alt, index) in app.alternatives"
+              <li v-for="alt in app.alternatives"
                   :key="alt"
                   v-show="!hiddenAlternatives.has(alt)">
                 <img

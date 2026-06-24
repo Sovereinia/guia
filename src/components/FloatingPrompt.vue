@@ -24,18 +24,16 @@
   </teleport>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useI18n } from 'vue-i18n'
 
 const visible = ref(false)
-const { t } = useI18n()
 
 function dismiss() {
   visible.value = false
 }
 
-function goToLink(template) {
+function goToLink(template: string) {
   window.open(`https://github.com/sovereinia/guia/issues/new?template=${template}`, '_blank')
 }
 

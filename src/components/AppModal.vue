@@ -9,7 +9,6 @@ import { trapTabKey } from '@/utils/focusTrap';
 import { isAppStarred, toggleAppStar } from '@/utils/starredApps';
 import type { App } from '@/types';
 import { useI18n } from 'vue-i18n';
-import { useRoute } from 'vue-router';
 
 
 const props = defineProps<{
@@ -41,7 +40,6 @@ const visible = ref(false);
 
 const localApp = ref<Partial<App>>({});
 
-const route = useRoute();
 const shareToast = ref(false);
 
 const myModal = ref<HTMLDialogElement | null>(null)
@@ -148,10 +146,6 @@ async function shareApp() {
   await navigator.clipboard.writeText(url);
   shareToast.value = true;
   setTimeout(() => (shareToast.value = false), 2000);
-}
-
-function openModal() {
-  myModal.value?.showModal()
 }
 
 function closeModal() {

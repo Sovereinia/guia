@@ -26,8 +26,20 @@ export default defineConfigWithVueTs(
   },
   {
     rules: {
-      'no-unused-vars': 'warn',
-      '@typescript/no-unused-vars': 'warn',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' },
+      ],
+      // Internal single-word components (Navbar, Layout, Input, ...) are intentional.
+      'vue/multi-word-component-names': 'off',
+    },
+  },
+  {
+    // Test fixtures legitimately use `any` for partial/mocked shapes.
+    files: ['**/*.spec.ts'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
   skipFormatting,

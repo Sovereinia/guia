@@ -13,7 +13,7 @@ defineProps<{
 <template>
   <Wrapper :title="title">
     <ul class="flex flex-col gap-2">
-      <li v-for="item in items" key="item.id">
+      <li v-for="item in items" :key="item.id">
         <label class="text-base-content opacity-80">
           <input type="checkbox" class="checkbox checkbox-primary mr-1" />
           {{ item.label }}

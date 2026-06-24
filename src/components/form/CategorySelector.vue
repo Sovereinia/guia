@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import type { Category } from '@/types';
 import { categories } from '@/data/categories';
 import { useI18n } from 'vue-i18n';
 
-const props = defineProps<{
+defineProps<{
   modelValue: string;
 }>();
 

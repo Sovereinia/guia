@@ -46,7 +46,6 @@ export function resolveStarredApps<T extends { name: string }>(
   catalog: T[],
   names: string[] = listStarredApps(),
 ): T[] {
-  const byName = new Map(catalog.map((a) => [a.name, a]));
   const set = new Set(names);
   return catalog.filter((a) => set.has(a.name));
 }

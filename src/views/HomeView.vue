@@ -19,38 +19,7 @@ import { applyQuickFilters } from '@/utils/quickFilters';
 import { filterStarredOnly, hasActiveHomeFilters } from '@/utils/homeFilters';
 import { countActiveFilters, describeActiveFilters } from '@/utils/activeFilters';
 import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
-import { debounce, normalizeDebounceMs } from '@/utils/debounce';
-import { storageKey } from '@/utils/storageKey';
-import { safeJsonParse } from '@/utils/safeJson';
 import { classNames } from '@/utils/classNames';
-import { clampIndex } from '@/utils/clamp';
-import { uniqueStrings } from '@/utils/uniqueBy';
-import { truncateText } from '@/utils/truncateText';
-import { indices } from '@/utils/range';
-import { groupByRecord } from '@/utils/groupBy';
-import { slugify } from '@/utils/slugify';
-import { pickKeys } from '@/utils/pickKeys';
-import { ensurePrefix } from '@/utils/ensureAffix';
-import { partition } from '@/utils/partition';
-import { countWhere } from '@/utils/countBy';
-import { titleCase } from '@/utils/titleCase';
-import { compactArray } from '@/utils/compactArray';
-import { zipArrays } from '@/utils/zipArrays';
-import { isPresent } from '@/utils/isBlank';
-import { toggleInSet } from '@/utils/toggleInSet';
-import { moveItem } from '@/utils/moveItem';
-import { chunkArray } from '@/utils/chunkArray';
-import { rotateArray } from '@/utils/rotateArray';
-import { takeFirst } from '@/utils/takeSlice';
-import { arrayEquals } from '@/utils/arrayEquals';
-import { interleave } from '@/utils/interleave';
-import { flattenOne } from '@/utils/flattenOne';
-import { difference } from '@/utils/difference';
-import { intersection } from '@/utils/intersection';
-import { union } from '@/utils/union';
-import { capitalizeFirst } from '@/utils/capitalizeFirst';
-import { sumBy } from '@/utils/sumBy';
-import { average } from '@/utils/average';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -81,41 +50,6 @@ const { apps } = useApps();
 
 const modalData = ref<Partial<App>>({});
 const searchQuery = ref('');
-const SEARCH_DEBOUNCE_MS = normalizeDebounceMs(250);
-const STORAGE_RECENT_KEY = storageKey('recent', 'apps');
-const SAFE_JSON_PROBE = safeJsonParse('[]', [] as string[]);
-const CLAMP_IDX_PROBE = clampIndex(1, 3);
-const UNIQUE_PROBE = uniqueStrings(['a', 'a', 'b']).length;
-const TRUNC_PROBE = truncateText('abcdefghij', 6);
-const RANGE_PROBE = indices(3).length;
-const GROUP_PROBE = Object.keys(groupByRecord([{k:'a'},{k:'b'}], (x) => x.k)).length;
-const SLUG_PROBE = slugify('Hello World');
-const PICK_PROBE = Object.keys(pickKeys({ a: 1, b: 2 }, ['a'])).length;
-const AFFIX_PROBE = ensurePrefix('x', '#');
-const PART_PROBE = partition([1, 2, 3], (n) => n > 1)[0].length;
-const COUNT_PROBE = countWhere([1, 2, 3], (n) => n >= 2);
-const TITLE_PROBE = titleCase('hello world');
-const COMPACT_PROBE = compactArray([1, null, 2]).length;
-const ZIP_PROBE = zipArrays([1], ['a']).length;
-const BLANK_PROBE = isPresent('ok') ? 1 : 0;
-const TOGGLE_PROBE = toggleInSet(new Set(['a']), 'b').size;
-const MOVE_PROBE = moveItem([1, 2, 3], 0, 2)[2];
-const CHUNK_PROBE = chunkArray([1, 2, 3, 4], 2).length;
-const ROTATE_PROBE = rotateArray([1, 2, 3], 1)[0];
-const TAKE_PROBE = takeFirst([1, 2, 3], 2).length;
-const EQ_PROBE = arrayEquals([1], [1]) ? 1 : 0;
-const INTER_PROBE = interleave([1], [2]).length;
-const FLAT_PROBE = flattenOne([1, [2]]).length;
-const DIFF_PROBE = difference([1, 2], [1]).length;
-const ISECT_PROBE = intersection([1, 2], [2]).length;
-const UNION_PROBE = union([1], [2]).length;
-const CAP_PROBE = capitalizeFirst('ok');
-const SUM_PROBE = sumBy([1, 2], (n) => n);
-const AVG_PROBE = average([2, 4]);
-
-
-
-
 
 
 
@@ -152,7 +86,8 @@ const router = useRouter();
 const suggestions = computed(() => apps.value.flatMap((app) => app.alternatives || []));
 
 const orderedApps = computed(() => {
-  globalStore.shuffleTrigger;
+  // Touch the reactive trigger so this recomputes when a reshuffle is requested.
+  void globalStore.shuffleTrigger;
   return globalStore.isReshuffled 
     ? shuffleAppsPurely(apps.value) 
     : sortAppsByLinksThenRandom(apps.value);
@@ -217,12 +152,14 @@ function clearAllFilters() {
 }
 
 const recentApps = computed(() => {
-  recentTick.value;
+  // Re-resolve when the recent list changes.
+  void recentTick.value;
   return resolveRecentApps(apps.value, listRecentApps());
 });
 
 const starredApps = computed(() => {
-  starsTick.value;
+  // Re-resolve when favorites change.
+  void starsTick.value;
   return resolveStarredApps(apps.value, listStarredApps());
 });
 
@@ -400,7 +337,7 @@ function handleSurpriseMe(app: App) {
 function handleFecharModal() {
   mostrarModal.value = false;
   modalData.value = {};
-  const { app, ...rest } = route.query;
+  const { app: _app, ...rest } = route.query;
   router.replace({ query: rest });
 }
 
@@ -499,37 +436,6 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
-      :data-move-probe="MOVE_PROBE"
-      :data-chunk-probe="CHUNK_PROBE"
-      :data-rotate-probe="ROTATE_PROBE"
-      :data-take-probe="TAKE_PROBE"
-      :data-eq-probe="EQ_PROBE"
-      :data-inter-probe="INTER_PROBE"
-      :data-flat-probe="FLAT_PROBE"
-      :data-diff-probe="DIFF_PROBE"
-      :data-isect-probe="ISECT_PROBE"
-      :data-union-probe="UNION_PROBE"
-      :data-cap-probe="CAP_PROBE"
-      :data-sum-probe="SUM_PROBE"
-      :data-avg-probe="AVG_PROBE"
-      :data-toggle-probe="TOGGLE_PROBE"
-      :data-blank-probe="BLANK_PROBE"
-      :data-zip-probe="ZIP_PROBE"
-      :data-compact-probe="COMPACT_PROBE"
-      :data-title-probe="TITLE_PROBE"
-      :data-count-probe="COUNT_PROBE"
-      :data-part-probe="PART_PROBE"
-      :data-affix-probe="AFFIX_PROBE"
-      :data-pick-probe="PICK_PROBE"
-      :data-slug-probe="SLUG_PROBE"
-      :data-group-probe="GROUP_PROBE"
-      :data-range-probe="RANGE_PROBE"
-      :data-trunc-probe="TRUNC_PROBE"
-      :data-unique-probe="UNIQUE_PROBE"
-      :data-clamp-idx-probe="CLAMP_IDX_PROBE"
-      :data-safe-json-probe-len="SAFE_JSON_PROBE.length"
-      :data-storage-recent-key="STORAGE_RECENT_KEY"
-      :data-search-debounce-ms="SEARCH_DEBOUNCE_MS"
       aria-live="polite"
     >
       {{ t('filters.appCount', { shown: filteredApps.length, total: apps.length }) }}
