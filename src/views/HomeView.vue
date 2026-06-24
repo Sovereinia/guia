@@ -522,7 +522,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       </div>
       <div class="flex-shrink-0 flex gap-2">
         <SurpriseMeButton 
-          :apps="orderedApps" 
+          :apps="filteredApps" 
           @surprise="handleSurpriseMe"
         />
         <ReshuffleButton />
