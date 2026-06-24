@@ -22,6 +22,7 @@ import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQuery
 import { debounce, normalizeDebounceMs } from '@/utils/debounce';
 import { storageKey } from '@/utils/storageKey';
 import { safeJsonParse } from '@/utils/safeJson';
+import { classNames } from '@/utils/classNames';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -481,8 +482,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     >
       <button
         type="button"
-        class="btn btn-sm"
-        :class="beginnersOnly ? 'btn-primary' : 'btn-outline'"
+        :class="classNames('btn', 'btn-sm', beginnersOnly ? 'btn-primary' : 'btn-outline')"
         data-testid="chip-beginners"
         :aria-pressed="beginnersOnly"
         @click="toggleBeginnersOnly"
