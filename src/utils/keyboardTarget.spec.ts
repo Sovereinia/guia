@@ -8,13 +8,11 @@ function el(tag: string, attrs: Record<string, string> = {}): HTMLElement {
 }
 
 describe('isEditableTarget', () => {
-  it('detects input/textarea/select and contentEditable', () => {
+  it('detects input/textarea/select and contentEditable attr', () => {
     expect(isEditableTarget(el('INPUT'))).toBe(true);
     expect(isEditableTarget(el('TEXTAREA'))).toBe(true);
     expect(isEditableTarget(el('SELECT'))).toBe(true);
-    const div = el('DIV');
-    div.contentEditable = 'true';
-    expect(isEditableTarget(div)).toBe(true);
+    expect(isEditableTarget(el('DIV', { contenteditable: 'true' }))).toBe(true);
     expect(isEditableTarget(el('BUTTON'))).toBe(false);
     expect(isEditableTarget(null)).toBe(false);
   });
