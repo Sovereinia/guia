@@ -110,6 +110,12 @@ function handleFecharModal() {
   router.replace({ query: rest });
 }
 
+/** Navigate to another app while the modal stays open (prev/next arrows). */
+function handleNavigateModal(app: App) {
+  modalData.value = { ...app };
+  router.replace({ query: { ...route.query, app: getAppSlug(app) } });
+}
+
 watch(
   () => route.query.app,
   (appSlug) => {
@@ -212,6 +218,12 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
     class="grid grid-cols-1 w-full max-w-full md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-12 mt-2"
   >
     <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
-    <AppModal :abrir="mostrarModal" :app="modalData" @atualizarAbrir="handleFecharModal" />
+    <AppModal
+      :abrir="mostrarModal"
+      :app="modalData"
+      :apps="filteredApps"
+      @atualizarAbrir="handleFecharModal"
+      @navigate="handleNavigateModal"
+    />
   </section>
 </template>

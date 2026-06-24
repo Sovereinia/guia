@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import { ref, type Ref, defineProps, watch, onMounted, onBeforeUnmount, nextTick, computed } from 'vue'
+import { ref, type Ref, watch, onMounted, onBeforeUnmount, nextTick, computed } from 'vue'
 import { getAlternativeIcon } from '@/utils/global.ts';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { getFaviconPath } from '@/utils/global.ts';
 import { getAppSlug } from '@/utils/global.ts';
+import { canGoNext, canGoPrevious, getNextApp, getPreviousApp } from '@/utils/modalNavigation';
 import type { App } from '@/types';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
 
 
-const { abrir, app } = defineProps<{
+const props = defineProps<{
   abrir: boolean;
   app: Partial<App> & { _openCount?: number };
+  /** Currently visible apps (after filters/search) used for prev/next navigation. */
+  apps?: App[];
 }>();
 
-const emit = defineEmits(['atualizarAbrir'])
+const emit = defineEmits<{
+  atualizarAbrir: [value: boolean];
+  navigate: [app: App];
+}>();
 
 const expandido = ref(false);
 
@@ -31,24 +37,59 @@ const myModal = ref<HTMLDialogElement | null>(null)
 
 const previousActiveElement = ref<HTMLElement | null>(null);
 
-watch(() => abrir, async (newValue) => {
-  if (newValue && app) {
+const visibleApps = computed(() => props.apps ?? []);
+
+const hasPrevious = computed(() => canGoPrevious(visibleApps.value, localApp.value.name));
+const hasNext = computed(() => canGoNext(visibleApps.value, localApp.value.name));
+
+function goToPrevious() {
+  const prev = getPreviousApp(visibleApps.value, localApp.value.name);
+  if (prev) emit('navigate', prev);
+}
+
+function goToNext() {
+  const next = getNextApp(visibleApps.value, localApp.value.name);
+  if (next) emit('navigate', next);
+}
+
+function onKeydown(event: KeyboardEvent) {
+  if (!props.abrir || !visible.value) return;
+  const target = event.target as HTMLElement | null;
+  if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+    return;
+  }
+  if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    goToPrevious();
+  } else if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    goToNext();
+  }
+}
+
+async function loadAppIntoModal(source: Partial<App>) {
+  bannerErrored.value = false;
+  expandido.value = false;
+  visible.value = false;
+  localApp.value = {};
+  visibleAlternatives.value = {};
+  favicons.value = [];
+
+  await nextTick();
+
+  localApp.value = { ...source };
+  visible.value = true;
+}
+
+watch(() => props.abrir, async (newValue) => {
+  if (newValue && props.app) {
     previousActiveElement.value = document.activeElement as HTMLElement;
-    bannerErrored.value = false;
-    expandido.value = false;
-    visible.value = false;
-    localApp.value = {};
-    visibleAlternatives.value = {}; 
-    favicons.value = [];
 
-    await nextTick();
+    await loadAppIntoModal(props.app);
 
-    localApp.value = { ...app };
-    visible.value = true;
-    
     await nextTick();
     myModal.value?.showModal();
-    
+
     const firstFocusable = myModal.value?.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])') as HTMLElement;
     if (firstFocusable) {
       firstFocusable.focus();
@@ -60,8 +101,17 @@ watch(() => abrir, async (newValue) => {
   }
 });
 
-watch(() => app._openCount, async (newValue) => {
-  if (!app || !newValue) return;
+// Keep modal content in sync when parent navigates to another app while open.
+watch(
+  () => props.app.name,
+  async (newName, oldName) => {
+    if (!props.abrir || !newName || newName === oldName) return;
+    await loadAppIntoModal(props.app);
+  },
+);
+
+watch(() => props.app._openCount, async (newValue) => {
+  if (!props.app || !newValue) return;
 });
 
 function handleDialogClose() {
@@ -138,6 +188,8 @@ watch(
         const { src, visible, onError } = faviconSrc(link.url);
         return { ...link, faviconSrc: src, faviconVisible: visible, faviconError: onError };
       });
+    } else {
+      favicons.value = [];
     }
   },
   { immediate: true }
@@ -148,10 +200,12 @@ const isMobile = ref(false);
 onMounted(() => {
   isMobile.value = window.innerWidth < 640;
   window.addEventListener('resize', handleResize);
+  window.addEventListener('keydown', onKeydown);
 });
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', handleResize);
+  window.removeEventListener('keydown', onKeydown);
   if (previousActiveElement.value) {
     previousActiveElement.value.focus();
   }
@@ -176,7 +230,7 @@ const { t } = useI18n();
   <div>
   <dialog 
     ref="myModal" 
-    :key="app._openCount"
+    :key="props.app._openCount"
     class="modal fixed inset-0 flex items-center justify-center p-2 sm:p-4 overflow-auto" 
     @click.self="closeModal"
     @close="handleDialogClose"
@@ -195,6 +249,34 @@ const { t } = useI18n();
     >
       {{ t('appModal.linkCopied') || 'Link copied!' }}
     </div>
+
+    <!-- Previous app -->
+    <button
+      type="button"
+      data-testid="modal-prev"
+      class="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-20 bg-base-200 hover:bg-base-300 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-2 shadow-md"
+      :disabled="!hasPrevious"
+      :aria-label="t('appModal.previousApp')"
+      @click="goToPrevious"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Next app -->
+    <button
+      type="button"
+      data-testid="modal-next"
+      class="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 z-20 bg-base-200 hover:bg-base-300 disabled:opacity-30 disabled:cursor-not-allowed rounded-full p-2 shadow-md"
+      :disabled="!hasNext"
+      :aria-label="t('appModal.nextApp')"
+      @click="goToNext"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
 
     <!-- Botão de fechar -->
     <button

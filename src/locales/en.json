@@ -72,7 +72,10 @@
     "selfHostingLabel": "Self-hosting difficulty",
     "selfHostingTooltip": "How difficult it is to self-host this app (1=Easy, 3=Advanced)",
     "reasonToUse": "Why use it",
-    "challenges": "Challenges"
+    "challenges": "Challenges",
+    "previousApp": "Previous app",
+    "nextApp": "Next app",
+    "details": "Details for {name}"
   },
   "surpriseMe": {
     "button": "Surprise me!"
