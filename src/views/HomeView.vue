@@ -40,6 +40,7 @@ import { isPresent } from '@/utils/isBlank';
 import { toggleInSet } from '@/utils/toggleInSet';
 import { moveItem } from '@/utils/moveItem';
 import { chunkArray } from '@/utils/chunkArray';
+import { rotateArray } from '@/utils/rotateArray';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -90,6 +91,7 @@ const BLANK_PROBE = isPresent('ok') ? 1 : 0;
 const TOGGLE_PROBE = toggleInSet(new Set(['a']), 'b').size;
 const MOVE_PROBE = moveItem([1, 2, 3], 0, 2)[2];
 const CHUNK_PROBE = chunkArray([1, 2, 3, 4], 2).length;
+const ROTATE_PROBE = rotateArray([1, 2, 3], 1)[0];
 
 
 
@@ -479,6 +481,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       data-testid="app-count-badge"
       :data-move-probe="MOVE_PROBE"
       :data-chunk-probe="CHUNK_PROBE"
+      :data-rotate-probe="ROTATE_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
