@@ -33,6 +33,7 @@ import { pickKeys } from '@/utils/pickKeys';
 import { ensurePrefix } from '@/utils/ensureAffix';
 import { partition } from '@/utils/partition';
 import { countWhere } from '@/utils/countBy';
+import { titleCase } from '@/utils/titleCase';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -76,6 +77,8 @@ const PICK_PROBE = Object.keys(pickKeys({ a: 1, b: 2 }, ['a'])).length;
 const AFFIX_PROBE = ensurePrefix('x', '#');
 const PART_PROBE = partition([1, 2, 3], (n) => n > 1)[0].length;
 const COUNT_PROBE = countWhere([1, 2, 3], (n) => n >= 2);
+const TITLE_PROBE = titleCase('hello world');
+
 
 
 
@@ -457,6 +460,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-title-probe="TITLE_PROBE"
       :data-count-probe="COUNT_PROBE"
       :data-part-probe="PART_PROBE"
       :data-affix-probe="AFFIX_PROBE"
