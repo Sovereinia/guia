@@ -1265,7 +1265,8 @@
     "quickLabel": "Filtros rápidos",
     "beginners": "Para principiantes",
     "federated": "Federados / protocolos",
-    "appCount": "Mostrando {shown} de {total} apps"
+    "appCount": "Mostrando {shown} de {total} apps",
+    "clear": "Limpiar filtros"
   },
   "favorites": {
     "title": "Favoritos con estrella",
