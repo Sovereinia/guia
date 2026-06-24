@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Navbar from './Navbar.vue';
+import ScrollToTopButton from './ScrollToTopButton.vue';
 import { useI18n } from 'vue-i18n';
 import { MAIN_CONTENT_ID, focusMainContent, mainContentHref } from '@/utils/skipLink';
 
@@ -38,6 +39,8 @@ function onSkipActivate(event: Event) {
   >
     <slot name="content" />
   </main>
+
+  <ScrollToTopButton />
 </template>
 
 <style scoped>
