@@ -41,6 +41,7 @@ import { toggleInSet } from '@/utils/toggleInSet';
 import { moveItem } from '@/utils/moveItem';
 import { chunkArray } from '@/utils/chunkArray';
 import { rotateArray } from '@/utils/rotateArray';
+import { takeFirst } from '@/utils/takeSlice';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -92,6 +93,7 @@ const TOGGLE_PROBE = toggleInSet(new Set(['a']), 'b').size;
 const MOVE_PROBE = moveItem([1, 2, 3], 0, 2)[2];
 const CHUNK_PROBE = chunkArray([1, 2, 3, 4], 2).length;
 const ROTATE_PROBE = rotateArray([1, 2, 3], 1)[0];
+const TAKE_PROBE = takeFirst([1, 2, 3], 2).length;
 
 
 
@@ -482,6 +484,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       :data-move-probe="MOVE_PROBE"
       :data-chunk-probe="CHUNK_PROBE"
       :data-rotate-probe="ROTATE_PROBE"
+      :data-take-probe="TAKE_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
