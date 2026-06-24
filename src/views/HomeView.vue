@@ -16,7 +16,7 @@ import type { App, CategoryId, UseCaseId } from '@/types';
 import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
 import { getAppSlug } from '@/utils/global';
 import { applyQuickFilters } from '@/utils/quickFilters';
-import { hasActiveHomeFilters } from '@/utils/homeFilters';
+import { filterStarredOnly, hasActiveHomeFilters } from '@/utils/homeFilters';
 import {
   clearRecentApps,
   listRecentApps,
@@ -50,6 +50,7 @@ const showWizard = ref(false);
 const showShortcuts = ref(false);
 const beginnersOnly = ref(false);
 const federatedOnly = ref(false);
+const starredOnly = ref(false);
 /** Bump when recent list changes so the chip row re-renders. */
 const recentTick = ref(0);
 /** Bump when stars change so favorites row re-renders (stars toggle in modal). */
@@ -75,10 +76,11 @@ const filteredApps = computed(() => {
     searchQuery.value,
     selectedUseCase.value,
   );
-  return applyQuickFilters(list, {
+  const quick = applyQuickFilters(list, {
     beginnersOnly: beginnersOnly.value,
     federatedOnly: federatedOnly.value,
   });
+  return filterStarredOnly(quick, listStarredApps(), starredOnly.value);
 });
 
 function toggleBeginnersOnly() {
@@ -93,6 +95,13 @@ function toggleFederatedOnly() {
   globalStore.resetReshuffle();
 }
 
+function toggleStarredOnly() {
+  starredOnly.value = !starredOnly.value;
+  showFilters.value = true;
+  starsTick.value += 1;
+  globalStore.resetReshuffle();
+}
+
 const filtersActive = computed(() =>
   hasActiveHomeFilters({
     searchQuery: searchQuery.value,
@@ -100,6 +109,7 @@ const filtersActive = computed(() =>
     selectedUseCase: selectedUseCase.value,
     beginnersOnly: beginnersOnly.value,
     federatedOnly: federatedOnly.value,
+    starredOnly: starredOnly.value,
   }),
 );
 
@@ -109,6 +119,7 @@ function clearAllFilters() {
   selectedUseCase.value = 'all';
   beginnersOnly.value = false;
   federatedOnly.value = false;
+  starredOnly.value = false;
   globalStore.resetReshuffle();
 }
 
@@ -414,6 +425,16 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
         @click="toggleFederatedOnly"
       >
         {{ t('filters.federated') }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm"
+        :class="starredOnly ? 'btn-primary' : 'btn-outline'"
+        data-testid="chip-starred"
+        :aria-pressed="starredOnly"
+        @click="toggleStarredOnly"
+      >
+        {{ t('filters.starred') }}
       </button>
       <button
         v-if="filtersActive"

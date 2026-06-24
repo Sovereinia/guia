@@ -1266,7 +1266,8 @@
     "beginners": "Beginner-friendly",
     "federated": "Federated / protocols",
     "appCount": "Showing {shown} of {total} apps",
-    "clear": "Clear filters"
+    "clear": "Clear filters",
+    "starred": "Starred only"
   },
   "favorites": {
     "title": "Starred favorites",
