@@ -1291,5 +1291,9 @@
   "a11y": {
     "skipToMain": "Skip to main content",
     "scrollToTop": "Back to top"
+  },
+  "share": {
+    "copyLink": "Copy page link",
+    "copied": "Link copied!"
   }
 }
