@@ -1260,5 +1260,19 @@
     "opt_yes_fed": "Sí, la federación importa",
     "opt_no_fed": "No es prioritario",
     "results": "Apps sugeridas"
+  },
+  "recent": {
+    "title": "Vistos recientemente",
+    "empty": "Abre una app para armar esta lista",
+    "clear": "Borrar recientes"
+  },
+  "shortcuts": {
+    "title": "Atajos de teclado",
+    "open": "Atajos",
+    "close": "Cerrar",
+    "search": "Enfocar búsqueda",
+    "modalPrev": "App anterior en el modal",
+    "modalNext": "Siguiente app en el modal",
+    "escape": "Cerrar modal / limpiar búsqueda"
   }
 }
