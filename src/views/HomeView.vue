@@ -17,6 +17,7 @@ import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/util
 import { getAppSlug } from '@/utils/global';
 import { applyQuickFilters } from '@/utils/quickFilters';
 import { filterStarredOnly, hasActiveHomeFilters } from '@/utils/homeFilters';
+import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
 import {
   clearRecentApps,
   listRecentApps,
@@ -239,6 +240,11 @@ function onGlobalKeydown(e: KeyboardEvent) {
 }
 
 onMounted(() => {
+  const fromUrl = parseSearchQueryParam(route.query.q);
+  if (fromUrl) {
+    searchQuery.value = fromUrl;
+    showFilters.value = true;
+  }
   const appSlug = route.query.app;
   if (appSlug) {
     const found = apps.value.find(app => getAppSlug(app) === appSlug);
@@ -340,6 +346,16 @@ watch([mostrarModal, modalData], ([isOpen, app]) => {
         'Apps descentralizados que funcionam sem um único dono, com redes independentes, mais liberdade, privacidade e controle para quem participa.',
     });
   }
+});
+
+
+/** Keep ?q= in sync so filtered views are shareable / reloadable. */
+watch(searchQuery, (q) => {
+  const cur = parseSearchQueryParam(route.query.q);
+  const trimmed = q.trim();
+  if (trimmed === cur) return;
+  const next = withSearchQueryParam({ ...route.query } as Record<string, unknown>, q);
+  router.replace({ query: next as typeof route.query });
 });
 
 watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCase]) => {
