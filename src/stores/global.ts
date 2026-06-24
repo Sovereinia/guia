@@ -1,5 +1,6 @@
 import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
+import { nextTheme } from '@/utils/theme';
 
 export const useGlobalStore = defineStore(
   'global',
@@ -12,7 +13,7 @@ export const useGlobalStore = defineStore(
 
     const toggleTheme = () => {
       if (!html) return;
-      theme.value = theme.value === 'light' ? 'dark' : 'light';
+      theme.value = nextTheme(theme.value);
       html.setAttribute('data-theme', theme.value);
 
       if (isDark.value) {
