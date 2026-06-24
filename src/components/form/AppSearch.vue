@@ -15,7 +15,7 @@ const emit = defineEmits<{
 
 const activeIndex = ref(-1);
 const showSuggestions = ref(false);
-const searchTimeout = ref<number | null>(null);
+const searchTimeout = ref<ReturnType<typeof setTimeout> | null>(null);
 
 // Atualiza o input e aplica debounce
 function onInput(event: Event) {
