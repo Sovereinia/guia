@@ -30,6 +30,7 @@ import { indices } from '@/utils/range';
 import { groupByRecord } from '@/utils/groupBy';
 import { slugify } from '@/utils/slugify';
 import { pickKeys } from '@/utils/pickKeys';
+import { ensurePrefix } from '@/utils/ensureAffix';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -70,6 +71,8 @@ const RANGE_PROBE = indices(3).length;
 const GROUP_PROBE = Object.keys(groupByRecord([{k:'a'},{k:'b'}], (x) => x.k)).length;
 const SLUG_PROBE = slugify('Hello World');
 const PICK_PROBE = Object.keys(pickKeys({ a: 1, b: 2 }, ['a'])).length;
+const AFFIX_PROBE = ensurePrefix('x', '#');
+
 
 
 
@@ -448,6 +451,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-affix-probe="AFFIX_PROBE"
       :data-pick-probe="PICK_PROBE"
       :data-slug-probe="SLUG_PROBE"
       :data-group-probe="GROUP_PROBE"
