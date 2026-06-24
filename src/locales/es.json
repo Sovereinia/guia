@@ -1286,5 +1286,8 @@
     "modalPrev": "App anterior en el modal",
     "modalNext": "Siguiente app en el modal",
     "escape": "Cerrar modal / limpiar búsqueda"
+  },
+  "a11y": {
+    "skipToMain": "Saltar al contenido principal"
   }
 }
