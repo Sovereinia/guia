@@ -22,6 +22,11 @@ import {
   pushRecentApp,
   resolveRecentApps,
 } from '@/utils/recentApps';
+import {
+  exportStarredAsText,
+  listStarredApps,
+  resolveStarredApps,
+} from '@/utils/starredApps';
 import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
@@ -46,6 +51,9 @@ const beginnersOnly = ref(false);
 const federatedOnly = ref(false);
 /** Bump when recent list changes so the chip row re-renders. */
 const recentTick = ref(0);
+/** Bump when stars change so favorites row re-renders (stars toggle in modal). */
+const starsTick = ref(0);
+const favoritesCopied = ref(false);
 const route = useRoute();
 const router = useRouter();
 
@@ -89,6 +97,11 @@ const recentApps = computed(() => {
   return resolveRecentApps(apps.value, listRecentApps());
 });
 
+const starredApps = computed(() => {
+  starsTick.value;
+  return resolveStarredApps(apps.value, listStarredApps());
+});
+
 function recordRecent(app: App | Partial<App> | undefined) {
   if (!app?.name) return;
   pushRecentApp(app.name);
@@ -98,6 +111,25 @@ function recordRecent(app: App | Partial<App> | undefined) {
 function onClearRecent() {
   clearRecentApps();
   recentTick.value += 1;
+}
+
+function refreshStarsTick() {
+  starsTick.value += 1;
+}
+
+async function onExportFavorites() {
+  const text = exportStarredAsText(listStarredApps());
+  if (!text) return;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    /* clipboard may be blocked; still show feedback for headless checks */
+  }
+  favoritesCopied.value = true;
+  window.setTimeout(() => {
+    favoritesCopied.value = false;
+  }, 2000);
+  refreshStarsTick();
 }
 
 function onWizardApply(payload: {
@@ -122,6 +154,11 @@ const subtitleBase = computed(() => {
 });
 const subtitleSuffix = computed(() => t('app.subtitle'));
 const mostrarModal = ref(false);
+
+/** Re-read stars when modal closes (user may have toggled star inside modal). */
+watch(mostrarModal, (open) => {
+  if (!open) refreshStarsTick();
+});
 
 const windowWidth = ref(window.innerWidth);
 const updateWindowWidth = () => (windowWidth.value = window.innerWidth);
@@ -388,6 +425,40 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
   </section>
 
   <section
+    v-if="starredApps.length > 0"
+    class="mb-4"
+    data-testid="favorites-export"
+    aria-labelledby="favorites-heading"
+  >
+    <div class="flex items-center justify-between gap-2 mb-2 px-1 flex-wrap">
+      <h2 id="favorites-heading" class="text-sm font-semibold text-base-content/80">
+        {{ t('favorites.title') }}
+        <span class="font-normal opacity-70">({{ starredApps.length }})</span>
+      </h2>
+      <button
+        type="button"
+        class="btn btn-ghost btn-xs"
+        data-testid="export-favorites"
+        @click="onExportFavorites"
+      >
+        {{ favoritesCopied ? t('favorites.copied') : t('favorites.export') }}
+      </button>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button
+        v-for="app in starredApps"
+        :key="'star-' + app.name"
+        type="button"
+        class="btn btn-sm btn-outline"
+        :data-testid="'favorite-chip-' + app.name"
+        @click="handleAbrirModal(app)"
+      >
+        {{ app.name }}
+      </button>
+    </div>
+  </section>
+
+  <section
     v-if="recentApps.length > 0"
     class="mb-4"
     data-testid="recent-apps"
@@ -419,6 +490,13 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       </button>
     </div>
   </section>
+  <p
+    v-else
+    class="text-center text-xs text-base-content/50 mb-3 px-2"
+    data-testid="recent-empty-hint"
+  >
+    {{ t('recent.empty') }}
+  </p>
 
   <p
     v-if="searchQuery.trim() || selectedCategory !== 'all' || selectedUseCase !== 'all' || beginnersOnly || federatedOnly"
