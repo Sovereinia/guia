@@ -5,6 +5,7 @@ import CategorySelector from '@/components/form/CategorySelector.vue';
 import UseCaseSelector from '@/components/form/UseCaseSelector.vue';
 import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
 import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
+import RecommendationWizard from '@/components/RecommendationWizard.vue';
 import { useSEO } from '@/composables/useSEO';
 import { useApps } from '@/data/apps';
 import { categories } from '@/data/categories';
@@ -31,6 +32,9 @@ const searchQuery = ref('');
 const selectedCategory = ref<CategoryId>('all');
 const selectedUseCase = ref<UseCaseId | 'all'>('all');
 const showFilters = ref(false);
+const showWizard = ref(false);
+const beginnersOnly = ref(false);
+const federatedOnly = ref(false);
 const route = useRoute();
 const router = useRouter();
 
@@ -45,8 +49,33 @@ const orderedApps = computed(() => {
 });
 
 const filteredApps = computed(() => {
-  return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value, selectedUseCase.value);
+  let list = filterApps(orderedApps.value, selectedCategory.value, searchQuery.value, selectedUseCase.value);
+  if (beginnersOnly.value) {
+    list = list.filter((a) => a.recommendedForBeginners);
+  }
+  if (federatedOnly.value) {
+    list = list.filter(
+      (a) =>
+        (a.protocol || []).length > 0 ||
+        a.categories.includes('protocols') ||
+        (a.useCases || []).includes('protocol'),
+    );
+  }
+  return list;
 });
+
+function onWizardApply(payload: {
+  useCase: UseCaseId | 'all';
+  beginnersOnly: boolean;
+  federatedOnly: boolean;
+}) {
+  selectedUseCase.value = payload.useCase;
+  beginnersOnly.value = payload.beginnersOnly;
+  federatedOnly.value = payload.federatedOnly;
+  showFilters.value = true;
+  showWizard.value = false;
+  globalStore.resetReshuffle();
+}
 
 const title = computed(() => t('app.title'));
 const subtitleBase = computed(() => {
@@ -197,6 +226,22 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
   </header>
 
   <section class="w-full space-y-5">
+    <div class="flex justify-center">
+      <button
+        type="button"
+        class="btn btn-outline btn-sm"
+        data-testid="open-wizard"
+        @click="showWizard = !showWizard"
+      >
+        {{ t('wizard.open') }}
+      </button>
+    </div>
+    <RecommendationWizard
+      v-if="showWizard"
+      :apps="apps"
+      @apply="onWizardApply"
+      @close="showWizard = false"
+    />
     <CategorySelector v-if="showFilters" v-model="selectedCategory" :categories="categories" />
     <UseCaseSelector v-if="showFilters" v-model="selectedUseCase" />
     <div class="mb-8 flex gap-2 items-start w-full">
@@ -220,7 +265,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
   </section>
 
   <p
-    v-if="searchQuery.trim() || selectedCategory !== 'all' || selectedUseCase !== 'all'"
+    v-if="searchQuery.trim() || selectedCategory !== 'all' || selectedUseCase !== 'all' || beginnersOnly || federatedOnly"
     class="text-sm text-center text-base-content/70 mb-3"
     data-testid="search-result-count"
     aria-live="polite"
