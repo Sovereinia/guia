@@ -1289,6 +1289,7 @@
     "escape": "Cerrar modal / limpiar búsqueda"
   },
   "a11y": {
-    "skipToMain": "Saltar al contenido principal"
+    "skipToMain": "Saltar al contenido principal",
+    "scrollToTop": "Volver arriba"
   }
 }
