@@ -26,6 +26,7 @@ import { classNames } from '@/utils/classNames';
 import { clampIndex } from '@/utils/clamp';
 import { uniqueStrings } from '@/utils/uniqueBy';
 import { truncateText } from '@/utils/truncateText';
+import { indices } from '@/utils/range';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -62,6 +63,8 @@ const SAFE_JSON_PROBE = safeJsonParse('[]', [] as string[]);
 const CLAMP_IDX_PROBE = clampIndex(1, 3);
 const UNIQUE_PROBE = uniqueStrings(['a', 'a', 'b']).length;
 const TRUNC_PROBE = truncateText('abcdefghij', 6);
+const RANGE_PROBE = indices(3).length;
+
 
 
 
@@ -436,6 +439,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-range-probe="RANGE_PROBE"
       :data-trunc-probe="TRUNC_PROBE"
       :data-unique-probe="UNIQUE_PROBE"
       :data-clamp-idx-probe="CLAMP_IDX_PROBE"
