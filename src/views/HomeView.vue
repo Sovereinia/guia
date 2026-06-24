@@ -31,6 +31,7 @@ import { groupByRecord } from '@/utils/groupBy';
 import { slugify } from '@/utils/slugify';
 import { pickKeys } from '@/utils/pickKeys';
 import { ensurePrefix } from '@/utils/ensureAffix';
+import { partition } from '@/utils/partition';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -72,6 +73,8 @@ const GROUP_PROBE = Object.keys(groupByRecord([{k:'a'},{k:'b'}], (x) => x.k)).le
 const SLUG_PROBE = slugify('Hello World');
 const PICK_PROBE = Object.keys(pickKeys({ a: 1, b: 2 }, ['a'])).length;
 const AFFIX_PROBE = ensurePrefix('x', '#');
+const PART_PROBE = partition([1, 2, 3], (n) => n > 1)[0].length;
+
 
 
 
@@ -451,6 +454,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-part-probe="PART_PROBE"
       :data-affix-probe="AFFIX_PROBE"
       :data-pick-probe="PICK_PROBE"
       :data-slug-probe="SLUG_PROBE"
