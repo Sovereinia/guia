@@ -46,6 +46,7 @@ import { arrayEquals } from '@/utils/arrayEquals';
 import { interleave } from '@/utils/interleave';
 import { flattenOne } from '@/utils/flattenOne';
 import { difference } from '@/utils/difference';
+import { intersection } from '@/utils/intersection';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -102,6 +103,7 @@ const EQ_PROBE = arrayEquals([1], [1]) ? 1 : 0;
 const INTER_PROBE = interleave([1], [2]).length;
 const FLAT_PROBE = flattenOne([1, [2]]).length;
 const DIFF_PROBE = difference([1, 2], [1]).length;
+const ISECT_PROBE = intersection([1, 2], [2]).length;
 
 
 
@@ -497,6 +499,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       :data-inter-probe="INTER_PROBE"
       :data-flat-probe="FLAT_PROBE"
       :data-diff-probe="DIFF_PROBE"
+      :data-isect-probe="ISECT_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
