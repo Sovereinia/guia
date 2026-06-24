@@ -18,6 +18,7 @@ import { getAppSlug } from '@/utils/global';
 import { applyQuickFilters } from '@/utils/quickFilters';
 import { filterStarredOnly, hasActiveHomeFilters } from '@/utils/homeFilters';
 import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
+import { currentPageLink } from '@/utils/pageLink';
 import {
   clearRecentApps,
   listRecentApps,
@@ -57,6 +58,7 @@ const recentTick = ref(0);
 /** Bump when stars change so favorites row re-renders (stars toggle in modal). */
 const starsTick = ref(0);
 const favoritesCopied = ref(false);
+const pageLinkCopied = ref(false);
 const route = useRoute();
 const router = useRouter();
 
@@ -147,6 +149,20 @@ function onClearRecent() {
 
 function refreshStarsTick() {
   starsTick.value += 1;
+}
+
+
+async function onCopyPageLink() {
+  const url = currentPageLink(window.location);
+  try {
+    await navigator.clipboard.writeText(url);
+  } catch {
+    /* clipboard may be blocked in some contexts */
+  }
+  pageLinkCopied.value = true;
+  window.setTimeout(() => {
+    pageLinkCopied.value = false;
+  }, 2000);
 }
 
 async function onExportFavorites() {
@@ -414,6 +430,14 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       >
         {{ t('shortcuts.open') }}
         <kbd class="ml-1 opacity-60 font-mono text-xs">?</kbd>
+      </button>
+      <button
+        type="button"
+        class="btn btn-ghost btn-sm"
+        data-testid="copy-page-link"
+        @click="onCopyPageLink"
+      >
+        {{ pageLinkCopied ? t('share.copied') : t('share.copyLink') }}
       </button>
     </div>
     <div
