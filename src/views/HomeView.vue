@@ -16,6 +16,7 @@ import type { App, CategoryId, UseCaseId } from '@/types';
 import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
 import { getAppSlug } from '@/utils/global';
 import { applyQuickFilters } from '@/utils/quickFilters';
+import { hasActiveHomeFilters } from '@/utils/homeFilters';
 import {
   clearRecentApps,
   listRecentApps,
@@ -89,6 +90,25 @@ function toggleBeginnersOnly() {
 function toggleFederatedOnly() {
   federatedOnly.value = !federatedOnly.value;
   showFilters.value = true;
+  globalStore.resetReshuffle();
+}
+
+const filtersActive = computed(() =>
+  hasActiveHomeFilters({
+    searchQuery: searchQuery.value,
+    selectedCategory: selectedCategory.value,
+    selectedUseCase: selectedUseCase.value,
+    beginnersOnly: beginnersOnly.value,
+    federatedOnly: federatedOnly.value,
+  }),
+);
+
+function clearAllFilters() {
+  searchQuery.value = '';
+  selectedCategory.value = 'all';
+  selectedUseCase.value = 'all';
+  beginnersOnly.value = false;
+  federatedOnly.value = false;
   globalStore.resetReshuffle();
 }
 
@@ -395,6 +415,15 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       >
         {{ t('filters.federated') }}
       </button>
+      <button
+        v-if="filtersActive"
+        type="button"
+        class="btn btn-ghost btn-sm"
+        data-testid="clear-filters"
+        @click="clearAllFilters"
+      >
+        {{ t('filters.clear') }}
+      </button>
     </div>
     <RecommendationWizard
       v-if="showWizard"
@@ -499,7 +528,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
   </p>
 
   <p
-    v-if="searchQuery.trim() || selectedCategory !== 'all' || selectedUseCase !== 'all' || beginnersOnly || federatedOnly"
+    v-if="filtersActive"
     class="text-sm text-center text-base-content/70 mb-3"
     data-testid="search-result-count"
     aria-live="polite"
