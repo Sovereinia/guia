@@ -1261,6 +1261,12 @@
     "opt_no_fed": "Not important",
     "results": "Suggested apps"
   },
+  "filters": {
+    "quickLabel": "Quick filters",
+    "beginners": "Beginner-friendly",
+    "federated": "Federated / protocols",
+    "appCount": "Showing {shown} of {total} apps"
+  },
   "recent": {
     "title": "Recently viewed",
     "empty": "Open an app to build this list",

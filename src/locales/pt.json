@@ -1261,6 +1261,12 @@
     "opt_no_fed": "Não é prioritário",
     "results": "Apps sugeridos"
   },
+  "filters": {
+    "quickLabel": "Filtros rápidos",
+    "beginners": "Para iniciantes",
+    "federated": "Federados / protocolos",
+    "appCount": "Mostrando {shown} de {total} apps"
+  },
   "recent": {
     "title": "Vistos recentemente",
     "empty": "Abra um app para montar esta lista",

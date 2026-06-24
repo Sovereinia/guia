@@ -15,6 +15,7 @@ import { useHeadersStore } from '@/stores/headers';
 import type { App, CategoryId, UseCaseId } from '@/types';
 import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
 import { getAppSlug } from '@/utils/global';
+import { applyQuickFilters } from '@/utils/quickFilters';
 import {
   clearRecentApps,
   listRecentApps,
@@ -59,20 +60,29 @@ const orderedApps = computed(() => {
 });
 
 const filteredApps = computed(() => {
-  let list = filterApps(orderedApps.value, selectedCategory.value, searchQuery.value, selectedUseCase.value);
-  if (beginnersOnly.value) {
-    list = list.filter((a) => a.recommendedForBeginners);
-  }
-  if (federatedOnly.value) {
-    list = list.filter(
-      (a) =>
-        (a.protocol || []).length > 0 ||
-        a.categories.includes('protocols') ||
-        (a.useCases || []).includes('protocol'),
-    );
-  }
-  return list;
+  const list = filterApps(
+    orderedApps.value,
+    selectedCategory.value,
+    searchQuery.value,
+    selectedUseCase.value,
+  );
+  return applyQuickFilters(list, {
+    beginnersOnly: beginnersOnly.value,
+    federatedOnly: federatedOnly.value,
+  });
 });
+
+function toggleBeginnersOnly() {
+  beginnersOnly.value = !beginnersOnly.value;
+  showFilters.value = true;
+  globalStore.resetReshuffle();
+}
+
+function toggleFederatedOnly() {
+  federatedOnly.value = !federatedOnly.value;
+  showFilters.value = true;
+  globalStore.resetReshuffle();
+}
 
 const recentApps = computed(() => {
   recentTick.value;
@@ -292,6 +302,13 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p class="text-center text-base mb-5 px-2">
       {{ subtitleBase }} <span class="font-bold">{{ subtitleSuffix }}</span>
     </p>
+    <p
+      class="text-center text-sm text-base-content/70 mb-3"
+      data-testid="app-count-badge"
+      aria-live="polite"
+    >
+      {{ t('filters.appCount', { shown: filteredApps.length, total: apps.length }) }}
+    </p>
   </header>
 
   <section class="w-full space-y-5">
@@ -313,6 +330,33 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       >
         {{ t('shortcuts.open') }}
         <kbd class="ml-1 opacity-60 font-mono text-xs">?</kbd>
+      </button>
+    </div>
+    <div
+      class="flex justify-center gap-2 flex-wrap"
+      data-testid="quick-filter-chips"
+      role="group"
+      :aria-label="t('filters.quickLabel')"
+    >
+      <button
+        type="button"
+        class="btn btn-sm"
+        :class="beginnersOnly ? 'btn-primary' : 'btn-outline'"
+        data-testid="chip-beginners"
+        :aria-pressed="beginnersOnly"
+        @click="toggleBeginnersOnly"
+      >
+        {{ t('filters.beginners') }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm"
+        :class="federatedOnly ? 'btn-primary' : 'btn-outline'"
+        data-testid="chip-federated"
+        :aria-pressed="federatedOnly"
+        @click="toggleFederatedOnly"
+      >
+        {{ t('filters.federated') }}
       </button>
     </div>
     <RecommendationWizard
