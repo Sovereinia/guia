@@ -35,6 +35,7 @@ import { partition } from '@/utils/partition';
 import { countWhere } from '@/utils/countBy';
 import { titleCase } from '@/utils/titleCase';
 import { compactArray } from '@/utils/compactArray';
+import { zipArrays } from '@/utils/zipArrays';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -80,6 +81,8 @@ const PART_PROBE = partition([1, 2, 3], (n) => n > 1)[0].length;
 const COUNT_PROBE = countWhere([1, 2, 3], (n) => n >= 2);
 const TITLE_PROBE = titleCase('hello world');
 const COMPACT_PROBE = compactArray([1, null, 2]).length;
+const ZIP_PROBE = zipArrays([1], ['a']).length;
+
 
 
 
@@ -463,6 +466,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-zip-probe="ZIP_PROBE"
       :data-compact-probe="COMPACT_PROBE"
       :data-title-probe="TITLE_PROBE"
       :data-count-probe="COUNT_PROBE"
