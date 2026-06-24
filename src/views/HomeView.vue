@@ -28,6 +28,7 @@ import { uniqueStrings } from '@/utils/uniqueBy';
 import { truncateText } from '@/utils/truncateText';
 import { indices } from '@/utils/range';
 import { groupByRecord } from '@/utils/groupBy';
+import { slugify } from '@/utils/slugify';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -66,6 +67,8 @@ const UNIQUE_PROBE = uniqueStrings(['a', 'a', 'b']).length;
 const TRUNC_PROBE = truncateText('abcdefghij', 6);
 const RANGE_PROBE = indices(3).length;
 const GROUP_PROBE = Object.keys(groupByRecord([{k:'a'},{k:'b'}], (x) => x.k)).length;
+const SLUG_PROBE = slugify('Hello World');
+
 
 
 
@@ -442,6 +445,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-slug-probe="SLUG_PROBE"
       :data-group-probe="GROUP_PROBE"
       :data-range-probe="RANGE_PROBE"
       :data-trunc-probe="TRUNC_PROBE"
