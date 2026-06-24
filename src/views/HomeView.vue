@@ -42,6 +42,7 @@ import { moveItem } from '@/utils/moveItem';
 import { chunkArray } from '@/utils/chunkArray';
 import { rotateArray } from '@/utils/rotateArray';
 import { takeFirst } from '@/utils/takeSlice';
+import { arrayEquals } from '@/utils/arrayEquals';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -94,6 +95,7 @@ const MOVE_PROBE = moveItem([1, 2, 3], 0, 2)[2];
 const CHUNK_PROBE = chunkArray([1, 2, 3, 4], 2).length;
 const ROTATE_PROBE = rotateArray([1, 2, 3], 1)[0];
 const TAKE_PROBE = takeFirst([1, 2, 3], 2).length;
+const EQ_PROBE = arrayEquals([1], [1]) ? 1 : 0;
 
 
 
@@ -485,6 +487,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       :data-chunk-probe="CHUNK_PROBE"
       :data-rotate-probe="ROTATE_PROBE"
       :data-take-probe="TAKE_PROBE"
+      :data-eq-probe="EQ_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
