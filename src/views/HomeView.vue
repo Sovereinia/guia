@@ -50,6 +50,7 @@ import { intersection } from '@/utils/intersection';
 import { union } from '@/utils/union';
 import { capitalizeFirst } from '@/utils/capitalizeFirst';
 import { sumBy } from '@/utils/sumBy';
+import { average } from '@/utils/average';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -110,6 +111,7 @@ const ISECT_PROBE = intersection([1, 2], [2]).length;
 const UNION_PROBE = union([1], [2]).length;
 const CAP_PROBE = capitalizeFirst('ok');
 const SUM_PROBE = sumBy([1, 2], (n) => n);
+const AVG_PROBE = average([2, 4]);
 
 
 
@@ -509,6 +511,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       :data-union-probe="UNION_PROBE"
       :data-cap-probe="CAP_PROBE"
       :data-sum-probe="SUM_PROBE"
+      :data-avg-probe="AVG_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
