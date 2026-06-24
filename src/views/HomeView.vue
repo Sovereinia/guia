@@ -21,6 +21,7 @@ import { countActiveFilters, describeActiveFilters } from '@/utils/activeFilters
 import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
+import { isEditableTarget, shouldHandleGlobalShortcut } from '@/utils/keyboardTarget';
 import {
   clearRecentApps,
   listRecentApps,
@@ -223,12 +224,6 @@ const searchPlaceholder = computed(() =>
 
 const isUpdatingFromURL = ref(false);
 
-function isTypingTarget(el: EventTarget | null): boolean {
-  if (!(el instanceof HTMLElement)) return false;
-  const tag = el.tagName;
-  return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
-}
-
 function focusSearchInput() {
   showFilters.value = true;
   nextTick(() => {
@@ -241,14 +236,9 @@ function focusSearchInput() {
 }
 
 function onGlobalKeydown(e: KeyboardEvent) {
-  if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.defaultPrevented) return;
 
-  if (e.key === '?' && !isTypingTarget(e.target)) {
-    e.preventDefault();
-    showShortcuts.value = !showShortcuts.value;
-    return;
-  }
-
+  // Esc may clear filters even from search; other chords use the shared guard.
   if (e.key === 'Escape') {
     const action = resolveEscapeAction({
       shortcutsOpen: showShortcuts.value,
@@ -270,7 +260,15 @@ function onGlobalKeydown(e: KeyboardEvent) {
     return;
   }
 
-  if (e.key === '/' && !isTypingTarget(e.target) && !mostrarModal.value && !showShortcuts.value) {
+  if (!shouldHandleGlobalShortcut(e)) return;
+
+  if (e.key === '?' && !isEditableTarget(e.target)) {
+    e.preventDefault();
+    showShortcuts.value = !showShortcuts.value;
+    return;
+  }
+
+  if (e.key === '/' && !isEditableTarget(e.target) && !mostrarModal.value && !showShortcuts.value) {
     e.preventDefault();
     focusSearchInput();
   }
