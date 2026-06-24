@@ -3,6 +3,7 @@ import AppCard from '@/components/AppCard.vue';
 import AppModal from '@/components/AppModal.vue';
 import AppSearch from '@/components/form/AppSearch.vue';
 import CategorySelector from '@/components/form/CategorySelector.vue';
+import UseCaseSelector from '@/components/form/UseCaseSelector.vue';
 import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
 import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
 import { useSEO } from '@/composables/useSEO';
@@ -10,7 +11,7 @@ import { useApps } from '@/data/apps';
 import { categories } from '@/data/categories';
 import { useGlobalStore } from '@/stores/global';
 import { useHeadersStore } from '@/stores/headers';
-import type { App, CategoryId } from '@/types';
+import type { App, CategoryId, UseCaseId } from '@/types';
 import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
 import { getAppSlug } from '@/utils/global';
 import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
@@ -26,6 +27,7 @@ const { apps } = useApps();
 const modalData = ref<Partial<App>>({});
 const searchQuery = ref('');
 const selectedCategory = ref<CategoryId>('all');
+const selectedUseCase = ref<UseCaseId | 'all'>('all');
 const showFilters = ref(false);
 const route = useRoute();
 const router = useRouter();
@@ -41,7 +43,7 @@ const orderedApps = computed(() => {
 });
 
 const filteredApps = computed(() => {
-  return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value);
+  return filterApps(orderedApps.value, selectedCategory.value, searchQuery.value, selectedUseCase.value);
 });
 
 const title = computed(() => t('app.title'));
@@ -162,8 +164,8 @@ watch([mostrarModal, modalData], ([isOpen, app]) => {
   }
 });
 
-watch([searchQuery, selectedCategory], ([query, category]) => {
-  if ((query && query.length > 0) || category !== 'all') {
+watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCase]) => {
+  if ((query && query.length > 0) || category !== 'all' || useCase !== 'all') {
     globalStore.resetReshuffle();
   }
 
@@ -194,6 +196,7 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
 
   <section class="w-full space-y-5">
     <CategorySelector v-if="showFilters" v-model="selectedCategory" :categories="categories" />
+    <UseCaseSelector v-if="showFilters" v-model="selectedUseCase" />
     <div class="mb-8 flex gap-2 items-start w-full">
       <div class="flex-1 min-w-0">
         <AppSearch
@@ -215,7 +218,7 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
   </section>
 
   <p
-    v-if="searchQuery.trim() || selectedCategory !== 'all'"
+    v-if="searchQuery.trim() || selectedCategory !== 'all' || selectedUseCase !== 'all'"
     class="text-sm text-center text-base-content/70 mb-3"
     data-testid="search-result-count"
     aria-live="polite"

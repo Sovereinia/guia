@@ -1218,5 +1218,22 @@
         "3": "Source Code (partial)"
       }
     }
+  },
+  "useCases": {
+    "title": "Use case",
+    "all": "All use cases",
+    "items": {
+      "storage": "Cloud storage",
+      "video": "Video calls / hosting",
+      "social": "Social network",
+      "chat": "Team chat",
+      "identity": "Passwords / SSO",
+      "docs": "Docs & publishing",
+      "media": "Media library",
+      "devops": "DevOps / monitoring",
+      "support": "Customer support",
+      "streaming": "Live streaming",
+      "protocol": "Open protocol"
+    }
   }
 }

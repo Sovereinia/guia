@@ -1,4 +1,4 @@
-import type { App, CategoryId } from '@/types';
+import type { App, CategoryId, UseCaseId } from '@/types';
 
 export function countInboundLinks(app: App): number {
   return (app.links || []).filter(link =>
@@ -56,11 +56,18 @@ export function appMatchesQuery(app: App, lowerQuery: string): boolean {
   return scoreAppMatch(app, lowerQuery) > 0;
 }
 
-export function filterApps(apps: App[], category: CategoryId, query: string): App[] {
+export function filterApps(
+  apps: App[],
+  category: CategoryId,
+  query: string,
+  useCase: UseCaseId | 'all' = 'all',
+): App[] {
   const lowerQuery = query.trim().toLowerCase();
   const filtered = apps.filter((app) => {
     const isSameCategory = category === 'all' || app.categories.includes(category);
-    return isSameCategory && appMatchesQuery(app, lowerQuery);
+    const isSameUseCase =
+      useCase === 'all' || (app.useCases || []).includes(useCase);
+    return isSameCategory && isSameUseCase && appMatchesQuery(app, lowerQuery);
   });
 
   if (!lowerQuery) return filtered;

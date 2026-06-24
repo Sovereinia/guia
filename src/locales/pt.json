@@ -1218,5 +1218,22 @@
         "3": "Código Fonte (parcial)"
       }
     }
+  },
+  "useCases": {
+    "title": "Caso de uso",
+    "all": "Todos os casos",
+    "items": {
+      "storage": "Armazenamento",
+      "video": "Vídeo / reuniões",
+      "social": "Rede social",
+      "chat": "Chat em equipe",
+      "identity": "Senhas / SSO",
+      "docs": "Docs e publicação",
+      "media": "Biblioteca de mídia",
+      "devops": "DevOps / monitoramento",
+      "support": "Suporte ao cliente",
+      "streaming": "Transmissão ao vivo",
+      "protocol": "Protocolo aberto"
+    }
   }
 }
