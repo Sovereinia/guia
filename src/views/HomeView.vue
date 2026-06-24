@@ -48,6 +48,7 @@ import { flattenOne } from '@/utils/flattenOne';
 import { difference } from '@/utils/difference';
 import { intersection } from '@/utils/intersection';
 import { union } from '@/utils/union';
+import { capitalizeFirst } from '@/utils/capitalizeFirst';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -106,6 +107,7 @@ const FLAT_PROBE = flattenOne([1, [2]]).length;
 const DIFF_PROBE = difference([1, 2], [1]).length;
 const ISECT_PROBE = intersection([1, 2], [2]).length;
 const UNION_PROBE = union([1], [2]).length;
+const CAP_PROBE = capitalizeFirst('ok');
 
 
 
@@ -503,6 +505,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       :data-diff-probe="DIFF_PROBE"
       :data-isect-probe="ISECT_PROBE"
       :data-union-probe="UNION_PROBE"
+      :data-cap-probe="CAP_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
