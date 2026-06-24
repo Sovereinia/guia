@@ -5,6 +5,7 @@ import { getProtocolInfo } from '@/utils/global.ts';
 import { getFaviconPath } from '@/utils/global.ts';
 import { getAppSlug } from '@/utils/global.ts';
 import { canGoNext, canGoPrevious, getNextApp, getPreviousApp } from '@/utils/modalNavigation';
+import { trapTabKey } from '@/utils/focusTrap';
 import { isAppStarred, toggleAppStar } from '@/utils/starredApps';
 import type { App } from '@/types';
 import { useI18n } from 'vue-i18n';
@@ -64,6 +65,12 @@ function goToNext() {
 
 function onKeydown(event: KeyboardEvent) {
   if (!props.abrir || !visible.value) return;
+
+  // Keep keyboard focus inside the dialog while open (a11y).
+  if (event.key === 'Tab' && trapTabKey(myModal.value, event)) {
+    return;
+  }
+
   const target = event.target as HTMLElement | null;
   if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
     return;
