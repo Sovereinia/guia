@@ -59,6 +59,7 @@ Once you've picked one:
 - Hop into our Hackathon Discord channel. Add Viny and he'll invite you to the server: viny.bk
 - Ask questions, discuss ideas, or request feedback
 - For additional tips and contributor guidelines, see our [CONTRIBUTING.md](./CONTRIBUTING.md)
+- Before opening a PR, run through the [manual testing checklist](./TESTING.md)
 
 We’re excited to collaborate with you!
 
