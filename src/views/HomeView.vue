@@ -21,6 +21,7 @@ import { countActiveFilters, describeActiveFilters } from '@/utils/activeFilters
 import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
+import { copyTextToClipboard } from '@/utils/clipboardCopy';
 import { isEditableTarget, shouldHandleGlobalShortcut } from '@/utils/keyboardTarget';
 import {
   clearRecentApps,
@@ -161,11 +162,7 @@ function refreshStarsTick() {
 
 async function onCopyPageLink() {
   const url = currentPageLink(window.location);
-  try {
-    await navigator.clipboard.writeText(url);
-  } catch {
-    /* clipboard may be blocked in some contexts */
-  }
+  await copyTextToClipboard(url);
   pageLinkCopied.value = true;
   window.setTimeout(() => {
     pageLinkCopied.value = false;
@@ -175,11 +172,7 @@ async function onCopyPageLink() {
 async function onExportFavorites() {
   const text = exportStarredAsText(listStarredApps());
   if (!text) return;
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    /* clipboard may be blocked; still show feedback for headless checks */
-  }
+  await copyTextToClipboard(text);
   favoritesCopied.value = true;
   window.setTimeout(() => {
     favoritesCopied.value = false;
