@@ -1267,6 +1267,11 @@
     "federated": "Federados / protocolos",
     "appCount": "Mostrando {shown} de {total} apps"
   },
+  "favorites": {
+    "title": "Favoritos com estrela",
+    "export": "Copiar lista",
+    "copied": "Copiado!"
+  },
   "recent": {
     "title": "Vistos recentemente",
     "empty": "Abra um app para montar esta lista",
