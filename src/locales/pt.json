@@ -1266,6 +1266,7 @@
     "beginners": "Para iniciantes",
     "federated": "Federados / protocolos",
     "appCount": "Mostrando {shown} de {total} apps",
+    "activeSummary": "{count} filtros ativos",
     "clear": "Limpar filtros",
     "starred": "Só favoritos"
   },
