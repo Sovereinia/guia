@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import AppCard from '@/components/AppCard.vue';
-import AppModal from '@/components/AppModal.vue';
 import AppSearch from '@/components/form/AppSearch.vue';
 import CategorySelector from '@/components/form/CategorySelector.vue';
 import UseCaseSelector from '@/components/form/UseCaseSelector.vue';
@@ -14,9 +13,12 @@ import { useHeadersStore } from '@/stores/headers';
 import type { App, CategoryId, UseCaseId } from '@/types';
 import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
 import { getAppSlug } from '@/utils/global';
-import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
+
+/** Modal is large and rarely needed on first paint — load on demand (issue #64). */
+const AppModal = defineAsyncComponent(() => import('@/components/AppModal.vue'));
 
 const { t } = useI18n();
 const headersStore = useHeadersStore();

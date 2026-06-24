@@ -14,6 +14,23 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  build: {
+    // Split framework/vendor so first paint downloads less JS up front (#64).
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return;
+          if (id.includes('vue') || id.includes('pinia') || id.includes('vue-router') || id.includes('vue-i18n')) {
+            return 'vue-vendor';
+          }
+          if (id.includes('daisyui') || id.includes('tailwind')) {
+            return 'ui-vendor';
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 600,
+  },
   server: {
     allowedHosts: ['sovereinia.org'],
   },
