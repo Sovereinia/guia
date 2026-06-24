@@ -17,6 +17,7 @@ import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/util
 import { getAppSlug } from '@/utils/global';
 import { applyQuickFilters } from '@/utils/quickFilters';
 import { filterStarredOnly, hasActiveHomeFilters } from '@/utils/homeFilters';
+import { countActiveFilters, describeActiveFilters } from '@/utils/activeFilters';
 import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
@@ -106,16 +107,20 @@ function toggleStarredOnly() {
   globalStore.resetReshuffle();
 }
 
-const filtersActive = computed(() =>
-  hasActiveHomeFilters({
-    searchQuery: searchQuery.value,
-    selectedCategory: selectedCategory.value,
-    selectedUseCase: selectedUseCase.value,
-    beginnersOnly: beginnersOnly.value,
-    federatedOnly: federatedOnly.value,
-    starredOnly: starredOnly.value,
-  }),
-);
+const homeFilterState = computed(() => ({
+  searchQuery: searchQuery.value,
+  selectedCategory: selectedCategory.value,
+  selectedUseCase: selectedUseCase.value,
+  beginnersOnly: beginnersOnly.value,
+  federatedOnly: federatedOnly.value,
+  starredOnly: starredOnly.value,
+}));
+
+const filtersActive = computed(() => hasActiveHomeFilters(homeFilterState.value));
+
+const activeFilterDescriptors = computed(() => describeActiveFilters(homeFilterState.value));
+const activeFilterCount = computed(() => countActiveFilters(homeFilterState.value));
+const activeFilterKeys = computed(() => activeFilterDescriptors.value.map((d) => d.key));
 
 function clearAllFilters() {
   searchQuery.value = '';
@@ -424,6 +429,15 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       aria-live="polite"
     >
       {{ t('filters.appCount', { shown: filteredApps.length, total: apps.length }) }}
+    </p>
+    <p
+      v-if="activeFilterCount > 0"
+      class="text-center text-xs text-base-content/60 mb-2"
+      data-testid="active-filters-summary"
+      aria-live="polite"
+    >
+      {{ t('filters.activeSummary', { count: activeFilterCount }) }}
+      <span class="sr-only">{{ activeFilterKeys.join(', ') }}</span>
     </p>
   </header>
 
