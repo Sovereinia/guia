@@ -18,6 +18,7 @@ function onSkipActivate(event: Event) {
 </script>
 
 <template>
+  <!-- storage keys use guia: prefix via storageKey util -->
   <a
     :href="mainContentHref()"
     class="skip-link"
