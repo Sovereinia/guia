@@ -19,6 +19,7 @@ import { applyQuickFilters } from '@/utils/quickFilters';
 import { filterStarredOnly, hasActiveHomeFilters } from '@/utils/homeFilters';
 import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
 import { currentPageLink } from '@/utils/pageLink';
+import { resolveEscapeAction } from '@/utils/escapeAction';
 import {
   clearRecentApps,
   listRecentApps,
@@ -243,9 +244,24 @@ function onGlobalKeydown(e: KeyboardEvent) {
     return;
   }
 
-  if (showShortcuts.value && e.key === 'Escape') {
-    e.preventDefault();
-    showShortcuts.value = false;
+  if (e.key === 'Escape') {
+    const action = resolveEscapeAction({
+      shortcutsOpen: showShortcuts.value,
+      modalOpen: mostrarModal.value,
+      filtersActive: filtersActive.value,
+    });
+    if (action === 'close-shortcuts') {
+      e.preventDefault();
+      showShortcuts.value = false;
+      return;
+    }
+    if (action === 'clear-filters') {
+      // Allow Esc from the search field too (clears query/filters).
+      e.preventDefault();
+      clearAllFilters();
+      return;
+    }
+    // modalOpen: let dialog handle Esc
     return;
   }
 
