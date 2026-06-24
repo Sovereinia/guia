@@ -2,6 +2,7 @@
 import { sliceText } from '../utils/global';
 import { getAlternativeIcon } from '@/utils/global.ts';
 import type { App } from '@/types';
+import { allowDecorativeMotion } from '@/utils/reducedMotion';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 
@@ -55,6 +56,7 @@ function clearIdleTimer() {
 function scheduleIdleBounce() {
   clearIdleTimer()
   if (window.innerWidth >= 640) return // mobile / narrow only
+  if (!allowDecorativeMotion(true)) return // respect prefers-reduced-motion
   idleTimer = setTimeout(() => {
     // pseudo-random but stable per app name so not all cards bounce together
     const hash = [...props.app.name].reduce((a, c) => a + c.charCodeAt(0), 0)
@@ -117,7 +119,7 @@ const slicedDescription = computed(() => {
       'transform transition-transform duration-200 hover:scale-[1.03] hover:shadow-xl',
       'flex flex-row sm:flex-col cursor-pointer relative',
       'focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100',
-      idleBounce ? 'app-card-idle-bounce' : '',
+      allowDecorativeMotion(idleBounce) ? 'app-card-idle-bounce' : '',
     ]"
     data-testid="app-card"
   >
