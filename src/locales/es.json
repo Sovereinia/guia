@@ -17,7 +17,10 @@
     "placeholder": {
       "desktop": "Busca una aplicación que conozcas, como: Instagram, Google Drive...",
       "mobile": "WhatsApp, Google Drive..."
-    }
+    },
+    "noResults": "Ninguna app coincide con la búsqueda",
+    "clear": "Limpiar búsqueda",
+    "resultCount": "{count} apps mostradas"
   },
   "categories": {
     "title": "Categorías"
@@ -55,11 +58,26 @@
     }
   },
   "category": {
-    "all": { "name": "Todos", "short": "Todos" },
-    "social": { "name": "Redes Sociales", "short": "Sociales" },
-    "messaging": { "name": "Mensajeros", "short": "Mensajeros" },
-    "tools": { "name": "Herramientas Profesionales", "short": "Profesionales" },
-    "protocols": { "name": "Protocolos Abiertos", "short": "Protocolos" }
+    "all": {
+      "name": "Todos",
+      "short": "Todos"
+    },
+    "social": {
+      "name": "Redes Sociales",
+      "short": "Sociales"
+    },
+    "messaging": {
+      "name": "Mensajeros",
+      "short": "Mensajeros"
+    },
+    "tools": {
+      "name": "Herramientas Profesionales",
+      "short": "Profesionales"
+    },
+    "protocols": {
+      "name": "Protocolos Abiertos",
+      "short": "Protocolos"
+    }
   },
   "appModal": {
     "close": "Cerrar",

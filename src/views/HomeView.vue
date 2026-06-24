@@ -214,16 +214,36 @@ watch([searchQuery, selectedCategory], ([query, category]) => {
     </div>
   </section>
 
+  <p
+    v-if="searchQuery.trim() || selectedCategory !== 'all'"
+    class="text-sm text-center text-base-content/70 mb-3"
+    data-testid="search-result-count"
+    aria-live="polite"
+  >
+    {{ t('search.resultCount', { count: filteredApps.length }) }}
+  </p>
+
+  <p
+    v-if="filteredApps.length === 0"
+    class="text-center text-base-content/80 py-10 px-4"
+    data-testid="search-no-results"
+    role="status"
+  >
+    {{ t('search.noResults') }}
+  </p>
+
   <section
+    v-else
     class="grid grid-cols-1 w-full max-w-full md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-12 mt-2"
   >
     <AppCard v-for="app in filteredApps" :key="app.name" :app="app" @abrir="handleAbrirModal" />
-    <AppModal
-      :abrir="mostrarModal"
-      :app="modalData"
-      :apps="filteredApps"
-      @atualizarAbrir="handleFecharModal"
-      @navigate="handleNavigateModal"
-    />
   </section>
+
+  <AppModal
+    :abrir="mostrarModal"
+    :app="modalData"
+    :apps="filteredApps"
+    @atualizarAbrir="handleFecharModal"
+    @navigate="handleNavigateModal"
+  />
 </template>

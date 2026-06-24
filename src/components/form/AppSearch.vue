@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, defineEmits, defineProps, ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 // Props e emits
 const props = defineProps<{
@@ -13,6 +14,7 @@ const emit = defineEmits<{
   (e: 'click', event: MouseEvent): void;
 }>();
 
+const { t } = useI18n();
 const activeIndex = ref(-1);
 const showSuggestions = ref(false);
 const searchTimeout = ref<ReturnType<typeof setTimeout> | null>(null);
@@ -62,25 +64,42 @@ const filteredSuggestions = computed(() => {
     });
 });
 
+function clearSearch() {
+  emit('update:modelValue', '');
+  activeIndex.value = -1;
+  showSuggestions.value = false;
+}
+
 // Navegação pelo teclado
 function onKeyDown(event: KeyboardEvent) {
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    if (showSuggestions.value) {
+      showSuggestions.value = false;
+    } else if (props.modelValue) {
+      clearSearch();
+    }
+    return;
+  }
+
   if (!filteredSuggestions.value.length) return;
 
   if (event.key === 'ArrowDown') {
     event.preventDefault();
+    showSuggestions.value = true;
     activeIndex.value = (activeIndex.value + 1) % filteredSuggestions.value.length;
   } else if (event.key === 'ArrowUp') {
     event.preventDefault();
+    showSuggestions.value = true;
     activeIndex.value =
       (activeIndex.value - 1 + filteredSuggestions.value.length) % filteredSuggestions.value.length;
   } else if (event.key === 'Enter') {
     event.preventDefault();
-    if (activeIndex.value >= 0) {
-      selectSuggestion(filteredSuggestions.value[activeIndex.value]);
-    }
-  } else if (event.key === 'Escape') {
-    event.preventDefault();
-    showSuggestions.value = false;
+    const pick =
+      activeIndex.value >= 0
+        ? filteredSuggestions.value[activeIndex.value]
+        : filteredSuggestions.value[0];
+    if (pick) selectSuggestion(pick);
   }
 }
 
@@ -149,6 +168,19 @@ watch(
           />
         </svg>
       </div>
+
+      <button
+        v-if="modelValue.trim()"
+        type="button"
+        data-testid="search-clear"
+        class="absolute right-3 top-1/2 -translate-y-1/2 z-10 btn btn-ghost btn-xs btn-circle min-h-0 h-7 w-7"
+        :aria-label="t('search.clear')"
+        @click="clearSearch"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
 
     <!-- Lista de sugestões -->
