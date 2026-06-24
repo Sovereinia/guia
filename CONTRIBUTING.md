@@ -44,7 +44,7 @@ Thank you for your interest in contributing! Here are some useful guidelines, co
 
 ## 🧪 Manual Testing Checklist
 
-Before submitting a PR, please test:
+Before submitting a PR, run through the short list below. For the **full contributor checklist** (search/filters, modal sections, prev/next, theme, language, mobile), see **[TESTING.md](./TESTING.md)**.
 
 - [ ] App loads with no console errors
 - [ ] Clicking on a card opens the correct modal
