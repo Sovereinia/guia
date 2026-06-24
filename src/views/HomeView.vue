@@ -49,6 +49,7 @@ import { difference } from '@/utils/difference';
 import { intersection } from '@/utils/intersection';
 import { union } from '@/utils/union';
 import { capitalizeFirst } from '@/utils/capitalizeFirst';
+import { sumBy } from '@/utils/sumBy';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -108,6 +109,7 @@ const DIFF_PROBE = difference([1, 2], [1]).length;
 const ISECT_PROBE = intersection([1, 2], [2]).length;
 const UNION_PROBE = union([1], [2]).length;
 const CAP_PROBE = capitalizeFirst('ok');
+const SUM_PROBE = sumBy([1, 2], (n) => n);
 
 
 
@@ -506,6 +508,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
       :data-isect-probe="ISECT_PROBE"
       :data-union-probe="UNION_PROBE"
       :data-cap-probe="CAP_PROBE"
+      :data-sum-probe="SUM_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
