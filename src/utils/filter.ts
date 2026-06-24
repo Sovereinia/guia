@@ -32,14 +32,42 @@ export function shuffleAppsPurely(apps: App[]): App[] {
   return shuffleArray([...apps]);
 }
 
+/** Higher is better. Used to rank search hits without reordering when query is empty. */
+export function scoreAppMatch(app: App, lowerQuery: string): number {
+  if (!lowerQuery) return 0;
+  const name = app.name.toLowerCase();
+  const alts = (app.alternatives || []).map((a) => a.toLowerCase());
+  const desc = (app.description || '').toLowerCase();
+  const longDesc = (app.longDescription || '').toLowerCase();
+
+  if (name === lowerQuery) return 100;
+  if (name.startsWith(lowerQuery)) return 80;
+  if (name.includes(lowerQuery)) return 60;
+  if (alts.some((a) => a === lowerQuery)) return 55;
+  if (alts.some((a) => a.startsWith(lowerQuery))) return 45;
+  if (alts.some((a) => a.includes(lowerQuery))) return 35;
+  if (desc.includes(lowerQuery)) return 20;
+  if (longDesc.includes(lowerQuery)) return 10;
+  return 0;
+}
+
+export function appMatchesQuery(app: App, lowerQuery: string): boolean {
+  if (!lowerQuery) return true;
+  return scoreAppMatch(app, lowerQuery) > 0;
+}
+
 export function filterApps(apps: App[], category: CategoryId, query: string): App[] {
-  const lowerQuery = query.toLowerCase();
-  return apps.filter(app => {
-    const isSameCategory =
-      category === 'all' || app.categories.includes(category);
-    const nameMatchesQuery =
-      app.name.toLowerCase().includes(lowerQuery) ||
-      (app.alternatives || []).some(alt => alt.toLowerCase().includes(lowerQuery));
-    return isSameCategory && nameMatchesQuery;
+  const lowerQuery = query.trim().toLowerCase();
+  const filtered = apps.filter((app) => {
+    const isSameCategory = category === 'all' || app.categories.includes(category);
+    return isSameCategory && appMatchesQuery(app, lowerQuery);
+  });
+
+  if (!lowerQuery) return filtered;
+
+  return [...filtered].sort((a, b) => {
+    const scoreDiff = scoreAppMatch(b, lowerQuery) - scoreAppMatch(a, lowerQuery);
+    if (scoreDiff !== 0) return scoreDiff;
+    return a.name.localeCompare(b.name);
   });
 }
