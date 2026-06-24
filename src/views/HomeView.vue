@@ -21,6 +21,7 @@ import { countActiveFilters, describeActiveFilters } from '@/utils/activeFilters
 import { parseSearchQueryParam, withSearchQueryParam } from '@/utils/searchQueryUrl';
 import { debounce, normalizeDebounceMs } from '@/utils/debounce';
 import { storageKey } from '@/utils/storageKey';
+import { safeJsonParse } from '@/utils/safeJson';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -53,6 +54,8 @@ const modalData = ref<Partial<App>>({});
 const searchQuery = ref('');
 const SEARCH_DEBOUNCE_MS = normalizeDebounceMs(250);
 const STORAGE_RECENT_KEY = storageKey('recent', 'apps');
+const SAFE_JSON_PROBE = safeJsonParse('[]', [] as string[]);
+
 
 
 const selectedCategory = ref<CategoryId>('all');
@@ -423,6 +426,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-safe-json-probe-len="SAFE_JSON_PROBE.length"
       :data-storage-recent-key="STORAGE_RECENT_KEY"
       :data-search-debounce-ms="SEARCH_DEBOUNCE_MS"
       aria-live="polite"
