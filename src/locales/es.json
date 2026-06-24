@@ -1295,5 +1295,9 @@
   "share": {
     "copyLink": "Copiar enlace de la página",
     "copied": "¡Enlace copiado!"
+  },
+  "theme": {
+    "toLight": "Cambiar a tema claro",
+    "toDark": "Cambiar a tema oscuro"
   }
 }

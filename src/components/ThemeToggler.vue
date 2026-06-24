@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useGlobalStore } from '../stores/global';
+import { useI18n } from 'vue-i18n';
 
 const globalStore = useGlobalStore();
+const { t } = useI18n();
 
-// changing theme by pressing enter when focused 
 const handleKeyDown = (event: KeyboardEvent) => {
   if (event.key === 'Enter' || event.key === ' ') {
     event.preventDefault();
@@ -15,14 +16,14 @@ const handleKeyDown = (event: KeyboardEvent) => {
 <template>
   <button 
     type="button"
+    data-testid="theme-toggle"
     class="swap swap-rotate cursor-pointer focus:ring-2 focus:ring-primary focus:outline-none rounded p-1"
     :class="{ 'swap-active': globalStore.isDark }"
     @click="globalStore.toggleTheme"
     @keydown="handleKeyDown"
-    :aria-label="globalStore.isDark ? 'Switch to light theme' : 'Switch to dark theme'"
+    :aria-label="globalStore.isDark ? t('theme.toLight') : t('theme.toDark')"
     :aria-pressed="globalStore.isDark"
   >
-    <!-- Sun icon (light mode) -->
     <svg
       class="swap-off h-6 w-6 fill-current"
       xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +36,6 @@ const handleKeyDown = (event: KeyboardEvent) => {
       />
     </svg>
 
-    <!-- Moon icon (dark mode) -->
     <svg
       class="swap-on h-6 w-6 fill-current"
       xmlns="http://www.w3.org/2000/svg"
