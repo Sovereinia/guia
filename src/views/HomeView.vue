@@ -6,6 +6,7 @@ import UseCaseSelector from '@/components/form/UseCaseSelector.vue';
 import ReshuffleButton from '@/components/form/ReshuffleButton.vue';
 import SurpriseMeButton from '@/components/form/SurpriseMeButton.vue';
 import RecommendationWizard from '@/components/RecommendationWizard.vue';
+import ShortcutsHelp from '@/components/ShortcutsHelp.vue';
 import { useSEO } from '@/composables/useSEO';
 import { useApps } from '@/data/apps';
 import { categories } from '@/data/categories';
@@ -14,6 +15,12 @@ import { useHeadersStore } from '@/stores/headers';
 import type { App, CategoryId, UseCaseId } from '@/types';
 import { filterApps, shuffleAppsPurely, sortAppsByLinksThenRandom } from '@/utils/filter';
 import { getAppSlug } from '@/utils/global';
+import {
+  clearRecentApps,
+  listRecentApps,
+  pushRecentApp,
+  resolveRecentApps,
+} from '@/utils/recentApps';
 import { computed, defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useRoute, useRouter } from 'vue-router';
@@ -33,8 +40,11 @@ const selectedCategory = ref<CategoryId>('all');
 const selectedUseCase = ref<UseCaseId | 'all'>('all');
 const showFilters = ref(false);
 const showWizard = ref(false);
+const showShortcuts = ref(false);
 const beginnersOnly = ref(false);
 const federatedOnly = ref(false);
+/** Bump when recent list changes so the chip row re-renders. */
+const recentTick = ref(0);
 const route = useRoute();
 const router = useRouter();
 
@@ -63,6 +73,22 @@ const filteredApps = computed(() => {
   }
   return list;
 });
+
+const recentApps = computed(() => {
+  recentTick.value;
+  return resolveRecentApps(apps.value, listRecentApps());
+});
+
+function recordRecent(app: App | Partial<App> | undefined) {
+  if (!app?.name) return;
+  pushRecentApp(app.name);
+  recentTick.value += 1;
+}
+
+function onClearRecent() {
+  clearRecentApps();
+  recentTick.value += 1;
+}
 
 function onWizardApply(payload: {
   useCase: UseCaseId | 'all';
@@ -96,6 +122,44 @@ const searchPlaceholder = computed(() =>
 
 const isUpdatingFromURL = ref(false);
 
+function isTypingTarget(el: EventTarget | null): boolean {
+  if (!(el instanceof HTMLElement)) return false;
+  const tag = el.tagName;
+  return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
+}
+
+function focusSearchInput() {
+  showFilters.value = true;
+  nextTick(() => {
+    const input = document.querySelector<HTMLInputElement>(
+      '[data-testid="app-search"] input, input[type="search"], header ~ section input',
+    );
+    const fallback = document.querySelector<HTMLInputElement>('input');
+    (input || fallback)?.focus();
+  });
+}
+
+function onGlobalKeydown(e: KeyboardEvent) {
+  if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey) return;
+
+  if (e.key === '?' && !isTypingTarget(e.target)) {
+    e.preventDefault();
+    showShortcuts.value = !showShortcuts.value;
+    return;
+  }
+
+  if (showShortcuts.value && e.key === 'Escape') {
+    e.preventDefault();
+    showShortcuts.value = false;
+    return;
+  }
+
+  if (e.key === '/' && !isTypingTarget(e.target) && !mostrarModal.value && !showShortcuts.value) {
+    e.preventDefault();
+    focusSearchInput();
+  }
+}
+
 onMounted(() => {
   const appSlug = route.query.app;
   if (appSlug) {
@@ -108,6 +172,7 @@ onMounted(() => {
 
 onMounted(() => {
   window.addEventListener('resize', updateWindowWidth);
+  window.addEventListener('keydown', onGlobalKeydown);
 
   updateSEO({
     title: 'Sovereinia | Guia de Apps Descentralizados',
@@ -120,6 +185,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('resize', updateWindowWidth);
+  window.removeEventListener('keydown', onGlobalKeydown);
 });
 
 function handleAbrirModal(app: App) {
@@ -128,6 +194,7 @@ function handleAbrirModal(app: App) {
   nextTick(() => {
     modalData.value = { ...app };
     mostrarModal.value = true;
+    recordRecent(app);
     router.replace({ query: { ...route.query, app: getAppSlug(app) } });
   });
 }
@@ -146,6 +213,7 @@ function handleFecharModal() {
 /** Navigate to another app while the modal stays open (prev/next arrows). */
 function handleNavigateModal(app: App) {
   modalData.value = { ...app };
+  recordRecent(app);
   router.replace({ query: { ...route.query, app: getAppSlug(app) } });
 }
 
@@ -160,6 +228,7 @@ watch(
         nextTick(() => {
           modalData.value = { ...found };
           mostrarModal.value = true;
+          recordRecent(found);
           isUpdatingFromURL.value = false;
         });
       }
@@ -226,7 +295,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
   </header>
 
   <section class="w-full space-y-5">
-    <div class="flex justify-center">
+    <div class="flex justify-center gap-2 flex-wrap">
       <button
         type="button"
         class="btn btn-outline btn-sm"
@@ -234,6 +303,16 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
         @click="showWizard = !showWizard"
       >
         {{ t('wizard.open') }}
+      </button>
+      <button
+        type="button"
+        class="btn btn-ghost btn-sm"
+        data-testid="open-shortcuts"
+        :aria-label="t('shortcuts.open')"
+        @click="showShortcuts = true"
+      >
+        {{ t('shortcuts.open') }}
+        <kbd class="ml-1 opacity-60 font-mono text-xs">?</kbd>
       </button>
     </div>
     <RecommendationWizard
@@ -261,6 +340,39 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
         />
         <ReshuffleButton />
       </div>
+    </div>
+  </section>
+
+  <section
+    v-if="recentApps.length > 0"
+    class="mb-4"
+    data-testid="recent-apps"
+    aria-labelledby="recent-apps-heading"
+  >
+    <div class="flex items-center justify-between gap-2 mb-2 px-1">
+      <h2 id="recent-apps-heading" class="text-sm font-semibold text-base-content/80">
+        {{ t('recent.title') }}
+      </h2>
+      <button
+        type="button"
+        class="btn btn-ghost btn-xs"
+        data-testid="clear-recent"
+        @click="onClearRecent"
+      >
+        {{ t('recent.clear') }}
+      </button>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button
+        v-for="app in recentApps"
+        :key="'recent-' + app.name"
+        type="button"
+        class="btn btn-sm btn-outline"
+        :data-testid="'recent-chip-' + app.name"
+        @click="handleAbrirModal(app)"
+      >
+        {{ app.name }}
+      </button>
     </div>
   </section>
 
@@ -296,4 +408,6 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     @atualizarAbrir="handleFecharModal"
     @navigate="handleNavigateModal"
   />
+
+  <ShortcutsHelp :open="showShortcuts" @close="showShortcuts = false" />
 </template>

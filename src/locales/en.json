@@ -1260,5 +1260,19 @@
     "opt_yes_fed": "Yes, federation matters",
     "opt_no_fed": "Not important",
     "results": "Suggested apps"
+  },
+  "recent": {
+    "title": "Recently viewed",
+    "empty": "Open an app to build this list",
+    "clear": "Clear recent"
+  },
+  "shortcuts": {
+    "title": "Keyboard shortcuts",
+    "open": "Shortcuts",
+    "close": "Close",
+    "search": "Focus search",
+    "modalPrev": "Previous app in modal",
+    "modalNext": "Next app in modal",
+    "escape": "Close modal / clear search"
   }
 }
