@@ -38,6 +38,7 @@ import { compactArray } from '@/utils/compactArray';
 import { zipArrays } from '@/utils/zipArrays';
 import { isPresent } from '@/utils/isBlank';
 import { toggleInSet } from '@/utils/toggleInSet';
+import { moveItem } from '@/utils/moveItem';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -86,6 +87,8 @@ const COMPACT_PROBE = compactArray([1, null, 2]).length;
 const ZIP_PROBE = zipArrays([1], ['a']).length;
 const BLANK_PROBE = isPresent('ok') ? 1 : 0;
 const TOGGLE_PROBE = toggleInSet(new Set(['a']), 'b').size;
+const MOVE_PROBE = moveItem([1, 2, 3], 0, 2)[2];
+
 
 
 
@@ -472,6 +475,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-move-probe="MOVE_PROBE"
       :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
