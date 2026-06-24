@@ -1,10 +1,13 @@
 <template>
   <button
+    type="button"
+    data-testid="reshuffle"
     @click="handleReshuffle"
     class="btn btn-primary btn-md rounded-full flex items-center gap-1 sm:gap-2 transition-all duration-300 whitespace-nowrap"
     :title="tooltip"
+    :aria-label="tooltip"
   >
-    <span class="text-base sm:text-lg">🔀</span>
+    <span class="text-base sm:text-lg" aria-hidden="true">🔀</span>
     <span class="text-sm sm:text-base hidden md:block">{{ buttonText }}</span>
   </button>
 </template>

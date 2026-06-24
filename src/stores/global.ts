@@ -1,6 +1,7 @@
 import { computed, ref } from 'vue';
 import { defineStore } from 'pinia';
 import { nextTheme } from '@/utils/theme';
+import { nextShuffleTrigger } from '@/utils/reshuffle';
 
 export const useGlobalStore = defineStore(
   'global',
@@ -30,7 +31,7 @@ export const useGlobalStore = defineStore(
 
     const toggleReshuffle = () => {
       isReshuffled.value = true;
-      shuffleTrigger.value++;
+      shuffleTrigger.value = nextShuffleTrigger(shuffleTrigger.value);
     };
 
     const resetReshuffle = () => {
