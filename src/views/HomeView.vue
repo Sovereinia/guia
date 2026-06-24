@@ -36,6 +36,7 @@ import { countWhere } from '@/utils/countBy';
 import { titleCase } from '@/utils/titleCase';
 import { compactArray } from '@/utils/compactArray';
 import { zipArrays } from '@/utils/zipArrays';
+import { isPresent } from '@/utils/isBlank';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -82,6 +83,8 @@ const COUNT_PROBE = countWhere([1, 2, 3], (n) => n >= 2);
 const TITLE_PROBE = titleCase('hello world');
 const COMPACT_PROBE = compactArray([1, null, 2]).length;
 const ZIP_PROBE = zipArrays([1], ['a']).length;
+const BLANK_PROBE = isPresent('ok') ? 1 : 0;
+
 
 
 
@@ -466,6 +469,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
       :data-compact-probe="COMPACT_PROBE"
       :data-title-probe="TITLE_PROBE"
