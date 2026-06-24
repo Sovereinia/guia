@@ -37,6 +37,7 @@ import { titleCase } from '@/utils/titleCase';
 import { compactArray } from '@/utils/compactArray';
 import { zipArrays } from '@/utils/zipArrays';
 import { isPresent } from '@/utils/isBlank';
+import { toggleInSet } from '@/utils/toggleInSet';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -84,6 +85,8 @@ const TITLE_PROBE = titleCase('hello world');
 const COMPACT_PROBE = compactArray([1, null, 2]).length;
 const ZIP_PROBE = zipArrays([1], ['a']).length;
 const BLANK_PROBE = isPresent('ok') ? 1 : 0;
+const TOGGLE_PROBE = toggleInSet(new Set(['a']), 'b').size;
+
 
 
 
@@ -469,6 +472,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-toggle-probe="TOGGLE_PROBE"
       :data-blank-probe="BLANK_PROBE"
       :data-zip-probe="ZIP_PROBE"
       :data-compact-probe="COMPACT_PROBE"
