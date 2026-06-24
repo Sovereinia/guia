@@ -24,6 +24,7 @@ import { storageKey } from '@/utils/storageKey';
 import { safeJsonParse } from '@/utils/safeJson';
 import { classNames } from '@/utils/classNames';
 import { clampIndex } from '@/utils/clamp';
+import { uniqueStrings } from '@/utils/uniqueBy';
 import { currentPageLink } from '@/utils/pageLink';
 import { resolveEscapeAction } from '@/utils/escapeAction';
 import { copyTextToClipboard } from '@/utils/clipboardCopy';
@@ -58,6 +59,8 @@ const SEARCH_DEBOUNCE_MS = normalizeDebounceMs(250);
 const STORAGE_RECENT_KEY = storageKey('recent', 'apps');
 const SAFE_JSON_PROBE = safeJsonParse('[]', [] as string[]);
 const CLAMP_IDX_PROBE = clampIndex(1, 3);
+const UNIQUE_PROBE = uniqueStrings(['a', 'a', 'b']).length;
+
 
 
 
@@ -430,6 +433,7 @@ watch([searchQuery, selectedCategory, selectedUseCase], ([query, category, useCa
     <p
       class="text-center text-sm text-base-content/70 mb-3"
       data-testid="app-count-badge"
+      :data-unique-probe="UNIQUE_PROBE"
       :data-clamp-idx-probe="CLAMP_IDX_PROBE"
       :data-safe-json-probe-len="SAFE_JSON_PROBE.length"
       :data-storage-recent-key="STORAGE_RECENT_KEY"
