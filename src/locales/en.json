@@ -93,7 +93,10 @@
     "challenges": "Challenges",
     "previousApp": "Previous app",
     "nextApp": "Next app",
-    "details": "Details for {name}"
+    "details": "Details for {name}",
+    "star": "Star this app",
+    "unstar": "Remove star",
+    "starred": "Starred"
   },
   "surpriseMe": {
     "button": "Surprise me!"
@@ -1235,5 +1238,27 @@
       "streaming": "Live streaming",
       "protocol": "Open protocol"
     }
+  },
+  "wizard": {
+    "open": "Help me choose",
+    "title": "Find an app",
+    "restart": "Start over",
+    "next": "Next",
+    "back": "Back",
+    "finish": "Show apps",
+    "close": "Close wizard",
+    "q1": "What do you need most?",
+    "q2": "How technical are you?",
+    "q3": "Prefer federated / open protocols?",
+    "opt_social": "Social network",
+    "opt_chat": "Chat / meetings",
+    "opt_storage": "Files & storage",
+    "opt_devops": "DevOps / self-host infra",
+    "opt_docs": "Docs / publishing",
+    "opt_beginner": "Prefer simpler tools",
+    "opt_advanced": "OK with more setup",
+    "opt_yes_fed": "Yes, federation matters",
+    "opt_no_fed": "Not important",
+    "results": "Suggested apps"
   }
 }

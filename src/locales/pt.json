@@ -93,7 +93,10 @@
     "challenges": "Desafios",
     "previousApp": "App anterior",
     "nextApp": "Próximo app",
-    "details": "Detalhes de {name}"
+    "details": "Detalhes de {name}",
+    "star": "Favoritar app",
+    "unstar": "Remover favorito",
+    "starred": "Favorito"
   },
   "surpriseMe": {
     "button": "Me surpreenda!"
@@ -1235,5 +1238,27 @@
       "streaming": "Transmissão ao vivo",
       "protocol": "Protocolo aberto"
     }
+  },
+  "wizard": {
+    "open": "Me ajude a escolher",
+    "title": "Encontrar um app",
+    "restart": "Recomeçar",
+    "next": "Próximo",
+    "back": "Voltar",
+    "finish": "Ver apps",
+    "close": "Fechar assistente",
+    "q1": "Do que você mais precisa?",
+    "q2": "Qual seu nível técnico?",
+    "q3": "Prefere federação / protocolos abertos?",
+    "opt_social": "Rede social",
+    "opt_chat": "Chat / reuniões",
+    "opt_storage": "Arquivos e armazenamento",
+    "opt_devops": "DevOps / infra",
+    "opt_docs": "Docs / publicação",
+    "opt_beginner": "Prefiro algo mais simples",
+    "opt_advanced": "Topo configuração maior",
+    "opt_yes_fed": "Sim, federação importa",
+    "opt_no_fed": "Não é prioritário",
+    "results": "Apps sugeridos"
   }
 }

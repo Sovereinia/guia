@@ -5,6 +5,7 @@ import { getProtocolInfo } from '@/utils/global.ts';
 import { getFaviconPath } from '@/utils/global.ts';
 import { getAppSlug } from '@/utils/global.ts';
 import { canGoNext, canGoPrevious, getNextApp, getPreviousApp } from '@/utils/modalNavigation';
+import { isAppStarred, toggleAppStar } from '@/utils/starredApps';
 import type { App } from '@/types';
 import { useI18n } from 'vue-i18n';
 import { useRoute } from 'vue-router';
@@ -23,6 +24,15 @@ const emit = defineEmits<{
 }>();
 
 const expandido = ref(false);
+const starred = ref(false);
+
+function syncStarred() {
+  starred.value = isAppStarred(localApp.value.name);
+}
+
+function onToggleStar() {
+  starred.value = toggleAppStar(localApp.value.name);
+}
 
 const bannerErrored = ref(false);
 
@@ -79,6 +89,7 @@ async function loadAppIntoModal(source: Partial<App>) {
 
   localApp.value = { ...source };
   visible.value = true;
+  syncStarred();
 }
 
 watch(() => props.abrir, async (newValue) => {
@@ -388,6 +399,18 @@ const { t } = useI18n();
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 8a3 3 0 11-6 0 3 3 0 016 0zm6 8a6 6 0 10-12 0 6 6 0 0012 0zm-6-6v6" />
               </svg>
               {{ t('appModal.share') || 'Share' }}
+            </button>
+            <button
+              type="button"
+              data-testid="modal-star"
+              class="btn btn-outline btn-sm h-auto min-h-9 py-1.5 flex items-center gap-2"
+              :class="starred ? 'btn-warning' : ''"
+              :aria-pressed="starred"
+              :aria-label="starred ? t('appModal.unstar') : t('appModal.star')"
+              @click="onToggleStar"
+            >
+              <span aria-hidden="true">{{ starred ? '★' : '☆' }}</span>
+              {{ starred ? t('appModal.starred') : t('appModal.star') }}
             </button>
           </div>
         </div>

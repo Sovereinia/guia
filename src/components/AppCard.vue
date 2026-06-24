@@ -4,6 +4,8 @@ import { getAlternativeIcon } from '@/utils/global.ts';
 import type { App } from '@/types';
 import { getProtocolInfo } from '@/utils/global.ts';
 import { ref, onMounted, onUnmounted, computed } from 'vue';
+
+const IDLE_MS = 8000;
 import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
@@ -38,16 +40,50 @@ const protocolInfos = computed(() =>
 
 
 const windowWidth = ref(window.innerWidth)
+const idleBounce = ref(false)
+let idleTimer: ReturnType<typeof setTimeout> | null = null
 
 const updateWidth = () => {
   windowWidth.value = window.innerWidth
 }
 
+function clearIdleTimer() {
+  if (idleTimer) clearTimeout(idleTimer)
+  idleTimer = null
+}
+
+function scheduleIdleBounce() {
+  clearIdleTimer()
+  if (window.innerWidth >= 640) return // mobile / narrow only
+  idleTimer = setTimeout(() => {
+    // pseudo-random but stable per app name so not all cards bounce together
+    const hash = [...props.app.name].reduce((a, c) => a + c.charCodeAt(0), 0)
+    if (hash % 3 === 0) {
+      idleBounce.value = true
+      setTimeout(() => { idleBounce.value = false }, 900)
+    }
+    scheduleIdleBounce()
+  }, IDLE_MS)
+}
+
+function onUserActivity() {
+  idleBounce.value = false
+  scheduleIdleBounce()
+}
+
 onMounted(() => {
   window.addEventListener('resize', updateWidth)
+  window.addEventListener('scroll', onUserActivity, { passive: true })
+  window.addEventListener('touchstart', onUserActivity, { passive: true })
+  window.addEventListener('pointerdown', onUserActivity)
+  scheduleIdleBounce()
 })
 onUnmounted(() => {
   window.removeEventListener('resize', updateWidth)
+  window.removeEventListener('scroll', onUserActivity)
+  window.removeEventListener('touchstart', onUserActivity)
+  window.removeEventListener('pointerdown', onUserActivity)
+  clearIdleTimer()
 })
 
 const slicedDescription = computed(() => {
@@ -76,10 +112,14 @@ const slicedDescription = computed(() => {
     tabindex="0"
     role="button"
     :aria-label="$t('accessibility.openAppDetails', { name: app.name })"
-    class="card bg-[var(--color-card-primary)] w-full shadow-lg 
-    rounded-xl sm:rounded-3xl overflow-hidden transform transition-transform duration-200 
-    hover:scale-[1.03] hover:shadow-xl flex flex-row sm:flex-col cursor-pointer relative
-    focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100"
+    :class="[
+      'card bg-[var(--color-card-primary)] w-full shadow-lg rounded-xl sm:rounded-3xl overflow-hidden',
+      'transform transition-transform duration-200 hover:scale-[1.03] hover:shadow-xl',
+      'flex flex-row sm:flex-col cursor-pointer relative',
+      'focus:outline-none focus:ring-4 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100',
+      idleBounce ? 'app-card-idle-bounce' : '',
+    ]"
+    data-testid="app-card"
   >
 <!-- Badge for beginner-friendly apps -->
     <div
