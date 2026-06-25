@@ -56,25 +56,41 @@ Do **not** merge until local gate passes (unless user explicitly overrides after
 
 Optional extra before merge: **`smoke`** against current production (baseline only; does not validate the new build yet).
 
-### After merge (agent must run checks)
+### After merge / push to `main` (agent must run checks)
 
-CI deploys asynchronously. Still run skill checks so the session confirms the deploy path:
+CI deploys asynchronously. Local **`verify`** can run in parallel with Actions; **`smoke` must wait until the deploy workflow has finished** for that commit — otherwise you may pass/fail against the *previous* live site.
 
-1. Note merged SHA / PR number.
-2. **`./scripts/deploy-local.sh verify`** on updated **`main`** (`git fetch && git checkout main && git pull`) — confirms what CI is building still passes locally.
-3. Wait briefly for Actions if useful (`gh run list --branch main --limit 1` or `gh pr checks` / workflow runs), but **do not skip local checks** just because CI exists.
-4. **`./scripts/deploy-local.sh smoke`** — confirm live `https://sovereinia.org/guia/` returns 200 after deploy (retry once after ~30–60s if first smoke fails and workflow may still be running; then report failure, don’t loop forever).
-5. If user has deploy key and CI is slow/stuck and they want the same commit live now: **`ship`** from `main` (coordinates with “last rsync wins”).
+1. Note merged/pushed SHA / PR number (`HEAD` on `main`).
+2. **`./scripts/deploy-local.sh verify`** on updated **`main`** (`git fetch && git checkout main && git pull`) — confirms what CI is building still passes locally. OK to run while Actions is in progress.
+3. **Wait for production deploy workflow (required before smoke):**
+   - Find the run for this commit:  
+     `gh run list --branch main --workflow "Deploy to VM" --limit 5`  
+     (or match `headSha` / display title to your SHA).
+   - Block until that run completes:  
+     `gh run watch <run-id> --exit-status`  
+     (or poll `gh run view <run-id> --json status,conclusion` until `status` is `completed`).
+   - If **`conclusion` is not `success`**: report CI failure (logs via `gh run view <run-id> --log-failed`); do **not** treat site as updated. Fix/re-run only if user wants; optional maintainer **`ship`** from `main` if key available and they accept bypassing broken Actions.
+   - If no run appears within ~2 minutes after push: warn (workflow disabled / permissions / wrong branch) and either wait longer or use **`ship`** only with explicit user OK.
+4. **Only after step 3 succeeds:** **`./scripts/deploy-local.sh smoke`** — confirm live `https://sovereinia.org/guia/` returns 200 for the newly deployed build.
+   - One optional extra smoke ~15–30s later if first fails (CDN/nginx lag), then stop and diagnose — do not spam smoke while CI is still `in_progress`.
+5. If user has deploy key, CI is failed/stuck, and they want the same commit live now: **`ship`** from `main` (last rsync wins; still run **`smoke` after local rsync**, not after a still-running Actions job).
 
 ### What “checks” means here
 
-| Step | Command | Why |
-|------|---------|-----|
+| Step | Command / action | Why |
+|------|------------------|-----|
 | Gate | `verify` | Same confidence as tests + production build before/after land |
-| Live | `smoke` | Site actually serving after deploy |
-| Optional maintainer fast path | `ship` / `deploy` | Local rsync when bypassing or backing up CI |
+| Deploy done? | `gh run watch` on **Deploy to VM** for this SHA | Smoke is meaningless until rsync on the VM finished |
+| Live | `smoke` (**after** workflow `success`) | Site actually serving the new build |
+| Optional maintainer fast path | `ship` / `deploy` then `smoke` | Local rsync when bypassing or backing up CI |
 
-Merging without `verify` (before) and without `verify` + `smoke` (after, once merge is done) is incomplete deploy handling unless the user clearly waived checks.
+Merging/pushing without **`verify` before** (when you control the land) and without **`verify` + wait for Deploy to VM + `smoke` after** is incomplete deploy handling unless the user clearly waived checks.
+
+### Anti-patterns (do not do this)
+
+- Run **`smoke` immediately after `git push` / `gh pr merge`** while Actions is still queued or in progress.
+- Report “site is live with commit X” based only on a green **`verify`** or an in-progress workflow.
+- Treat **`smoke` 200** as proof of *this* deploy if you never confirmed the workflow for *this* SHA succeeded (could be previous deploy still serving).
 
 ## Preflight (agent does this before running)
 
@@ -139,5 +155,6 @@ Contributors without VM SSH: run **`verify`** locally; merge/push `main` lets Ac
 - Commit keys, tokens, or `~/.ssh/*`
 - Disable/remove/bypass the Deploy to VM workflow
 - Deploy from an unknown/wrong directory or override `DEPLOY_PATH` casually
-- Claim production was updated unless rsync completed and smoke returned 200 **or** (CI-only path) merge completed **and** post-merge `smoke` returned 200
-- Merge a PR to `main` without running **`verify` first** (and **`verify` + `smoke` after**) unless the user explicitly skips checks after you warned them
+- Claim production was updated unless: local **`ship`/`deploy` rsync completed + `smoke` 200**, **or** (CI path) **Deploy to VM succeeded for this SHA + `smoke` 200**
+- Merge/push to `main` without **`verify` first** (when feasible) and without **`verify` + wait for Deploy to VM + `smoke` after**, unless the user explicitly skips checks after you warned them
+- Run post-merge **`smoke` before** the deploy workflow for that commit has **`conclusion: success`**
