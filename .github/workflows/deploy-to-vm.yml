@@ -6,11 +6,12 @@ on:
       - main
   workflow_dispatch:
 
+# DEPLOY_HOST must be a host GitHub Actions can SSH to (not a Cloudflare orange-cloud
+# hostname). Set via repo secret; never commit server IPs.
 env:
-  DEPLOY_HOST: "sovereinia.org"
-  DEPLOY_USER: "deploy"
+  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+  DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'deploy' }}
   # Serving directory on the VM. nginx serves this at https://sovereinia.org/guia/
-  # (Vite is configured with base '/guia/'). Must match nginx root + /guia subdir.
   DEPLOY_PATH: "/srv/apps/sovereinia/guia/"
 
 jobs:
@@ -36,23 +37,32 @@ jobs:
       - name: Setup SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
+          set -euo pipefail
+          if [ -z "${DEPLOY_HOST:-}" ]; then
+            echo "DEPLOY_HOST secret is required (direct SSH host; not CF-proxied apex)"; exit 1
+          fi
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          SCAN_HOST="${DEPLOY_HOST##*@}"
+          ssh-keyscan -H "$SCAN_HOST" >> ~/.ssh/known_hosts 2>/dev/null
           if [ ! -s ~/.ssh/deploy_key ]; then
             echo "Private key is missing or empty"; exit 1
           fi
 
       - name: Deploy build to VM
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER || 'deploy' }}
         run: |
-          # Push the freshly built static site to the serving directory.
-          # --delete keeps the remote a clean mirror of dist/ (no stale assets).
+          set -euo pipefail
+          HOST="${DEPLOY_HOST##*@}"
           rsync -az --delete \
             -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
-            dist/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}"
+            dist/ "${DEPLOY_USER}@${HOST}:${DEPLOY_PATH}"
 
       - name: Smoke test
         run: |
